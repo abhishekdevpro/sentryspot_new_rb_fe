@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import toast from "react-hot-toast";
-import { ToastContainer } from "react-toastify";
+import toast, { ToastContainer } from "react-toastify";
+
 function Changepassword() {
   const [showOldPassword, setShowOldPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -12,21 +12,33 @@ function Changepassword() {
     new_password: "",
     confirm_password: "",
   });
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      setToken(storedToken);
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setChangePassword({ ...changePassword, [name]: value });
   };
 
-  const token = localStorage.getItem("token");
-  const requestBody = {
-    old_password: changePassword.old_password,
-    new_password: changePassword.new_password,
-    confirm_password: changePassword.confirm_password,
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!token) {
+      toast("❌ No token found. Please log in.");
+      return;
+    }
+
+    const requestBody = {
+      old_password: changePassword.old_password,
+      new_password: changePassword.new_password,
+      confirm_password: changePassword.confirm_password,
+    };
+
     axios({
       method: "PUT",
       url: "https://api.resumeintellect.com/api/user/change-password",
@@ -37,25 +49,22 @@ function Changepassword() {
       data: requestBody,
     })
       .then((response) => {
-        console.log(response.data.message,'sd');
+        console.log(response.data.message);
         toast("✅ Password has been changed successfully");
-        
       })
       .catch((err) => {
-        console.log(err)
-        toast("❌ Something went wrong check the password again or try again later  ");
+        console.log(err);
+        toast("❌ Something went wrong. Check the password again or try again later.");
       });
-    
   };
 
   return (
     <>
       <div className="bg-white min-h-screen p-4">
-        <ToastContainer/>
+        <ToastContainer />
         <div className="bg-white p-8 rounded shadow">
           <div className="flex justify-between items-center mb-6">
             <h5 className="text-2xl font-bold uppercase">🔐 Change Password</h5>
-            
           </div>
           <form onSubmit={handleSubmit}>
             <div className="space-y-7">
@@ -127,9 +136,9 @@ function Changepassword() {
               <div>
                 <button
                   type="submit"
-                  className="w-full mt-5 bg-white text-blue-800 border-blue-800 border-2 px-6 py-3 rounded-lg font-bold "
-                >🔄
-                  Update Password
+                  className="w-full mt-5 bg-white text-blue-800 border-blue-800 border-2 px-6 py-3 rounded-lg font-bold"
+                >
+                  🔄 Update Password
                 </button>
               </div>
             </div>
