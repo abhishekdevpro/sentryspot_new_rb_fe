@@ -77,8 +77,8 @@ const LoadUnload = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-75">
           
 
-          <div className="bg-white   justify-center p-1  w-full h-full rounded-lg shadow-lg text-center">
-            <h1 className="text-2xl font-bold mb-4 mt-32">Are you uploading an existing resume?</h1>
+          <div className="bg-white   justify-center p-1   rounded-lg shadow-lg text-center">
+            <h1 className="text-2xl font-bold mb-4 mt-20">Are you uploading an existing resume?</h1>
       <p className="text-gray-600 mb-5">Just review, edit, and update it with new information</p>
 
             <div className="flex justify-center  gap-5  pt-5">
