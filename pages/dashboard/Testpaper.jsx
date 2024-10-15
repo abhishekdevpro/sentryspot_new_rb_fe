@@ -127,9 +127,9 @@ function Testpaper() {
       <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
           <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-900 h-64 w-64 pt-20 ps-16">Please Wait..</div>
         </div>
-      <h2 className='text-violet-950'>Hold On A Second! We're Processing your request...!</h2>
+      <h2 className='text-violet-950'>Hold On A Second! We re Processing your request...!</h2>
       <p className="p-0 m-0 " style={{ color: "red", fontWeight: "500" }}>
-        Don't Shut or Back Your Window!
+        Don t Shut or Back Your Window!
       </p>
     </div>
   </div></div>;

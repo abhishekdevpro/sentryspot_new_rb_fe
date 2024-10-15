@@ -156,7 +156,7 @@ const FAQ = () => {
         Call Us 
         </p>
         <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">
-        We're here for help
+        We re here for help
         </p>
         <div className=''>
           <button className='border px-3 p-2 rounded-lg'>
@@ -182,7 +182,7 @@ const FAQ = () => {
         Email Us 
         </p>
         <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">
-        We're here for help
+        We re here for help
         </p>
         <div className=''>
           <button className='border px-3 p-2 rounded-lg'>
@@ -205,7 +205,7 @@ const FAQ = () => {
       <p className="block text-slate-600 leading-normal font-semibold mb-1">
       Message us
         </p>
-      <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">We're here to help</p>
+      <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">We re here to help</p>
 
       <button
         className="border px-3 p-2 rounded-lg"

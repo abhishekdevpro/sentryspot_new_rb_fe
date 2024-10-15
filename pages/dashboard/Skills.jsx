@@ -167,9 +167,9 @@ const Skills = () => {
               1. The duration of the test is 10 minutes*. Your answer gets automatically submitted after 10 minutes*.<br/>
               2. This test consists of 15* multiple-choice questions.<br/>
               3. You may attempt the questions in any order.<br/>
-              4. Please select the correct answer and click the "Save and next" button.<br/>
-              5. Please click "skip" if you wish to skip a question. You may come back and answer the question later.<br/>
-              6. Please click on the "Submit Assessment" button after answering all the questions.<br/>
+              4. Please select the correct answer and click the Save and next button.<br/>
+              5. Please click skip if you wish to skip a question. You may come back and answer the question later.<br/>
+              6. Please click on the Submit Assessment button after answering all the questions.<br/>
               7. Do not close the window before submitting the test.<br/>
               8. Tests will be automatically submitted after the given time limit.<br/>
             </p>
