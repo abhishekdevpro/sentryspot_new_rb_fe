@@ -11,7 +11,7 @@ import { FaBars } from 'react-icons/fa'; //
 import Builder from "../builder";
 import Payment from "./Payment";
 import Changepassword from "./Changepassword";
-import Skills from "./Skilltest/Skills";
+import Skills from "./Skills";
 
 export default function DashboardPage() {
 
