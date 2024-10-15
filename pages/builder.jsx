@@ -134,8 +134,8 @@ export default function Builder(props) {
         }}
       >
         <Meta
-          title="ATSResume | Get hired with an ATS-optimized resume"
-          description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
+          title="Resume | Get hired with an ATS-optimized resume"
+          description="Resume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
           keywords="ATS-friendly, Resume optimization..."
         />
 

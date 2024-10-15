@@ -1,10 +1,10 @@
-# ATSResume
+# Resume
 
-A cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes. Our platform uses the latest technology to analyze and optimize your resume for maximum visibility and success with applicant tracking systems. Say goodbye to frustration and wasted time spent on manual resume formatting. Create your winning resume with ATSResume today and get noticed by employers.
+A cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes. Our platform uses the latest technology to analyze and optimize your resume for maximum visibility and success with applicant tracking systems. Say goodbye to frustration and wasted time spent on manual resume formatting. Create your winning resume with Resume today and get noticed by employers.
 
 ## Demo
 
-#### [https://atsresume.vercel.app/](https://atsresume.vercel.app/)
+#### [https://Resume.vercel.app/](https://Resume.vercel.app/)
 ![image](https://user-images.githubusercontent.com/61316762/218017511-fbbaa7da-6154-449f-9e46-8de45b0e6c29.png)
 
 ### Resume Score
@@ -109,7 +109,7 @@ Key achievements are the most important part of your resume.
 
 ## License
 
-[MIT](https://github.com/sauravhathi/atsresume/blob/main/LICENSE.md)
+[MIT](https://github.com/sauravhathi/Resume/blob/main/LICENSE.md)
 
 ## Contributing
 
