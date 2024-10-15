@@ -5,11 +5,12 @@ import Sidebar from "./Sidebar";
 
 
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
 
-import { FaBars } from 'react-icons/fa'; //
-import Builder from "../builder";
-import Reffrerallist from "./reffrerallist";
+
+import { FaBars } from 'react-icons/fa'; 
+import Refferalllist from "./Refferalllist";
+
+
 
 export default function DashboardPage() {
 
@@ -43,9 +44,7 @@ export default function DashboardPage() {
 
         {/* Content area */}
         <div className="flex-1 w-full max-w-8xl p-4 overflow-auto">
-
-<Reffrerallist/>
-
+<Refferalllist/>
 
         </div>
       </div>

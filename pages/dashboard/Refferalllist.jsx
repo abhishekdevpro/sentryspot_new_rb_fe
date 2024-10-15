@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Reffrerallist() {
+function Refferalllist() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -61,4 +61,4 @@ function Reffrerallist() {
   );
 }
 
-export default Reffrerallist;
+export default Refferalllist;
