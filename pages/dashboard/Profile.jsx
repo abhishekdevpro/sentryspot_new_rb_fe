@@ -201,13 +201,13 @@ const ProfilePage = () => {
               />
               <span className="text-white ml-2">{selectedFile ? selectedFile.name : `Upload .Pdf `}</span>
             </div>
-            <a href="/dashboard/ai-resume-builder">
+            <Link href="/dashboard/ai-resume-builder">
               <button
                 className="bg-blue-500 text-white px-1 py-2 rounded-lg hover:bg-blue-600 w-full md:w-auto"
           >
             Upload Resume
           </button>
-        </a>
+        </Link>
       </div>
     </div>
     {isModalOpen && (
