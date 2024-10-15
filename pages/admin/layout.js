@@ -4,8 +4,7 @@ export default function AdminLayout({ children }) {
         <header>
           <nav>
             {/* Dashboard-specific navigation */}
-            <a href="/admin/profile">Profile</a>
-            <a href="/admin/settings">Settings</a>
+           
           </nav>
         </header>
         <main>
