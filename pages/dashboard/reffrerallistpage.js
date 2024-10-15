@@ -9,7 +9,7 @@ import { Outlet } from 'react-router-dom';
 
 import { FaBars } from 'react-icons/fa'; //
 import Builder from "../builder";
-import Reffrerallist from "./reffrerallistpage";
+import Reffrerallist from "./reffrerallist";
 
 export default function DashboardPage() {
 
