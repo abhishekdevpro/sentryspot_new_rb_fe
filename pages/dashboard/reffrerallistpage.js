@@ -8,7 +8,8 @@ import React, { useState } from 'react';
 
 
 import { FaBars } from 'react-icons/fa'; 
-import Refferalllist from "./Refferalllist";
+
+import List from "./List";
 
 
 
@@ -44,7 +45,7 @@ export default function DashboardPage() {
 
         {/* Content area */}
         <div className="flex-1 w-full max-w-8xl p-4 overflow-auto">
-<Refferalllist/>
+<List/>
 
         </div>
       </div>
