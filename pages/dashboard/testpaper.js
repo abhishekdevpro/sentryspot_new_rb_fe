@@ -132,9 +132,9 @@ function Testpaper() {
                 Please Wait..
               </div>
             </div>
-            <h2 className="text-violet-950">Hold On A Second! We're Processing your request...!</h2>
+            <h2 className="text-violet-950">Hold On A Second! We re Processing your request...!</h2>
             <p className="p-0 m-0" style={{ color: "red", fontWeight: "500" }}>
-              Don't Shut or Back Your Window!
+              Don t Shut or Back Your Window!
             </p>
           </div>
         </div>
