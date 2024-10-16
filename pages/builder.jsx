@@ -227,7 +227,7 @@ export default function Builder(props) {
               {/* Font Selection Dropdown */}
               
 
-              <div className="flex gap-2 justify-center bg-gray-200  ">
+              <div className="flex gap-2 justify-center text-center bg-gray-200  ">
               <select
                 value={selectedFont}
                 onChange={handleFontChange}
@@ -249,10 +249,11 @@ export default function Builder(props) {
               >
                 Download 
               </button>
-              <Print />
+               {/*   <Print /> */}
+            
               </div>
 
-              {/* Download PDF Button */}
+             
               
             </div>
 

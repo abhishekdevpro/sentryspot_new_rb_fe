@@ -3,14 +3,21 @@ import React, { useContext, useState } from "react";
 import axios from 'axios';
 import { ResumeContext } from "../../pages/builder";
 import { toast } from 'react-toastify';
-
+import { useEffect } from "react";
 const LoadUnload = () => {
   const { setResumeData } = useContext(ResumeContext);
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false); // To control overlay visibility
   const [showOverlay, setShowOverlay] = useState(true); // To control the visibility of the popup
-  const token = "YOUR_TOKEN_HERE"; // Replace with your actual token
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      setToken(storedToken);
+    }
+  }, []); // Replace with your actual token
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -32,7 +39,7 @@ const LoadUnload = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post('https://api.novajobs.us/resume-builder/resume-upload', formData, {
+      const response = await axios.post('https://api.resumeintellect.com/api/user/resume-upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'Authorization': token

@@ -38,6 +38,42 @@ const MyResume = () => {
       console.error("Token not found in localStorage");
     }
   }, []);
+  const handleGetSuggestions = (resume) => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setIsLoading(true);
+      axios
+        .post(
+          "https://api.resumeintellect.com/api/user/file-based-ai",
+          {
+            keyword:
+              "Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations",
+              file_location: resume.file_path || "/etc/dean_ai_resume/users/resume_uploads/majid[15_0]-1723818329.pdf",
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .then((response) => {
+          const { improvement_suggestions } = response.data.data;
+          setModalSuggestions(improvement_suggestions || []);
+          setModalResumeName(resume.name);
+          setIsAIModalOpen(true);
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching AI suggestions:", error);
+          setIsLoading(false);
+        });
+    } else {
+      console.error("Token not found in localStorage");
+    }
+  };
+
+
 
   const handleGetScore = (resume) => {
     const token = localStorage.getItem("token");
