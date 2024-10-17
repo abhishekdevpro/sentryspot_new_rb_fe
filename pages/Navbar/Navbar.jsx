@@ -146,7 +146,7 @@ const Navbar = () => {
                 <Link href="/" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={() => { handleLogout(); handleLinkClick(); }}>Logout</Link>
               ) : (
                 <>
-                  <Link href="/login" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>Log in</Link>
+                  <Link href="/login2" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>Log in</Link>
                   <Link href="/signup" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>Sign up</Link>
                 </>
               )}
