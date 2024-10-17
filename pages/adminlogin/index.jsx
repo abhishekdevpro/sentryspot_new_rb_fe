@@ -35,7 +35,7 @@ function AdminLogin() {
 
     try {
       const response = await axios.post(
-        'https://api.resumeintellect.com/api/admin/auth/login',
+        'https://api.resumeintellect.com/api/admin/auth/login2',
         formData,
       );
 

@@ -69,7 +69,7 @@ function Signup() {
           password: "",
         });
   
-        router.push("/login");
+        router.push("/login2");
       } else {
         toast.error("Failed to sign up");
       }

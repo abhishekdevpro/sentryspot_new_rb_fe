@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
-function Testpaper() {
+const Testpaper = () => {
   const router = useRouter();
   const { skillId, skillName } = router.query; // Access dynamic route params
 
@@ -24,6 +24,7 @@ function Testpaper() {
       return;
     }
 
+    // Fetch questions when skillId and skillName are available
     if (skillId && skillName) {
       const fetchQuestions = async () => {
         try {
@@ -119,7 +120,7 @@ function Testpaper() {
   };
 
   const handleBack = () => {
-    router.back(); // Navigate back to the previous page
+    router.back('skilltest'); // Navigate back to the previous page
   };
 
   if (loading) {
@@ -132,9 +133,9 @@ function Testpaper() {
                 Please Wait..
               </div>
             </div>
-            <h2 className="text-violet-950">Hold On A Second! We re Processing your request...!</h2>
+            <h2 className="text-violet-950">Hold On A Second! We are Processing your request...!</h2>
             <p className="p-0 m-0" style={{ color: "red", fontWeight: "500" }}>
-              Don t Shut or Back Your Window!
+              Don’t Shut or Back Your Window!
             </p>
           </div>
         </div>
@@ -166,54 +167,58 @@ function Testpaper() {
           </div>
         ) : (
           <>
-            <h1 className="text-2xl mb-4 ms-20">{questions[currentQuestionIndex].question}</h1>
-            <ul className="mb-4">
-              {questions[currentQuestionIndex].options.map((option, index) => (
-                <li key={index} className="mb-2 ms-20">
-                  <input
-                    type="radio"
-                    id={`option-${index}`}
-                    name="option"
-                    value={option}
-                    checked={questions[currentQuestionIndex].user_answer === option}
-                    onChange={() => handleAnswerChange(questions[currentQuestionIndex].id, option)}
-                    className="mr-2"
-                  />
-                  <label htmlFor={`option-${index}`}>{option}</label>
-                </li>
-              ))}
-            </ul>
-            <div className="flex justify-between">
-              <button
-                className={`p-2 bg-violet-950 rounded-md text-white hover:bg-violet-950 mt-4 ${
-                  currentQuestionIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
-                }`}
-                onClick={handlePrevious}
-                disabled={currentQuestionIndex === 0}
-              >
-                ↩️ Previous
-              </button>
-              {currentQuestionIndex === questions.length - 1 ? (
-                <button
-                  className="p-2 bg-green-500 rounded-md text-white hover:bg-green-700"
-                  onClick={handleSubmit}
-                >
-                  🎓 Submit
-                </button>
-              ) : (
-                <button
-                  className="p-2 bg-violet-950 rounded-md text-white hover:bg-violet-950 mt-4"
-                  onClick={handleNext}
-                >
-                  ↪️ Next
-                </button>
-              )}
-            </div>
+            {questions.length > 0 && (
+              <>
+                <h1 className="text-2xl mb-4 ms-20">{questions[currentQuestionIndex].question}</h1>
+                <ul className="mb-4">
+                  {questions[currentQuestionIndex].options.map((option, index) => (
+                    <li key={index} className="mb-2 ms-20">
+                      <input
+                        type="radio"
+                        id={`option-${index}`}
+                        name="option"
+                        value={option}
+                        checked={questions[currentQuestionIndex].user_answer === option}
+                        onChange={() => handleAnswerChange(questions[currentQuestionIndex].id, option)}
+                        className="mr-2"
+                      />
+                      <label htmlFor={`option-${index}`}>{option}</label>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex justify-between">
+                  <button
+                    className={`p-2 bg-violet-950 rounded-md text-white hover:bg-violet-950 mt-4 ${
+                      currentQuestionIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
+                    }`}
+                    onClick={handlePrevious}
+                    disabled={currentQuestionIndex === 0}
+                  >
+                    ↩️ Previous
+                  </button>
+                  {currentQuestionIndex === questions.length - 1 ? (
+                    <button
+                      className="p-2 bg-green-500 rounded-md text-white hover:bg-green-700"
+                      onClick={handleSubmit}
+                    >
+                      🎓 Submit
+                    </button>
+                  ) : (
+                    <button
+                      className="p-2 bg-violet-950 rounded-md text-white hover:bg-violet-950 mt-4"
+                      onClick={handleNext}
+                    >
+                      ↪️ Next
+                    </button>
+                  )}
+                </div>
+              </>
+            )}
           </>
         )}
       </div>
     </div>
   );
-}
+};
 
 export default Testpaper;

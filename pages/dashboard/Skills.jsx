@@ -18,7 +18,7 @@ const Skills = () => {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      window.location.href = "/login";
+      window.location.href = "/login2";
       return;
     }
 
@@ -47,7 +47,7 @@ const Skills = () => {
       console.error('There was an error fetching the skills data!', error.response ? error.response.data : error.message);
       if (error.response && error.response.status === 401) {
         setTokenError('Unauthorized access. Please log in again.');
-        window.location.href = "/login";
+        window.location.href = "/login2";
       } else {
         setError(error);
       }
@@ -80,7 +80,7 @@ const Skills = () => {
   const proceedToTest = () => {
     if (selectedSkill) {
       setShowInstructions(false);
-      router.push(`/dashboard/testpaper/${selectedSkill.id}/${encodeURIComponent(selectedSkill.name)}`);
+      router.push(`Skilltest/${selectedSkill.id}/${encodeURIComponent(selectedSkill.name)}`);
     }
   };
 

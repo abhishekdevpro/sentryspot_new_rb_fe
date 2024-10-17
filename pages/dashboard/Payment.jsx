@@ -34,7 +34,7 @@ function Payment() {
       const token = localStorage.getItem('token'); // Retrieve token from localStorage
   
       if(!token){
-          window.location.href="/login";
+          window.location.href="/login2";
           return;
       }
 
