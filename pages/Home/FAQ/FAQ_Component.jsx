@@ -140,12 +140,12 @@ const FAQ = () => {
 
    
       
-    <h1 className=' text-center font-bold text-3xl pt-10 mt-5 pb-3 bg-white'>Get In Touch</h1>
+    <h1 className=' text-center font-bold text-3xl pt-10 mt-5 pb-3 bg-white' id='phone' >Get In Touch</h1>
                   <p className=' text-center pb-5 bg-white'>Build professional, job-winning resumes in minutes with our AI-powered tools and expert suggestions!</p>
   
     <div className='lg:flex justify-center flex-row gap-10 pb-20 bg-white'>
 
-      <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
+      {/* <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
         <div className="flex items-center mb-4">
         <div className='text-3xl'> ☎</div>
           <h5 className="ml-3 text-slate-800 text-xl font-semibold">
@@ -168,7 +168,7 @@ const FAQ = () => {
           </a>
           </button>
         </div>
-      </div>
+      </div> */}
 
      
       <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">

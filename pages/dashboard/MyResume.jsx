@@ -15,6 +15,8 @@ const MyResume = () => {
   const [deleteresumeid, setDeleteresumeid] = useState(null);
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
   const [hoveredResumeId, setHoveredResumeId] = useState(null);
+  const [idFromResponse, setIdFromResponse] = useState(null); 
+  const [locationFromResponse, setLocationFromResponse] = useState(""); 
   const router = useRouter();
 
   useEffect(() => {
@@ -129,6 +131,44 @@ const MyResume = () => {
     setisDeleteModalOpen(false);
   };
 
+
+  const handleEditResume = async (resume) => {
+    const token = localStorage.getItem("token");
+  
+    try {
+      const response = await axios.get(`https://api.resumeintellect.com/api/user/resume-list/${resume.id}`, {
+        headers: {
+          Authorization: token,
+        },
+      });
+  
+      if (!response.data.data || !response.data.data.ai_resume_parse_data) {
+        console.error("Resume data not found in API response");
+        return;
+      }
+  
+      const parsedData = JSON.parse(response.data.data.ai_resume_parse_data);
+      console.log("Parsed Resume Data:", parsedData);
+  
+      // Store resume data and related details in localStorage
+      localStorage.setItem('resumeData', JSON.stringify(parsedData.templateData));
+      localStorage.setItem('resumeId', response.data.data.id);
+      localStorage.setItem('location', response.data.data.file_path);
+  
+      // Set states with the received data if needed
+      setIdFromResponse(response.data.data.id);
+      setLocationFromResponse(response.data.data.file_path);
+  
+      
+  
+      // Navigate to the resume display page with the resume ID
+       router.push(`/dashboard/aibuilder/${response.data.data.id}`);
+    } catch (error) {
+      console.error("Error fetching resume details:", error);
+     
+    }
+  };
+  
   return (
     <div className="container mx-auto p-4 text-center">
       <ToastContainer />
@@ -149,7 +189,7 @@ const MyResume = () => {
             {resumes.length > 0 ? resumes.map((resume, index) => (
               <tr key={index} className="border-2">
                 <td className=" ">{index + 1}.</td>
-                <td className="py-2 float-start ">{resume.resume_name || "Resume score"}</td>
+                <td className="py-2 float-start ">{resume.resue_name || "Resume score"}</td>
                 <td className="py-2 px-4">
                   <button className="bg-yellow-500 text-black py-1 px-3 rounded" onClick={() => handleGetScore(resume)}>
                     {scores[resume.id] !== undefined ? scores[resume.id] : resume.ai_resume_score_percentage || "Resume score"}
@@ -177,13 +217,13 @@ const MyResume = () => {
                 <td className="py-2 px-4">
                   <div className="flex space-x-2">
                     <button className="text-black">
-                      <i className="fas fa-upload"></i>
+                      <i className="fas fa-upload">📤</i>
                     </button>
                     <button className="text-black" onClick={() => handleEditResume(resume)}>
-                      <i className="fas fa-edit"></i>
+                      <i className="fas fa-edit">🖍</i>
                     </button>
                     <button className="text-black" onClick={() => handleopenDeleteModal(resume.id)}>
-                      <i className="fas fa-trash"></i>
+                      <i className="fas fa-trash">🗑️</i>
                     </button>
                   </div>
                 </td>
@@ -198,7 +238,7 @@ const MyResume = () => {
 
       {/* Loading Animation */}
       {isLoading && (
-        <div className="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center">
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
           <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64 align-middle text-white font-semibold text-lg">
             Loading...
           </div>

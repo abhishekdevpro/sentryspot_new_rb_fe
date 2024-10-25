@@ -29,14 +29,14 @@ export default function DashboardPage() {
       </div>
       <div className="flex flex-1 w-full  mt-4 bg-white shadow-md rounded-lg overflow-hidden">
         {/* Hamburger icon for mobile view */}
-        <div className="md:hidden">
+        <div className="">
           <button onClick={toggleSidebar} className="p-4 focus:outline-none">
             <FaBars className="text-2xl" />
           </button>
         </div>
 
         {/* Sidebar */}
-        <div className={`md:w-64 flex-shrink-0 md:block  ${isSidebarOpen ? 'block' : 'hidden'}`}>
+        <div className={`md:w-64 flex-shrink-0  ${isSidebarOpen ? 'block' : 'hidden'}`}>
           <Sidebar onClose={closeSidebar} />
         </div>
 

@@ -34,7 +34,7 @@ const Login2 = () => {
 
     try {
       const response = await axios.post(
-        'https://api.resumeintellect.com/api/user/auth/login2',
+        'https://api.resumeintellect.com/api/user/auth/login',
         formData,
       );
 

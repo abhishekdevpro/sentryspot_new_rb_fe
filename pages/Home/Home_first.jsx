@@ -31,7 +31,7 @@ function Home_first() {
             <div className='bg-blue-100 pt-10'>
                 <div className='flex justify-center'>
                     <a href="tel:+1 8887936474" className="text-black bg-red-300 px-3 py-4 rounded-3xl font-bold text-center sm:hidden">
-                        Call us 📞 +1 8887936474
+                       Contact us
                     </a>
                 </div>
                 <div className='py-9 px-5 w-screen flex gap-3 md:gap-10 md:justify-evenly items-center flex-col md:flex-row'>

@@ -76,7 +76,7 @@ const Navbar = () => {
               <span className="mr-2">🛡️</span>
               <span>Admin</span>
             </Link>
-            <a href="tel:+1 8887936474" className="text-white px-3 py-2 rounded-md text-lg font-semibold">📞 +1 8887936474</a>
+            <a href="#phone" className="text-white px-3 py-2 rounded-md text-lg font-semibold">📞  Contact us  </a>
           </div>
           <div className="hidden md:flex items-center gap-4">
             {isLoggedIn ? (

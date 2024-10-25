@@ -9,12 +9,12 @@ const PersonalInformation = ({}) => {
   const dummyImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s"; // URL to the dummy image
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title text-black text-3xl">Personal Information</h2>
+    <div className="flex-col-gap-2 justify-center">
+      <h2 className="input-title text-black text-3xl">Detail Information</h2>
       <div className="">
 
         {/* Display either the uploaded image or a dummy image */}
-        <div className=" flex profile-picture-container  gap-10 px-10 my-10 ">
+        <div className="  profile-picture-container  gap-10 px-10  ">
           <img
             src={resumeData.profilePicture || dummyImage} // Display dummy image if no profile picture
             alt="Profile"
@@ -24,7 +24,13 @@ const PersonalInformation = ({}) => {
        
         {/* Upload input for profile picture */}
         <div className="mt-10">
-        <input
+      
+        </div>
+ </div>
+ 
+ 
+<div className="flex-col  justify-center">
+<input
           type="file"
           name="profileImage"
           accept="image/*"
@@ -32,13 +38,6 @@ const PersonalInformation = ({}) => {
           onChange={handleProfilePicture}
           placeholder="Profile Picture"
         />
-        </div>
- </div>
- 
- <br/> 
- <br/>
-<div className="">
-  
 <input
           type="text"
           placeholder="Full Name"
