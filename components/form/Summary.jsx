@@ -3,7 +3,7 @@ import { ResumeContext } from "../../pages/builder";
 const Summary = () => {
   const { resumeData, setResumeData, handleChange } = useContext(ResumeContext);
   return (
-    <div className="flex-col-gap-2 mt-10">
+    <div className="flex-col-gap-3 w-full mt-10 px-10">
       <div className="flex justify-between mb-2">
       <h2 className="input-title text-black  text-3xl">Summary</h2>
             <button

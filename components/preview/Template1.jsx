@@ -195,7 +195,7 @@ const Template1 = () => {
                       title={socialMedia.socialMedia}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1 social-media align-center justify-center "
+                      className="lg:inline-flex items-center gap-1 social-media align-center justify-center "
                     // Prevent text overflowing, If the socialMedia.link string is longer than 32 characters, apply the wordWrap and display styles to this <a> tag.
                     // wordWrap: "break-word" breaks the text onto the next line if it's too long,
                     // display: "inline-block" is necessary for wordWrap to work on an inline element like <a>.

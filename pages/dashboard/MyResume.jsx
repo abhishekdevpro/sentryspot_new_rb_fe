@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+
 import axios from "axios";
+import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from 'react-toastify';
+import { ResumeContext } from "../../pages/builder";
 
 const MyResume = () => {
+  const { setResumeData } = useContext(ResumeContext);
   const [resumes, setResumes] = useState([]);
   const [scores, setScores] = useState({});
   const [isScoreModalOpen, setIsScoreModalOpen] = useState(false);
@@ -18,7 +21,7 @@ const MyResume = () => {
   const [idFromResponse, setIdFromResponse] = useState(null); 
   const [locationFromResponse, setLocationFromResponse] = useState(""); 
   const router = useRouter();
-
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -136,42 +139,39 @@ const MyResume = () => {
     const token = localStorage.getItem("token");
   
     try {
+      // Fetch the resume details from the API
       const response = await axios.get(`https://api.resumeintellect.com/api/user/resume-list/${resume.id}`, {
-        headers: {
-          Authorization: token,
-        },
+        headers: { Authorization: token },
       });
   
-      if (!response.data.data || !response.data.data.ai_resume_parse_data) {
+      const resumeData = response.data.data;
+      if (!resumeData || !resumeData.file_path || !resumeData.ai_resume_parse_data) {
         console.error("Resume data not found in API response");
         return;
       }
   
-      const parsedData = JSON.parse(response.data.data.ai_resume_parse_data);
-      console.log("Parsed Resume Data:", parsedData);
+      // Parse the ai_resume_parse_data
+      const parsedData = JSON.parse(resumeData.ai_resume_parse_data);
   
-      // Store resume data and related details in localStorage
+      // Set the resume data using the context
+      setResumeData(parsedData.templateData); // Use the appropriate structure from the parsed data
       localStorage.setItem('resumeData', JSON.stringify(parsedData.templateData));
-      localStorage.setItem('resumeId', response.data.data.id);
-      localStorage.setItem('location', response.data.data.file_path);
+      localStorage.setItem('resumeId', resumeData.id);
+      localStorage.setItem('location', resumeData.file_path);
   
-      // Set states with the received data if needed
-      setIdFromResponse(response.data.data.id);
-      setLocationFromResponse(response.data.data.file_path);
+      console.log("Resume data retrieved successfully");
   
-      
-  
-      // Navigate to the resume display page with the resume ID
-       router.push(`/dashboard/aibuilder/${response.data.data.id}`);
+      // Redirect to the builder page with the resume ID
+      router.push(`/dashboard/aibuilder/${resumeData.id}`);
     } catch (error) {
       console.error("Error fetching resume details:", error);
-     
     }
   };
   
+  
   return (
-    <div className="container mx-auto p-4 text-center">
-      <ToastContainer />
+    <div className="container mx-auto p-4 text-center h-3/4">
+     
       <div className="overflow-x-auto">
         <table className="min-w-full bg-dark text-black rounded-md">
           <thead>
