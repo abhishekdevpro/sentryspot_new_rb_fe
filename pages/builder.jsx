@@ -83,10 +83,10 @@ export default function Builder({ onClose }) {
 
     .then(response => {
       const data = response.data;
-      // if (data && data.data) {
-      //   // Redirect to the PayPal URL provided in the response
-      //   window.location.href = data.data;
-      // }
+      if (data && data.data) {
+        // Redirect to the PayPal URL provided in the response
+        window.location.href = data.data;
+      }
       if (data && data.order_id) {
         localStorage.setItem("orderid", data.order_id);
       }
@@ -222,16 +222,25 @@ export default function Builder({ onClose }) {
           endYear: project.endYear || "",
           name: project.name || ""
         })) || [],
-        skills: resumeData.skills?.map((skill) => ({
-          title: skill.title || "",
-          skills: skill.skills || []
-        })) || [],
+        skills: Array.isArray(resumeData.skills)
+        ? resumeData.skills.map((skill) => ({
+            title: skill.title || "",
+            skills: skill.skills || []
+          }))
+        : [],      
         languages: resumeData.languages || [],
         certifications: resumeData.certifications || []
       }
     };
   
     try {
+      // Check if `id` is available, otherwise get it from local storage
+      const id = router.query.id || localStorage.getItem("resumeId");
+      if (!id) {
+        console.error("Resume ID not found.");
+        return;
+      }
+    
       const url = `https://api.resumeintellect.com/api/user/resume-update/${id}`;
       const response = await axios.put(url, templateData, {
         headers: {
@@ -239,8 +248,9 @@ export default function Builder({ onClose }) {
           'Authorization': token,
         },
       });
-  
+    
       console.log('Resume updated successfully:', response.data);
+      // Uncomment below if you need to redirect after updating
       // if (response.data) {
       //   router.push('/dashboard/ai-resume-builder');
       // }
@@ -317,8 +327,8 @@ export default function Builder({ onClose }) {
           </li>
           <li>
             <Link
-              href="aibuilder/2"
-              className={getLinkClassName("/dashboard/aibuilder/1")}
+              href="aibuilder"
+              className={getLinkClassName("/dashboard/aibuilder")}
               onClick={() => {
                 onClose();
                 toggleSidebar();
@@ -540,7 +550,7 @@ export default function Builder({ onClose }) {
               <button
           type="button"
           onClick={handleFinish}
-          disabled={isFinished} // Optional, disable if already finished
+         // disabled={isFinished} // Optional, disable if already finished
           className="bg-blue-950 text-white px-5 py-2 rounded-lg"
         >
           Save

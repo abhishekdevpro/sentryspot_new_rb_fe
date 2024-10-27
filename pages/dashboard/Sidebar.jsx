@@ -39,8 +39,8 @@ const Sidebar = ({ onClose }) => {
         </li>
         <li>
           <Link
-            href="aibuilder/2"
-            className={getLinkClassName("/dashboard/aibuilder/1")}
+            href="aibuilder"
+            className={getLinkClassName("/dashboard/aibuilder")}
             onClick={onClose} // Close sidebar on link click
           >
             <span className="mr-2">🤖</span>

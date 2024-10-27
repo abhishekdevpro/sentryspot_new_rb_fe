@@ -1,6 +1,7 @@
 import { FaCloudUploadAlt } from "react-icons/fa";
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { ResumeContext } from "../../pages/builder";
 import { toast } from "react-toastify";
 
@@ -12,13 +13,21 @@ const LoadUnload = () => {
   const [showOverlay, setShowOverlay] = useState(true);
   const [showLoadingAnimation, setShowLoadingAnimation] = useState(false);
   const [token, setToken] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
+    if (router.query.id) {
+      return;
+    }
     if (typeof window !== "undefined") {
       const storedToken = localStorage.getItem("token");
       setToken(storedToken);
     }
-  }, []);
+  }, [router.query.id]);
+
+  if (router.query.id) {
+    return null; // Hide component if 'id' is present in query parameters
+  }
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -78,17 +87,40 @@ const LoadUnload = () => {
     }
   };
 
-  const handleStartFromScratch = () => {
+  const handleStartFromScratch = async () => {
     setShowLoadingAnimation(true);
-    setTimeout(() => {
+    try {
+      const response = await axios.post(
+        "https://api.resumeintellect.com/api/user/resume-create",
+        {},
+        { headers: { Authorization: token } }
+      );
+  
+      if (response.data && response.data.data) {
+        const { id, file_path, ai_resume_parse_data } = response.data.data;
+        
+        const parsedData = JSON.parse(ai_resume_parse_data).templateData;
+  
+        setResumeData(parsedData);
+        localStorage.setItem("resumeData", JSON.stringify(parsedData));
+        localStorage.setItem("resumeId", id);
+        localStorage.setItem("location", file_path);
+  
+        router.push(`/dashboard/aibuilder/${id}`);
+        setShowLoadingAnimation(false);
+        toast.success("Started from scratch successfully!");
+      } else {
+        throw new Error("Invalid response data format");
+      }
+    } catch (error) {
+      console.error("Error creating resume from scratch:", error);
+      toast.error("Failed to start from scratch");
       setShowLoadingAnimation(false);
-      setShowOverlay(false);
-    }, 5000);
+    }
   };
-
+  
   return (
     <>
-      {/* Loading Animation */}
       {showLoadingAnimation && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
           <div className="loader"></div>
@@ -99,7 +131,6 @@ const LoadUnload = () => {
         </div>
       )}
 
-      {/* Overlay */}
       {showOverlay && !isUploaded && !showLoadingAnimation && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-900 bg-opacity-75">
           <div className="bg-white p-5 md:p-10 rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-2/3 text-center">
@@ -109,13 +140,7 @@ const LoadUnload = () => {
             <div className="flex flex-col md:flex-row items-center justify-center gap-5">
               <div className="h-80 md:h-auto p-6 md:p-10 border-2 rounded-lg shadow-lg shadow-blue-100 w-full md:w-1/2">
                 <div className="mb-4">
-                  <svg
-                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                  <svg className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4m-2 0v16m-4-8H4M4 8h16" />
                   </svg>
                 </div>
@@ -131,9 +156,7 @@ const LoadUnload = () => {
                 </label>
 
                 <button
-                  className={`p-2 mt-4 w-full text-white bg-blue-800 rounded ${
-                    loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-600 transition"
-                  }`}
+                  className={`p-2 mt-4 w-full text-white bg-blue-800 rounded ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-600 transition"}`}
                   onClick={handleUpload}
                   disabled={loading}
                 >
@@ -143,13 +166,7 @@ const LoadUnload = () => {
 
               <div className="h-80 md:h-auto p-6 md:p-10 border-2 rounded-lg shadow-lg shadow-blue-100 w-full md:w-1/2">
                 <div className="mb-4">
-                  <svg
-                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
+                  <svg className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                 </div>
