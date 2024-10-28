@@ -18,7 +18,7 @@ function AiResumeEnhancer() {
       1. Content Optimization
 
       </h1>
-      Our AI analyzes your resume content to ensure it is concise, relevant, and impactful. It helps you highlight key achievements, skills, and experiences that align with the job you’re applying for.
+      Our AI analyzes your resume content to ensure it is concise, relevant, and impactful. It helps you highlight key achievements, skills, and experiences that align with the job you re applying for.
 
       <h1 className="text-sm font-semibold my-2">2. Tailored Recommendations</h1>
       Receive personalized suggestions on how to improve your resume. The AI provides specific advice on language, tone, and structure, helping you create a compelling narrative that resonates with hiring managers.
@@ -26,7 +26,7 @@ function AiResumeEnhancer() {
       <h1 className="text-sm font-semibold my-2">
         3. Industry-Specific Enhancements
       </h1>
-      Our AI Resume Enhancer tailors your resume to fit the standards and expectations of your target industry. Whether you're in tech, finance, healthcare, or any other field, our AI ensures your resume speaks the industry language.
+      Our AI Resume Enhancer tailors your resume to fit the standards and expectations of your target industry. Whether you re in tech, finance, healthcare, or any other field, our AI ensures your resume speaks the industry language.
 
       <h1 className="text-sm font-semibold my-2">
         4. Keyword Optimization

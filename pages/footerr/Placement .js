@@ -3,7 +3,7 @@ import React from "react";
 
 function Placement() {
     return ( <div className="m-10 mx-40 p-5  shadow-2xl">
-  <h1 className="text-4xl font-semibold my-4 underline "> Placement Support</h1>  
+  {/* <h1 className="text-4xl font-semibold my-4 underline "> Placement Support</h1>  
  
   <h1 className="text-lg font-semibold my-2 mt-5 ">Empowering Your Job Search</h1>  
 
@@ -43,7 +43,7 @@ Our clients’ success speaks volumes about the effectiveness of our placement s
 Ready to take your job search to the next level? Contact us today to learn more about our placement support services and how we can help you achieve your career goals. At Resume Intellect, we’re dedicated to your success and are here to support you every step of the way.
 
 <h1 className="text-sm font-bold my-2 mt-5 ">Contact Us</h1>
-Reach out to us at [career@Resume Intellect.ca](mailto:career@Resume Intellect.ca) to schedule a consultation. Let Resume Intellect be your partner in navigating the job market and securing the perfect role for your future.
+Reach out to us at [career@Resume Intellect.ca](mailto:career@Resume Intellect.ca) to schedule a consultation. Let Resume Intellect be your partner in navigating the job market and securing the perfect role for your future. */}
 
     </div> );
 }

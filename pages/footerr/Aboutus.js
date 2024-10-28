@@ -22,7 +22,7 @@ We believe that every individual is unique, and so is their career path. Our per
 
 <h1 className="text-2xl font-semibold my-2 mt-5">Proven Results</h1>  
 
-Our clients' success is our top priority. We have a track record of helping job seekers across various industries secure interviews and job offers. Our professional resumes have proven to increase visibility and impact, giving you the confidence to pursue your career goals.
+Our clients success is our top priority. We have a track record of helping job seekers across various industries secure interviews and job offers. Our professional resumes have proven to increase visibility and impact, giving you the confidence to pursue your career goals.
 
 <h1 className="text-2xl font-semibold my-2 mt-5">Our Services</h1>  
 

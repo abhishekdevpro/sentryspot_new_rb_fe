@@ -31,7 +31,7 @@ The AI CV parser processes the uploaded CVs, extracting key information and orga
 <h1 className="text-sm font-semibold my-2">Step 3: Review and Analyze</h1>
 Access the parsed data through an intuitive dashboard. Review and analyze candidate profiles, compare qualifications, and filter candidates based on your specific criteria.
 <h1 className="text-sm font-semibold my-2">Step 4: Automate Candidate Matching</h1>
-Integrate the parsed data with your ATS to automate the candidate matching process. The AI matches candidates' profiles with job descriptions, ensuring that only the most qualified candidates are shortlisted.
+Integrate the parsed data with your ATS to automate the candidate matching process. The AI matches candidates profiles with job descriptions, ensuring that only the most qualified candidates are shortlisted.
 <h1 className="text-sm font-semibold my-2">Step 5: Make Informed Hiring Decisions</h1>
 Use the detailed, structured data to make informed hiring decisions. Our AI CV parsing tool provides you with a comprehensive view of each candidate, enabling you to select the best fit for your job openings.
 <h1 className="text-lg font-bold my-4">Benefits of Using AI CV Parsing</h1>

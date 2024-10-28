@@ -28,7 +28,7 @@ Adds credibility by quantifying and validating your abilities.
 
 <h1 className="text-2xl font-semibold my-2 mt-5">Amazing & Interactive Dashboard:
 </h1>  
-A user-friendly dashboard provides real-time updates on your resume's performance and interaction history.
+A user-friendly dashboard provides real-time updates on your resumes performance and interaction history.
 Tracks job applications, resume downloads, and feedback from recruiters.
 
 <h1 className="text-2xl font-semibold my-2 mt-5">Multiple Templates: </h1>  

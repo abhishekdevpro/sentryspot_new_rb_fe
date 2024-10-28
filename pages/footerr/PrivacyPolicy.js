@@ -66,7 +66,7 @@ We use cookies and similar tracking technologies to enhance your browsing experi
 
 Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit.
 
-<h1 className="text-lg font-semibold my-2 mt-5 ">8. Children's Privacy</h1>
+<h1 className="text-lg font-semibold my-2 mt-5 ">8. Childrens Privacy</h1>
 
 Our services are not intended for individuals under the age of 18. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information.
 
