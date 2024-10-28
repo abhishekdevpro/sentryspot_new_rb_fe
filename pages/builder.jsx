@@ -99,7 +99,7 @@ export default function Builder({ onClose }) {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const pdfExportComponent = useRef(null);
+ 
 
   const handleProfilePicture = (e) => {
     const file = e.target.files[0];
@@ -151,6 +151,7 @@ export default function Builder({ onClose }) {
     setSelectedFont(e.target.value);
   };
 
+   const pdfExportComponent = useRef(null);
   const downloadAsPDF = () => {
     if (pdfExportComponent.current) {
       pdfExportComponent.current.save();
@@ -558,7 +559,7 @@ export default function Builder({ onClose }) {
               <button
                 type="button"
                 className="rounded-lg px-10 lg:ms-2 font-bold bg-blue-950 text-white p-1"
-                onClick={handleDownloadResume}
+                onClick={downloadAsPDF}
               >
                 Pay & Download
               </button>
