@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@grammarly/editor-sdk": "^2.5.5",
+    "@progress/kendo-drawing": "^1.21.1",
+    "@progress/kendo-file-saver": "^1.1.2",
+    "@progress/kendo-react-common": "^8.5.0",
     "@progress/kendo-react-pdf": "^8.5.0",
+    "@progress/kendo-react-upload": "^8.5.0",
     "@react-pdf/renderer": "^4.0.0",
     "@types/react-dom": "18.0.10",
     "antd": "^5.21.5",
