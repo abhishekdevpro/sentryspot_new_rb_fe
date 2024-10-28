@@ -25,6 +25,7 @@
     "next": "13.1.6",
     "next-videos": "^1.4.1",
     "pdfjs-dist": "^4.6.82",
+    "puppeteer": "^23.6.1",
     "react": "18.2.0",
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "18.2.0",

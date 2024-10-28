@@ -42,7 +42,7 @@ const Footer = () => {
             <div className="container mx-auto flex flex-col gap-7 justify-between px-6">
               <div className=' flex flex-wrap justify-between px-2 md:px-[65px]'>
                 <div className=" md:w-auto mb-6 md:mb-0">
-                    <Image src={logo} className=' h-14 w-full'/>
+                    <Image src={logo} className=' h-14 w-full' alt="logo"/>
                     <p className=' text-lg text-bold px-5'>Building Careers of Tomorrow</p>
                 </div>
                 <div className="w-full md:w-auto mb-6 md:mb-0">

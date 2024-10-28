@@ -23,14 +23,14 @@ function Home_third() {
           
           <div >
             
-            <Image src={image} alt="" className=' h-[400px] w-[400px] rounded-xl shadow-lg shadow-gray-600 ' />
+            <Image src={image} alt="logo" className=' h-[400px] w-[400px] rounded-xl shadow-lg shadow-gray-600 ' />
           </div>
           <div className='flex flex-col font-semibold px-3 gap-5'>
           <h1 className=' text-center font-bold text-4xl py-2  text-white'>How Our AI Resume Works For You</h1>
                  <div>
                     <div className='flex items-center hover:border-b-2 shadow-lg rounded-2xl py-2 shadow-gray-600 px-3 hover:border-slate-500 hover:rounded-lg  gap-2'>
                         <div>
-                          <Image src={icon1} className=' h-16 w-16'/>
+                          <Image src={icon1} alt="logo" className=' h-16 w-16'/>
                         </div>
                         <div className=' text-xl'>
                             
@@ -40,7 +40,7 @@ function Home_third() {
                     </div>
                     <div className='flex items-center shadow-lg rounded-2xl px-3 hover:border-b-2 py-2 shadow-gray-600 hover:border-slate-500 hover:rounded-lg gap-2'>
                         <div>
-                          <Image src={icon2} className=' h-16 w-16'/>
+                          <Image src={icon2} alt="logo" className=' h-16 w-16'/>
                         </div>
                         <div className=' text-xl'>
                             
@@ -50,7 +50,7 @@ function Home_third() {
                     
                      <div className='flex items-center shadow-lg rounded-2xl px-3 hover:border-b-2 py-2 shadow-gray-600 hover:border-slate-500 hover:rounded-lg gap-2'>
                      <div>
-                          <Image src={icon3} className=' h-16 w-16'/>
+                          <Image src={icon3} alt="logo" className=' h-16 w-16'/>
                         </div>
                         <div className=' text-xl'>
                             
@@ -59,7 +59,7 @@ function Home_third() {
                      </div>
                      <div className='flex items-center shadow-lg rounded-2xl px-3 hover:border-b-2 py-2 shadow-gray-600 hover:border-slate-500 hover:rounded-lg gap-2'>
                      <div>
-                          <Image src={icon4} className=' h-16 w-16'/>
+                          <Image src={icon4} alt="logo" className=' h-16 w-16'/>
                         </div>
                         <div className=' text-xl'>
                             

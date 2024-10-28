@@ -135,7 +135,7 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
               >
                 <Image
                   src={template.imageUrl}
-                  alt={template.key}
+                  alt="logo"
                   className="w-full h-40 sm:h-60 md:h-80 object-cover rounded-lg cursor-pointer"
                 />
                 <p className="text-center text-sm md:text-base">{template.key}</p>
