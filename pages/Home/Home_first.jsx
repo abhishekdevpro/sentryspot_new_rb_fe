@@ -40,7 +40,7 @@ function Home_first() {
             <Slider {...settings}>
                 {images.map((image, index) => (
                     <div key={index}>
-                        <img 
+                        <Image 
                             src={image} 
                           alt="logo"
                             className=" md:h-auto md:w-80 transition-transform transform hover:scale-105" 
