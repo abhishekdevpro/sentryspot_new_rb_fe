@@ -7,8 +7,16 @@ import image2 from './Images/homeimage2.jpg'
 import image3 from './Images/homeimage3.jpg'
 import Image from "next/image";
 import Home_second from "./Home_second";
+import { useEffect, useState } from "react";
 
 function Home_first() {
+        const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
+        useEffect(() => {
+            // Check for the token (you can adjust based on where the token is stored)
+            const token = localStorage.getItem('token');
+            setIsAuthenticated(!!token);
+        }, []);
     const settings = {
         dots: true,
         infinite: true,
@@ -59,12 +67,12 @@ function Home_first() {
                                 Resume Score, Enhanced Resume & much more. Now Apply for a Job with confidence with our all in one solution under one roof.
                             </div>
                             <div className='flex flex-wrap gap-4 justify-center md:justify-start'>
-                                <Link href="/dashboard">
+                                <Link href={isAuthenticated?"/dashboard":"/signup"}>
                                     <button className='px-6 py-2 text-lg rounded-full font-bold bg-blue-700 text-white hover:shadow-2xl hover:shadow-slate-500'>
                                         Free to join or Sign Up!
                                     </button>
                                 </Link>
-                                <Link href="/dashboard">
+                                <Link href={isAuthenticated?"/dashboard":"/login2"}>
                                     <button className='text-black text-lg px-6 py-2 rounded-full font-bold bg-white hover:shadow-2xl hover:shadow-slate-500'>
                                         Build your Resume
                                     </button>

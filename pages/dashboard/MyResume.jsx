@@ -136,6 +136,7 @@ const MyResume = () => {
 
 
   const handleEditResume = async (resume) => {
+    console.log(resume.id,"id");
     const token = localStorage.getItem("token");
   
     try {
@@ -143,7 +144,7 @@ const MyResume = () => {
       const response = await axios.get(`https://api.resumeintellect.com/api/user/resume-list/${resume.id}`, {
         headers: { Authorization: token },
       });
-  
+      
       const resumeData = response.data.data;
       if (!resumeData || !resumeData.file_path || !resumeData.ai_resume_parse_data) {
         console.error("Resume data not found in API response");
@@ -152,7 +153,7 @@ const MyResume = () => {
   
       // Parse the ai_resume_parse_data
       const parsedData = JSON.parse(resumeData.ai_resume_parse_data);
-  
+      console.log(parsedData.templateData,"maia data hu");
       // Set the resume data using the context
       setResumeData(parsedData.templateData); // Use the appropriate structure from the parsed data
       localStorage.setItem('resumeData', JSON.stringify(parsedData.templateData));
