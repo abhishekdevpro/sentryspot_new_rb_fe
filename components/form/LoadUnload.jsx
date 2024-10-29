@@ -50,7 +50,7 @@
 //     setLoading(true);
 //     setShowLoadingAnimation(true);
 //     try {
-//       const response = await axios.post("https://api.resumeintellect.com/api/user/resume-upload", formData, {
+//       const response = await axios.post("https://api.sentryspot.co.uk/api/user/resume-upload", formData, {
 //         headers: {
 //           "Content-Type": "multipart/form-data",
 //           Authorization: token,
@@ -91,7 +91,7 @@
 //     setShowLoadingAnimation(true);
 //     try {
 //       const response = await axios.post(
-//         "https://api.resumeintellect.com/api/user/resume-create",
+//         "https://api.sentryspot.co.uk/api/user/resume-create",
 //         {},
 //         { headers: { Authorization: token } }
 //       );
@@ -250,7 +250,7 @@ const LoadUnload = () => {
     setLoading(true);
     setShowLoadingAnimation(true);
     try {
-      const response = await axios.post("https://api.resumeintellect.com/api/user/resume-upload", formData, {
+      const response = await axios.post("https://api.sentryspot.co.uk/api/user/resume-upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: token,
@@ -291,7 +291,7 @@ const LoadUnload = () => {
     setShowLoadingAnimation(true);
     try {
       const response = await axios.post(
-        "https://api.resumeintellect.com/api/user/resume-create",
+        "https://api.sentryspot.co.uk/api/user/resume-create",
         {},
         { headers: { Authorization: token } }
       );

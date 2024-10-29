@@ -35,7 +35,7 @@ function AdminLogin() {
 
     try {
       const response = await axios.post(
-        'https://api.resumeintellect.com/api/admin/auth/login2',
+        'https://api.sentryspot.co.uk/api/admin/auth/login2',
         formData,
       );
 

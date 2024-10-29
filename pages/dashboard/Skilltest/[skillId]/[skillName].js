@@ -29,7 +29,7 @@ const Testpaper = () => {
       const fetchQuestions = async () => {
         try {
           const response = await axios.get(
-            `https://api.resumeintellect.com/api/user/skill-assessment?skill_id=${parseInt(skillId)}&skill_name=${encodeURIComponent(skillName)}`,
+            `https://api.sentryspot.co.uk/api/user/skill-assessment?skill_id=${parseInt(skillId)}&skill_name=${encodeURIComponent(skillName)}`,
             {
               headers: {
                 Authorization: token,
@@ -71,7 +71,7 @@ const Testpaper = () => {
 
     try {
       const response = await axios.put(
-        `https://api.resumeintellect.com/api/user/skill-assessment/${skillAssessmentId}`,
+        `https://api.sentryspot.co.uk/api/user/skill-assessment/${skillAssessmentId}`,
         {
           user_id: parseInt(jobSeekerId, 10),
           skill_id: parseInt(skillId, 10),

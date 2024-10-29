@@ -15,7 +15,7 @@ const Footer = () => {
         e.preventDefault(); // Prevent form default behavior
 
         // Sending raw JSON data in the POST request
-        axios.post('https://api.resumeintellect.com/api/user/user-subscribe', 
+        axios.post('https://api.sentryspot.co.uk/api/user/user-subscribe', 
           JSON.stringify({ email }), // Sending email in raw JSON
           {
             headers: {

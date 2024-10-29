@@ -25,7 +25,7 @@ const MyResume = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      axios.get("https://api.resumeintellect.com/api/user/resume-list", {
+      axios.get("https://api.sentryspot.co.uk/api/user/resume-list", {
         headers: { Authorization: token },
       })
       .then((response) => {
@@ -50,7 +50,7 @@ const MyResume = () => {
       setIsLoading(true);
       axios
         .post(
-          "https://api.resumeintellect.com/api/user/file-based-ai",
+          "https://api.sentryspot.co.uk/api/user/file-based-ai",
           {
             keyword:
               "Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations",
@@ -84,7 +84,7 @@ const MyResume = () => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoading(true);
-      axios.post("https://api.resumeintellect.com/api/user/file-based-ai", {
+      axios.post("https://api.sentryspot.co.uk/api/user/file-based-ai", {
         keyword: "Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations",
         file_location: resume.file_path || "/etc/dean_ai_resume/users/resume_uploads/majid[15_0]-1723818329.pdf",
       }, { headers: { Authorization: token } })
@@ -110,7 +110,7 @@ const MyResume = () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        await axios.delete(`https://api.resumeintellect.com/api/user/resume-list/${deleteresumeid}`, {
+        await axios.delete(`https://api.sentryspot.co.uk/api/user/resume-list/${deleteresumeid}`, {
           headers: { Authorization: token },
         });
         toast.success("Your Resume Deleted Successfully");
@@ -141,7 +141,7 @@ const MyResume = () => {
   
     try {
       // Fetch the resume details from the API
-      const response = await axios.get(`https://api.resumeintellect.com/api/user/resume-list/${resume.id}`, {
+      const response = await axios.get(`https://api.sentryspot.co.uk/api/user/resume-list/${resume.id}`, {
         headers: { Authorization: token },
       });
       

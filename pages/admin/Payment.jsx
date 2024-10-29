@@ -9,7 +9,7 @@ function Payment() {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    axios.get('https://api.resumeintellect.com/api/admin/payment-history', {
+    axios.get('https://api.sentryspot.co.uk/api/admin/payment-history', {
       headers: {
         Authorization: token
       }
@@ -32,7 +32,7 @@ function Payment() {
     const token = localStorage.getItem('token');
     const remark = remarks[Id];
 
-    axios.post('https://api.resumeintellect.com/api/admin/payment-history-remark', {
+    axios.post('https://api.sentryspot.co.uk/api/admin/payment-history-remark', {
       Id,
       remark
     }, {

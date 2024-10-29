@@ -7,7 +7,7 @@ function Skillhistory() {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    axios.get('https://api.resumeintellect.com/api/user/skill-assessment-history', {
+    axios.get('https://api.sentryspot.co.uk/api/user/skill-assessment-history', {
       headers: {
         Authorization: token
       }

@@ -7,7 +7,7 @@ const List = () => {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    axios.get('https://api.resumeintellect.com/api/admin/referral-users', {
+    axios.get('https://api.sentryspot.co.uk/api/admin/referral-users', {
       headers: {
         Authorization: token
       }

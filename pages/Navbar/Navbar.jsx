@@ -22,7 +22,7 @@ const Navbar = () => {
       // Check API success
       const checkApiSuccess = async () => {
         try {
-          const response = await fetch('https://api.resumeintellect.com/api/user/user-profile', {
+          const response = await fetch('https://api.sentryspot.co.uk/api/user/user-profile', {
             headers: {
               'Authorization': `Bearer ${token}`,
             },

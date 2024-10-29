@@ -7,7 +7,7 @@ function Reffreraladmin1() {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    axios.get('https://api.resumeintellect.com/api/admin/referral-admin', {
+    axios.get('https://api.sentryspot.co.uk/api/admin/referral-admin', {
       headers: {
         Authorization: token
       }

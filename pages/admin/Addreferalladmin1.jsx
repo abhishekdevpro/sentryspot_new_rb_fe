@@ -18,7 +18,7 @@ function Addreferalladmin1() {
         const referralData = { name, phone, email, remark };
 
         try {
-            const response = await axios.post("https://api.resumeintellect.com/api/admin/referral", referralData, {
+            const response = await axios.post("https://api.sentryspot.co.uk/api/admin/referral", referralData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': token,

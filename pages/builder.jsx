@@ -77,7 +77,7 @@ export default function Builder({ onClose }) {
     };
 
     // Make the API call to initiate download
-    axios.post('https://api.resumeintellect.com/api/user/paypal/create-payment', payload, {
+    axios.post('https://api.sentryspot.co.uk/api/user/paypal/create-payment', payload, {
       headers: { 'Content-Type': 'application/json' }, // Use JSON content type
     })
 
@@ -242,7 +242,7 @@ export default function Builder({ onClose }) {
         return;
       }
     
-      const url = `https://api.resumeintellect.com/api/user/resume-update/${id}`;
+      const url = `https://api.sentryspot.co.uk/api/user/resume-update/${id}`;
       const response = await axios.put(url, templateData, {
         headers: {
           'Content-Type': 'application/json',

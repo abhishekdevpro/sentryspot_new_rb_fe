@@ -9,7 +9,7 @@ function Subscriberslist1() {
   useEffect(() => {
     const token = localStorage.getItem('token');
 
-    axios.get('https://api.resumeintellect.com/api/admin/subscribes', {
+    axios.get('https://api.sentryspot.co.uk/api/admin/subscribes', {
       headers: {
         Authorization: token,
       },
@@ -31,7 +31,7 @@ function Subscriberslist1() {
 
     try {
       await axios.post(
-        'https://api.resumeintellect.com/api/user/user-subscribe',
+        'https://api.sentryspot.co.uk/api/user/user-subscribe',
         { email },  // Sending email in the body
         {
           headers: {

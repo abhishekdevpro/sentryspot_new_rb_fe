@@ -101,7 +101,7 @@ const FAQ = () => {
     setSuccessMessage('');
 
     try {
-      const response = await fetch('https://api.resumeintellect.com/api/user/contact-us', {
+      const response = await fetch('https://api.sentryspot.co.uk/api/user/contact-us', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ const Skills = () => {
     }
 
     try {
-      const response = await axios.get('https://api.resumeintellect.com/api/user/user-skills', {
+      const response = await axios.get('https://api.sentryspot.co.uk/api/user/user-skills', {
         headers: {
           Authorization: token,
         },

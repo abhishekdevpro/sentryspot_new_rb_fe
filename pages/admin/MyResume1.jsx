@@ -11,7 +11,7 @@ const MyResume1 = () => {
     const token = localStorage.getItem('token');
 
     // Fetch all user data
-    axios.get('https://api.resumeintellect.com/api/admin/users', {
+    axios.get('https://api.sentryspot.co.uk/api/admin/users', {
       headers: {
         Authorization: token,
       },
