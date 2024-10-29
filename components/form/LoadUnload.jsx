@@ -211,6 +211,10 @@ const LoadUnload = () => {
   const [token, setToken] = useState(null);
   const router = useRouter();
 
+
+
+
+  
   useEffect(() => {
     if (router.query.id) {
       return;
@@ -221,6 +225,27 @@ const LoadUnload = () => {
     }
   }, [router.query.id]);
 
+
+  useEffect(() => {
+    // Extract the token directly from the URL
+    const url = window.location.href;
+    const tokenFromUrl = url.split("/?")[1]; // Gets the token part after `/?`
+
+    if (tokenFromUrl) {
+      // Save token to localStorage and state
+      localStorage.setItem("token", tokenFromUrl);
+      setToken(tokenFromUrl);
+    } else if (typeof window !== "undefined") {
+      // Retrieve token from localStorage if not found in URL
+      const storedToken = localStorage.getItem("token");
+      setToken(storedToken);
+    }
+  }, []);
+
+  if (!token) {
+    return null; // Exit if no token
+  }
+console.log(token)
   if (router.query.id) {
     return null;
   }
@@ -250,7 +275,7 @@ const LoadUnload = () => {
     setLoading(true);
     setShowLoadingAnimation(true);
     try {
-      const response = await axios.post("https://api.sentryspot.co.uk/api/user/resume-upload", formData, {
+      const response = await axios.post("https://api.sentryspot.co.uk/api/jobseeker/resume-upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: token,
@@ -291,7 +316,7 @@ const LoadUnload = () => {
     setShowLoadingAnimation(true);
     try {
       const response = await axios.post(
-        "https://api.sentryspot.co.uk/api/user/resume-create",
+        "https://api.sentryspot.co.uk/api/jobseeker/resume-create",
         {},
         { headers: { Authorization: token } }
       );
@@ -333,14 +358,22 @@ const LoadUnload = () => {
 
       {showOverlay && !isUploaded && !showLoadingAnimation && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-900 bg-opacity-75">
-          <div className="bg-white p-5 md:p-10 rounded-lg shadow-lg h-screen w-screen text-center relative">
-            {/* <button
-              onClick={handleBack}
-              className="absolute top-4 left-4 text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2"
-            >
-              <FaArrowLeft className="text-xl" />
-              <span>Back</span>
-            </button> */}
+          <div className="bg-white  md:p-10 rounded-lg shadow-lg h-screen w-screen text-center relative">
+           
+
+<nav class="border-b-2 bg-gray-300 bg">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="https://htmlsentryspot.vercel.app/img/company_logo.png" class="h-8" alt="Flowbite Logo" />
+        
+    </a>
+   
+    <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+   
+    </div>
+  </div>
+</nav>
+
             
             <h1 className="text-xl md:text-2xl font-bold mb-4 mt-8 md:mt-16">Are you uploading an existing resume?</h1>
             <p className="text-gray-600 mb-5">Just review, edit, and update it with new information</p>
