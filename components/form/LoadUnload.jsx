@@ -350,7 +350,7 @@ const LoadUnload = () => {
                 </div>
                 <h2 className="text-lg font-semibold mb-2">Yes, upload from my resume</h2>
                 <p className="text-gray-500 mb-5 text-sm md:text-base">
-                  We'll give you expert guidance to fill out your info and enhance your resume, from start to finish
+                  We will give you expert guidance to fill out your info and enhance your resume, from start to finish
                 </p>
 
                 <label className="p-2 text-white bg-gray-500 rounded cursor-pointer hover:bg-blue-600 transition">
@@ -376,7 +376,7 @@ const LoadUnload = () => {
                 </div>
                 <h2 className="text-lg font-semibold mb-2">No, start from scratch</h2>
                 <p className="text-gray-500 text-sm md:text-base">
-                  We'll guide you through the whole process so your skills can shine
+                  We will guide you through the whole process so your skills can shine
                 </p>
                 <button
                   className="p-2 w-full mt-8 md:mt-20 text-white bg-yellow-500 rounded hover:bg-red-600 transition"
