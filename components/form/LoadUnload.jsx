@@ -358,7 +358,7 @@ console.log(token)
 
       {showOverlay && !isUploaded && !showLoadingAnimation && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-900 bg-opacity-75">
-          <div className="bg-white  md:p-10 rounded-lg shadow-lg h-screen w-screen text-center relative">
+          <div className="bg-white   rounded-lg shadow-lg h-screen w-screen text-center relative">
            
 
 <nav class="border-b-2 bg-gray-300 bg">

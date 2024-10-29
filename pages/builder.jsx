@@ -330,9 +330,9 @@ export default function Builder({ onClose }) {
              
             </div>
 
-            <div className="flex flex-col md:flex-row md:mx-auto md:h-screen overflow-y-auto" style={{ fontFamily: selectedFont }}>
+            <div className="flex   md:mx-auto md:h-screen overflow-y-auto" style={{ fontFamily: selectedFont }}>
 
-              <div className="flex">
+              <div className="flex lg:block hidden">
                 <aside
                   className={` h-full bg-gray-100 p-4   transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out`}
                 >
