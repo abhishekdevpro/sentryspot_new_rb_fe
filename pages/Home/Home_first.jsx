@@ -45,7 +45,17 @@ function Home_first() {
                 <div className='py-9 px-5 w-screen flex gap-3 md:gap-10 md:justify-evenly items-center flex-col md:flex-row'>
                     <div className='px-6 py-3' id='bghome'>
                     <div className=" hidden md:block md:w-80 md:max-w-lg p-4">
-           
+            <Slider {...settings}>
+                {images.map((image, index) => (
+                    <div key={index}>
+                        <Image 
+                            src={image} 
+                          alt="logo"
+                            className=" md:h-auto md:w-80 transition-transform transform hover:scale-105" 
+                        />
+                    </div>
+                ))}
+            </Slider>
         </div>
                     </div>
                     <div className='px-3 py-3 w-full md:w-[500px]'>
