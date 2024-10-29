@@ -1,7 +1,15 @@
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Home_five = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        // Check for the token (you can adjust based on where the token is stored)
+        const token = localStorage.getItem('token');
+        setIsAuthenticated(!!token);
+    }, []);
   return (
     <div className="bg-gray-100 py-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +50,7 @@ const Home_five = () => {
               <span>& More</span>
             </div>
             <div className="flex justify-center mt-6">
-            <Link href="/dashboard">
+            <Link href={isAuthenticated?"/dashboard":"/login2"}>
               <button className="px-6 py-3 rounded-2xl font-semibold text-white bg-blue-500 hover:bg-blue-600 shadow-md">
                 Get Started For Free
               </button>

@@ -47,7 +47,7 @@ const Sidebar = ({ onClose }) => {
             <span>AI Resume Builder</span>
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link
             href="resumelist"
             className={getLinkClassName("/dashboard/resumelist")}
@@ -56,7 +56,7 @@ const Sidebar = ({ onClose }) => {
             <span className="mr-2">📑</span>
             <span>My Resumes</span>
           </Link>
-        </li> */}
+        </li>
         <li>
           <Link
             href="notification"
