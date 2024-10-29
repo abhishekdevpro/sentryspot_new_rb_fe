@@ -94,11 +94,11 @@ function Home_second() {
             
             {/* Pricing Card */}
             <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-white bg-gray-800 rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white">
-              <h3 className="mb-4 text-2xl font-bold">AI Resume Writer</h3>
+              <h3 className="mb-4 text-2xl font-bold">Resume Builder</h3>
               <p className="font-light text-white sm:text-lg dark:text-white">Relevant for automation &amp; one time download.</p>
-              <div className="flex justify-center items-baseline my-8">
+              <div className="flex justify-center items-baseline my-8 gap-3">
+                <span className="text-white dark:text-white">Starting { " "}</span>
                 <span className="mr-2 text-5xl font-extrabold">$49</span>
-                <span className="text-white dark:text-white">/One Time Purchase</span>
               </div>
               {/* List */}
               <ul role="list" className="mb-8 space-y-4 text-left">
