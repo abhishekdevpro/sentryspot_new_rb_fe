@@ -190,6 +190,10 @@
 // };
 
 // export default LoadUnload;
+
+
+
+
 import { FaCloudUploadAlt, FaArrowLeft } from "react-icons/fa";
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
@@ -329,14 +333,14 @@ const LoadUnload = () => {
 
       {showOverlay && !isUploaded && !showLoadingAnimation && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-900 bg-opacity-75">
-          <div className="bg-white p-5 md:p-10 rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-2/3 text-center relative">
-            <button
+          <div className="bg-white p-5 md:p-10 rounded-lg shadow-lg h-screen w-screen text-center relative">
+            {/* <button
               onClick={handleBack}
               className="absolute top-4 left-4 text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-2"
             >
               <FaArrowLeft className="text-xl" />
               <span>Back</span>
-            </button>
+            </button> */}
             
             <h1 className="text-xl md:text-2xl font-bold mb-4 mt-8 md:mt-16">Are you uploading an existing resume?</h1>
             <p className="text-gray-600 mb-5">Just review, edit, and update it with new information</p>
