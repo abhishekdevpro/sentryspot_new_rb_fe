@@ -23,6 +23,7 @@ import MyResume from "./dashboard/MyResume";
 import Modal from "../components/Modal"; // Import the modal
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 const ResumeContext = createContext(DefaultResumeData);
 
 const Print = dynamic(() => import("../components/utility/WinPrint"), {
@@ -155,7 +156,7 @@ export default function Builder({ onClose }) {
   const downloadAsPDF = () => {
     if (pdfExportComponent.current) {
       pdfExportComponent.current.save();
-      router.push('/dashboard/page')
+      // router.push('/dashboard/page')
     }
   };
 
@@ -242,7 +243,7 @@ export default function Builder({ onClose }) {
         return;
       }
     
-      const url = `https://api.sentryspot.co.uk/api/user/resume-update/${id}`;
+      const url = `https://api.sentryspot.co.uk/api/jobseeker/resume-update/${id}`;
       const response = await axios.put(url, templateData, {
         headers: {
           'Content-Type': 'application/json',
@@ -251,6 +252,9 @@ export default function Builder({ onClose }) {
       });
     
       console.log('Resume updated successfully:', response.data);
+      if(response.data.code === 200 || response.data.status === "success"){
+        toast.success(response.data.message)
+      }
       // Uncomment below if you need to redirect after updating
       // if (response.data) {
       //   router.push('/dashboard/ai-resume-builder');
@@ -270,6 +274,7 @@ export default function Builder({ onClose }) {
           handleChange,
           headerColor,
           backgroundColorss,
+          selectedFont,
         }}
       >
         <Meta
@@ -303,7 +308,7 @@ export default function Builder({ onClose }) {
                 Previous
               </button>
 
-              <div className="lg:flex gap- content-center  justify-between bg-gray-200 p-1 px-5 lg:block hidden">
+              <div className="lg:flex gap- content-center  justify-between bg-gray-200 p-1 px-5 hidden">
                 <select
                   value={selectedFont}
                   onChange={handleFontChange}
@@ -332,7 +337,7 @@ export default function Builder({ onClose }) {
 
             <div className="flex   md:mx-auto md:h-screen overflow-y-auto" style={{ fontFamily: selectedFont }}>
 
-              <div className="flex lg:block hidden">
+              <div className="md:flex lg:block hidden">
                 <aside
                   className={` h-full bg-gray-100 p-4   transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out`}
                 >
@@ -366,12 +371,12 @@ export default function Builder({ onClose }) {
          {isFinished && (
           <div className="p-">
             <div className="lg:flex lg:justify-between  bg-gray-200 p-2 px-5">
-              <div className="lg:flex flex-row gap-4 flex-row justify-center bg-gray-200">
+              <div className="lg:flex flex-row gap-4 justify-center bg-gray-200">
                 
-                <select
+              <select
                   value={selectedFont}
                   onChange={handleFontChange}
-                  className="rounded-lg border-2 border-blue-800 lg:px-8 p-2 m-2 font-bold bg-white text-blue-800"
+                  className="px-4 py-2 border rounded-lg"
                 >
                   <option value="Ubuntu">Ubuntu</option>
                   <option value="Calibri">Calibri</option>
