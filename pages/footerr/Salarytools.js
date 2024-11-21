@@ -8,7 +8,7 @@ function Salarytools() {
   <h1 className="text-lg font-semibold my-2 mt-5 ">Navigate Your Career with Confidence</h1>  
   
 
-  Understanding your market value and negotiating your salary are crucial steps in your job search and career advancement. At Resume Intellect, we provide access to a variety of salary tools and resources that empower you to make informed decisions about your compensation. These tools help you research industry standards, evaluate job offers, and negotiate the best possible salary.
+  Understanding your market value and negotiating your salary are crucial steps in your job search and career advancement. At Abroadium, we provide access to a variety of salary tools and resources that empower you to make informed decisions about your compensation. These tools help you research industry standards, evaluate job offers, and negotiate the best possible salary.
 <h1 className="text-lg font-semibold my-2 mt-5 ">Comprehensive Salary Tools</h1>
 
 <h1 className="text-lg font-semibold my-2 mt-5 ">Salary Calculators </h1>
@@ -23,16 +23,16 @@ When considering job offers in different locations, it’s important to factor i
 <h1 className="text-lg font-semibold my-2 mt-5 ">Company Reviews</h1>
 Websites like Glassdoor and Indeed offer company reviews where current and former employees share their experiences, including information about salaries and benefits. Reviewing these insights can give you a sense of what to expect from a potential employer and help you gauge whether their compensation packages are competitive.
 
-<h1 className="text-lg font-semibold my-2 mt-5 ">How Resume Intellect Can Help</h1>
+<h1 className="text-lg font-semibold my-2 mt-5 ">How Abroadium Can Help</h1>
 
 <h1 className="text-lg font-semibold my-2 mt-5 ">One-on-One Coaching  </h1>
 Our career coaches provide one-on-one guidance on salary research and negotiation. We help you prepare for salary discussions, develop negotiation strategies, and build the confidence to ask for what you deserve. With our support, you’ll be well-equipped to navigate salary conversations and secure a compensation package that reflects your value.
 
 <h1 className="text-lg font-semibold my-2 mt-5 ">Exclusive Resources</h1>
-As a Resume Intellect client, you’ll gain access to exclusive resources, including industry reports, salary surveys, and negotiation workshops. Our comprehensive toolkit ensures that you have all the information and skills needed to advocate for yourself effectively.
+As a Abroadium client, you’ll gain access to exclusive resources, including industry reports, salary surveys, and negotiation workshops. Our comprehensive toolkit ensures that you have all the information and skills needed to advocate for yourself effectively.
 
 <h1 className="text-lg font-semibold my-2 mt-5 ">Start Maximizing Your Earning Potential Today</h1>
-Don’t leave your salary to chance. Take control of your career and maximize your earning potential with the help of Resume Intellect’s salary tools and resources. Contact us today to learn more about how we can support you in your job search and salary negotiations.
+Don’t leave your salary to chance. Take control of your career and maximize your earning potential with the help of Abroadium’s salary tools and resources. Contact us today to learn more about how we can support you in your job search and salary negotiations.
 
 
     </div> );

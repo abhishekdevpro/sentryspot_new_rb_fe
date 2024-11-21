@@ -37,9 +37,9 @@ export default function DashboardPage() {
         </div>
 
         {/* Sidebar */}
-        <div className={`md:w-64 flex-shrink-0 md:block  ${isSidebarOpen ? 'block' : 'hidden'}`}>
+        {/* <div className={`md:w-64 flex-shrink-0 md:block  ${isSidebarOpen ? 'block' : 'hidden'}`}>
           <Sidebar onClose={closeSidebar} />
-        </div>
+        </div> */}
 
         {/* Content area */}
         <div className="flex-1 w-full max-w-8xl p-4 overflow-auto">

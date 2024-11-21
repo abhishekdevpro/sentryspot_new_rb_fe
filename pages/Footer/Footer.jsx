@@ -66,7 +66,7 @@ const Footer = () => {
               <br />
               <div className='flex flex-wrap justify-around'>
                 <div className="w-full md:w-auto mb-6 md:mb-0" id='footer'>
-                    <h2 className="text-lg font-bold text-white">Resume Intellect</h2>
+                    <h2 className="text-lg font-bold text-white">Abroadium</h2>
                     <ul>
                         <li><Link href="/footerr/Aboutus"><span>About Us</span></Link></li>
                         <li><Link href="/footerr/Careers"><span>Careers</span></Link></li>

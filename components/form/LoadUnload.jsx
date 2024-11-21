@@ -362,9 +362,12 @@ console.log(token)
            
 
 <nav class="border-b-2 bg-gray-300 bg">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="https://htmlsentryspot.vercel.app/img/company_logo.png" class="h-8" alt="Flowbite Logo" />
+  <div class="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4"
+  style={{backgroundColor:"#4C3957"}}
+  >
+    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse" 
+     >
+        <img src="https://abroadiumlandingemployee.vercel.app/assets/logo-c5bcd0df.png" class="h-8" alt="Flowbite Logo" />
         
     </a>
    

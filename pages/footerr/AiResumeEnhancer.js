@@ -10,7 +10,7 @@ function AiResumeEnhancer() {
       Elevate Your Job Applications with AI-Driven Enhancements
 
       </h2>
-      At Resume Intellect, we believe that every job seeker deserves a standout resume that effectively showcases their skills and experiences. Our AI Resume Enhancer is designed to elevate your resume, ensuring it meets industry standards and captures the attention of recruiters. Using advanced AI technology, we transform your resume into a powerful tool for career success
+      At Abroadium, we believe that every job seeker deserves a standout resume that effectively showcases their skills and experiences. Our AI Resume Enhancer is designed to elevate your resume, ensuring it meets industry standards and captures the attention of recruiters. Using advanced AI technology, we transform your resume into a powerful tool for career success
       <h1 className="text-xl font-bold my-5">
       Key Features of Our AI Resume Enhancer
       </h1>
@@ -48,7 +48,7 @@ function AiResumeEnhancer() {
       <h1 className="text-sm font-semibold my-2">
         Step 1: Upload Your Resume
       </h1>
-      Upload your existing resume to the Resume Intellect platform. Our AI will start analyzing your document immediately.
+      Upload your existing resume to the Abroadium platform. Our AI will start analyzing your document immediately.
       <h1 className="text-sm font-semibold my-2">Step 2: AI Analysis</h1>
       The AI evaluates your resume, examining content, structure, keywords, and overall presentation. It identifies areas that need improvement and generates a comprehensive enhancement plan.
 
@@ -84,7 +84,7 @@ function AiResumeEnhancer() {
       Start Enhancing Your Resume Today
 
       </h1>
-      Transform your resume with Resume Intellect’s AI Resume Enhancer. Sign up now to create a resume that stands out and opens doors to new career opportunities.
+      Transform your resume with Abroadium’s AI Resume Enhancer. Sign up now to create a resume that stands out and opens doors to new career opportunities.
 
       <h1 className="text-lg font-bold my-2">Get Started</h1>
       Ready to elevate your resume? Visit our AI Resume Enhancer page and start refining your resume today!

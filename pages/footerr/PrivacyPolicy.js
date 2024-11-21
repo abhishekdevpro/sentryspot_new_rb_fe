@@ -8,7 +8,7 @@ function PrivacyPolicy() {
   <h1 className="text-lg font-semibold my-2 mt-5 ">Introduction</h1>  
 
 
-At Resume Intellect, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services. By accessing our website and using our services, you agree to the terms of this Privacy Policy.
+At Abroadium, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services. By accessing our website and using our services, you agree to the terms of this Privacy Policy.
 
 <h1 className="text-lg font-semibold my-2 mt-5 ">1. Information We Collect</h1>
 
@@ -30,7 +30,7 @@ We may use your contact information to communicate with you about our services, 
 Non-personal information is used to analyze website usage, improve our services, and ensure the security and functionality of our website.
 
 <h1 className="text-lg font-semibold my-2 mt-5 ">Legal Compliance</h1>
-We may disclose your information to comply with legal obligations, enforce our terms and conditions, or protect the rights, property, or safety of Resume Intellect, our clients, or others.
+We may disclose your information to comply with legal obligations, enforce our terms and conditions, or protect the rights, property, or safety of Abroadium, our clients, or others.
 
 <h1 className="text-lg font-semibold my-2 mt-5 ">3. Data Security</h1>
 
@@ -78,7 +78,7 @@ We may update this Privacy Policy from time to time to reflect changes in our pr
 
 If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
 
-Email [career@Resume Intellect.ca](mailto:career@Resume Intellect.ca)  
+Email [career@Abroadium.ca](mailto:career@Abroadium.ca)  
 
     </div> );
 }

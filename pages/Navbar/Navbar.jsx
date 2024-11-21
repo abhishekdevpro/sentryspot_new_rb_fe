@@ -60,18 +60,21 @@ const Navbar = () => {
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
   return (
-    <nav className="bg-black border-b border-gray-200">
+    <nav className="bg-black border-b border-gray-200
+    "
+    style={{backgroundColor:"#4C3957"}}
+    >
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center">
             <Link href="/">
-              <Image src={logo} alt="logo" className="h-10 w-40" />
+              <img src="https://abroadiumlandingemployee.vercel.app/assets/logo-c5bcd0df.png" alt="logo" className="h-10 w-40" />
             </Link>
           </div>
           <div className="hidden md:flex justify-center items-center space-x-4">
-            <Link href="/navbarcontent" className="text-white px-3 py-2 rounded-md text-lg font-semibold">AI Resume Builder</Link>
-            <Link href="https://blog.resumeintellect.com/" className="text-white px-3 py-2 rounded-md text-lg font-semibold">Resources</Link>
-            <Link href="https://blog.resumeintellect.com/" className="text-white px-3 py-2 rounded-md text-lg font-semibold">About Us</Link>
+            <Link href="/dashboard/aibuilder" className="text-white px-3 py-2 rounded-md text-lg font-semibold">AI Resume Builder</Link>
+            <Link href="/dashboard/resumelist" className="text-white px-3 py-2 rounded-md text-lg font-semibold">My Resumes</Link>
+            <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">About Us</Link>
             {/* <Link href="/adminlogin" className="text-white px-3 py-2 rounded-md text-lg font-semibold">
               <span className="mr-2">🛡️</span>
               <span>Admin</span>
@@ -137,10 +140,10 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link href="/navbarcontent" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>AI Resume Builder</Link>
-              <Link href="https://blog.resumeintellect.com/" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>Resources</Link>
-              <Link href="https://blog.resumeintellect.com/" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>About Us</Link>
-              <Link href="https://blog.resumeintellect.com/" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>Blog</Link>
+              <Link href="/dashboard/aibuilder" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>AI Resume Builder</Link>
+              <Link href="/dashboard/resumelist" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>My Resumes</Link>
+              <Link href="" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>About Us</Link>
+              <Link href="" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={handleLinkClick}>Blog</Link>
 
               {isLoggedIn ? (
                 <Link href="/" className="text-white block px-3 py-2 rounded-md text-base font-semibold" onClick={() => { handleLogout(); handleLinkClick(); }}>Logout</Link>

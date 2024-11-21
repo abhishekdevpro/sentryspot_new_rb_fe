@@ -4,9 +4,9 @@ import React from "react";
 function SearchJobsApply() {
     return ( <div className="m-10 mx-40 p-5  shadow-2xl">
   <h1 className="text-4xl font-semibold my-4 underline ">Search Jobs & Apply</h1>  
-  <h2 className="text-lg font-bold my-5">Find Your Dream Job with Resume Intellect’s Advanced Job Search & Apply Tool</h2>
+  <h2 className="text-lg font-bold my-5">Find Your Dream Job with Abroadium’s Advanced Job Search & Apply Tool</h2>
 
-At Resume Intellect, we aim to simplify your job search and application process. Our advanced job search and apply tool leverages cutting-edge technology to connect you with opportunities that match your skills, experience, and career aspirations.
+At Abroadium, we aim to simplify your job search and application process. Our advanced job search and apply tool leverages cutting-edge technology to connect you with opportunities that match your skills, experience, and career aspirations.
 <h2 className="text-sm font-bold my-5">Key Features of Our Job Search & Apply Tool</h2>
 
 <h2 className="text-sm font-bold ">1. Comprehensive Job Search</h2>
@@ -31,7 +31,7 @@ Prepare for interviews with our comprehensive resources, including common interv
 Identify skill gaps between your current profile and the job requirements. Our tool provides recommendations for courses or certifications that can help you qualify for your desired positions.<br/><br/>
 <h2 className="text-lg font-bold my-4 ">How It Works</h2>
 <h2 className="text-sm font-bold ">Step 1: Create Your Profile</h2>
-Sign up on the Resume Intellect platform and create your profile. Upload your resume and provide details about your skills, experiences, and career aspirations.<br/><br/>
+Sign up on the Abroadium platform and create your profile. Upload your resume and provide details about your skills, experiences, and career aspirations.<br/><br/>
 <h2 className="text-sm font-bold ">Step 2: Search for Jobs</h2>
 Use the search feature to find job listings that match your criteria. Apply advanced filters to narrow down your search and find the most relevant opportunities.<br/><br/>
 <h2 className="text-sm font-bold ">Step 3: Receive Job Recommendations</h2>
@@ -52,7 +52,7 @@ Create high-quality resumes and cover letters with our AI-powered builder. Prese
 <h2 className="text-sm font-bold ">Comprehensive Support</h2>
 Access a wide range of resources, including company insights, interview preparation, and skill gap analysis. Receive personalized guidance and support throughout your job search journey.<br/><br/>
 <h2 className="text-sm font-bold ">Start Searching for Jobs & Apply Today</h2>
-Transform your job search with Resume Intellect’s advanced job search and apply tool. Sign up now to discover job opportunities that perfectly match your profile and streamline your path to career success.<br/>
+Transform your job search with Abroadium’s advanced job search and apply tool. Sign up now to discover job opportunities that perfectly match your profile and streamline your path to career success.<br/>
 <h2 className="text-lg font-bold my-4">Get Started</h2>
 Ready to find your dream job? Visit our Job Search & Apply page and start exploring top job opportunities today!
 

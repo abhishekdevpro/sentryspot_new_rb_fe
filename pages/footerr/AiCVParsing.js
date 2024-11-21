@@ -5,7 +5,7 @@ function AiCVParsing() {
     return ( <div className="m-10 mx-40 p-5  shadow-2xl">
   <h1 className="text-3xl font-bold my-4 ">Ai CV Parsing</h1>  
  <h2> Transforming Recruitment with Advanced AI CV Parsing</h2>
-At Resume Intellect, we leverage cutting-edge AI CV parsing technology to streamline the recruitment process, making it faster and more efficient for both employers and job seekers. Our AI CV parsing tool accurately extracts and analyzes key information from CVs, helping you identify the best candidates quickly and effectively.
+At Abroadium, we leverage cutting-edge AI CV parsing technology to streamline the recruitment process, making it faster and more efficient for both employers and job seekers. Our AI CV parsing tool accurately extracts and analyzes key information from CVs, helping you identify the best candidates quickly and effectively.
 
 <h1 className="text-xl font-bold my-5">Key Features of Our AI CV Parsing Tool</h1>
 
@@ -44,7 +44,7 @@ Provide a smoother and faster recruitment experience for candidates. With quick 
 <h1 className="text-sm font-semibold my-2">Scalability</h1>
 Handle large volumes of CVs effortlessly. Our AI CV parsing tool can scale to meet the demands of high-volume recruitment campaigns, ensuring that no candidate is overlooked.
 <h1 className="text-sm font-semibold my-2">Start Using AI CV Parsing Today</h1>
-Revolutionize your recruitment process with Resume Intellect’s AI CV parsing tool. Sign up now to experience the benefits of efficient, accurate, and automated CV processing.
+Revolutionize your recruitment process with Abroadium’s AI CV parsing tool. Sign up now to experience the benefits of efficient, accurate, and automated CV processing.
 <h1 className="text-sm font-semibold my-2">Get Started</h1>
 Ready to transform your recruitment process? Visit our AI CV Parsing page and start optimizing your candidate selection today!
 

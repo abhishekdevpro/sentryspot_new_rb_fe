@@ -6,7 +6,7 @@ function AiSkillTests() {
   <h1 className="text-4xl font-semibold my-4 underline ">Ai Skill Tests</h1>  
   
   <h1 className="text-2xl font-semibold my-2 mt-5 ">Elevate Your Hiring Process with AI Skill Tests</h1>
-At Resume Intellect, we understand the importance of finding the right talent for your organization. Our AI Skill Tests are designed to streamline the hiring process by accurately assessing candidates abilities and matching them with the job requirements. Leveraging advanced AI technology, our skill tests provide a reliable, efficient, and unbiased way to evaluate potential hires.
+At Abroadium, we understand the importance of finding the right talent for your organization. Our AI Skill Tests are designed to streamline the hiring process by accurately assessing candidates abilities and matching them with the job requirements. Leveraging advanced AI technology, our skill tests provide a reliable, efficient, and unbiased way to evaluate potential hires.
 <h1 className="text-2xl font-semibold my-2 mt-5">Key Features of Our AI Skill Tests</h1>
 <h1 className="text-sm font-semibold my-2">1. Comprehensive Skill Assessments</h1>
 Our AI Skill Tests cover a wide range of skills across various industries, including technical skills, soft skills, and role-specific competencies. Whether you re hiring for IT, marketing, finance, or any other field, our tests can be tailored to meet your specific needs.
@@ -43,7 +43,7 @@ Offer candidates a seamless and user-friendly testing experience. The adaptive n
 <h1 className="text-sm font-semibold my-2">Cost-Effective Hiring</h1>
 Reduce the costs associated with traditional hiring methods. Our AI Skill Tests minimize the need for multiple interview rounds and help you identify top talent early in the process.
 <h1 className="text-sm font-semibold my-2">Start Using AI Skill Tests Today</h1>
-Transform your hiring process with Resume Intellect’s AI Skill Tests. Sign up now to experience the benefits of accurate, efficient, and unbiased candidate assessments.
+Transform your hiring process with Abroadium’s AI Skill Tests. Sign up now to experience the benefits of accurate, efficient, and unbiased candidate assessments.
 <h1 className="text-lg font-bold my-4">Get Started</h1>
 Ready to elevate your hiring process? Visit our AI Skill Tests page and start creating customized skill assessments today!
 

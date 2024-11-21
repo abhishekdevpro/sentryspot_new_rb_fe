@@ -5,7 +5,7 @@ function AIEnhancedResumeAccuracy() {
   return ( <div className="m-10 mx-40 p-5  shadow-2xl">
     <h1 className="text-3xl font-bold my-4 ">AI-Enhanced Resume Accuracy</h1>  
    <h2> Ensuring Precision and Reliability in Resume Creation</h2>
-   At Resume Intellect, we understand that the accuracy of your resume can significantly impact your chances of landing your dream job. Our AI-enhanced resume accuracy tools ensure that your resume is not only compelling but also precise and error-free. Leveraging advanced AI technology, we help you create resumes that truly reflect your qualifications and experiences.
+   At Abroadium, we understand that the accuracy of your resume can significantly impact your chances of landing your dream job. Our AI-enhanced resume accuracy tools ensure that your resume is not only compelling but also precise and error-free. Leveraging advanced AI technology, we help you create resumes that truly reflect your qualifications and experiences.
   
   <h1 className="text-xl font-bold my-5">Key Features of AI-Enhanced Resume Accuracy  </h1>
   
@@ -25,7 +25,7 @@ function AIEnhancedResumeAccuracy() {
   The AI checks your resume for any potential plagiarism issues, ensuring that all content is original and unique to you. This maintains the integrity of your resume and sets you apart from other candidates.
   <h1 className="text-lg font-bold my-4">How It Works</h1>
   <h1 className="text-sm font-semibold my-2">Step 1: Upload Your Resume  </h1>
-  Upload your resume to the Resume Intellect platform. Our AI will start analyzing your document immediately.
+  Upload your resume to the Abroadium platform. Our AI will start analyzing your document immediately.
   <h1 className="text-sm font-semibold my-2">Step 2: AI Analysis</h1>
   The AI scans your resume for errors, inconsistencies, and missing information. It evaluates grammar, formatting, data accuracy, and keyword relevance.more.
   <h1 className="text-sm font-semibold my-2">Step 3: Receive Feedback</h1>
@@ -44,7 +44,7 @@ function AIEnhancedResumeAccuracy() {
   <h1 className="text-sm font-semibold my-2">Time and Effort Savings  </h1>
   Our AI tools automate the resume review process, saving you time and effort while ensuring a high level of precision and quality.
  <h1 className="text-lg font-bold my-4">Start Enhancing Your Resume Accuracy Today </h1>
- Transform your resume with Resume Intellect’s AI-enhanced accuracy tools. Sign up now to create a resume that is polished, precise, and professional.  
+ Transform your resume with Abroadium’s AI-enhanced accuracy tools. Sign up now to create a resume that is polished, precise, and professional.  
       </div> );
   }
   

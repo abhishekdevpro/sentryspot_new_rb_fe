@@ -9,7 +9,7 @@ function AiResumeBuilder() {
         <h2 className="text-xl font-bold my-5">
           Revolutionizing the Job Application Process
         </h2>
-        Welcome to Resume Intellect’s AI Resume Builder – an innovative solution
+        Welcome to Abroadium’s AI Resume Builder – an innovative solution
         designed to streamline the resume creation process and help you land your
         dream job. Our cutting-edge AI technology simplifies the resume writing
         experience, ensuring that your professional achievements and skills are
@@ -62,7 +62,7 @@ function AiResumeBuilder() {
         <h1 className="text-sm font-semibold my-2">
           Step 1: Sign Up and Input Your Information
         </h1>
-        Create an account on Resume Intellect and provide your career details,
+        Create an account on Abroadium and provide your career details,
         including your job history, education, skills, and achievements. The more
         detailed your input, the more personalized and effective your resume will
         be.
@@ -99,14 +99,14 @@ function AiResumeBuilder() {
         feedback and industry trends. This means you always have access to the
         latest and most effective resume-building tools.
         <h1 className="text-sm font-semibold my-2">
-          Start Building Your Resume Intellect Today
+          Start Building Your Abroadium Today
         </h1>
-        Transform your job application process with Resume Intellect’s AI Resume
+        Transform your job application process with Abroadium’s AI Resume
         Builder. Sign up now and take the first step towards landing your dream
         job with a professionally crafted resume that showcases your unique
         strengths and qualifications.
         <h1 className="text-lg font-bold my-2">Get Started</h1>
-        Ready to create your Resume Intellect? Visit our AI Resume Builder page and
+        Ready to create your Abroadium? Visit our AI Resume Builder page and
         start building your resume today!
       </div>
   );

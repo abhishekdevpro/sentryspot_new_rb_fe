@@ -61,18 +61,18 @@ function Home_first() {
                     <div className='px-3 py-3 w-full md:w-[500px]'>
                         <div className='flex flex-col gap-4'>
                             <div className='font-extrabold text-3xl md:text-5xl font-sans text-center md:text-left'>
-                                AI Enabled, Resume Intellect Builder
+                                AI Enabled, Abroadium Builder
                             </div>
                             <div className='text-lg font-medium text-slate-700 text-center md:text-left'>
                                 Resume Score, Enhanced Resume & much more. Now Apply for a Job with confidence with our all in one solution under one roof.
                             </div>
                             <div className='flex flex-wrap gap-4 justify-center md:justify-start'>
-                                <Link href={isAuthenticated?"/dashboard":"/signup"}>
+                                <Link href={isAuthenticated?"https://abroadium-fe-jobseeker.vercel.app/candidates-dashboard/dashboard":"/signup"}>
                                     <button className='px-6 py-2 text-lg rounded-full font-bold bg-blue-700 text-white hover:shadow-2xl hover:shadow-slate-500'>
                                         Free to join or Sign Up!
                                     </button>
                                 </Link>
-                                <Link href={isAuthenticated?"/dashboard":"/login2"}>
+                                <Link href={isAuthenticated?"https://abroadium-fe-jobseeker.vercel.app/candidates-dashboard/dashboard":"/login2"}>
                                     <button className='text-black text-lg px-6 py-2 rounded-full font-bold bg-white hover:shadow-2xl hover:shadow-slate-500'>
                                         Build your Resume
                                     </button>

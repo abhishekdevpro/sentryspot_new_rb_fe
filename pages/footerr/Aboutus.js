@@ -5,11 +5,11 @@ function Aboutus() {
     return ( <div className="m-10 mx-40 p-5  shadow-2xl">
   <h1 className="text-5xl font-semibold my-4 underline ">About Us</h1>  
 
-Welcome to Resume Intellect, your trusted partner in crafting the ideal resume that opens doors to new career opportunities. We specialize in creating personalized, professional resumes that showcase your unique skills, experiences, and achievements.
+Welcome to Abroadium, your trusted partner in crafting the ideal resume that opens doors to new career opportunities. We specialize in creating personalized, professional resumes that showcase your unique skills, experiences, and achievements.
 
 <h1 className="text-2xl font-semibold my-2 mt-5 ">Our Mission</h1>  
 
-At Resume Intellect, our mission is to empower job seekers by providing expertly designed resumes that make a lasting impression. We understand that your resume is more than just a document; it’s a reflection of your professional journey and aspirations. Our goal is to help you stand out in a competitive job market and secure the position you deserve.
+At Abroadium, our mission is to empower job seekers by providing expertly designed resumes that make a lasting impression. We understand that your resume is more than just a document; it’s a reflection of your professional journey and aspirations. Our goal is to help you stand out in a competitive job market and secure the position you deserve.
 
 <h1 className="text-2xl font-semibold my-2 mt-5">Why Choose Us?</h1>  
 
@@ -43,11 +43,11 @@ Our career coaching services provide you with the guidance and support needed to
 
 <h1 className="text-2xl font-semibold my-2 mt-5">Join Our Community</h1>  
 
-At Resume Intellect, we’re more than just a resume writing service. We’re a community of career-driven individuals dedicated to supporting each other’s professional growth. Join us today and take the first step towards achieving your career aspirations.
+At Abroadium, we’re more than just a resume writing service. We’re a community of career-driven individuals dedicated to supporting each other’s professional growth. Join us today and take the first step towards achieving your career aspirations.
 
 <h1 className="text-2xl font-semibold my-2 mt-5">Contact Us</h1>  
 
-Ready to transform your resume and unlock new opportunities? Contact us today and let Resume Intellect help you craft the Resume Intellect for your career journey.
+Ready to transform your resume and unlock new opportunities? Contact us today and let Abroadium help you craft the Abroadium for your career journey.
 
     </div> );
 }

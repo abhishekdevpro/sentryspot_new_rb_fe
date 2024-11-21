@@ -9,12 +9,12 @@ import Footer from "./Footer/Footer";
 const ResumeBuilder = () => {
   return (
     <>
-    <Builder />
-    {/* <Navbar/>
+    {/* <Builder /> */}
+    <Navbar/>
     <Home_first/>
     <FAQ/>
-    <Loder/> 
-    <Footer/> */}
+    {/* <Loder/>  */}
+    {/* <Footer/> */}
     </>
   );
 };
