@@ -44,6 +44,10 @@ export default function Builder({ onClose }) {
   const [token, setToken] = useState(null);
   const [resumeId, setResumeId] = useState(null);
 
+  // Function to navigate back
+  const handleBack = () => {
+    router.back(); // Navigate to the previous page
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -402,6 +406,20 @@ export default function Builder({ onClose }) {
                 onClick={downloadAsPDF}
               >
                 Pay & Download
+              </button>
+              <button
+                 href="https://abroadium-arbuild-fe.vercel.app/resume"
+                type="button"
+                className="rounded-lg px-10 lg:ms-2 font-bold bg-blue-950 text-white p-1"
+              >
+                Resume List
+              </button>
+              <button
+                type="button"
+                className="rounded-lg px-10 lg:ms-2 font-bold bg-blue-950 text-white p-1"
+                onClick={handleBack}
+              >
+                Back
               </button>
             </div>
             
