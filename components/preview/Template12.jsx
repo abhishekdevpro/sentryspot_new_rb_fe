@@ -38,7 +38,7 @@ const Template12 = () => {
     ];
 
     return (
-        <div className="w-full max-w-3xl mx-auto bg-white p-6 shadow-lg">
+      <div className="w-full max-w-3xl mx-auto bg-white p-6 shadow-lg">
         <div className="flex items-center mb-6">
           <Image
             src={resumeData.profilePicture}
@@ -48,8 +48,15 @@ const Template12 = () => {
             className="rounded-full mr-5"
           />
           <div className="flex-grow">
-            <h1 className="text-2xl text-gray-800" style={{ color: headerColor }}>{resumeData.name}</h1>
-            <h2 className="text-xl text-blue-600 font-semibold">{resumeData.position}</h2>
+            <h1
+              className="text-2xl text-gray-800"
+              style={{ color: headerColor }}
+            >
+              {resumeData.name}
+            </h1>
+            <h2 className="text-xl text-blue-600 font-semibold">
+              {resumeData.position}
+            </h2>
           </div>
           <div className="text-right">
             <ContactInfo
@@ -66,7 +73,12 @@ const Template12 = () => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Work Experience</h3>
+          <h3
+            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
+            style={{ color: headerColor }}
+          >
+            Work Experience
+          </h3>
           <div className="mb-4">
             {resumeData.workExperience.length > 0 && (
               <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
@@ -83,9 +95,10 @@ const Template12 = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                              snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
-                              }`}
+                            }`}
                           >
                             <div className=" justify-between space-y-1">
                               <p className="content i-bold">{item.company}</p>
@@ -125,9 +138,10 @@ const Template12 = () => {
                                               {...provided.dragHandleProps}
                                               className={`
                                           hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${snapshot.isDragging &&
-                                                "outline-dashed outline-2 outline-gray-400 bg-white"
-                                                }`}
+                                          ${
+                                            snapshot.isDragging &&
+                                            "outline-dashed outline-2 outline-gray-400 bg-white"
+                                          }`}
                                             >
                                               <div
                                                 dangerouslySetInnerHTML={{
@@ -160,7 +174,8 @@ const Template12 = () => {
                       className="section-title mb-1 border-b-2 border-gray-300 editable"
                       contentEditable
                       suppressContentEditableWarning
-                      style={{ color: headerColor }} >
+                      style={{ color: headerColor }}
+                    >
                       Projects
                     </h2>
                     {resumeData.projects.map((item, index) => (
@@ -174,9 +189,10 @@ const Template12 = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                              snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
-                              }`}
+                            }`}
                           >
                             <div className="flex flex-row justify-between space-y-1">
                               <p className="content i-bold">{item.name}</p>
@@ -221,9 +237,10 @@ const Template12 = () => {
                                               {...provided.dragHandleProps}
                                               className={`
                                           hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${snapshot.isDragging &&
-                                                "outline-dashed outline-2 outline-gray-400 bg-white"
-                                                }`}
+                                          ${
+                                            snapshot.isDragging &&
+                                            "outline-dashed outline-2 outline-gray-400 bg-white"
+                                          }`}
                                             >
                                               <div
                                                 dangerouslySetInnerHTML={{
@@ -240,9 +257,7 @@ const Template12 = () => {
                               )}
                             </Droppable>
                           </div>
-
                         )}
-
                       </Draggable>
                     ))}
                     {provided.placeholder}
@@ -255,14 +270,24 @@ const Template12 = () => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Snapshot</h3>
+          <h3
+            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
+            style={{ color: headerColor }}
+          >
+            Snapshot
+          </h3>
           {resumeData.summary}
           {/* Add more snapshot paragraphs as needed */}
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Technical Skills</h3>
-          <div className="bg-blue-600 text-white text-center py-2 rounded-md mb-2 text-sm font-semibold">
+          <h3
+            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
+            style={{ color: headerColor }}
+          >
+            Technical Skills
+          </h3>
+          <div className="bg-blue-600 text-[#003479] text-center py-2 rounded-md mb-2 text-sm font-semibold">
             <Droppable droppableId="skills" type="SKILLS">
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -277,9 +302,10 @@ const Template12 = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                            snapshot.isDragging &&
                             "outline-dashed outline-2 outline-gray-400 bg-white text-sm text-gray-800"
-                            }`}
+                          }`}
                         >
                           <Skills title={skill.title} skills={skill.skills} />
                         </div>
@@ -295,9 +321,15 @@ const Template12 = () => {
         </div>
 
         <div className="mb-6">
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Certificates</h3>
+          <h3
+            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
+            style={{ color: headerColor }}
+          >
+            Certificates
+          </h3>
           <div className="mb-2">
-            <Certification className="text-lg text-gray-800 font-semibold"
+            <Certification
+              className="text-lg text-gray-800 font-semibold"
               title="Certifications "
               certifications={resumeData.certifications}
             />
@@ -306,7 +338,12 @@ const Template12 = () => {
         </div>
 
         <div>
-          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Skills</h3>
+          <h3
+            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
+            style={{ color: headerColor }}
+          >
+            Skills
+          </h3>
           <div className="flex flex-wrap">
             <div className="w-1/2 mb-2">
               <Language title="Languages" languages={resumeData.languages} />

@@ -219,8 +219,10 @@ const ProfileForm = () => {
   return (
     <div className="p-2 md:p-6">
       <div className="w-[15rem] md:w-full mx-auto rounded-lg shadow-lg px-4 py-2 md:p-6">
-        <h1 className="text-2xl font-bold mb-6 text-center md:text-left">BASIC INFORMATION</h1>
-        
+        <h1 className="text-2xl font-bold mb-6 text-center md:text-left">
+          BASIC INFORMATION
+        </h1>
+
         <form onSubmit={handleSubmit}>
           <div className="">
             <label className="block mb-2">Change Your Image:</label>
@@ -332,7 +334,6 @@ const ProfileForm = () => {
                 type="number"
                 name="phone"
                 value={formData.phone}
-                
                 className="w-full border p-2"
                 readOnly
               />
@@ -345,7 +346,7 @@ const ProfileForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full border p-2"
-               readOnly
+                readOnly
               />
             </div>
             <div>
@@ -386,28 +387,38 @@ const ProfileForm = () => {
               <select
                 name="city_id"
                 value={formData.city_id}
-                onChange={(e) => setFormData(prevData => ({ ...prevData, city_id: e.target.value }))}
+                onChange={(e) =>
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    city_id: e.target.value,
+                  }))
+                }
                 className="w-full border p-2"
                 disabled={!formData.state_id}
               >
                 <option value="">Select a city</option>
-               {loading ? (
-      <option disabled>Loading cities...</option>
-    ) : error ? (
-      <option disabled>{error}</option> // Show error if available
-    ) : cities.length > 0 ? (
-      cities.map((city) => (
-        <option key={city.id} value={city.id}>
-          {city.name}
-        </option>
-      ))
-    ) : (
-      <option disabled>No cities available</option> // Show when no cities are found
-    )}
+                {loading ? (
+                  <option disabled>Loading cities...</option>
+                ) : error ? (
+                  <option disabled>{error}</option> // Show error if available
+                ) : cities.length > 0 ? (
+                  cities.map((city) => (
+                    <option key={city.id} value={city.id}>
+                      {city.name}
+                    </option>
+                  ))
+                ) : (
+                  <option disabled>No cities available</option> // Show when no cities are found
+                )}
               </select>
             </div>
           </div>
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Update Profile</button>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-[#003479] p-2 rounded"
+          >
+            Update Profile
+          </button>
         </form>
       </div>
     </div>

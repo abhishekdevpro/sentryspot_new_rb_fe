@@ -23,40 +23,39 @@ const List = () => {
   return (
     <>
       <h5 className="text-2xl font-bold mb-6 ms-5">Referral List</h5>
-    <div className="container mx-auto p-4 text-center">
-      
-      <div className="overflow-x-auto">
-        {users.length === 0 ? (
-          <p className="text-lg text-gray-500">There is no data available.</p>
-        ) : (
-          <table className="min-w-full bg-dark text-black rounded-md text-center">
-            <thead>
-              <tr className='bg-violet-900 text-white' >
-              
-                <th className="py-2 px-4">Name</th>
-                <th className="py-2 px-4">Email</th>
-                <th className="py-2 px-4">Phone</th>
-                
-                <th className="py-2 px-4">Remark</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={index} className="border border-gray-700 text-center">
-                
-                  <td className="py-2 px-4">{user.name || "N/A"}</td>
-                  <td className="py-2 px-4">{user.email || "N/A"}</td>
-                  <td className="py-2 px-4">{user.phone || "N/A"}</td>
-                 
-                  <td className="py-2 px-4">{user.remark || "N/A"}</td>
-                  
+      <div className="container mx-auto p-4 text-center">
+        <div className="overflow-x-auto">
+          {users.length === 0 ? (
+            <p className="text-lg text-gray-500">There is no data available.</p>
+          ) : (
+            <table className="min-w-full bg-dark text-black rounded-md text-center">
+              <thead>
+                <tr className="bg-violet-900 text-[#003479]">
+                  <th className="py-2 px-4">Name</th>
+                  <th className="py-2 px-4">Email</th>
+                  <th className="py-2 px-4">Phone</th>
+
+                  <th className="py-2 px-4">Remark</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+              </thead>
+              <tbody>
+                {users.map((user, index) => (
+                  <tr
+                    key={index}
+                    className="border border-gray-700 text-center"
+                  >
+                    <td className="py-2 px-4">{user.name || "N/A"}</td>
+                    <td className="py-2 px-4">{user.email || "N/A"}</td>
+                    <td className="py-2 px-4">{user.phone || "N/A"}</td>
+
+                    <td className="py-2 px-4">{user.remark || "N/A"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 }

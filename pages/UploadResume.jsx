@@ -65,7 +65,9 @@ const UploadResume = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
       <div className="w-full max-w-screen-lg border border-dashed border-blue-500 p-8 rounded-lg bg-white shadow-lg text-center">
-        <h1 className="text-2xl font-bold mb-6">How do you want to upload your resume?</h1>
+        <h1 className="text-2xl font-bold mb-6">
+          How do you want to upload your resume?
+        </h1>
 
         <div className="flex flex-col md:flex-row justify-around items-center">
           <div className="w-full mb-4 md:w-2/3 md:mb-0">
@@ -91,7 +93,7 @@ const UploadResume = () => {
 
             <button
               onClick={handleBrowseClick}
-              className="mt-4 w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              className="mt-4 w-full px-4 py-2 bg-blue-600 text-[#003479] rounded-lg hover:bg-blue-700"
             >
               Browse
             </button>
@@ -99,8 +101,15 @@ const UploadResume = () => {
 
           <div className="flex flex-col space-y-4 w-full md:w-1/3">
             <button className="flex items-center px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 w-full">
-              <Image src={GoogleDrive} width={24} height={24} alt="Google Drive" />
-              <span className="text-gray-700 whitespace-nowrap">Google Drive</span>
+              <Image
+                src={GoogleDrive}
+                width={24}
+                height={24}
+                alt="Google Drive"
+              />
+              <span className="text-gray-700 whitespace-nowrap">
+                Google Drive
+              </span>
             </button>
             <button className="flex items-center px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 w-full">
               <Image src={drag} alt="Dropbox" width={24} height={24} />
@@ -120,7 +129,7 @@ const UploadResume = () => {
           Back
         </button>
         <button
-          className="w-1/3 px-6 py-2 bg-yellow-400 text-white rounded-lg hover:bg-yellow-500"
+          className="w-1/3 px-6 py-2 bg-yellow-400 text-[#003479] rounded-lg hover:bg-yellow-500"
           onClick={handleNextClick}
         >
           Next

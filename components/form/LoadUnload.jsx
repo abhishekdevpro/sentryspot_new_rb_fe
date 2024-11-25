@@ -124,7 +124,7 @@
 //       {showLoadingAnimation && (
 //         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
 //           <div className="loader"></div>
-//           <div className="ms-5 text-white text-center text-lg md:text-2xl">
+//           <div className="ms-5 text-[#003479] text-center text-lg md:text-2xl">
 //             ☑ Resume information reading <br />
 //             ☑ Analyzing and improving resume content as per industry standards
 //           </div>
@@ -149,14 +149,14 @@
 //                   We’ll give you expert guidance to fill out your info and enhance your resume, from start to finish
 //                 </p>
 
-//                 <label className="p-2 text-white bg-gray-500 rounded cursor-pointer hover:bg-blue-600 transition">
+//                 <label className="p-2 text-[#003479] bg-gray-500 rounded cursor-pointer hover:bg-blue-600 transition">
 //                   <FaCloudUploadAlt className="inline-block mr-2" />
 //                   <span>Select Resume (PDF)</span>
 //                   <input type="file" className="hidden" onChange={handleFileChange} accept=".pdf" />
 //                 </label>
 
 //                 <button
-//                   className={`p-2 mt-4 w-full text-white bg-blue-800 rounded ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-600 transition"}`}
+//                   className={`p-2 mt-4 w-full text-[#003479] bg-blue-800 rounded ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-600 transition"}`}
 //                   onClick={handleUpload}
 //                   disabled={loading}
 //                 >
@@ -175,7 +175,7 @@
 //                   We’ll guide you through the whole process so your skills can shine
 //                 </p>
 //                 <button
-//                   className="p-2 w-full mt-8 md:mt-20 text-white bg-yellow-500 rounded hover:bg-red-600 transition"
+//                   className="p-2 w-full mt-8 md:mt-20 text-[#003479] bg-yellow-500 rounded hover:bg-red-600 transition"
 //                   onClick={handleStartFromScratch}
 //                 >
 //                   Start From Scratch
@@ -349,9 +349,9 @@ console.log(token)
       {showLoadingAnimation && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900">
           <div className="loader"></div>
-          <div className="ms-5 text-white text-center text-lg md:text-2xl">
-            ☑ Resume information reading <br />
-            ☑ Analyzing and improving resume content as per industry standards
+          <div className="ms-5 text-[#003479] text-center text-lg md:text-2xl">
+            ☑ Resume information reading <br />☑ Analyzing and improving resume
+            content as per industry standards
           </div>
         </div>
       )}
@@ -359,48 +359,79 @@ console.log(token)
       {showOverlay && !isUploaded && !showLoadingAnimation && (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-gray-900 bg-opacity-75">
           <div className="bg-white   rounded-lg shadow-lg h-screen w-screen text-center relative">
-           
+            <nav class="border-b-2 bg-gray-300 bg">
+              <div
+                class="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4"
+                style={{ backgroundColor: "#4C3957" }}
+              >
+                <a
+                  href="#"
+                  class="flex items-center space-x-3 rtl:space-x-reverse"
+                >
+                  <img
+                    src="https://sentryspotfe.vercel.app/assets/logo-c5bcd0df.png"
+                    class="h-8"
+                    alt="Flowbite Logo"
+                  />
+                </a>
 
-<nav class="border-b-2 bg-gray-300 bg">
-  <div class="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4"
-  style={{backgroundColor:"#4C3957"}}
-  >
-    <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse" 
-     >
-        <img src="https://abroadiumlandingemployee.vercel.app/assets/logo-c5bcd0df.png" class="h-8" alt="Flowbite Logo" />
-        
-    </a>
-   
-    <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-   
-    </div>
-  </div>
-</nav>
+                <div
+                  class="hidden w-full md:block md:w-auto"
+                  id="navbar-solid-bg"
+                ></div>
+              </div>
+            </nav>
 
-            
-            <h1 className="text-xl md:text-2xl font-bold mb-4 mt-8 md:mt-16">Are you uploading an existing resume?</h1>
-            <p className="text-gray-600 mb-5">Just review, edit, and update it with new information</p>
+            <h1 className="text-xl md:text-2xl font-bold mb-4 mt-8 md:mt-16">
+              Are you uploading an existing resume?
+            </h1>
+            <p className="text-gray-600 mb-5">
+              Just review, edit, and update it with new information
+            </p>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-5">
               <div className="h-80 md:h-auto p-6 md:p-10 border-2 rounded-lg shadow-lg shadow-blue-100 w-full md:w-1/2">
                 <div className="mb-4">
-                  <svg className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v16h16V4m-2 0v16m-4-8H4M4 8h16" />
+                  <svg
+                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 4v16h16V4m-2 0v16m-4-8H4M4 8h16"
+                    />
                   </svg>
                 </div>
-                <h2 className="text-lg font-semibold mb-2">Yes, upload from my resume</h2>
+                <h2 className="text-lg font-semibold mb-2">
+                  Yes, upload from my resume
+                </h2>
                 <p className="text-gray-500 mb-5 text-sm md:text-base">
-                  We will give you expert guidance to fill out your info and enhance your resume, from start to finish
+                  We will give you expert guidance to fill out your info and
+                  enhance your resume, from start to finish
                 </p>
 
-                <label className="p-2 text-white bg-gray-500 rounded cursor-pointer hover:bg-blue-600 transition">
+                <label className="p-2 text-[#fff] bg-[#e60278] rounded cursor-pointer hover:bg-pink-500 transition">
                   <FaCloudUploadAlt className="inline-block mr-2" />
                   <span>Select Resume (PDF)</span>
-                  <input type="file" className="hidden" onChange={handleFileChange} accept=".pdf" />
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept=".pdf"
+                  />
                 </label>
 
                 <button
-                  className={`p-2 mt-4 w-full text-white bg-blue-800 rounded ${loading ? "opacity-50 cursor-not-allowed" : "hover:bg-green-600 transition"}`}
+                  className={`p-2 mt-4 w-full text-[white] bg-[#003479] rounded ${
+                    loading
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:bg-green-600 transition"
+                  }`}
                   onClick={handleUpload}
                   disabled={loading}
                 >
@@ -410,16 +441,30 @@ console.log(token)
 
               <div className="h-80 md:h-auto p-6 md:p-10 border-2 rounded-lg shadow-lg shadow-blue-100 w-full md:w-1/2">
                 <div className="mb-4">
-                  <svg className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  <svg
+                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 4v16m8-8H4"
+                    />
                   </svg>
                 </div>
-                <h2 className="text-lg font-semibold mb-2">No, start from scratch</h2>
+                <h2 className="text-lg font-semibold mb-2">
+                  No, start from scratch
+                </h2>
                 <p className="text-gray-500 text-sm md:text-base">
-                  We will guide you through the whole process so your skills can shine
+                  We will guide you through the whole process so your skills can
+                  shine
                 </p>
                 <button
-                  className="p-2 w-full mt-8 md:mt-20 text-white bg-yellow-500 rounded hover:bg-red-600 transition"
+                  className="p-2 w-full mt-8 md:mt-20 text-[#fff] bg-[#003479] rounded hover:bg-sky-900 transition"
                   onClick={handleStartFromScratch}
                 >
                   Start From Scratch

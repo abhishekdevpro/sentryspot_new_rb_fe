@@ -53,7 +53,7 @@ function Payment() {
       <div className="overflow-x-auto">
         <table className="min-w-full bg-dark text-black rounded-md text-center">
           <thead>
-            <tr className='bg-violet-300'>
+            <tr className="bg-violet-300">
               <th className="py-2 px-4">ID</th>
               <th className="py-2 px-4">Name</th>
               <th className="py-2 px-4">Email</th>
@@ -74,17 +74,19 @@ function Payment() {
                 <td className="py-2 px-4">{user.amount || "N/A"}</td>
                 <td className="py-2 px-4">{user.status || "N/A"}</td>
                 <td className="py-2 px-4">
-                  <input 
-                    type='text' 
-                    className='border-2' 
-                    value={remarks[user.id] || user.remark} 
-                    onChange={(e) => handleRemarkChange(user.id, e.target.value)}
+                  <input
+                    type="text"
+                    className="border-2"
+                    value={remarks[user.id] || user.remark}
+                    onChange={(e) =>
+                      handleRemarkChange(user.id, e.target.value)
+                    }
                   />
                 </td>
                 <td className="py-2 px-4">
-                  <button 
-                    onClick={() => handleRemarkSubmit(user.id)} 
-                    className="bg-violet-500 text-white px-2 py-1 rounded"
+                  <button
+                    onClick={() => handleRemarkSubmit(user.id)}
+                    className="bg-violet-500 text-[#003479] px-2 py-1 rounded"
                   >
                     Submit
                   </button>

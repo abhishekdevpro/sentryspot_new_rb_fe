@@ -123,29 +123,31 @@ const FAQ = () => {
   };
 
   return (
-    <div id='faq' className=' bg-gray-100'>
-    <div className=" max-w-4xl mt-2  mx-auto p-4" >
-      <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-      <div className="space-y-4">
-        {faqs.map((faq, index) => (
-          <FAQItem key={index} question={faq.question} answer={faq.answer} />
-        ))}
+    <div id="faq" className=" bg-white">
+      <div className=" max-w-4xl mt-2  mx-auto p-4">
+        <h2 className="text-3xl font-bold mb-4 text-[#003479]">
+          Frequently Asked Questions
+        </h2>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem key={index} question={faq.question} answer={faq.answer} />
+          ))}
+        </div>
       </div>
 
+      <h1
+        className=" text-center font-bold text-3xl pt-10 mt-5 pb-3 bg-white text-[#003479]"
+        id="phone"
+      >
+        Get In Touch
+      </h1>
+      <p className=" text-center pb-5 bg-white">
+        Build professional, job-winning resumes in minutes with our AI-powered
+        tools and expert suggestions!
+      </p>
 
-      
-
-
-    </div>
-
-   
-      
-    <h1 className=' text-center font-bold text-3xl pt-10 mt-5 pb-3 bg-white' id='phone' >Get In Touch</h1>
-                  <p className=' text-center pb-5 bg-white'>Build professional, job-winning resumes in minutes with our AI-powered tools and expert suggestions!</p>
-  
-    <div className='lg:flex justify-center flex-row gap-10 pb-20 bg-white'>
-
-      {/* <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
+      <div className="lg:flex justify-center flex-row gap-10 pb-20 bg-white">
+        {/* <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
         <div className="flex items-center mb-4">
         <div className='text-3xl'> ☎</div>
           <h5 className="ml-3 text-slate-800 text-xl font-semibold">
@@ -170,120 +172,145 @@ const FAQ = () => {
         </div>
       </div> */}
 
-     
-      <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
-        <div className="flex items-center mb-4">
-        <div className='text-3xl'> ✉</div>
-          <h5 className="ml-3 text-slate-800 text-xl font-semibold">
-            
-          </h5>
-        </div>
-        <p className="block text-slate-600 leading-normal font-semibold mb-1">
-        Email Us 
-        </p>
-        <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">
-        We re here for help
-        </p>
-        <div className=''>
-          <button className='border px-3 p-2 rounded-lg'>
-          <a href="mailto:info@resumeintellect.com" className="text-slate-800  font-semibold text-sm hover:underline flex items-center">
-          resume@abroadium.com
-            <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-          </button>
-        </div>
-      </div>
-
-     
-      <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
-      <div className="flex items-center mb-4">
-        <div className="text-3xl">🗨</div>
-       
-      </div>
-      <p className="block text-slate-600 leading-normal font-semibold mb-1">
-      Message us
-        </p>
-      <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">We re here to help</p>
-
-      <button
-        className="border px-3 p-2 rounded-lg"
-        onClick={() => setIsFormVisible(!isFormVisible)} // Toggle form visibility
-      >
-        <span className="text-slate-800 font-semibold text-sm hover:underline flex items-center">
-          Chat
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="ml-2 h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </span>
-      </button>
-
-      {isFormVisible && (
-        <div className=" top-0 left-10 bg-white shadow-md border rounded-lg p-6 w-full mt-4 z-10">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full border px-2 py-1 rounded-lg"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Phone</label>
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                className="w-full border px-2 py-1 rounded-lg"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full border px-2 py-1 rounded-lg"
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-semibold mb-1">Remark</label>
-              <textarea
-                name="remark"
-                value={formData.remark}
-                onChange={handleInputChange}
-                className="w-full border px-2 py-1 rounded-lg"
-                required
-              />
-            </div>
-            {error && <p className="text-red-500 mb-2">{error}</p>}
-            {successMessage && <p className="text-green-500 mb-2">{successMessage}</p>}
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg"
-            >
-              Send
+        <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
+          <div className="flex items-center mb-4">
+            <div className="text-3xl"> ✉</div>
+            <h5 className="ml-3 text-slate-800 text-xl font-semibold"></h5>
+          </div>
+          <p className="block text-slate-600 leading-normal font-semibold mb-1">
+            Email Us
+          </p>
+          <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">
+            We re here for help
+          </p>
+          <div className="">
+            <button className="border px-3 p-2 rounded-lg">
+              <a
+                href="mailto:info@resumeintellect.com"
+                className="text-slate-800  font-semibold text-sm hover:underline flex items-center"
+              >
+                resume@SentrySpot.com
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="ml-2 h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </a>
             </button>
-          </form>
+          </div>
         </div>
-      )}
-    </div>
-    
+
+        <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96 p-6">
+          <div className="flex items-center mb-4">
+            <div className="text-3xl">🗨</div>
+          </div>
+          <p className="block text-slate-600 leading-normal font-semibold mb-1">
+            Message us
+          </p>
+          <p className="block text-slate-600 leading-normal font-light mb-4  text-sm">
+            We re here to help
+          </p>
+
+          <button
+            className="border px-3 p-2 rounded-lg"
+            onClick={() => setIsFormVisible(!isFormVisible)} // Toggle form visibility
+          >
+            <span className="text-slate-800 font-semibold text-sm hover:underline flex items-center">
+              Chat
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="ml-2 h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </span>
+          </button>
+
+          {isFormVisible && (
+            <div className=" top-0 left-10 bg-white shadow-md border rounded-lg p-6 w-full mt-4 z-10">
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold mb-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full border px-2 py-1 rounded-lg"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold mb-1">
+                    Phone
+                  </label>
+                  <input
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full border px-2 py-1 rounded-lg"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full border px-2 py-1 rounded-lg"
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-semibold mb-1">
+                    Remark
+                  </label>
+                  <textarea
+                    name="remark"
+                    value={formData.remark}
+                    onChange={handleInputChange}
+                    className="w-full border px-2 py-1 rounded-lg"
+                    required
+                  />
+                </div>
+                {error && <p className="text-red-500 mb-2">{error}</p>}
+                {successMessage && (
+                  <p className="text-green-500 mb-2">{successMessage}</p>
+                )}
+                <button
+                  type="submit"
+                  className="bg-blue-500 text-[#003479] px-4 py-2 rounded-lg"
+                >
+                  Send
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

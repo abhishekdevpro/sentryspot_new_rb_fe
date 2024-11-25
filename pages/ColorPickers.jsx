@@ -28,8 +28,8 @@ const ColorPicker = ({ selectedColor, onChange }) => {
     <div className="relative flex items-center m-2 ">
       <button
         onClick={handleToggleDropdown}
-        className="rounded-lg border-2 border-blue-800 px-8 p-1 font-bold  bg-white text-blue-800"
-        style={{ backgroundColor: selectedColor || 'transparent' }}
+        className="rounded-lg border-2 border-[#003479] px-8 p-1 font-bold  bg-white text-[#003479]"
+        style={{ backgroundColor: selectedColor || "transparent" }}
       >
         Background Color
       </button>
@@ -40,7 +40,7 @@ const ColorPicker = ({ selectedColor, onChange }) => {
               const isSelected = selectedColor === color.value;
               const hoverStyle = {
                 backgroundColor: color.value,
-                borderColor: isSelected ? 'black' : 'gray',
+                borderColor: isSelected ? "black" : "gray",
               };
 
               return (
@@ -48,7 +48,9 @@ const ColorPicker = ({ selectedColor, onChange }) => {
                   key={index}
                   onClick={() => handleColorSelect(color.value)}
                   className={`w-6 h-6 rounded-full cursor-pointer border transition-all duration-300 ease-in-out ${
-                    isSelected ? 'border-blue-80 shadow-lg shadow-blue-500' : 'border-gray-300'
+                    isSelected
+                      ? "border-blue-80 shadow-lg shadow-blue-500"
+                      : "border-gray-300"
                   } hover:border-black`}
                   style={hoverStyle}
                 />
