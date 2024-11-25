@@ -61,7 +61,6 @@ function Payment() {
 
   return (
     <div className="min-h-screen mien bg-gray-300 flex w-full p-2">
-         
       <div className="bg-white shadow-md rounded-lg  w-full">
         <table className="min-w-full leading-normal">
           <thead>
@@ -69,32 +68,39 @@ function Payment() {
               <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 <div className="text-center mt-4">
                   <p className="text-lg font-bold text-violet-900 m">Free</p>
-                  <button className='bg-red-200 text-blue-900 p-2 px-6 rounded-lg m-4  disabled:'>Your Plan</button>
+                  <button className="bg-red-200 text-blue-900 p-2 px-6 rounded-lg m-4  disabled:">
+                    Your Plan
+                  </button>
                 </div>
               </th>
               <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600  tracking-wider">
                 <div className="text-center">
                   <p className="text-lg font-bold ">AI resume writer</p>
-                  <span className=" text-violet-900 font-bold text-lg"> $49</span> <span className=" text-violet-900 ">/One Time Purchase</span><br/>
-                <Link href="/dashboard/ai-resume-builder">
-                <button
-                    className='bg-blue-900 text-white p-2 rounded-lg m-2 mt-3'
-                    
-                  >
-                    Choose This Plan
-                  </button>
-                </Link>
-                 
+                  <span className=" text-violet-900 font-bold text-lg">
+                    {" "}
+                    $49
+                  </span>{" "}
+                  <span className=" text-violet-900 ">/One Time Purchase</span>
+                  <br />
+                  <Link href="/dashboard/ai-resume-builder">
+                    <button className="bg-blue-900 text-[#003479] p-2 rounded-lg m-2 mt-3">
+                      Choose This Plan
+                    </button>
+                  </Link>
                 </div>
               </th>
               <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600  tracking-wider">
                 <div className="text-center">
                   <p className="text-lg font-bold">Expert human writer</p>
-                  
-                  <span className=" text-violet-900 font-bold text-lg"> $269</span> <span className=" text-violet-900 ">/Resume </span><br/>
+                  <span className=" text-violet-900 font-bold text-lg">
+                    {" "}
+                    $269
+                  </span>{" "}
+                  <span className=" text-violet-900 ">/Resume </span>
+                  <br />
                   <button
-                   className='bg-green-700 text-white p-2 px-5 rounded-lg m-4 disabled:'
-                   onClick={handleChoosePlan3} 
+                    className="bg-green-700 text-[#003479] p-2 px-5 rounded-lg m-4 disabled:"
+                    onClick={handleChoosePlan3}
                   >
                     Choose this plan
                   </button>
@@ -104,11 +110,15 @@ function Payment() {
               <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600  tracking-wider">
                 <div className="text-center">
                   <p className="text-lg font-bold">French English Combo</p>
-                  
-                  <span className=" text-violet-900 font-bold text-lg"> $369</span> <span className=" text-violet-900 ">/Resume </span><br/>
+                  <span className=" text-violet-900 font-bold text-lg">
+                    {" "}
+                    $369
+                  </span>{" "}
+                  <span className=" text-violet-900 ">/Resume </span>
+                  <br />
                   <button
-                   className='bg-yellow-500 text-white p-2 px-5 rounded-lg m-4 disabled:'
-                   onClick={handleChoosePlan4} 
+                    className="bg-yellow-500 text-[#003479] p-2 px-5 rounded-lg m-4 disabled:"
+                    onClick={handleChoosePlan4}
                   >
                     Choose this plan
                   </button>
@@ -118,115 +128,111 @@ function Payment() {
           </thead>
 
           <tbody>
-                        <tr className='text-center'>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
-                            </td>
-                            
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
-                            </td>
+            <tr className="text-center">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
+              </td>
 
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
-                            </td>
-                            
-                        </tr>
-                        
-                        <tr className='text-center'>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Copy and paste content from site</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Copy and paste content from site</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Receive resume in pdf and docs</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-600">✔️ Receive resume in pdf and docs</p>
-                            </td>
-                        </tr>
-                        <tr className='text-center'>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Unlimited resumes edits</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Unlimited resumes edits</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Cover letter included</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-600">✔️ Cover letter included</p>
-                            </td>
-                          
-                        </tr>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
+              </td>
 
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600"> ✔️ Create optimized resumes</p>
+              </td>
+            </tr>
 
-                        <tr className='text-center'>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✖️ </p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Save resume as pdf and docs</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ 3 revisions included</p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-600">✔️ 3 revisions included</p>
-                            </td>
-                            
-                           
-                            
-                        </tr>
-                        <tr className='text-center'>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✖️ </p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Download fully formatted Resume</p>
-                            </td>
-                            
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Speak one on one with writer</p>
-                            </td>
+            <tr className="text-center">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">
+                  ✔️ Copy and paste content from site
+                </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">
+                  ✔️ Copy and paste content from site
+                </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">
+                  ✔️ Receive resume in pdf and docs
+                </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">
+                  ✔️ Receive resume in pdf and docs
+                </p>
+              </td>
+            </tr>
+            <tr className="text-center">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Unlimited resumes edits</p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Unlimited resumes edits</p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Cover letter included</p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Cover letter included</p>
+              </td>
+            </tr>
 
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-600">✔️ Speak one on one with writer</p>
-                            </td>
-                            
-                        </tr>
-                        <tr className='text-center'>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✖️ </p>
-                            </td>
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✖️ </p>
-                            </td>
-                            
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️ Final Delivery 1 week</p>
-                            </td>
+            <tr className="text-center">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✖️ </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Save resume as pdf and docs</p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ 3 revisions included</p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ 3 revisions included</p>
+              </td>
+            </tr>
+            <tr className="text-center">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✖️ </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">
+                  ✔️ Download fully formatted Resume
+                </p>
+              </td>
 
-                             
-                            <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <p className="text-gray-600">✔️Final Delivery 1 week</p>
-                            </td>
-                            
-                        </tr>
-                      
-                    </tbody>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Speak one on one with writer</p>
+              </td>
 
-                    
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Speak one on one with writer</p>
+              </td>
+            </tr>
+            <tr className="text-center">
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✖️ </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✖️ </p>
+              </td>
+
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️ Final Delivery 1 week</p>
+              </td>
+
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-gray-600">✔️Final Delivery 1 week</p>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
-
-     
     </div>
   );
 }

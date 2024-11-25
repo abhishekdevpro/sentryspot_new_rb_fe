@@ -68,7 +68,7 @@ function Subscriberslist1() {
         ) : (
           <table className="min-w-full bg-dark text-black rounded-md text-center">
             <thead>
-              <tr className='bg-violet-300'>
+              <tr className="bg-violet-300">
                 <th className="py-2 px-4">Created At</th>
                 <th className="py-2 px-4">Email</th>
                 <th className="py-2 px-4">Subscription Status</th>
@@ -77,23 +77,28 @@ function Subscriberslist1() {
             </thead>
             <tbody>
               {users.map((user, index) => (
-                <tr key={index} className="border-t border-gray-700 text-center">
+                <tr
+                  key={index}
+                  className="border-t border-gray-700 text-center"
+                >
                   <td className="py-2 px-4">{user.created_at || "N/A"}</td>
                   <td className="py-2 px-4">{user.email || "N/A"}</td>
                   <td className="py-2 px-4">
                     <button
                       className={`border px-8 rounded-3xl py-2 ${
-                        user.is_subscribe === 1 ? 'bg-green-700' : 'bg-red-700'
-                      } text-white`}
+                        user.is_subscribe === 1 ? "bg-green-700" : "bg-red-700"
+                      } text-[#003479]`}
                     >
-                      {user.is_subscribe === 1 ? '🔔 Subscribed' : '🔕 Not Subscribed'}
+                      {user.is_subscribe === 1
+                        ? "🔔 Subscribed"
+                        : "🔕 Not Subscribed"}
                     </button>
                   </td>
                   <td className="py-2 px-4">
                     {user.is_subscribe === 1 && (
                       <button
                         onClick={() => handleUnsubscribe(user.email)}
-                        className="bg-red-500 text-white px-4 py-2 rounded-3xl"
+                        className="bg-red-500 text-[#003479] px-4 py-2 rounded-3xl"
                       >
                         🔕Unsubscribe
                       </button>

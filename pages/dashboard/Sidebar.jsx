@@ -9,7 +9,7 @@ const Sidebar = ({ onClose }) => {
   };
   const getLinkClassName = (path) => {
     return router.pathname === path
-      ? "flex items-center p-2 bg-violet-900 border-b-2 rounded font-semibold text-white"
+      ? "flex items-center p-2 bg-violet-900 border-b-2 rounded font-semibold text-[#003479]"
       : "flex items-center p-2 hover:bg-violet-900  border-b-2 rounded font-semibold  ";
   };
 
@@ -20,7 +20,7 @@ const Sidebar = ({ onClose }) => {
         <li>
           <Link
             href=""
-            className="flex items-center p-2 bg-blue-900 border-b-2 border-black font-semibold text-white"
+            className="flex items-center p-2 bg-blue-900 border-b-2 border-black font-semibold text-[#003479]"
             onClick={onClose} // Close sidebar on link click
           >
             <span className="mr-10 ">🖥️</span>
@@ -128,16 +128,16 @@ const Sidebar = ({ onClose }) => {
           </Link>
         </li>
         <li>
-          
           <Link
             href="/"
             className="flex items-center p-2 hover:bg-violet-900  border-b-2 rounded font-semibold"
-            onClick={() => { handleLogout(); }}>  
-          
+            onClick={() => {
+              handleLogout();
+            }}
+          >
             <span className="mr-2 ">🔓</span>
             <span>Log Out</span>
           </Link>
-          
         </li>
       </ul>
     </div>

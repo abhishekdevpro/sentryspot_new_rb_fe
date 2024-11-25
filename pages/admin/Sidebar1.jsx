@@ -13,7 +13,7 @@ const Sidebar1 = ({ onClose }) => {
 
   const getLinkClassName = (path) => {
     return location === path
-      ? "flex items-center p-2 bg-violet-900 border-b-2 rounded font-semibold text-white"
+      ? "flex items-center p-2 bg-violet-900 border-b-2 rounded font-semibold text-[#003479]"
       : "flex items-center p-2 hover:bg-violet-900 border-b-2 rounded font-semibold";
   };
   return (

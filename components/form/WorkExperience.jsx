@@ -124,7 +124,7 @@
 //             <label className="mt-2">Description</label>
 //             <button
 //               type="button"
-//               className="border bg-black text-white px-3 rounded-3xl"
+//               className="border bg-black text-[#003479] px-3 rounded-3xl"
 //               onClick={(e) => handleAssistClick(e, index)}
 //             >
 //               + AI Assist
@@ -290,7 +290,7 @@ const WorkExperience = () => {
             <label className="mt-2">Description</label>
             <button
               type="button"
-              className="border bg-black text-white px-3 rounded-3xl"
+              className="border bg-black text-[#fff] px-3 rounded-3xl"
               onClick={() => handleAIAssist(index)}
               disabled={isLoading}
             >

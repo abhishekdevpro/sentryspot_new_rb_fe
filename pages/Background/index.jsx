@@ -54,12 +54,11 @@ const Background = () => {
       {/* Selected Skills */}
       {selectedSkills.length > 0 && (
         <div className="my-8">
-        
           <div className="flex justify-center space-x-4">
             {selectedSkills.map((skill) => (
               <div
                 key={skill}
-                className="p-4 border rounded-lg text-center bg-gray-800 text-white cursor-pointer "
+                className="p-4 border rounded-lg text-center bg-gray-800 text-[#003479] cursor-pointer "
                 onClick={() => handleSkillSelect(skill)}
               >
                 {skill} ✓
@@ -77,13 +76,13 @@ const Background = () => {
             <div
               key={skill}
               onClick={() => handleSkillSelect(skill)}
-              className={`p-3 border rounded-lg border-gray-400 text-gray-800 text-center cursor-pointer hover:bg-blue-900 hover:text-white ${
+              className={`p-3 border rounded-lg border-gray-400 text-gray-800 text-center cursor-pointer hover:bg-blue-900 hover:text-[#003479] ${
                 selectedSkills.length >= 3
                   ? "cursor-not-allowed opacity-50"
                   : ""
               }`}
             >
-              {skill}{" "} +
+              {skill} +
             </div>
           ))}
       </div>
@@ -97,7 +96,9 @@ const Background = () => {
 
         <button
           className={`rounded-full p-2 px-10 text-lg font-bold text-black ${
-            selectedSkills.length === 3 ? "bg-yellow-500 cursor-pointer" : "bg-gray-300"
+            selectedSkills.length === 3
+              ? "bg-yellow-500 cursor-pointer"
+              : "bg-gray-300"
           }`}
           disabled={selectedSkills.length !== 3}
           onClick={handleContinue}

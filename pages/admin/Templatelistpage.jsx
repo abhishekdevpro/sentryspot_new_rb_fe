@@ -16,53 +16,93 @@ import Image from 'next/image';
 const Templatelistpage = () => {
   const boxes = [
     <Link href="" key="box1">
-      <div className="bg-violet-900 shadow-indigo-900 shadow-xl rounded-lg text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template1} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 shadow-indigo-900 shadow-xl rounded-lg text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template1}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box2">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template2} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template2}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box3">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template3} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template3}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box4">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template4} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template4}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box5">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template5} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template5}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box6">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template6} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template6}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box7">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template7} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template7}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box8">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template8} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template8}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box9">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template9} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template9}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
     <Link href="" key="box10">
-      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-white cursor-pointer text-3xl font-semibold box-hover-effect">
-        <Image src={template10} style={{height:"300px", width:"240px"}} alt="logo"/>
+      <div className="bg-violet-900 rounded-lg shadow-xl shadow-indigo-900 text-center text-[#003479] cursor-pointer text-3xl font-semibold box-hover-effect">
+        <Image
+          src={template10}
+          style={{ height: "300px", width: "240px" }}
+          alt="logo"
+        />
       </div>
     </Link>,
   ];

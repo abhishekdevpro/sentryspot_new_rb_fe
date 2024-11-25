@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import logo from "./logo.jpg";
+import logo from "./sentryspot-logo.png";
 import toast from "react-hot-toast";
 import Modal from "./Modal";
 import Signup from "./Signup";
@@ -34,8 +34,8 @@ const Login2 = () => {
 
     try {
       const response = await axios.post(
-        'https://api.sentryspot.co.uk/api/user/auth/login',
-        formData,
+        "https://api.sentryspot.co.uk/api/user/auth/login",
+        formData
       );
 
       if (response.status === 200) {
@@ -44,8 +44,8 @@ const Login2 = () => {
         console.log("Token", response.data.data.token);
         localStorage.setItem("token", response.data.data.token);
         localStorage.setItem("email", response.data.data.email);
-console.log( response.data.data.token)
-router.push("/dashboard/page");
+        console.log(response.data.data.token);
+        router.push("/dashboard/page");
       } else {
         toast.error("Failed to login");
       }
@@ -61,17 +61,18 @@ router.push("/dashboard/page");
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div className="flex justify-center items-center h-screen w-full">
         <div className="p-8 rounded-xl shadow-lg shadow-slate-700 w-full max-w-lg bg-white">
           <div className="flex justify-center mb-6">
-            <Image src={logo} className="w-40 h-10" alt="Logo" />
+            <Image src={logo} className="w-auto h-20" alt="Logo" />
           </div>
           <div className="text-2xl text-black text-center font-bold mb-4">
             Welcome Back
           </div>
           <p className="text-black text-base text-center mb-6">
-            People across the globe are joining us to upgrade their career with our Robust AI.
+            People across the globe are joining us to upgrade their career with
+            our Robust AI.
           </p>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
@@ -118,7 +119,9 @@ router.push("/dashboard/page");
             </div>
             <div className="text-center py-2">
               <Link href="/forgotpassword">
-                <label className="text-black cursor-pointer">Forgot Password?</label>
+                <label className="text-black cursor-pointer">
+                  Forgot Password?
+                </label>
               </Link>
             </div>
             <button
@@ -135,6 +138,6 @@ router.push("/dashboard/page");
       </Modal>
     </>
   );
-}
+};
 
 export default Login2;
