@@ -20,7 +20,7 @@ const Sidebar = ({ onClose }) => {
         <li>
           <Link
             href=""
-            className="flex items-center p-2 bg-[#003479] border-b-2 border-black font-semibold text-[#fff]"
+            className="flex items-center p-2 bg-[#003479] border-b-2 border-black font-semibold text-black"
             onClick={onClose} // Close sidebar on link click
           >
             <span className="mr-10 ">🖥️</span>
