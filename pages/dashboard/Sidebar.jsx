@@ -10,7 +10,7 @@ const Sidebar = ({ onClose }) => {
   const getLinkClassName = (path) => {
     return router.pathname === path
       ? "flex items-center p-2 bg-[#e60278] border-b-2 rounded font-semibold text-[#fff]"
-      : "flex items-center p-2 hover:bg-[#e60278]  border-b-2 rounded font-semibold text-[#fff] ";
+      : "flex items-center p-2 hover:bg-[#e60278]  border-b-2 rounded font-semibold text-black ";
   };
 
   return (
@@ -20,7 +20,7 @@ const Sidebar = ({ onClose }) => {
         <li>
           <Link
             href=""
-            className="flex items-center p-2 bg-[#003479] border-b-2 border-black font-semibold text-black"
+            className="flex items-center p-2 bg-[#003479] border-b-2 border-black font-semibold text-[#fff]"
             onClick={onClose} // Close sidebar on link click
           >
             <span className="mr-10 ">🖥️</span>
