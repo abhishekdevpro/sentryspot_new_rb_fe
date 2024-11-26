@@ -130,7 +130,7 @@ const Sidebar = ({ onClose }) => {
         <li>
           <Link
             href="/"
-            className="flex items-center p-2 hover:bg-[#e60278] text-white border-b-2 rounded font-semibold"
+            className="flex items-center p-2 hover:bg-[#e60278] text-black border-b-2 rounded font-semibold"
             onClick={() => {
               handleLogout();
             }}
