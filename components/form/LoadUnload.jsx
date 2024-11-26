@@ -362,15 +362,15 @@ console.log(token)
             <nav class="border-b-2 bg-gray-300 bg">
               <div
                 class="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4"
-                style={{ backgroundColor: "#4C3957" }}
+                style={{ backgroundColor: "#fff" }}
               >
                 <a
                   href="#"
                   class="flex items-center space-x-3 rtl:space-x-reverse"
                 >
                   <img
-                    src="https://sentryspotfe.vercel.app/assets/logo-c5bcd0df.png"
-                    class="h-8"
+                    src="https://sentryspotfe.vercel.app/assets/logo-32a042d4.png"
+                    class="h-20 w-auto"
                     alt="Flowbite Logo"
                   />
                 </a>
@@ -430,7 +430,7 @@ console.log(token)
                   className={`p-2 mt-4 w-full text-[white] bg-[#003479] rounded ${
                     loading
                       ? "opacity-50 cursor-not-allowed"
-                      : "hover:bg-green-600 transition"
+                      : "hover:bg-sky-900 transition"
                   }`}
                   onClick={handleUpload}
                   disabled={loading}
