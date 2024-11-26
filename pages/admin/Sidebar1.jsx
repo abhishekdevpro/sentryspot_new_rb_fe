@@ -13,16 +13,17 @@ const Sidebar1 = ({ onClose }) => {
 
   const getLinkClassName = (path) => {
     return location === path
-      ? "flex items-center p-2 bg-violet-900 border-b-2 rounded font-semibold text-[#003479]"
-      : "flex items-center p-2 hover:bg-violet-900 border-b-2 rounded font-semibold";
+      ? "flex items-center p-2 bg-[#e60278] border-b-2 rounded font-semibold text-[#fff]"
+      : "flex items-center p-2 hover:bg-[#e60278]  border-b-2 rounded font-semibold text-[#fff] ";
   };
+
   return (
     <div className="bg-white h-screen p-4 border-r border-gray-200 md:block">
       {/* Sidebar links */}
       <ul className="space-y-2 mt-4">
         <li>
           <Link
-           href="/"
+            href="/"
             className={getLinkClassName("/")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -32,7 +33,7 @@ const Sidebar1 = ({ onClose }) => {
         </li>
         <li>
           <Link
-           href="profile"
+            href="profile"
             className={getLinkClassName("/admin/profile")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -40,10 +41,10 @@ const Sidebar1 = ({ onClose }) => {
             <span>Admin</span>
           </Link>
         </li>
-        
+
         <li>
           <Link
-           href="customer"
+            href="customer"
             className={getLinkClassName("/admin/customer")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -53,7 +54,7 @@ const Sidebar1 = ({ onClose }) => {
         </li>
         <li>
           <Link
-           href="templatelist"
+            href="templatelist"
             className={getLinkClassName("/admin/templatelist")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -61,10 +62,10 @@ const Sidebar1 = ({ onClose }) => {
             <span>My Templates</span>
           </Link>
         </li>
-       
+
         <li>
           <Link
-           href="addreferall1"
+            href="addreferall1"
             className={getLinkClassName("/admin/addreferall1")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -74,7 +75,7 @@ const Sidebar1 = ({ onClose }) => {
         </li>
         <li>
           <Link
-           href="payment1"
+            href="payment1"
             className={getLinkClassName("/admin/payment1")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -84,7 +85,7 @@ const Sidebar1 = ({ onClose }) => {
         </li>
         <li>
           <Link
-           href="subscriberslist"
+            href="subscriberslist"
             className={getLinkClassName("/admin/subscriberslist")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -94,7 +95,7 @@ const Sidebar1 = ({ onClose }) => {
         </li>
         <li>
           <Link
-           href="reffreraluser"
+            href="reffreraluser"
             className={getLinkClassName("/admin/reffreraluser")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -104,7 +105,7 @@ const Sidebar1 = ({ onClose }) => {
         </li>
         <li>
           <Link
-           href="addreferalladmin"
+            href="addreferalladmin"
             className={getLinkClassName("/admin/addreferalladmin")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -114,7 +115,7 @@ const Sidebar1 = ({ onClose }) => {
         </li>
         <li>
           <Link
-           href="reffreraladmin"
+            href="reffreraladmin"
             className={getLinkClassName("/admin/reffreraladmin")}
             onClick={onClose} // Close sidebar on link click
           >
@@ -122,14 +123,15 @@ const Sidebar1 = ({ onClose }) => {
             <span>Referral </span>
           </Link>
         </li>
-       
+
         <li>
-          
           <Link
-           href="/"
-            className="flex items-center p-2 hover:bg-violet-900  border-b-2 rounded font-semibold"
-            onClick={() => { handleLogout(); }}>  
-          
+            href="/"
+            className="flex items-center p-2 hover:bg-[#e60278] text-white border-b-2 rounded font-semibold"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
             <span className="mr-2 ">🔓</span>
             <span>Log Out</span>
           </Link>
