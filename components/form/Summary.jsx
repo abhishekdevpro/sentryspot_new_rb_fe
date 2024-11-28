@@ -16,7 +16,7 @@ const Summary = () => {
       const location = localStorage.getItem("location");
       
       const response = await axios.post(
-        'https://api.resumeintellect.com/api/user/ai-resume-summery-data',
+        'https://api.sentryspot.co.uk/api/jobseeker/ai-resume-summery-data',
         {
           key: "resumesummery",
           keyword: "professional summery in manner of description",
