@@ -78,7 +78,7 @@ export default function Builder({ onClose }) {
     };
 
     // Make the API call to initiate download
-    axios.post('https://api.sentryspot.co.uk/api/user/paypal/create-payment', payload, {
+    axios.post('https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment', payload, {
       headers: { 'Content-Type': 'application/json' }, // Use JSON content type
     })
 

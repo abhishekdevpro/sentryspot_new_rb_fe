@@ -31,7 +31,7 @@ function Subscriberslist1() {
 
     try {
       await axios.post(
-        'https://api.sentryspot.co.uk/api/user/user-subscribe',
+        'https://api.sentryspot.co.uk/api/jobseeker/user-subscribe',
         { email },  // Sending email in the body
         {
           headers: {

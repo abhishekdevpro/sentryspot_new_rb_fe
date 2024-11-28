@@ -48,7 +48,7 @@ function Signup() {
 
     try {
       const response = await axios.post(
-        "https://api.sentryspot.co.uk/api/user/auth/signup",
+        "https://api.sentryspot.co.uk/api/jobseeker/auth/signup",
         body,
         {
           headers: {

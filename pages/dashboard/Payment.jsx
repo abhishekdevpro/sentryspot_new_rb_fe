@@ -15,7 +15,7 @@ function Payment() {
         Token: token || '' // Ensure the field name matches the API expectation
       };
   
-      axios.post('https://api.sentryspot.co.uk/api/user/paypal/create-payment', payload, {
+      axios.post('https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment', payload, {
         headers: { 'Content-Type': 'application/json' }, // Use JSON content type
       })
       .then(response => {
@@ -44,7 +44,7 @@ function Payment() {
         Token: token || '' // Ensure the field name matches the API expectation
       };
   
-      axios.post('https://api.sentryspot.co.uk/api/user/paypal/create-payment', payload, {
+      axios.post('https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment', payload, {
         headers: { 'Content-Type': 'application/json' }, // Use JSON content type
       })
       .then(response => {

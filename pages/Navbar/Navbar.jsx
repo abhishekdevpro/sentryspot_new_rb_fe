@@ -23,10 +23,10 @@ const Navbar = () => {
       const checkApiSuccess = async () => {
         try {
           const response = await fetch(
-            "https://api.sentryspot.co.uk/api/user/user-profile",
+            "https://api.sentryspot.co.uk/api/jobseeker/user-profile",
             {
               headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `${token}`,
               },
             }
           );

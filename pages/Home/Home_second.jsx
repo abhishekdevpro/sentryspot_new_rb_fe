@@ -28,7 +28,7 @@ function Home_second() {
       Phone: phone,
     };
 
-    axios.post('https://api.sentryspot.co.uk/api/user/paypal/create-payment', payload, {
+    axios.post('https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment', payload, {
       headers: { 'Content-Type': 'application/json' },
     })
     .then(response => {
@@ -66,7 +66,7 @@ function Home_second() {
       Phone: phone1,
     };
 
-    axios.post('https://api.sentryspot.co.uk/api/user/paypal/create-payment', payload, {
+    axios.post('https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment', payload, {
       headers: { 'Content-Type': 'application/json' },
     })
     .then(response => {

@@ -17,7 +17,7 @@ const Footer = () => {
     // Sending raw JSON data in the POST request
     axios
       .post(
-        "https://api.sentryspot.co.uk/api/user/user-subscribe",
+        "https://api.sentryspot.co.uk/api/jobseeker/user-subscribe",
         JSON.stringify({ email }), // Sending email in raw JSON
         {
           headers: {

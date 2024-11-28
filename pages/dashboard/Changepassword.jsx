@@ -42,7 +42,7 @@ function Changepassword() {
 
     axios({
       method: "PUT",
-      url: "https://api.sentryspot.co.uk/api/user/change-password",
+      url: "https://api.sentryspot.co.uk/api/jobseeker/change-password",
       headers: {
         Authorization: token,
         "Content-type": "application/json",

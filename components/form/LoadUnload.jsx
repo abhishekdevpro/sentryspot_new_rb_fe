@@ -50,7 +50,7 @@
 //     setLoading(true);
 //     setShowLoadingAnimation(true);
 //     try {
-//       const response = await axios.post("https://api.sentryspot.co.uk/api/user/resume-upload", formData, {
+//       const response = await axios.post("https://api.sentryspot.co.uk/api/jobseeker/resume-upload", formData, {
 //         headers: {
 //           "Content-Type": "multipart/form-data",
 //           Authorization: token,
@@ -91,7 +91,7 @@
 //     setShowLoadingAnimation(true);
 //     try {
 //       const response = await axios.post(
-//         "https://api.sentryspot.co.uk/api/user/resume-create",
+//         "https://api.sentryspot.co.uk/api/jobseeker/resume-create",
 //         {},
 //         { headers: { Authorization: token } }
 //       );
