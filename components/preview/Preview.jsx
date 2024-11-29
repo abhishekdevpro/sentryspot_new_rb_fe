@@ -349,7 +349,7 @@ import { CgWebsite } from "react-icons/cg";
 import React, { useContext, useState, useEffect } from "react";
 import { ResumeContext } from "../../pages/builder";
 import dynamic from "next/dynamic";
-import { HighlightMenu } from "react-highlight-menu";
+// import { HighlightMenu } from "react-highlight-menu";
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
 import Template1 from "./Template1";
 import Template2 from "./Template2";
@@ -555,7 +555,8 @@ const Preview = ({ selectedTemplate }) => {
     <div>
       <A4PageWrapper>
       <div style={{ fontFamily: selectedFont }}>
-      <HighlightMenu
+
+      {/* <HighlightMenu
           styles={{
             borderColor: "",
             backgroundColor: "#c5c9c9",
@@ -612,7 +613,7 @@ const Preview = ({ selectedTemplate }) => {
                 icon={<FaLink />}
                 onClick={toggleLink}
               />
-              {/* Grammar Check Button */}
+            
               <MenuButton
                 title="Check Grammar"
                 icon={<FaSpellCheck />}
@@ -620,7 +621,7 @@ const Preview = ({ selectedTemplate }) => {
               />
             </>
           )}
-        />
+        /> */}
         <DragDropContext onDragEnd={onDragEnd}>
           {templates[selectedTemplate]}
         </DragDropContext>

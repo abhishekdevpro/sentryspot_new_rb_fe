@@ -90,12 +90,19 @@
 // };
 
 // export default Skill;
-import React, { useContext } from "react";
+
+import React, { useContext, useState } from "react";
 import { ResumeContext } from "../../pages/builder";
+import axios from "axios";
 import FormButton from "./FormButton";
 
 const Skill = ({ title }) => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [aiSkills, setAiSkills] = useState([]); // State for AI skills
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [selectedSkills, setSelectedSkills] = useState([]); // State to hold selected skills
 
   // Handle skill change
   const handleSkill = (e, index, title) => {
@@ -164,6 +171,127 @@ const Skill = ({ title }) => {
     });
   };
 
+  // API call for AI assistance based on title
+  // const handleAIAssist = async () => {
+  //   setLoading(true);
+  //   setError(null);
+  //   setAiSkills([]); // Clear previous AI skills
+
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     const skillType = resumeData.skills.find((skillType) => skillType.title === title);
+
+  //     if (!skillType || !skillType.skills.length) {
+  //       setError("No skills found for this category.");
+  //       return;
+  //     }
+
+  //     const response = await axios.post(
+  //       "https://api.sentryspot.co.uk/api/jobseeker/ai-skills-data",
+  //       {
+  //         key: "skills",
+  //         keyword: title, // Use the skill title (e.g., "Technical Skills")
+  //         content: resumeData.position || "Job Title", // Use the position or job title
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: token,
+  //         },
+  //       }
+  //     );
+
+  //     if (response.data.status === "success") {
+  //       // Update AI skills state with the response
+  //       setAiSkills(response.data.skills);
+  //       setIsModalOpen(true); // Open the modal after receiving skills
+  //     } else {
+  //       setError("Unable to fetch AI data. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error getting AI skills data:", error);
+  //     setError("An error occurred while fetching skills data. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  const handleAIAssist = async () => {
+    setLoading(true);
+    setError(null);
+    setAiSkills([]); // Clear previous AI skills
+
+    try {
+      const token = localStorage.getItem("token");
+      const skillType = resumeData.skills.find(
+        (skillType) => skillType.title === title
+      );
+
+      if (!skillType || !skillType.skills.length) {
+        setError("No skills found for this category.");
+        return;
+      }
+
+      const response = await axios.post(
+        "https://api.sentryspot.co.uk/api/jobseeker/ai-skills-data",
+        {
+          key: "skills",
+          keyword: title, // Use the skill title (e.g., "Technical Skills")
+          content: resumeData.position || "Job Title", // Use the position or job title
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      if (response.data.status === "success") {
+        // Update AI skills state with the response from the correct path
+        setAiSkills(response.data.data.resume_analysis.skills); // Correctly access the skills
+        setIsModalOpen(true); // Open the modal after receiving skills
+      } else {
+        setError("Unable to fetch AI data. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error getting AI skills data:", error);
+      setError(
+        "An error occurred while fetching skills data. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle skill selection from AI modal
+  const handleSelectSkill = (skill) => {
+    setSelectedSkills((prevSelectedSkills) => {
+      if (prevSelectedSkills.includes(skill)) {
+        return prevSelectedSkills.filter((s) => s !== skill); // Deselect skill
+      } else {
+        return [...prevSelectedSkills, skill]; // Select skill
+      }
+    });
+  };
+
+  // Add selected skills to the input field
+  const addSelectedSkills = () => {
+    setResumeData((prevData) => {
+      const skillType = prevData.skills.find(
+        (skillType) => skillType.title === title
+      );
+      if (!skillType) return prevData;
+
+      const newSkills = [...skillType.skills, ...selectedSkills];
+      const updatedSkills = prevData.skills.map((skill) =>
+        skill.title === title ? { ...skill, skills: newSkills } : skill
+      );
+      return {
+        ...prevData,
+        skills: updatedSkills,
+      };
+    });
+    setIsModalOpen(false); // Close modal after adding skills
+  };
+
   const skillType = resumeData.skills.find(
     (skillType) => skillType.title === title
   );
@@ -221,7 +349,67 @@ const Skill = ({ title }) => {
         >
           Delete All Skills
         </button>
+        <button
+          type="button"
+          onClick={handleAIAssist} // Trigger API call with the current title
+          className="border bg-black text-white px-3 rounded-3xl"
+          disabled={loading}
+        >
+          {loading ? "Loading..." : " + AI Assist"}
+        </button>
       </div>
+
+      {/* Modal for AI skill selection */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-xl w-96">
+            <h3 className="text-xl mb-4">Select AI Skills</h3>
+            <ul className="space-y-2">
+              {/* {aiSkills.length > 0 ? (
+                aiSkills.map((skill, index) => (
+                  <li key={index} className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={selectedSkills.includes(skill)}
+                      onChange={() => handleSelectSkill(skill)}
+                    />
+                    <span>{skill}</span>
+                  </li>
+                ))
+              ) : (
+                <li>No AI skills available.</li>
+              )} */}
+              {Array.isArray(aiSkills) && aiSkills.length > 0 ? (
+                aiSkills.map((skill, index) => (
+                  <li key={index} className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={selectedSkills.includes(skill)}
+                      onChange={() => handleSelectSkill(skill)}
+                    />
+                    <span>{skill}</span>
+                  </li>
+                ))
+              ) : (
+                <li>No AI skills available.</li> // Fallback message
+              )}
+            </ul>
+            <button
+              className="mt-4 px-4 py-2 bg-gray-300 rounded-lg"
+              onClick={addSelectedSkills} // Add selected skills
+            >
+              Add Selected Skills
+            </button>
+            <button
+              className="mt-4 ml-2 px-4 py-2 bg-gray-300 rounded-lg"
+              onClick={() => setIsModalOpen(false)} // Close modal
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      {error && <p className="text-red-500 mt-2">{error}</p>}
     </div>
   );
 };

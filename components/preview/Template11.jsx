@@ -39,7 +39,10 @@ const Template11 = () => {
 
     return (
       <div className="max-w-4xl mx-auto bg-white p-8 border border-gray-200 rounded-lg shadow-lg">
-        <div className="header flex bg-[#2b3d63] text-white p-5 items-center" style={{ backgroundColor: backgroundColorss }}>
+        <div
+          className="header flex bg-[#2b3d63] text-white p-5 items-center"
+          style={{ backgroundColor: backgroundColorss }}
+        >
           <div className="profile-pic mr-5">
             {/* <img
             src="profile-pic.jpg"
@@ -64,10 +67,23 @@ const Template11 = () => {
         <div className="main-content flex p-5">
           <div className="left-column flex-1 p-5">
             <div className="about-me mb-5">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5"  style={{ color: headerColor,backgroundColor: backgroundColorss }}>About Me</h2>
-              <p>
+              <h2
+                className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5"
+                style={{
+                  color: headerColor,
+                  backgroundColor: backgroundColorss,
+                }}
+              >
+                About Me
+              </h2>
+              {/* <p>
                 {resumeData.summary}
-              </p>
+              </p> */}
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: resumeData.summary,
+                }}
+              />
             </div>
             <div className="contact mb-5">
               <ContactInfo
@@ -82,7 +98,15 @@ const Template11 = () => {
               />
             </div>
             <div className="skills-summary mb-5">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5" style={{ color: headerColor,backgroundColor: backgroundColorss }}>Skills Summary</h2>
+              <h2
+                className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5"
+                style={{
+                  color: headerColor,
+                  backgroundColor: backgroundColorss,
+                }}
+              >
+                Skills Summary
+              </h2>
               <ul className="list-none p-0">
                 <Droppable droppableId="skills" type="SKILLS">
                   {(provided) => (
@@ -98,11 +122,15 @@ const Template11 = () => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                              className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                                snapshot.isDragging &&
                                 "outline-dashed outline-2 outline-gray-400 bg-white"
-                                }`}
+                              }`}
                             >
-                              <Skills title={skill.title} skills={skill.skills} />
+                              <Skills
+                                title={skill.title}
+                                skills={skill.skills}
+                              />
                             </div>
                           )}
                         </Draggable>
@@ -111,19 +139,28 @@ const Template11 = () => {
                     </div>
                   )}
                 </Droppable>
-
               </ul>
             </div>
           </div>
           <div className="right-column flex-1 p-5">
             <div className="experience mb-5">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5" style={{ color: headerColor ,backgroundColor: backgroundColorss}}>Experience</h2>
+              <h2
+                className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5"
+                style={{
+                  color: headerColor,
+                  backgroundColor: backgroundColorss,
+                }}
+              >
+                Experience
+              </h2>
               <div className="experience-item mb-4">
                 {resumeData.workExperience.length > 0 && (
-                  <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
+                  <Droppable
+                    droppableId="work-experience"
+                    type="WORK_EXPERIENCE"
+                  >
                     {(provided) => (
                       <div {...provided.droppableProps} ref={provided.innerRef}>
-                      
                         {resumeData.workExperience.map((item, index) => (
                           <Draggable
                             key={`${item.company}-${index}`}
@@ -135,19 +172,25 @@ const Template11 = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                                  snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
-                                  }`}
+                                }`}
                               >
                                 <div className="flex flex-row justify-between space-y-1">
-                                  <p className="content i-bold">{item.company}</p>
+                                  <p className="content i-bold">
+                                    {item.company}
+                                  </p>
                                   <DateRange
                                     startYear={item.startYear}
                                     endYear={item.endYear}
                                     id={`work-experience-start-end-date`}
                                   />
                                 </div>
-                                <p className="content">{item.position}</p>
+                                <div className="flex flex-row justify-between space-y-1">
+                                  <p className="content">{item.position}</p>
+                                  <p className="content">{item.location}</p>
+                                </div>
                                 <p className="content hyphens-auto">
                                   {item.description}
                                 </p>
@@ -161,7 +204,8 @@ const Template11 = () => {
                                       {...provided.droppableProps}
                                       ref={provided.innerRef}
                                     >
-                                      {typeof item.keyAchievements === "string" &&
+                                      {typeof item.keyAchievements ===
+                                        "string" &&
                                         item.keyAchievements
                                           .split("\n")
                                           .map((achievement, subIndex) => (
@@ -177,9 +221,10 @@ const Template11 = () => {
                                                   {...provided.dragHandleProps}
                                                   className={`
                                           hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${snapshot.isDragging &&
-                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
-                                                    }`}
+                                          ${
+                                            snapshot.isDragging &&
+                                            "outline-dashed outline-2 outline-gray-400 bg-white"
+                                          }`}
                                                 >
                                                   <div
                                                     dangerouslySetInnerHTML={{
@@ -212,7 +257,8 @@ const Template11 = () => {
                           className="section-title mb-1 border-b-2 border-gray-300 editable"
                           contentEditable
                           suppressContentEditableWarning
-                          style={{ color: headerColor }}  >
+                          style={{ color: headerColor }}
+                        >
                           Projects
                         </h2>
                         {resumeData.projects.map((item, index) => (
@@ -226,9 +272,10 @@ const Template11 = () => {
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                                  snapshot.isDragging &&
                                   "outline-dashed outline-2 outline-gray-400 bg-white"
-                                  }`}
+                                }`}
                               >
                                 <div className="flex flex-row justify-between space-y-1">
                                   <p className="content i-bold">{item.name}</p>
@@ -257,7 +304,8 @@ const Template11 = () => {
                                       {...provided.droppableProps}
                                       ref={provided.innerRef}
                                     >
-                                      {typeof item.keyAchievements === "string" &&
+                                      {typeof item.keyAchievements ===
+                                        "string" &&
                                         item.keyAchievements
                                           .split("\n")
                                           .map((achievement, subIndex) => (
@@ -273,9 +321,10 @@ const Template11 = () => {
                                                   {...provided.dragHandleProps}
                                                   className={`
                                           hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${snapshot.isDragging &&
-                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
-                                                    }`}
+                                          ${
+                                            snapshot.isDragging &&
+                                            "outline-dashed outline-2 outline-gray-400 bg-white"
+                                          }`}
                                                 >
                                                   <div
                                                     dangerouslySetInnerHTML={{
@@ -292,9 +341,7 @@ const Template11 = () => {
                                   )}
                                 </Droppable>
                               </div>
-
                             )}
-
                           </Draggable>
                         ))}
                         {provided.placeholder}
@@ -303,12 +350,17 @@ const Template11 = () => {
                   </Droppable>
                 )}
               </div>
-
-
-
             </div>
             <div className="education">
-              <h2 className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5" style={{ color: headerColor,backgroundColor: backgroundColorss }}>Education</h2>
+              <h2
+                className="bg-[#2b3d63] text-white p-3 -mx-5 mb-5"
+                style={{
+                  color: headerColor,
+                  backgroundColor: backgroundColorss,
+                }}
+              >
+                Education
+              </h2>
               {resumeData.education.length > 0 && (
                 <div className="mb-1">
                   {resumeData.education.map((item, index) => (
@@ -320,11 +372,11 @@ const Template11 = () => {
                         endYear={item.endYear}
                         id={`education-start-end-date`}
                       />
+                      <p className="content">{item.location}</p>
                     </div>
                   ))}
                 </div>
               )}
-
             </div>
           </div>
         </div>
