@@ -136,6 +136,9 @@
 
 // export default Summary;
 
+
+
+
 import React, { useContext, useState } from "react";
 import { ResumeContext } from "../../pages/builder";
 import axios from "axios";
@@ -151,52 +154,6 @@ const Summary = () => {
   const [summaries, setSummaries] = useState([]); // Store all summaries
   const [showPopup, setShowPopup] = useState(false); // Control popup visibility
   const [selectedSummaryIndex, setSelectedSummaryIndex] = useState(null); // Track selected summary index
-
-  // const handleAIAssist = async () => {
-  //   setLoading(true);
-  //   setError(null);
-
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     const location = localStorage.getItem("location");
-
-  //     const response = await axios.post(
-  //       "https://api.sentryspot.co.uk/api/jobseeker/ai-resume-summery-data",
-  //       {
-  //         key: "resumesummery",
-  //         keyword: "professional summery in manner of description",
-  //         content: resumeData.position,
-  //         file_location: location,
-  //       },
-  //       {
-  //         headers: {
-  //           Authorization: token,
-  //         },
-  //       }
-  //     );
-
-  //     // Log the full response to check the structure
-  //     console.log("API Response:", response);
-
-  //     if (
-  //       response.data.status === "success" &&
-  //       response.data.data?.resume_analysis?.professional_summaries
-  //     ) {
-  //       setSummaries(response.data.data.resume_analysis.professional_summaries); // Store all summaries
-  //       setShowPopup(true); // Show the popup/modal
-  //     } else {
-  //       // If no professional_summaries are found in the response
-  //       setError("Unable to fetch summaries. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error getting AI summaries:", error);
-  //     setError("An error occurred while fetching summaries. Please try again.");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // Handle summary selection
 
   const handleAIAssist = async () => {
     setLoading(true);
@@ -245,11 +202,16 @@ const Summary = () => {
 
   const handleSummarySelect = (index) => {
     setSelectedSummaryIndex(index);
-    setResumeData({
-      ...resumeData,
-      summary: summaries[index], // Set the selected summary in Quill editor
-    });
-    setShowPopup(false); // Close the popup
+  };
+
+  const handleAddSummary = () => {
+    if (selectedSummaryIndex !== null) {
+      setResumeData({
+        ...resumeData,
+        summary: summaries[selectedSummaryIndex], // Set the selected summary in Quill editor
+      });
+      setShowPopup(false); // Close the popup
+    }
   };
 
   // Handle Quill editor content change
@@ -334,7 +296,8 @@ const Summary = () => {
               {summaries.map((summary, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <input
-                    type="checkbox"
+                    type="radio"
+                    name="summary"
                     checked={selectedSummaryIndex === index}
                     onChange={() => handleSummarySelect(index)}
                     className="mt-1"
@@ -343,12 +306,21 @@ const Summary = () => {
                 </div>
               ))}
             </div>
-            <button
-              onClick={() => setShowPopup(false)}
-              className="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600"
-            >
-              Close
-            </button>
+            <div className="mt-4 flex justify-end gap-4">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600"
+              >
+                Close
+              </button>
+              <button
+                onClick={handleAddSummary}
+                className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500"
+                disabled={selectedSummaryIndex === null} // Disable if no summary is selected
+              >
+                Add
+              </button>
+            </div>
           </div>
         </div>
       )}
