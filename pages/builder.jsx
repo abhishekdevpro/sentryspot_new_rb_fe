@@ -288,96 +288,114 @@ export default function Builder({ onClose }) {
         />
 
         {!isFinished && (
-          <div className="flex"> 
-           <LoadUnload/>
-           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <MyResume  />
-      </Modal>
-     
-           <div>
-           <div className="lg:flex justify-between bg-gray-200 p-2 px-5">
-              {/* <button
+          <div className="flex min-h-screen flex flex-col items-center bg-gray-100">
+            <LoadUnload />
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+              <MyResume />
+            </Modal>
+
+            <div>
+              <div className="lg:flex justify-between bg-gray-200 p-2 px-5">
+                {/* <button
                 type="button"
                 onClick={toggleSidebar}
                 className="p-2 bg-blue-900 text-white rounded-lg"
               >
                 {isSidebarOpen ? "☰" : "☰"}
               </button> */}
-              <button
-                type="button"
-                onClick={handlePrevious}
-                disabled={currentSection === 0}
-                className="rounded-lg border-2 bg-blue-950  w-full lg:w-40 text-white px-10 py-1"
-              >
-                Previous
-              </button>
-
-              <div className="lg:flex gap- content-center  justify-between bg-gray-200 p-1 px-5 hidden">
-                <select
-                  value={selectedFont}
-                  onChange={handleFontChange}
-                  className="rounded-lg border-2 border-blue-800 px-8 p- font-bold text-blue-800 lg:block hidden"
+                <button
+                  type="button"
+                  onClick={handlePrevious}
+                  disabled={currentSection === 0}
+                  className="rounded-lg border-2 bg-blue-950  w-full lg:w-40 text-white px-10 py-1"
                 >
-                  <option value="Ubuntu">Ubuntu</option>
-                  <option value="Calibri">Calibri</option>
-                  <option value="Georgia">Georgia</option>
-                  <option value="Roboto">Roboto</option>
-                  <option value="Poppins">Poppins</option>
-                </select>
-                <ColorPicker selectedColor={headerColor} onChange={setHeaderColor} />
-                <ColorPickers selectmultiplecolor={backgroundColorss} onChange={setBgColor} />
-                <TemplateSelector selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} />
-              </div>
+                  Previous
+                </button>
 
-              <button
-                type="button"
-                onClick={handleNext}
-                className="rounded-lg px-10 font-bold bg-yellow-500 w-full lg:w-40 text-black p-1"
-              >
-                {currentSection === sections.length - 1 ? "Finish" : "Next"}
-              </button>
-             
-            </div>
-
-            <div className="flex   md:mx-auto md:h-screen overflow-y-auto" style={{ fontFamily: selectedFont }}>
-
-              <div className="md:flex lg:block hidden">
-                <aside
-                  className={` h-full bg-gray-100 p-4   transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out`}
-                >
-                  <ul className="space-y-6 text-center">
-                    {sections.map((section, index) => (
-                      <li
-                        key={index}
-                        className={`p-2 cursor-pointer ${currentSection === index ? "rounded-3xl border-y-2 border-blue-800 font-bold bg-blue-950 text-white" : "border-2 bg-white border-blue-800 rounded-3xl text-blue-800"}`}
-                        onClick={() => handleSectionClick(index)}
-                      >
-                        {section.label}
-                      </li>
-                    ))}
-                  </ul>
-                </aside>
-              </div>
-
-              <form className=" p-">
-                {sections[currentSection].component}
-              </form>
-
-              <PDFExport ref={pdfExportComponent} {...pdfExportOptions}>
-                <div id="preview-section" className="bg-white lg:block hidden">
-                  <Preview selectedTemplate={selectedTemplate} />
+                <div className="lg:flex gap- content-center  justify-between bg-gray-200 p-1 px-5 hidden">
+                  <select
+                    value={selectedFont}
+                    onChange={handleFontChange}
+                    className="rounded-lg border-2 border-blue-800 px-8 p- font-bold text-blue-800 lg:block hidden"
+                  >
+                    <option value="Ubuntu">Ubuntu</option>
+                    <option value="Calibri">Calibri</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Roboto">Roboto</option>
+                    <option value="Poppins">Poppins</option>
+                  </select>
+                  <ColorPicker
+                    selectedColor={headerColor}
+                    onChange={setHeaderColor}
+                  />
+                  <ColorPickers
+                    selectmultiplecolor={backgroundColorss}
+                    onChange={setBgColor}
+                  />
+                  <TemplateSelector
+                    selectedTemplate={selectedTemplate}
+                    setSelectedTemplate={setSelectedTemplate}
+                  />
                 </div>
-              </PDFExport>
-            </div>
+
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="rounded-lg px-10 font-bold bg-yellow-500 w-full lg:w-40 text-black p-1"
+                >
+                  {currentSection === sections.length - 1 ? "Finish" : "Next"}
+                </button>
+              </div>
+
+              <div
+                className="flex   md:mx-auto md:h-screen overflow-y-auto"
+                style={{ fontFamily: selectedFont }}
+              >
+                <div className="md:flex lg:block hidden">
+                  <aside
+                    className={` h-full bg-gray-100 p-4   transform ${
+                      isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+                    } transition-transform duration-300 ease-in-out`}
+                  >
+                    <ul className="space-y-6 text-center">
+                      {sections.map((section, index) => (
+                        <li
+                          key={index}
+                          className={`p-2 cursor-pointer ${
+                            currentSection === index
+                              ? "rounded-3xl border-y-2 border-blue-800 font-bold bg-blue-950 text-white"
+                              : "border-2 bg-white border-blue-800 rounded-3xl text-blue-800"
+                          }`}
+                          onClick={() => handleSectionClick(index)}
+                        >
+                          {section.label}
+                        </li>
+                      ))}
+                    </ul>
+                  </aside>
+                </div>
+
+                <form className=" p-">
+                  {sections[currentSection].component}
+                </form>
+
+                <PDFExport ref={pdfExportComponent} {...pdfExportOptions}>
+                  <div
+                    id="preview-section"
+                    className="bg-white lg:block hidden"
+                  >
+                    <Preview selectedTemplate={selectedTemplate} />
+                  </div>
+                </PDFExport>
+              </div>
             </div>
           </div>
         )}
-         {isFinished && (
+        {isFinished && (
           <div className="p-">
             <div className="lg:flex lg:justify-between  bg-gray-200 p-2 px-5">
               <div className="lg:flex flex-row gap-4 justify-center bg-gray-200">
-                
-              <select
+                <select
                   value={selectedFont}
                   onChange={handleFontChange}
                   className="px-4 py-2 border rounded-lg"
@@ -388,18 +406,27 @@ export default function Builder({ onClose }) {
                   <option value="Roboto">Roboto</option>
                   <option value="Poppins">Poppins</option>
                 </select>
-                <ColorPicker selectedColor={headerColor} onChange={setHeaderColor} />
-                <ColorPickers selectmultiplecolor={backgroundColorss} onChange={setBgColor} />
-                <TemplateSelector selectedTemplate={selectedTemplate} setSelectedTemplate={setSelectedTemplate} />
+                <ColorPicker
+                  selectedColor={headerColor}
+                  onChange={setHeaderColor}
+                />
+                <ColorPickers
+                  selectmultiplecolor={backgroundColorss}
+                  onChange={setBgColor}
+                />
+                <TemplateSelector
+                  selectedTemplate={selectedTemplate}
+                  setSelectedTemplate={setSelectedTemplate}
+                />
               </div>
               <button
-          type="button"
-          onClick={handleFinish}
-         // disabled={isFinished} // Optional, disable if already finished
-          className="bg-blue-950 text-white px-5 py-2 rounded-lg"
-        >
-          Save
-        </button>
+                type="button"
+                onClick={handleFinish}
+                // disabled={isFinished} // Optional, disable if already finished
+                className="bg-blue-950 text-white px-5 py-2 rounded-lg"
+              >
+                Save
+              </button>
               <button
                 type="button"
                 className="rounded-lg px-10 lg:ms-2 font-bold bg-blue-950 text-white p-1"
@@ -408,7 +435,7 @@ export default function Builder({ onClose }) {
                 Pay & Download
               </button>
               <button
-                 href="https://abroadium-arbuild-fe.vercel.app/resume"
+                href="https://abroadium-arbuild-fe.vercel.app/resume"
                 type="button"
                 className="rounded-lg px-10 lg:ms-2 font-bold bg-blue-950 text-white p-1"
               >
@@ -422,7 +449,7 @@ export default function Builder({ onClose }) {
                 Back
               </button>
             </div>
-            
+
             <div className="overflow-y-auto md:h-screen mx-auto">
               <PDFExport ref={pdfExportComponent} {...pdfExportOptions}>
                 <div id="preview-section" className="bg-white">
@@ -433,9 +460,6 @@ export default function Builder({ onClose }) {
           </div>
         )}
       </ResumeContext.Provider>
-
-  
-      
     </>
   );
 }
