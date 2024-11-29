@@ -29,8 +29,8 @@ const Education = () => {
     };
 
     return (
-      <div className="flex-col-gap-2 mt-10">
-        <h2 className="input-title text-black  text-3xl">Education</h2>
+      <div className="flex-col-gap-3 w-full mt-10 px-10">
+        <h2 className="input-title text-white  text-3xl">Education</h2>
         {resumeData.education.map((education, index) => (
           <div key={index} className="f-col">
             <input
@@ -67,7 +67,7 @@ const Education = () => {
                 onChange={(e) => handleEducation(e, index)}
               />
             </div>
-            <label className="mt-2">Location</label>
+            <label className="mt-2 text-white">Location</label>
             <input
               type="text"
               placeholder="Location"
