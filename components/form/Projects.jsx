@@ -37,8 +37,8 @@ const Projects = () => {
 
   // Ensure resumeData.projects is defined before mapping over it
   return (
-    <div className="flex-col-gap-2 mt-10">
-      <h2 className="input-title text-black text-3xl">Projects</h2>
+    <div className="flex-col-gap-3 w-full mt-10 px-10">
+      <h2 className="input-title text-white text-3xl">Projects</h2>
       {resumeData.projects && resumeData.projects.length > 0 ? (
         resumeData.projects.map((project, index) => (
           <div key={index} className="f-col">
@@ -96,7 +96,9 @@ const Projects = () => {
           </div>
         ))
       ) : (
-        <p>No projects available. Add a new project to get started.</p>
+        <p className="text-white">
+          No projects available. Add a new project to get started.
+        </p>
       )}
       <FormButton
         size={resumeData.projects ? resumeData.projects.length : 0}

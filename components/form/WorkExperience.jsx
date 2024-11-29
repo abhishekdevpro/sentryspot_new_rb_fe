@@ -461,11 +461,11 @@ const WorkExperience = () => {
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title text-black text-3xl">Work Experience</h2>
+    <div className="flex-col-gap-3 w-full mt-10 px-10">
+      <h2 className="input-title text-white text-3xl">Work Experience</h2>
       {resumeData.workExperience.map((workExperience, index) => (
         <div key={index} className="f-col">
-          <label className="mt-2">Company</label>
+          <label className="mt-2 text-white">Company</label>
           <input
             type="text"
             placeholder="Company"
@@ -474,7 +474,7 @@ const WorkExperience = () => {
             value={workExperience.company}
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <label className="mt-2">Job Title</label>
+          <label className="mt-2 text-white">Job Title</label>
           <input
             type="text"
             placeholder="Job Title"
@@ -501,7 +501,7 @@ const WorkExperience = () => {
               onChange={(e) => handleWorkExperience(e, index)}
             />
           </div>
-          <label className="mt-2">Location</label>
+          <label className="mt-2 text-white">Location</label>
           <input
             type="text"
             placeholder="Location"
@@ -512,7 +512,7 @@ const WorkExperience = () => {
           />
 
           <div className="flex justify-between mb-2">
-            <label className="mt-2">Description</label>
+            <label className="mt-2 text-white">Description</label>
             <button
               type="button"
               className="border bg-black text-white px-3 rounded-3xl"
@@ -531,7 +531,7 @@ const WorkExperience = () => {
             maxLength="250"
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <label className="mt-2">Key Achievements</label>
+          <label className="mt-2 text-white">Key Achievements</label>
           <textarea
             type="text"
             placeholder="Key Achievements"

@@ -24,21 +24,25 @@ const Certification = () => {
   };  
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title text-black  text-3xl">{title}</h2>
+    <div className="flex-col-gap-3 w-full mt-10 px-10">
+      <h2 className="input-title text-white  text-3xl">{title}</h2>
       {resumeData[skillType].map((skill, index) => (
         <div key={index} className="f-col">
           <input
             type="text"
             placeholder={title}
             name={title}
-             className="w-full other-input border border-black"
+            className="w-full other-input border border-black"
             value={skill}
             onChange={(e) => handleSkills(e, index, skillType)}
           />
         </div>
       ))}
-      <FormButton size={resumeData[skillType].length} add={addSkill} remove={removeSkill} />
+      <FormButton
+        size={resumeData[skillType].length}
+        add={addSkill}
+        remove={removeSkill}
+      />
     </div>
   );
 };

@@ -226,7 +226,7 @@ const Summary = () => {
     <div className="flex-col-gap-3 w-full mt-10 px-10">
       <div className="flex flex-col gap-2">
         <div className="flex justify-between mb-2">
-          <h2 className="input-title text-black text-3xl">Summary</h2>
+          <h2 className="input-title text-white text-3xl">Summary</h2>
           <button
             type="button"
             className={`border px-4 py-2 rounded-3xl transition-colors ${
