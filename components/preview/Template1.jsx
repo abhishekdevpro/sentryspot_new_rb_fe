@@ -1,7 +1,7 @@
 // import React from "react";
 import {useContext} from "react";
 import { ResumeContext } from "../../pages/builder";
-import { HighlightMenu } from "react-highlight-menu";
+// import { HighlightMenu } from "react-highlight-menu";
 import ContactInfo from "./ContactInfo";
 import { CgWebsite } from "react-icons/cg";
 import DateRange from "../utility/DateRange";
@@ -97,7 +97,7 @@ const Template1 = () => {
       {/* <h1 style={{ color: headerColor }}>Template 1</h1>*/}  
         <div className="">
           <A4PageWrapper >
-            <HighlightMenu
+            {/* <HighlightMenu
               styles={{
                 borderColor: "#C026D3",
                 backgroundColor: "#C026D3",
@@ -157,7 +157,7 @@ const Template1 = () => {
               />
                 </>
               )}
-            />
+            /> */}
 
             <div className="f-col items-center mb-1" >
             {resumeData?.profilePicture && resumeData.profilePicture.length > 0 && (
@@ -226,7 +226,13 @@ const Template1 = () => {
                     <h2 style={{ color: headerColor }} className="section-title mb-1 border-b-2 border-gray-300">
                       Summary
                     </h2>
-                    <p className="content break-words">{resumeData.summary}</p>
+                    <p className="content break-words"
+                     dangerouslySetInnerHTML={{
+                      __html: resumeData.summary,
+                    }}
+                   />
+                      
+                      {/* {resumeData.summary}</p> */}
                   </div>
                 )}
                 <div>
@@ -244,6 +250,7 @@ const Template1 = () => {
                             endYear={item.endYear}
                             id={`education-start-end-date`}
                           />
+                            <p className="content">{item.location}</p>
                         </div>
                       ))}
                     </div>
@@ -321,7 +328,11 @@ const Template1 = () => {
                                     id={`work-experience-start-end-date`}
                                   />
                                 </div>
-                                <p className="content">{item.position}</p>
+                                {/* <p className="content">{item.position}</p> */}
+                                <div className="flex flex-row justify-between space-y-1">
+                                    <p className="content">{item.position}</p>
+                                    <p className="content">{item.location}</p>
+                                    </div>
                                 <p className="content hyphens-auto">
                                   {item.description}
                                 </p>
