@@ -1,7 +1,10 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeContext } from "../../pages/builder";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css"; // Import Quill CSS for styling
 
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const Projects = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
 
@@ -58,7 +61,7 @@ const Projects = () => {
               value={project.link}
               onChange={(e) => handleProjects(e, index)}
             />
-            <textarea
+            {/* <textarea
               type="text"
               placeholder="Description"
               name="description"
@@ -66,6 +69,21 @@ const Projects = () => {
               value={project.description}
               maxLength="250"
               onChange={(e) => handleProjects(e, index)}
+            /> */}
+            <ReactQuill
+              placeholder="Description"
+              className="w-full other-input border-black border h-100   max-w-[23rem]"
+              value={project.description}
+              onChange={(value) =>
+                handleProjects(
+                  { target: { name: "description", value } },
+                  index
+                )
+              }
+              theme="snow"
+              modules={{
+                toolbar: [["bold", "italic", "underline"], ["clean"]],
+              }}
             />
             <textarea
               type="text"

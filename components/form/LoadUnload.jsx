@@ -393,7 +393,7 @@ console.log(token)
               <div className="h-80 md:h-auto p-6 md:p-10 border-2 rounded-lg shadow-lg shadow-blue-100 w-full md:w-1/2">
                 <div className="mb-4">
                   <svg
-                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500"
+                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-slate-500"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -415,7 +415,7 @@ console.log(token)
                   enhance your resume, from start to finish
                 </p>
 
-                <label className="p-2 text-white bg-gray-500 rounded cursor-pointer hover:bg-blue-600 transition">
+                <label className="p-2 text-white bg-gray-500 rounded cursor-pointer hover:bg-yellow-500 transition">
                   <FaCloudUploadAlt className="inline-block mr-2" />
                   <span>Select Resume (PDF)</span>
                   <input
@@ -427,10 +427,10 @@ console.log(token)
                 </label>
 
                 <button
-                  className={`p-2 mt-4 w-full text-white bg-blue-800 rounded ${
+                  className={`p-2 mt-4 w-full text-white bg-gray-700 rounded ${
                     loading
                       ? "opacity-50 cursor-not-allowed"
-                      : "hover:bg-green-600 transition"
+                      : "hover:bg-gray-600 transition"
                   }`}
                   onClick={handleUpload}
                   disabled={loading}
@@ -442,7 +442,7 @@ console.log(token)
               <div className="h-80 md:h-auto p-6 md:p-10 border-2 rounded-lg shadow-lg shadow-blue-100 w-full md:w-1/2">
                 <div className="mb-4">
                   <svg
-                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-blue-500"
+                    className="mx-auto h-8 w-8 md:h-12 md:w-12 text-yellow-500"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -464,7 +464,7 @@ console.log(token)
                   shine
                 </p>
                 <button
-                  className="p-2 w-full mt-8 md:mt-20 text-white bg-yellow-500 rounded hover:bg-red-600 transition"
+                  className="p-2 w-full mt-8 md:mt-20 text-white bg-yellow-500 rounded hover:bg-yellow-400 transition"
                   onClick={handleStartFromScratch}
                 >
                   Start From Scratch

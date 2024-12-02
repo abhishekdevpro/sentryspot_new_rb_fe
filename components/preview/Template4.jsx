@@ -79,7 +79,13 @@ const Template4 = () => {
               />
             </span>
 
-            <p className="content hyphens-auto">{item.description}</p>
+            <p
+              className="content hyphens-auto"
+              dangerouslySetInnerHTML={{
+                __html: item.description,
+              }}
+            />
+            {/* {item.description}</p> */}
 
             <Droppable
               droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}

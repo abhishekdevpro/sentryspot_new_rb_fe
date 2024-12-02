@@ -1121,7 +1121,7 @@ export default function Builder({ onClose }) {
               className="flex flex-col md:flex-row flex-grow "
               style={{ backgroundColor: "#323159f5" }}
             >
-              <div className="ml-2">
+              <div className="ml-2 mt-2">
                 <Link href="https://abroadium-arbuild-fe.vercel.app/dashboard">
                   <button
                     type="button"
@@ -1225,7 +1225,10 @@ export default function Builder({ onClose }) {
             </div>
 
             {/* Desktop Controls - Hidden on Mobile */}
-            <div className="hidden md:flex w-screen px-8 py-4 justify-between items-center bg-white shadow">
+            <div
+              style={{ backgroundColor: "#323159f5" }}
+              className="hidden md:flex w-screen px-8 py-4 justify-between items-center  shadow"
+            >
               <div className="flex gap-4">
                 <select
                   value={selectedFont}
@@ -1254,19 +1257,19 @@ export default function Builder({ onClose }) {
               <div className="flex gap-4">
                 <button
                   onClick={handleFinish}
-                  className="bg-blue-950 text-white px-6 py-2 rounded-lg"
+                  className="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-800"
                 >
                   Save Resume
                 </button>
                 <button
                   onClick={downloadAsPDF}
-                  className="bg-yellow-500 text-black px-6 py-2 rounded-lg"
+                  className="bg-yellow-500 text-black px-6 py-2 rounded-lg hover:bg-yellow-400"
                 >
                   Pay & Download
                 </button>
                 <button
                   onClick={handleBackToEditor}
-                  className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                  className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition-colors"
                 >
                   Back to Dashboard
                 </button>
