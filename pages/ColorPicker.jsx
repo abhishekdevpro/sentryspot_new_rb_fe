@@ -25,7 +25,7 @@ const ColorPicker = ({ selectedColor, onChange }) => {
   };
 
   return (
-    <div className="relative flex items-center m-2 z-50 ">
+    <div className="relative flex items-center m-2  ">
       <button
         onClick={handleToggleDropdown}
         className="rounded-lg border-2 border-white px-8 p-1 font-bold  bg-white text-white"
@@ -34,7 +34,7 @@ const ColorPicker = ({ selectedColor, onChange }) => {
         Selected Text color
       </button>
       {isOpen && (
-        <div className="absolute top-10 mt-2 right-10 bg-white border rounded-3xl shadow-lg">
+        <div className="absolute top-10 mt-2 right-10 bg-white border rounded-3xl shadow-lg z-50">
           <div className="flex  p-5 space-x-4 bg-white  rounded-3xl">
             {colors.map((color, index) => {
               const style = color.value

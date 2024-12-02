@@ -361,12 +361,15 @@ import React, { useContext, useState } from "react";
 import FormButton from "./FormButton";
 import { ResumeContext } from "../../pages/builder";
 import axios from 'axios';
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css"; // Import Quill CSS for styling
 
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const WorkExperience = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [summaries, setSummaries] = useState([]); // Store key achievements
   const [selectedSummaries, setSelectedSummaries] = useState([]); // Store selected key achievements
   const [showPopup, setShowPopup] = useState(false); // Popup visibility state
@@ -406,7 +409,7 @@ const WorkExperience = () => {
 
   const handleAIAssist = async (index) => {
     setIsLoading(true);
-    setError('');
+    setError("");
     try {
       const response = await axios.post(
         "https://api.sentryspot.co.uk/api/jobseeker/ai-resume-profexp-data",
@@ -440,7 +443,9 @@ const WorkExperience = () => {
     const isSelected = selectedSummaries.includes(achievement);
     if (isSelected) {
       // Deselect the achievement
-      setSelectedSummaries(selectedSummaries.filter(item => item !== achievement));
+      setSelectedSummaries(
+        selectedSummaries.filter((item) => item !== achievement)
+      );
     } else {
       // Add to selected achievements
       setSelectedSummaries([...selectedSummaries, achievement]);
@@ -511,7 +516,7 @@ const WorkExperience = () => {
             onChange={(e) => handleWorkExperience(e, index)}
           />
 
-          <div className="flex justify-between mb-2">
+          <div className="flex justify-between mb-2 ">
             <label className="mt-2 text-white">Description</label>
             <button
               type="button"
@@ -522,7 +527,7 @@ const WorkExperience = () => {
               {isLoading ? "Loading..." : "+ AI Assist"}
             </button>
           </div>
-          <textarea
+          {/* <textarea
             type="text"
             placeholder="Description"
             name="description"
@@ -531,6 +536,23 @@ const WorkExperience = () => {
             maxLength="250"
             onChange={(e) => handleWorkExperience(e, index)}
           />
+        */}
+          <ReactQuill
+            placeholder="Description"
+            className="w-full other-input border-black border h-100   max-w-[23rem]"
+            value={workExperience.description}
+            onChange={(value) =>
+              handleWorkExperience(
+                { target: { name: "description", value } },
+                index
+              )
+            }
+            theme="snow"
+            modules={{
+              toolbar: [["bold", "italic", "underline"], ["clean"]],
+            }}
+          />
+
           <label className="mt-2 text-white">Key Achievements</label>
           <textarea
             type="text"

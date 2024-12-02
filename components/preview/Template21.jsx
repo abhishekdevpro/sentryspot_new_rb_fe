@@ -215,9 +215,13 @@ const Template21 = () => {
                                     {item.location}
                                   </p>
                                 </div>
-                                <p className="content hyphens-auto text-cyan-800">
-                                  {item.description}
-                                </p>
+                                <p
+                                  className="content hyphens-auto text-cyan-800"
+                                  dangerouslySetInnerHTML={{
+                                    __html: item.description,
+                                  }}
+                                />
+
                                 <Droppable
                                   droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
                                   type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
@@ -317,9 +321,13 @@ const Template21 = () => {
                                 >
                                   {item.link}
                                 </Link>
-                                <p className="content text-cyan-800">
-                                  {item.description}
-                                </p>
+                                <p
+                                  className="content text-cyan-800"
+                                  dangerouslySetInnerHTML={{
+                                    __html: item.description,
+                                  }}
+                                />
+
                                 <Droppable
                                   droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
                                   type="PROJECTS_KEY_ACHIEVEMENT"
