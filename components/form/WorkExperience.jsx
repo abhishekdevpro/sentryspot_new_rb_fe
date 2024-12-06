@@ -429,6 +429,16 @@ const WorkExperience = () => {
         }
       );
 
+      handleWorkExperience(
+        {
+          target: {
+            name: "description",
+            value: response.data.data.resume_analysis.professional_summary,
+          },
+        },
+        index
+      );
+
       setSummaries(response.data.data.resume_analysis.responsibilities); // Save key achievements
       setPopupIndex(index); // Store the index of the work experience entry being edited
       setShowPopup(true); // Show the popup for key achievements selection
@@ -535,8 +545,7 @@ const WorkExperience = () => {
             value={workExperience.description}
             maxLength="250"
             onChange={(e) => handleWorkExperience(e, index)}
-          />
-        */}
+          /> */}
           <ReactQuill
             placeholder="Description"
             className="w-full other-input border-black border h-100   max-w-[23rem]"
