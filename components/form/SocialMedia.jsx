@@ -30,7 +30,7 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="flex-col-gap-3 w-full mt-10 px-10">
+    <div className="flex-col flex items-center gap-3 w-full mt-10 px-10">
       <h2 className="input-title text-white text-3xl">Social Media</h2>
       <h2 className="input-title text-white ">
         Please metion platform and there link
@@ -41,7 +41,7 @@ const SocialMedia = () => {
             type="text"
             placeholder="Social Media"
             name="socialMedia"
-            className="other-input border-black bo font-semibold bg-gray-200 text-center w-32"
+            className="other-input border-black bo font-semibold bg-gray-200 text-center w-full"
             value={socialMedia.socialMedia}
             onChange={(e) => handleSocialMedia(e, index)}
           />
@@ -49,7 +49,7 @@ const SocialMedia = () => {
             type="text"
             placeholder="Link"
             name="link"
-            className="other-input border-black border w-60"
+            className="other-input border-black border w-full"
             value={socialMedia.link}
             onChange={(e) => handleSocialMedia(e, index)}
           />

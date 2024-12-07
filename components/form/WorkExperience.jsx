@@ -503,7 +503,7 @@ const WorkExperience = () => {
               type="date"
               placeholder="Start Year"
               name="startYear"
-              className="other-input border-black border"
+              className="other-input border-black border flex-1"
               value={workExperience.startYear}
               onChange={(e) => handleWorkExperience(e, index)}
             />
@@ -511,7 +511,7 @@ const WorkExperience = () => {
               type="date"
               placeholder="End Year"
               name="endYear"
-              className="other-input border-black border"
+              className="other-input border-black border flex-1"
               value={workExperience.endYear}
               onChange={(e) => handleWorkExperience(e, index)}
             />
@@ -548,7 +548,7 @@ const WorkExperience = () => {
           /> */}
           <ReactQuill
             placeholder="Description"
-            className="w-full other-input border-black border h-100   max-w-[23rem]"
+            className="w-full other-input border-black border h-100  "
             value={workExperience.description}
             onChange={(value) =>
               handleWorkExperience(

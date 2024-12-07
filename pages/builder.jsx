@@ -1024,6 +1024,14 @@ export default function Builder({ onClose }) {
               <div className="hidden md:flex flex-col lg:flex-row items-center justify-between gap-4">
                 {/* Navigation Buttons */}
                 <div className="flex w-full lg:w-auto gap-4">
+                <Link href="https://abroadium-arbuild-fe.vercel.app/dashboard">
+                  <button
+                    type="button"
+                    className="w-40 h-10 rounded-lg bg-yellow-500 text-black font-medium transition hover:bg-yellow-400"
+                  >
+                    Back to Dashboard
+                  </button>
+                </Link>
                   <button
                     type="button"
                     onClick={handlePrevious}
@@ -1039,7 +1047,10 @@ export default function Builder({ onClose }) {
                   >
                     {currentSection === sections.length - 1 ? "Finish" : "Next"}
                   </button>
+
+                  
                 </div>
+
 
                 {/* Controls Group */}
                 <div className="hidden lg:flex items-center gap-4">
@@ -1121,66 +1132,14 @@ export default function Builder({ onClose }) {
               className="flex flex-col md:flex-row flex-grow "
               style={{ backgroundColor: "#323159f5" }}
             >
-              <div className="ml-2 mt-2">
-                <Link href="https://abroadium-arbuild-fe.vercel.app/dashboard">
-                  <button
-                    type="button"
-                    className="w-40 h-10 rounded-lg bg-yellow-500 text-black font-medium transition hover:bg-yellow-400"
-                  >
-                    Back to Dashboard
-                  </button>
-                </Link>
-              </div>
-              {/* Sidebar */}
-              {/* <aside className="hidden md:block w-64 min-h-screen border-r bg-gray-100">
-                    <div className="sticky top-20 p-4">
-                      <Sidebar />
-                    </div>
-                  </aside> */}
-              <button
-                onClick={toggleMobileSidebar}
-                className="fixed z-40 bottom-20 right-4 md:hidden bg-blue-950 text-white p-3 rounded-full shadow-lg"
-              >
-                {isMobileSidebarOpen ? (
-                  <X className="h-6 w-6 stroke-2" />
-                ) : (
-                  <Menu className="h-6 w-6 stroke-2" />
-                )}
-              </button>
-
-              {/* Mobile Sidebar Overlay */}
-              {isMobileSidebarOpen && (
-                <div
-                  className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-                  onClick={toggleMobileSidebar}
-                />
-              )}
-
-              {/* Updated Sidebar */}
-              {/* <aside
-                className={`fixed md:static left-0 top-0 h-full z-10 transform 
-                                ${
-                                  isMobileSidebarOpen
-                                    ? "translate-x-0"
-                                    : "-translate-x-full"
-                                } 
-                                md:translate-x-0 transition-transform duration-300 ease-in-out 
-                                w-64 bg-gray-100 border-r`}
-              >
-                <div className="sticky top-20 p-4 overflow-y-auto h-full">
-                
-
-                
-                </div>
-              </aside> */}
-
+              
               {/* Form Content */}
-              <main className=" max-w-2xl mx-auto md:p-4">
+              <main className=" w-[40%] border-2 border-yellow-700 mx-auto ">
                 <form>{sections[currentSection].component}</form>
               </main>
 
               {/* Preview Panel */}
-              <aside className="hidden md:block w-3/2 min-h-screen border-l bg-gray-50">
+              <aside className="w-[60%] hidden md:block w-3/2 min-h-screen border-l bg-gray-50">
                 <div className="sticky top-20 p-4">
                   <PDFExport ref={pdfExportComponent} {...pdfExportOptions}>
                     <Preview selectedTemplate={selectedTemplate} />

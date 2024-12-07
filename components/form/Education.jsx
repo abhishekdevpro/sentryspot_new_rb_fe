@@ -29,7 +29,7 @@ const Education = () => {
     };
 
     return (
-      <div className="flex-col-gap-3 w-full mt-10 px-10">
+      <div className="flex-col gap-3 w-full mt-10 px-10">
         <h2 className="input-title text-white  text-3xl">Education</h2>
         {resumeData.education.map((education, index) => (
           <div key={index} className="f-col">
@@ -54,7 +54,7 @@ const Education = () => {
                 type="date"
                 placeholder="Start Year"
                 name="startYear"
-                className="other-input border-black border"
+                className="other-input border-black border flex-1"
                 value={education.startYear}
                 onChange={(e) => handleEducation(e, index)}
               />
@@ -62,7 +62,7 @@ const Education = () => {
                 type="date"
                 placeholder="End Year"
                 name="endYear"
-                className="other-input border-black border"
+                className="other-input border-black border flex-1"
                 value={education.endYear}
                 onChange={(e) => handleEducation(e, index)}
               />

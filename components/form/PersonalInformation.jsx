@@ -8,12 +8,12 @@ const PersonalInformation = () => {
   const dummyImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlie4MsQ9pJSSKY7DoEpxn3uBAq-rT7in1sA&s";
 
   return (
-    <div className="flex-col-gap-3 w-full mt-10 px-10">
+    <div className="flex-col flex gap-3 w-full items-center mt-10 px-10">
       <h2 className="input-title text-2xl md:text-3xl font-semibold text-white">
         Detail Information
       </h2>
 
-      <div className="flex flex-col  items-center gap-6 w-full max-w-md">
+      <div className="flex flex-col  items-center gap-6 w-full ">
         <div className="flex flex-col items-center gap-4">
           <img
             src={resumeData.profilePicture || dummyImage}

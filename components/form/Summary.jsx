@@ -223,7 +223,7 @@ const Summary = () => {
   };
 
   return (
-    <div className="flex-col-gap-3 w-full mt-10 px-10">
+    <div className="flex-col gap-3 w-full mt-10 px-10">
       <div className="flex flex-col gap-2">
         <div className="flex justify-between mb-2">
           <h2 className="input-title text-white text-3xl">Summary</h2>
@@ -271,7 +271,7 @@ const Summary = () => {
       </div>
 
       {/* ReactQuill Editor */}
-      <div className="grid-1 w-full max-w-[23rem]">
+      <div className="grid-1 w-full ">
         <ReactQuill
           placeholder="Enter your professional summary or use AI Assist to generate one"
           value={resumeData.summary || ""}
@@ -290,7 +290,7 @@ const Summary = () => {
       {/* Popup/Modal for AI Summaries */}
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg w-[90%] max-w-lg">
+          <div className="bg-white p-6 rounded-lg w-[90%] max-w-4xl">
             <h3 className="text-xl font-bold mb-4">Select a Summary</h3>
             <div className="space-y-3 max-h-96 overflow-y-auto">
               {summaries.map((summary, index) => (
