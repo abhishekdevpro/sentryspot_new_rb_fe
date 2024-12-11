@@ -544,43 +544,178 @@ const ResumeEnhancementModal = ({
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-xl p-6 w-96 max-w-md">
-        <h2 className="text-xl font-bold mb-4 text-center">Enhance Your Resume</h2>
-        <p className="text-gray-600 mb-6 text-center">
-          Would you like our AI to improve your resume with industry-specific insights?
-        </p>
+//   return (
+//     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+//       <div className="bg-white rounded-lg shadow-xl p-6 w-7xl max-w-7xl">
+//         <h2 className="text-xl font-bold mb-4 text-center">Enhance Your Resume</h2>
+//         <p className="text-gray-600 mb-6 text-center">
+//         Enhanced Checklist
+// Professional Formatting: Aligns text, headings, and spacing for a polished and professional appearance.
+// Spelling and Grammar Corrections: Detects and fixes errors for clarity and professionalism.
+// Duplicate Word Removal: Eliminates repeated or redundant phrases.
+// Industry Expert Suggestions: Integrates tailored recommendations to match industry expectations.
+// ATS (Applicant Tracking System) Optimization: Ensures keywords and structure are ATS-friendly to increase job application visibility.
+// Role-Specific Enhancements: Customizes the resume to highlight relevant skills and achievements for specific job roles.
+// Keyword Optimization: Incorporates relevant keywords to improve discoverability by recruiters and AI filters.
+// Action-Oriented Language: Replaces passive descriptions with active, impactful verbs to make achievements stand out.
+// Consistency Checks: Ensures uniformity in fonts, bullet points, dates, and other elements for a cohesive look.
+// Achievement Highlighting: Emphasizes measurable accomplishments to showcase your value to potential employers.
+// Section Prioritization: Reorganizes sections like experience, skills, and education to highlight the most critical information first.
+// Soft Skills Optimization: Highlights relevant soft skills tailored to job descriptions.
+// Professional Tone Adjustment: Refines language for a professional yet approachable tone.
+// Customization for Target Roles: Adjusts content to match the expectations of specific industries or job postings.
+// LinkedIn Alignment: Suggests changes to sync your resume content with your LinkedIn profile for consistency.
+// Cover Letter Insights: Provides tips or integration options for creating a matching, impactful cover letter.
+// Visual Enhancements: Suggests visually appealing designs and layouts for readability and impact.
+// Error Highlighting: Shows specific areas of improvement for further customization by the user.
+//         </p>
         
+//         <div className="flex justify-center space-x-4">
+//           <button
+//             onClick={handleResumeEnhancement}
+//             disabled={isEnhancing}
+//             className={`px-4 py-2 rounded ${
+//               isEnhancing 
+//               ? 'bg-gray-400 cursor-not-allowed' 
+//               : 'bg-green-500 hover:bg-green-600 text-white'
+//             }`}
+//           >
+//             {isEnhancing ? 'Enhancing...' : 'Yes, Enhance'}
+//           </button>
+          
+//           <button
+//             onClick={onClose}
+//             disabled={isEnhancing}
+//             className={`px-4 py-2 rounded ${
+//               isEnhancing 
+//               ? 'text-gray-400 cursor-not-allowed' 
+//               : 'bg-gray-200 hover:bg-gray-300'
+//             }`}
+//           >
+//             No, Thanks
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+const enhancementFeatures = [
+  "Professional Formatting: Aligns text, headings, and spacing for a polished and professional appearance.",
+  "Spelling and Grammar Corrections: Detects and fixes errors for clarity and professionalism.",
+  "Duplicate Word Removal: Eliminates repeated or redundant phrases.",
+  "Industry Expert Suggestions: Integrates tailored recommendations to match industry expectations.",
+  "ATS (Applicant Tracking System) Optimization: Ensures keywords and structure are ATS-friendly to increase job application visibility.",
+  "Role-Specific Enhancements: Customizes the resume to highlight relevant skills and achievements for specific job roles.",
+  "Keyword Optimization: Incorporates relevant keywords to improve discoverability by recruiters and AI filters.",
+  "Action-Oriented Language: Replaces passive descriptions with active, impactful verbs to make achievements stand out.",
+  "Consistency Checks: Ensures uniformity in fonts, bullet points, dates, and other elements for a cohesive look.",
+  "Achievement Highlighting: Emphasizes measurable accomplishments to showcase your value to potential employers.",
+  "Section Prioritization: Reorganizes sections like experience, skills, and education to highlight the most critical information first.",
+  "Soft Skills Optimization: Highlights relevant soft skills tailored to job descriptions.",
+  "Professional Tone Adjustment: Refines language for a professional yet approachable tone.",
+  "Customization for Target Roles: Adjusts content to match the expectations of specific industries or job postings.",
+  "LinkedIn Alignment: Suggests changes to sync your resume content with your LinkedIn profile for consistency.",
+  "Cover Letter Insights: Provides tips or integration options for creating a matching, impactful cover letter.",
+  "Visual Enhancements: Suggests visually appealing designs and layouts for readability and impact.",
+  "Error Highlighting: Shows specific areas of improvement for further customization by the user."
+];
+
+return (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 p-4">
+    <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full overflow-hidden transform transition-all">
+      {/* Modal Header */}
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+        <h2 className="text-2xl font-bold text-center text-white">Enhance Your Resume</h2>
+      </div>
+
+      {/* Modal Content */}
+      <div className="p-6">
+        {/* <div className="grid grid-cols-3 gap-4 mb-6">
+          {[
+            { icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', color: 'text-green-500', label: 'Professional Formatting' },
+            { icon: 'M10 20l4-16m4 4l4 4-4 4', color: 'text-blue-500', label: 'ATS Optimization' },
+            { icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z', color: 'text-purple-500', label: 'Smart Editing' }
+          ].map((feature, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className={`h-12 w-12 ${feature.color} mb-2`} 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d={feature.icon} 
+                />
+              </svg>
+              <span className="text-sm font-medium text-gray-700">{feature.label}</span>
+            </div>
+          ))}
+        </div> */}
+
+        {/* Detailed Feature List */}
+        <div className="bg-gray-50 rounded-lg p-6 mb-6 max-h-80 overflow-y-auto">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
+            Comprehensive Resume Enhancement Features
+          </h3>
+          <div className="grid md:grid-cols-2 gap-3">
+            {enhancementFeatures.map((feature, index) => (
+              <div key={index} className="flex items-start space-x-2">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-5 w-5 text-green-500 flex-shrink-0 mt-1" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
+                  <path 
+                    fillRule="evenodd" 
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
+                    clipRule="evenodd" 
+                  />
+                </svg>
+                <p className="text-sm text-gray-700">{feature}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Action Buttons */}
         <div className="flex justify-center space-x-4">
-          <button
+          <button 
             onClick={handleResumeEnhancement}
             disabled={isEnhancing}
-            className={`px-4 py-2 rounded ${
-              isEnhancing 
-              ? 'bg-gray-400 cursor-not-allowed' 
-              : 'bg-green-500 hover:bg-green-600 text-white'
-            }`}
+            className={`
+              px-6 py-2 rounded-lg text-white font-semibold transition-all duration-300 
+              ${isEnhancing 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600'
+              }
+            `}
           >
             {isEnhancing ? 'Enhancing...' : 'Yes, Enhance'}
           </button>
-          
-          <button
+          <button 
             onClick={onClose}
             disabled={isEnhancing}
-            className={`px-4 py-2 rounded ${
-              isEnhancing 
-              ? 'text-gray-400 cursor-not-allowed' 
-              : 'bg-gray-200 hover:bg-gray-300'
-            }`}
+            className={`
+              px-6 py-2 rounded-lg font-semibold transition-all duration-300
+              ${isEnhancing 
+                ? 'text-gray-400 cursor-not-allowed' 
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }
+            `}
           >
             No, Thanks
           </button>
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 };
+
 
 // Main LoadUnload Component
 const LoadUnload = () => {

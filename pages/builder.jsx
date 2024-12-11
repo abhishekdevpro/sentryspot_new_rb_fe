@@ -1134,7 +1134,7 @@ export default function Builder({ onClose }) {
             >
               
               {/* Form Content */}
-              <main className=" w-[40%] border-2 border-yellow-700 mx-auto ">
+              <main className=" w-[40%] mx-auto ">
                 <form>{sections[currentSection].component}</form>
               </main>
 
