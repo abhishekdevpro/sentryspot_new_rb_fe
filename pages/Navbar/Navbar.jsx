@@ -126,20 +126,20 @@ const Navbar = () => {
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md text-black">
                     <Link
-                      href="/"
+                      href="https://sentryspotfe.vercel.app/candidates-dashboard/dashboard"
                       className="block px-4 py-2 hover:bg-gray-200"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Home
+                      Dashboard
                     </Link>
                     <Link
-                      href="/dashboard/page"
+                      href="https://blog.sentryspot.co.uk/category/ai-resume-builder/"
                       className="block px-4 py-2 hover:bg-gray-200"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Profile
+                      Blogs
                     </Link>
-                    <button
+                    {/* <button
                       onClick={() => {
                         handleLogout();
                         setIsDropdownOpen(false);
@@ -147,7 +147,7 @@ const Navbar = () => {
                       className="block w-full text-left px-4 py-2 hover:bg-gray-200"
                     >
                       Logout
-                    </button>
+                    </button> */}
                   </div>
                 )}
               </div>

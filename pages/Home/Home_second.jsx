@@ -18,7 +18,7 @@ function Home_second() {
 
   const handlePayment = (e) => {
     e.preventDefault();
-    const amount=269;
+    const amount=19;
     
     const payload = {
       amount,
@@ -28,7 +28,7 @@ function Home_second() {
       Phone: phone,
     };
 
-    axios.post('https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment', payload, {
+    axios.post('', payload, {
       headers: { 'Content-Type': 'application/json' },
     })
     .then(response => {
@@ -56,7 +56,7 @@ function Home_second() {
 
   const handlePayment1 = (e) => {
     e.preventDefault();
-    const amount=349;
+    const amount=29;
     
     const payload = {
       amount,
@@ -66,7 +66,7 @@ function Home_second() {
       Phone: phone1,
     };
 
-    axios.post('https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment', payload, {
+    axios.post('', payload, {
       headers: { 'Content-Type': 'application/json' },
     })
     .then(response => {
@@ -105,7 +105,8 @@ function Home_second() {
                     <span className="text-white dark:text-white">
                       Starting{" "}
                     </span>
-                    <span className="mr-2 text-5xl font-extrabold">$0</span>
+                    <span className="mr-2 text-5xl font-extrabold">£
+                    0</span>
                   </div>
                   {/* List */}
                   <ul role="list" className="mb-8 space-y-4 text-left">
@@ -171,7 +172,7 @@ function Home_second() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>Save resume as pdf and docs</span>
+                      <span>Save resume as pdf</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       {/* Icon */}
@@ -209,11 +210,10 @@ function Home_second() {
                     Expert Human Writer
                   </h3>
                   <p className="font-light text-white sm:text-lg dark:text-white">
-                    Best for large scale uses and extended redistribution
-                    rights.
+                  Custom Resumes written by our industry experts.
                   </p>
                   <div className="flex justify-center items-baseline my-8">
-                    <span className="mr-2 text-5xl font-extrabold">$269</span>
+                    <span className="mr-2 text-5xl font-extrabold">£19.99</span>
                     <span className="text-white dark:text-white">/Resume</span>
                   </div>
                   {/* List */}
@@ -249,7 +249,7 @@ function Home_second() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>Receive resume in pdf and docs</span>
+                      <span>Receive resume in pdf</span>
                     </li>
 
                     <li className="flex items-center space-x-3">
@@ -372,7 +372,7 @@ function Home_second() {
                         </div>
                         <div className="mb-6">
                           <label className="block text-white mb-2">
-                            💵Amount $
+                            💵Amount £
                           </label>
                           <input
                             type="number"
@@ -447,7 +447,7 @@ function Home_second() {
                         </div>
                         <div className="mb-6">
                           <label className="block text-white mb-2">
-                            💵Amount $
+                            💵Amount £
                           </label>
                           <input
                             type="number"
@@ -479,14 +479,13 @@ function Home_second() {
                 <div className="flex flex-col p-6 mx-auto max-w-lg text-center text-white bg-blue-900 rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8 dark:bg-blue-900 dark:text-white">
                   <h3 className="mb-4 text-2xl font-bold">
                     {" "}
-                    French English Combo
+                    English Combo
                   </h3>
                   <p className="font-light text-white sm:text-lg dark:text-white">
-                    Best for large scale uses and extended redistribution
-                    rights.
+                   Custom Resumes written by our industry experts.
                   </p>
                   <div className="flex justify-center items-baseline my-8">
-                    <span className="mr-2 text-5xl font-extrabold">$349</span>
+                    <span className="mr-2 text-5xl font-extrabold">£29.99</span>
                     <span className="text-white dark:text-white">/Resume</span>
                   </div>
                   {/* List */}
@@ -522,7 +521,7 @@ function Home_second() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span>Receive resume in pdf and docs</span>
+                      <span>Receive resume in pdf</span>
                     </li>
 
                     <li className="flex items-center space-x-3">

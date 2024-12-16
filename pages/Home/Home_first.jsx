@@ -74,7 +74,7 @@ function Home_first() {
                   <Link
                     href={
                       isAuthenticated
-                        ? "https://sentryspot-new-rb-fe.vercel.app/candidates-dashboard/dashboard"
+                        ? "/dashboard/aibuilder"
                         : "/signup"
                     }
                   >
@@ -85,7 +85,7 @@ function Home_first() {
                   <Link
                     href={
                       isAuthenticated
-                        ? "https://sentryspot-new-rb-fe.vercel.app/candidates-dashboard/dashboard"
+                        ? "/dashboard/aibuilder"
                         : "/login2"
                     }
                   >

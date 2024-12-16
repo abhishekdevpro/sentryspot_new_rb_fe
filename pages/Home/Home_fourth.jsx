@@ -7,14 +7,19 @@ const Home_fourth = () => {
     const course =[
     
         {
-            img:"https://blog.resumeintellect.com/wp-content/uploads/2024/08/What-are-the-alarming-signs-your-boss-wants-you-to-leave-the-job-2.jpg", title:"10 alarming signs why your wants you to leave the job",link:"https://blog.resumeintellect.com/2024/08/29/what-are-the-alarming-signs-your-boss-wants-you-to-leave-the-job/"
+            img:"https://blog.sentryspot.co.uk/wp-content/uploads/2024/09/Untitled-design-6.jpg", title:"AI and Bias in Hiring: How AI Can Perpetuate or Reduce Bias in the Hiring Process",link:"https://blog.sentryspot.co.uk/ai-and-bias-in-hiring-how-ai-can-perpetuate-or-reduce-bias-in-the-hiring-process/"
         },
-        {   img:"https://blog.resumeintellect.com/wp-content/uploads/2024/08/What-are-the-alarming-signs-your-boss-wants-you-to-leave-the-job-1.jpg",title:"10 must have HR professional skills required for your resume",link:"https://blog.resumeintellect.com/"},
+        {
+          img:"https://blog.sentryspot.co.uk/wp-content/uploads/2024/09/Untitled-design-6.jpg", title:"AI and Bias in Hiring: How AI Can Perpetuate or Reduce Bias in the Hiring Process",link:"https://blog.sentryspot.co.uk/ai-and-bias-in-hiring-how-ai-can-perpetuate-or-reduce-bias-in-the-hiring-process/"
+      },
     
-        {   img:"https://deanairbuildfe.vercel.app/assets/blog3-D70vj1o3.jpg",title:"Science behind AI-powered resume-scoring systems",link:"https://blog.resumeintellect.com/2024/08/29/7/"},
+      {
+        img:"https://blog.sentryspot.co.uk/wp-content/uploads/2024/09/Untitled-design-6.jpg", title:"AI and Bias in Hiring: How AI Can Perpetuate or Reduce Bias in the Hiring Process",link:"https://blog.sentryspot.co.uk/ai-and-bias-in-hiring-how-ai-can-perpetuate-or-reduce-bias-in-the-hiring-process/"
+    },
     
-        {   img:"https://blog.resumeintellect.com/wp-content/uploads/2024/08/What-are-the-alarming-signs-your-boss-wants-you-to-leave-the-job-3.jpg",title:"Why is it important to have resumes built by experts?",link:"https://blog.resumeintellect.com/2024/08/29/why-is-it-important-to-have-resumes-built-by-experts-in-2024/"},
-    
+    {
+      img:"https://blog.sentryspot.co.uk/wp-content/uploads/2024/09/Untitled-design-6.jpg", title:"AI and Bias in Hiring: How AI Can Perpetuate or Reduce Bias in the Hiring Process",link:"https://blog.sentryspot.co.uk/ai-and-bias-in-hiring-how-ai-can-perpetuate-or-reduce-bias-in-the-hiring-process/"
+  }
         
       ];
     return (
@@ -56,7 +61,7 @@ const Home_fourth = () => {
             </div>
 
             <div className="flex justify-center mt-10">
-              <Link href={"https://blog.resumeintellect.com/"}>
+              <Link href={"https://blog.sentryspot.co.uk/"}>
                 <button className="px-6 py-3 text-lg font-semibold text-white bg-[#e60278] hover:bg-pink-500 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600">
                   Get More Career Advice
                 </button>
