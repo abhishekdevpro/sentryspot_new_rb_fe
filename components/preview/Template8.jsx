@@ -95,9 +95,11 @@ const Template8 = () => {
           >
             LEADERSHIP
           </h3>
-          <Droppable droppableId="skills" type="SKILLS">
+          {/* <Droppable droppableId="skills" type="SKILLS">
             {(provided) => (
-              <div {...provided.droppableProps} ref={provided.innerRef}>
+              <div {...provided.droppableProps} ref={provided.innerRef}
+               className="border-2 border-red-500 flex-wrap"
+              >
                 {resumeData.skills.map((skill, index) => (
                   <Draggable
                     key={`SKILLS-${index}`}
@@ -116,7 +118,7 @@ const Template8 = () => {
                       >
                         <p>
                           <h3 className="font-bold">{skill.title}</h3>{" "}
-                          <span className="text-[#000]">{skill.skills}</span>
+                          <span className="text-[#000] ">{skill.skills}</span>
                         </p>
                         <p> </p>
                       </div>
@@ -126,7 +128,43 @@ const Template8 = () => {
                 {provided.placeholder}
               </div>
             )}
-          </Droppable>
+          </Droppable> */}
+          <Droppable droppableId="skills" type="SKILLS">
+  {(provided) => (
+    <div
+      {...provided.droppableProps}
+      ref={provided.innerRef}
+      className=" flex-wrap overflow-auto" // Added overflow-auto
+    >
+      {resumeData.skills.map((skill, index) => (
+        <Draggable
+          key={`SKILLS-${index}`}
+          draggableId={`SKILLS-${index}`}
+          index={index}
+        >
+          {(provided, snapshot) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              className={`hover:scale-105 transition-transform duration-300 mb-1 ${
+                snapshot.isDragging &&
+                "outline-dashed outline-2 outline-gray-400 bg-white"
+              }`}
+            >
+              <p>
+                <h3 className="font-bold">{skill.title}</h3>{" "}
+                <span className="text-[#000] ">{skill.skills}</span>
+              </p>
+              <p> </p>
+            </div>
+          )}
+        </Draggable>
+      ))}
+      {provided.placeholder}
+    </div>
+  )}
+</Droppable>
         </div>
       </div>
       <div className="w-2/3 p-5">
