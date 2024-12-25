@@ -355,7 +355,7 @@ const Skill = ({ title }) => {
           className="border bg-black text-white px-3 rounded-3xl"
           disabled={loading}
         >
-          {loading ? "Loading..." : " + AI Assist"}
+          {loading ? "Loading..." : " + Smart Assist"}
         </button>
       </div>
 

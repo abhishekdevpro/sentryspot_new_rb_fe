@@ -112,7 +112,7 @@
 
 //       <div className="grid-1 w-full max-w-[23rem] ">
 //         <ReactQuill
-//           placeholder="Enter your professional summary or use AI Assist to generate one"
+//           placeholder="Enter your professional summary or use Smart Assistto generate one"
 //           value={resumeData.summary || ""}
 //           onChange={handleQuillChange}
 //           className="w-full other-input h-80 border-black border rounded"
@@ -262,7 +262,7 @@ const Summary = () => {
                 Loading...
               </span>
             ) : (
-              "+ AI Assist"
+              "+ Smart Assist"
             )}
           </button>
         </div>
@@ -273,7 +273,7 @@ const Summary = () => {
       {/* ReactQuill Editor */}
       <div className="grid-1 w-full ">
         <ReactQuill
-          placeholder="Enter your professional summary or use AI Assist to generate one"
+          placeholder="Enter your professional summary or use Smart Assistto generate one"
           value={resumeData.summary || ""}
           onChange={handleQuillChange}
           className="w-full other-input h-100 border-black border rounded"

@@ -76,8 +76,8 @@ const Template13 = () => {
         </div>
 
         <div className="mb-5">
-          <p>
-            {resumeData.socialMedia.map((socialMedia, index) => {
+          {Array.isArray(resumeData?.socialMedia) ? (
+            resumeData.socialMedia.map((socialMedia, index) => {
               return (
                 <a
                   href={`http://${socialMedia.link}`}
@@ -86,23 +86,29 @@ const Template13 = () => {
                   title={socialMedia.socialMedia}
                   target="_blank"
                   rel="noreferrer"
+                  // className="lg:inline-flex items-center gap-1 social-media align-center justify-center"
                   className="text-red-800"
-                  // Prevent text overflowing, If the socialMedia.link string is longer than 32 characters, apply the wordWrap and display styles to this <a> tag.
-                  // wordWrap: "break-word" breaks the text onto the next line if it's too long,
-                  // display: "inline-block" is necessary for wordWrap to work on an inline element like <a>.
                 >
-                  {icons.map((icon, index) => {
+                  {/* Display icon and name */}
+                  {icons.map((icon, idx) => {
                     if (icon.name === socialMedia.socialMedia.toLowerCase()) {
-                      return <span key={index}>{icon.icon}</span>;
+                      return (
+                        <span key={idx} className="flex items-center gap-2">
+                          {/* Icon */}
+                          <span>{icon.icon}</span>
+                          {/* Platform name */}
+                          <span>{socialMedia.socialMedia}</span>
+                        </span>
+                      );
                     }
                   })}
-                  {socialMedia.link}
                 </a>
               );
-            })}
-          </p>
+            })
+          ) : (
+            <p>No social media links available</p> // Fallback content
+          )}
         </div>
-
         <div className="mb-5">
           <div
             className="text-lg font-semibold text-red-800 border-b-2 border-red-800 pb-1 mb-3"

@@ -5,8 +5,26 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS for styling
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 const Projects = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
+
+  // Month and Year Dropdown options
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const years = Array.from({ length: 40 }, (_, index) => 1980 + index); // Adjust the range as needed
 
   const handleProjects = (e, index) => {
     const newProjects = [...resumeData.projects];
@@ -25,7 +43,9 @@ const Projects = () => {
           description: "",
           keyAchievements: "",
           startYear: "",
+          startMonth: "",
           endYear: "",
+          endMonth: "",
         },
       ],
     });
@@ -38,7 +58,6 @@ const Projects = () => {
     setResumeData({ ...resumeData, projects: newProjects });
   };
 
-  // Ensure resumeData.projects is defined before mapping over it
   return (
     <div className="flex-col-gap-3 w-full mt-10 px-10">
       <h2 className="input-title text-white text-3xl">Projects</h2>
@@ -61,18 +80,9 @@ const Projects = () => {
               value={project.link}
               onChange={(e) => handleProjects(e, index)}
             />
-            {/* <textarea
-              type="text"
-              placeholder="Description"
-              name="description"
-              className="w-full other-input border-black border h-32"
-              value={project.description}
-              maxLength="250"
-              onChange={(e) => handleProjects(e, index)}
-            /> */}
             <ReactQuill
               placeholder="Description"
-              className="w-full other-input border-black border h-100   max-w-[23rem]"
+              className="w-full other-input border-black border h-100 max-w-[23rem]"
               value={project.description}
               onChange={(value) =>
                 handleProjects(
@@ -93,23 +103,63 @@ const Projects = () => {
               value={project.keyAchievements}
               onChange={(e) => handleProjects(e, index)}
             />
-            <div className="flex-wrap-gap-2">
-              <input
-                type="date"
-                placeholder="Start Year"
-                name="startYear"
-                className="other-input"
-                value={project.startYear}
-                onChange={(e) => handleProjects(e, index)}
-              />
-              <input
-                type="date"
-                placeholder="End Year"
-                name="endYear"
-                className="other-input"
-                value={project.endYear}
-                onChange={(e) => handleProjects(e, index)}
-              />
+            <div className="">
+              {/* Start Month and Year */}
+              <label className="mt-2 text-white">Start Date</label>
+              <div className="flex-wrap-gap-2">
+                <select
+                  name="startMonth"
+                  className="other-input border-black border flex-1"
+                  value={project.startMonth}
+                  onChange={(e) => handleProjects(e, index)}
+                >
+                  {months.map((month, idx) => (
+                    <option key={idx} value={month}>
+                      {month}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  name="startYear"
+                  className="other-input border-black border flex-1"
+                  value={project.startYear}
+                  onChange={(e) => handleProjects(e, index)}
+                >
+                  {years.map((year, idx) => (
+                    <option key={idx} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {/* End Month and Year */}
+              <label className="mt-2 text-white">End Date</label>
+              <div className="flex-wrap-gap-2">
+                <select
+                  name="endMonth"
+                  className="other-input border-black border flex-1"
+                  value={project.endMonth}
+                  onChange={(e) => handleProjects(e, index)}
+                >
+                  {months.map((month, idx) => (
+                    <option key={idx} value={month}>
+                      {month}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  name="endYear"
+                  className="other-input border-black border flex-1"
+                  value={project.endYear}
+                  onChange={(e) => handleProjects(e, index)}
+                >
+                  {years.map((year, idx) => (
+                    <option key={idx} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
         ))
