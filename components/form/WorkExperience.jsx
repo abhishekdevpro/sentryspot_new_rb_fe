@@ -357,14 +357,18 @@
 
 // export default WorkExperience;
 
+
+
+
 import React, { useContext, useState } from "react";
 import FormButton from "./FormButton";
 import { ResumeContext } from "../../pages/builder";
-import axios from 'axios';
+import axios from "axios";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS for styling
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 const WorkExperience = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
 
@@ -375,6 +379,23 @@ const WorkExperience = () => {
   const [showPopup, setShowPopup] = useState(false); // Popup visibility state
   const [popupIndex, setPopupIndex] = useState(null); // Store index of the work experience entry being edited
   const token = localStorage.getItem("token");
+
+  // Month and Year Dropdown options
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const years = Array.from({ length: 40 }, (_, index) => 1980 + index); // Adjust the range as needed
 
   const handleWorkExperience = (e, index) => {
     const newWorkExperience = [...resumeData.workExperience];
@@ -393,7 +414,9 @@ const WorkExperience = () => {
           description: "",
           keyAchievements: "",
           startYear: "",
+          startMonth: "",
           endYear: "",
+          endMonth: "",
           location: "",
         },
       ],
@@ -498,24 +521,63 @@ const WorkExperience = () => {
             value={workExperience.position}
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <div className="flex-wrap-gap-2">
-            <input
-              type="date"
-              placeholder="Start Year"
-              name="startYear"
-              className="other-input border-black border flex-1"
-              value={workExperience.startYear}
-              onChange={(e) => handleWorkExperience(e, index)}
-            />
-            <input
-              type="date"
-              placeholder="End Year"
-              name="endYear"
-              className="other-input border-black border flex-1"
-              value={workExperience.endYear}
-              onChange={(e) => handleWorkExperience(e, index)}
-            />
+          <div className="">
+            <label className="mt-2 text-white">Start Date</label>
+            <div className="flex-wrap-gap-2">
+              <select
+                name="startMonth"
+                className="other-input border-black border flex-1"
+                value={workExperience.startMonth}
+                onChange={(e) => handleWorkExperience(e, index)}
+              >
+                {months.map((month, idx) => (
+                  <option key={idx} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="startYear"
+                className="other-input border-black border flex-1"
+                value={workExperience.startYear}
+                onChange={(e) => handleWorkExperience(e, index)}
+              >
+                {years.map((year, idx) => (
+                  <option key={idx} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <label className="mt-2 text-white">End Date</label>
+            <div className="flex-wrap-gap-2">
+              <select
+                name="endMonth"
+                className="other-input border-black border flex-1"
+                value={workExperience.endMonth}
+                onChange={(e) => handleWorkExperience(e, index)}
+              >
+                {months.map((month, idx) => (
+                  <option key={idx} value={month}>
+                    {month}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="endYear"
+                className="other-input border-black border flex-1"
+                value={workExperience.endYear}
+                onChange={(e) => handleWorkExperience(e, index)}
+              >
+                {years.map((year, idx) => (
+                  <option key={idx} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
+
           <label className="mt-2 text-white">Location</label>
           <input
             type="text"
@@ -526,7 +588,7 @@ const WorkExperience = () => {
             onChange={(e) => handleWorkExperience(e, index)}
           />
 
-          <div className="flex justify-between mb-2 ">
+          <div className="flex justify-between mb-2">
             <label className="mt-2 text-white">Description</label>
             <button
               type="button"
@@ -534,21 +596,12 @@ const WorkExperience = () => {
               onClick={() => handleAIAssist(index)}
               disabled={isLoading}
             >
-              {isLoading ? "Loading..." : "+ AI Assist"}
+              {isLoading ? "Loading..." : "+ Smart Assist"}
             </button>
           </div>
-          {/* <textarea
-            type="text"
-            placeholder="Description"
-            name="description"
-            className="w-full other-input border-black border h-32"
-            value={workExperience.description}
-            maxLength="250"
-            onChange={(e) => handleWorkExperience(e, index)}
-          /> */}
           <ReactQuill
             placeholder="Description"
-            className="w-full other-input border-black border h-100  "
+            className="w-full other-input border-black border h-100"
             value={workExperience.description}
             onChange={(value) =>
               handleWorkExperience(

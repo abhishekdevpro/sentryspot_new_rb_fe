@@ -143,7 +143,7 @@ const Template1 = () => {
             teldata={`Phone: ${resumeData.contactInformation}`}
             emaildata={`| Email: ${resumeData.email}`}
           />
-          <div className="grid grid-row-3 gap-1">
+          {/* <div className="grid grid-row-3 gap-1">
             {resumeData.socialMedia.map((socialMedia, index) => {
               return (
                 <a
@@ -167,6 +167,39 @@ const Template1 = () => {
                 </a>
               );
             })}
+          </div> */}
+          <div className="grid grid-cols-3 gap-1">
+            {Array.isArray(resumeData?.socialMedia) ? (
+              resumeData.socialMedia.map((socialMedia, index) => {
+                return (
+                  <a
+                    href={`http://${socialMedia.link}`}
+                    aria-label={socialMedia.socialMedia}
+                    key={index}
+                    title={socialMedia.socialMedia}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="lg:inline-flex items-center gap-1 social-media align-center justify-center"
+                  >
+                    {/* Display icon and name */}
+                    {icons.map((icon, idx) => {
+                      if (icon.name === socialMedia.socialMedia.toLowerCase()) {
+                        return (
+                          <span key={idx} className="flex items-center gap-2">
+                            {/* Icon */}
+                            <span>{icon.icon}</span>
+                            {/* Platform name */}
+                            <span>{socialMedia.socialMedia}</span>
+                          </span>
+                        );
+                      }
+                    })}
+                  </a>
+                );
+              })
+            ) : (
+              <p>No social media links available</p> // Fallback content
+            )}
           </div>
         </div>
         <hr className="border-dashed my-2" />

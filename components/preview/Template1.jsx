@@ -186,7 +186,7 @@ const Template1 = () => {
                 emailicon={<MdEmail />}
                 addressicon={<MdLocationOn />}
               />
-              <div className="grid grid-cols-3 gap-1">
+              {/* <div className="grid grid-cols-3 gap-1">
                 {Array.isArray(resumeData?.socialMedia) ? (
                   resumeData.socialMedia.map((socialMedia, index) => {
                     return (
@@ -210,6 +210,44 @@ const Template1 = () => {
                           }
                         })}
                         {socialMedia.link}
+                      </a>
+                    );
+                  })
+                ) : (
+                  <p>No social media links available</p> // Fallback content
+                )}
+              </div> */}
+              <div className="grid grid-cols-3 gap-1">
+                {Array.isArray(resumeData?.socialMedia) ? (
+                  resumeData.socialMedia.map((socialMedia, index) => {
+                    return (
+                      <a
+                        href={`http://${socialMedia.link}`}
+                        aria-label={socialMedia.socialMedia}
+                        key={index}
+                        title={socialMedia.socialMedia}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="lg:inline-flex items-center gap-1 social-media align-center justify-center"
+                      >
+                        {/* Display icon and name */}
+                        {icons.map((icon, idx) => {
+                          if (
+                            icon.name === socialMedia.socialMedia.toLowerCase()
+                          ) {
+                            return (
+                              <span
+                                key={idx}
+                                className="flex items-center gap-2"
+                              >
+                                {/* Icon */}
+                                <span>{icon.icon}</span>
+                                {/* Platform name */}
+                                <span>{socialMedia.socialMedia}</span>
+                              </span>
+                            );
+                          }
+                        })}
                       </a>
                     );
                   })
