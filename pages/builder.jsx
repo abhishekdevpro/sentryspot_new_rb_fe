@@ -667,7 +667,8 @@ export default function Builder({ onClose }) {
   //   }
   // };
   // Modify the handleNext function to preserve state
-  const handleNext = () => {
+  const handleNext = async () => {
+    await handleFinish();
     if (currentSection === sections.length - 1) {
       // Save current state before switching to finished mode
       localStorage.setItem("tempResumeData", JSON.stringify(resumeData));
@@ -705,11 +706,14 @@ export default function Builder({ onClose }) {
       localStorage.removeItem("tempFont");
     };
   }, []);
-  const handlePrevious = () => {
+
+  const handlePrevious = async () => {
+    await handleFinish();
     setCurrentSection((prev) => Math.max(prev - 1, 0));
   };
 
-  const handleSectionClick = (index) => {
+  const handleSectionClick = async (index) => {
+    await handleFinish();
     setCurrentSection(index);
     setIsMobileMenuOpen(false);
   };
@@ -741,6 +745,7 @@ export default function Builder({ onClose }) {
   };
 
   const downloadAsPDF = async () => {
+    await handleFinish();
     let amount;
 
     if (userId == 121 || userId == 1) {
@@ -977,7 +982,8 @@ export default function Builder({ onClose }) {
       )}
     </div>
   );
-  const handleBackToEditor = () => {
+  const handleBackToEditor = async () => {
+    await handleFinish();
     // Save current state before switching back
     localStorage.setItem("tempResumeData", JSON.stringify(resumeData));
     localStorage.setItem("tempHeaderColor", headerColor);
@@ -1024,40 +1030,37 @@ export default function Builder({ onClose }) {
               <div className="hidden md:flex flex-col lg:flex-row items-center justify-between gap-4">
                 {/* Navigation Buttons */}
                 <div className="flex w-full lg:w-auto gap-4">
-                <Link href="https://abroadium-arbuild-fe.vercel.app/dashboard">
-                  <button
-                    type="button"
-                    className="w-40 h-10 rounded-lg bg-yellow-500 text-black font-medium transition hover:bg-yellow-400"
-                  >
-                    Back to Dashboard
-                  </button>
-                </Link>
+                  <Link href="https://abroadium-arbuild-fe.vercel.app/dashboard">
+                    <button
+                      type="button"
+                      className=" py-2 px-6 rounded-lg bg-yellow-500 text-black font-medium transition hover:bg-yellow-400"
+                    >
+                      Back to Dashboard
+                    </button>
+                  </Link>
                   <button
                     type="button"
                     onClick={handlePrevious}
                     disabled={currentSection === 0}
-                    className="w-40 h-10 rounded-lg  bg-gray-600 text-white font-medium transition hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-40 px-6 py-2 rounded-lg  bg-gray-600 text-white font-medium transition hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Previous
                   </button>
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="w-40 h-10 rounded-lg bg-yellow-500 text-black font-medium transition hover:bg-yellow-400"
+                    className="w-40 px-6 py-2 rounded-lg bg-yellow-500 text-black font-medium transition hover:bg-yellow-400"
                   >
                     {currentSection === sections.length - 1 ? "Finish" : "Next"}
                   </button>
-
-                  
                 </div>
-
 
                 {/* Controls Group */}
                 <div className="hidden lg:flex items-center gap-4">
                   <select
                     value={selectedFont}
                     onChange={handleFontChange}
-                    className="w-40 h-10 rounded-lg border border-blue-800 px-4 font-bold text-blue-800 bg-white focus:ring-2 focus:ring-blue-800"
+                    className="rounded-lg border-2 m-2 border-blue-800 px-6 py-2 font-bold bg-white text-blue-800 w-40 h-10"
                   >
                     <option value="Ubuntu">Ubuntu</option>
                     <option value="Calibri">Calibri</option>
@@ -1132,7 +1135,6 @@ export default function Builder({ onClose }) {
               className="flex flex-col md:flex-row flex-grow "
               style={{ backgroundColor: "#323159f5" }}
             >
-              
               {/* Form Content */}
               <main className=" w-[40%] mx-auto ">
                 <form>{sections[currentSection].component}</form>
@@ -1165,21 +1167,21 @@ export default function Builder({ onClose }) {
               </LoaderButton> */}
               <button
                 onClick={handleFinish}
-                className="bg-blue-950 text-white px-6 py-2 rounded-lg"
+                className="bg-blue-950 text-white px-6 py-2  rounded-lg"
               >
                 Save Resume
               </button>
               <button
                 onClick={downloadAsPDF}
-                className=" bg-yellow-500 text-black px-4 py-2 rounded-lg"
+                className=" bg-yellow-500 text-black px-6 py-2 rounded-lg"
               >
                 Pay & Download
               </button>
               <button
                 onClick={handleBackToEditor}
-                className="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
+                className="bg-gray-700 text-white px-6 py-2 rounded-lg hover:bg-gray-600 transition-colors"
               >
-                Back to Dashboard
+                Back to Previous
               </button>
             </div>
 
@@ -1192,7 +1194,7 @@ export default function Builder({ onClose }) {
                 <select
                   value={selectedFont}
                   onChange={handleFontChange}
-                  className="px-4 py-2 border rounded-lg"
+                  className="rounded-lg border-2 m-2 border-blue-800 px-6 py-2 font-bold bg-white text-blue-800 w-40"
                 >
                   <option value="Ubuntu">Ubuntu</option>
                   <option value="Calibri">Calibri</option>
@@ -1228,9 +1230,9 @@ export default function Builder({ onClose }) {
                 </button>
                 <button
                   onClick={handleBackToEditor}
-                  className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition-colors"
+                  className="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-500 transition-colors"
                 >
-                  Back to Dashboard
+                  Back to Previous
                 </button>
               </div>
             </div>
