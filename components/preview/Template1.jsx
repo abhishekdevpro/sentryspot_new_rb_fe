@@ -342,6 +342,7 @@ const Template1 = () => {
                   )}
                 </Droppable>
                 <Language title="Languages" languages={resumeData.languages} />
+
                 <Certification
                   title="Certifications"
                   certifications={resumeData.certifications}
