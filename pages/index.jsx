@@ -5,6 +5,8 @@ import Home_first from "./Home/Home_first";
 import FAQ from "./Home/FAQ/FAQ_Component.jsx";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
+import DashboardPage from "./dashboard/aibuilder";
+import Home from "./dashboard/resume-builder/index.jsx";
 
 const ResumeBuilder = () => {
   const [token, setToken] = useState();
@@ -33,8 +35,9 @@ const ResumeBuilder = () => {
   // }
   return (
     <>
-      <Builder />
-      {/* <Navbar/>
+    <Navbar/>
+      <Home/>
+      {/* 
     <Home_first/>
     <FAQ/> */}
       {/* <Loder/>  */}

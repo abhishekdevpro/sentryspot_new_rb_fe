@@ -140,10 +140,10 @@
 
 
 import React, { useContext, useState } from "react";
-import { ResumeContext } from "../../pages/builder";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS for styling
+import { ResumeContext } from "../context/ResumeContext";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -170,7 +170,7 @@ const Summary = () => {
           key: "resumesummery",
           keyword: `professional summary in manner of description - ${Date.now()}`, // Adding a timestamp to ensure uniqueness
           content: resumeData.position,
-          file_location: location,
+          file_location: "",
         },
         {
           headers: {

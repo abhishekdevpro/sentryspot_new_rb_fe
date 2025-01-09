@@ -76,9 +76,11 @@ const DefaultResumeData = {
     }
   ],
   languages: [
-    "English",
-    "Hindi",
+    { language: "Hindi", proficiency: "Native" },
+    { language: "English", proficiency: "Intermediate" },
+  
   ],
+  
   certifications: [
     "Certified Web Professional-Web Developer",
     "Java Development Certified Professional",

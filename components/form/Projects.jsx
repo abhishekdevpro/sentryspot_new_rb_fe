@@ -1,8 +1,8 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeContext } from "../../pages/builder";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css"; // Import Quill CSS for styling
+import { ResumeContext } from "../context/ResumeContext";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 

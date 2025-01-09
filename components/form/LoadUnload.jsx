@@ -485,8 +485,8 @@ import { FaCloudUploadAlt } from "react-icons/fa";
 import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { ResumeContext } from "../../pages/builder";
 import { toast } from "react-toastify";
+import { ResumeContext } from "../context/ResumeContext";
 
 // Resume Enhancement Modal Component
 const ResumeEnhancementModal = ({ 

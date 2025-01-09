@@ -92,9 +92,9 @@
 // export default Skill;
 
 import React, { useContext, useState } from "react";
-import { ResumeContext } from "../../pages/builder";
 import axios from "axios";
 import FormButton from "./FormButton";
+import { ResumeContext } from "../context/ResumeContext";
 
 const Skill = ({ title }) => {
   const { resumeData, setResumeData } = useContext(ResumeContext);

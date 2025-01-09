@@ -66,9 +66,9 @@
 
 // export default SocialMedia;
 
+import { ResumeContext } from "../context/ResumeContext";
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeContext } from "../../pages/builder";
 
 // Social Media Platforms and Icons
 const SOCIAL_MEDIA_OPTIONS = [
@@ -130,7 +130,7 @@ const SocialMedia = () => {
   };
 
   return (
-    <div className="flex-col flex items-center gap-3 w-full mt-10 px-10">
+    <div className="flex-col flex gap-3 w-full mt-10 px-10">
       <h2 className="input-title text-white text-3xl">Social Media</h2>
       <h2 className="input-title text-white">
         Please mention the platform and their link

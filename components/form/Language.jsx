@@ -176,8 +176,8 @@
 // export default Language;
 
 import React, { useContext } from "react";
-import { ResumeContext } from "../../pages/builder";
 import FormButton from "./FormButton";
+import { ResumeContext } from "../context/ResumeContext";
 
 const Language = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);

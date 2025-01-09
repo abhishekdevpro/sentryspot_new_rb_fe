@@ -1,106 +1,109 @@
-// /* eslint-disable react/jsx-no-undef */
-// import {
-//   FaGithub,
-//   FaLinkedin,
-//   FaTwitter,
-//   FaFacebook,
-//   FaInstagram,
-//   FaYoutube,
-//   FaBold,
-//   FaItalic,
-//   FaPlus,
-//   FaMinus,
-//   FaAlignLeft,
-//   FaAlignCenter,
-//   FaAlignRight,
-//   FaLink,
-//   FaUnderline,
-//   FaSpellCheck, // Added grammar check icon
-// } from "react-icons/fa";
+/* eslint-disable react/jsx-no-undef */
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaFacebook,
+  FaInstagram,
+  FaYoutube,
+  FaBold,
+  FaItalic,
+  FaPlus,
+  FaMinus,
+  FaAlignLeft,
+  FaAlignCenter,
+  FaAlignRight,
+  FaLink,
+  FaUnderline,
+  FaSpellCheck, // Added grammar check icon
+} from "react-icons/fa";
 
-// import { CgWebsite } from "react-icons/cg";
+import { CgWebsite } from "react-icons/cg";
 
-// import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, forwardRef } from "react";
 // import { ResumeContext } from "../../pages/builder";
-// import dynamic from "next/dynamic";
-// import { HighlightMenu } from "react-highlight-menu";
+import { ResumeContext } from "../../components/context/ResumeContext";
+import dynamic from "next/dynamic";
+import { HighlightMenu } from "react-highlight-menu";
 // import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
-// import Template1 from "./Template1";
-// import Template2 from "./Template2";
-// import Template3 from "./Template3";
-// import Template4 from "./Template4";
-// import Template5 from "./Template5";
-// import Template6 from "./Template6";
-// import Template7 from "./Template7";
-// import Template8 from "./Template8";
-// import Template9 from "./Template9";
-// import Template10 from "./Template10";
-// import Template11 from "./Template11";
-// import Template12 from "./Template12";
-// import Template13 from "./Template13";
-// import Template14 from "./Template14";
-// import Template15 from "./Template15";
-// import Template16 from "./Template16";
-// import Template17 from "./Template17";
-// import Template18 from "./Template18";
-// import Template19 from "./Template19";
-// import Template20 from "./Template20";
-// import Template21 from "./Template21";
-// import Template22 from "./Template22";
-// import Template23 from "./Template23";
-// import Template24 from "./Template24";
-// import Template25 from "./Template25";
-// import Template26 from "./Template26";
-// import Template27 from "./Template27";
+import Template1 from "./Template1";
+import Template2 from "./Template2";
+import Template3 from "./Template3";
+import Template4 from "./Template4";
+import Template5 from "./Template5";
+import Template6 from "./Template6";
+import Template7 from "./Template7";
+import Template8 from "./Template8";
+import Template9 from "./Template9";
+import Template10 from "./Template10";
+import Template11 from "./Template11";
+import Template12 from "./Template12";
+import Template13 from "./Template13";
+import Template14 from "./Template14";
+import Template15 from "./Template15";
+import Template16 from "./Template16";
+import Template17 from "./Template17";
+import Template18 from "./Template18";
+import Template19 from "./Template19";
+import Template20 from "./Template20";
+import Template21 from "./Template21";
+import Template22 from "./Template22";
+import Template23 from "./Template23";
+import Template24 from "./Template24";
+import Template25 from "./Template25";
+import Template26 from "./Template26";
+import Template27 from "./Template27";
 
-// // Importing draggable components dynamically
-// const DragDropContext = dynamic(
-//   () => import("react-beautiful-dnd").then((mod) => mod.DragDropContext),
-//   { ssr: false }
-// );
-// const Droppable = dynamic(
-//   () => import("react-beautiful-dnd").then((mod) => mod.Droppable),
-//   { ssr: false }
-// );
-// const Draggable = dynamic(
-//   () => import("react-beautiful-dnd").then((mod) => mod.Draggable),
-//   { ssr: false }
-// );
+// Importing draggable components dynamically
+const DragDropContext = dynamic(
+  () => import("react-beautiful-dnd").then((mod) => mod.DragDropContext),
+  { ssr: false }
+);
+const Droppable = dynamic(
+  () => import("react-beautiful-dnd").then((mod) => mod.Droppable),
+  { ssr: false }
+);
+const Draggable = dynamic(
+  () => import("react-beautiful-dnd").then((mod) => mod.Draggable),
+  { ssr: false }
+);
 
-// // Function to check grammar using a hypothetical API
-// const checkGrammar = () => {
-//   const selectedText = window.getSelection().toString();
+// Function to check grammar using a hypothetical API
+const checkGrammar = () => {
+  const selectedText = window.getSelection().toString();
 
-//   if (selectedText) {
-//     // API call to the grammar correction service (example using LanguageTool API)
-//     fetch("https://api.languagetool.org/v2/check", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/x-www-form-urlencoded",
-//       },
-//       body: new URLSearchParams({
-//         language: "en-US",
-//         text: selectedText,
-//       }),
-//     })
-//       .then((response) => response.json())
-//       .then((data) => {
-//         if (data.matches.length > 0) {
-//           alert("Grammar issues found: " + data.matches.length);
-//           // Extend this to show grammar correction suggestions to the user
-//         } else {
-//           alert("No grammar issues found!");
-//         }
-//       })
-//       .catch((error) => console.error("Error:", error));
-//   } else {
-//     alert("Please select some text to check for grammar.");
-//   }
-// };
+  if (selectedText) {
+    // API call to the grammar correction service (example using LanguageTool API)
+    fetch("https://api.languagetool.org/v2/check", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        language: "en-US",
+        text: selectedText,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.matches.length > 0) {
+          alert("Grammar issues found: " + data.matches.length);
+          // Extend this to show grammar correction suggestions to the user
+        } else {
+          alert("No grammar issues found!");
+        }
+      })
+      .catch((error) => console.error("Error:", error));
+  } else {
+    alert("Please select some text to check for grammar.");
+  }
+};
 
 // const Preview = ({ selectedTemplate }) => {
 //   const { resumeData, setResumeData,selectedFont } = useContext(ResumeContext);
 //   const [content, setContent] = useState(resumeData);
+
+//   console.log(resumeData,"resumeData from preview");
 
 //   const icons = [
 //     { name: "github", icon: <FaGithub /> },
@@ -228,10 +231,11 @@
 //   return (
 //     <div>
 //       <A4PageWrapper>
-//         <HighlightMenu
+//       <div style={{ fontFamily: selectedFont }}>
+//       <HighlightMenu
 //           styles={{
-//             borderColor: "#C026D3",
-//             backgroundColor: "#C026D3",
+//             borderColor: "",
+//             backgroundColor: "#c5c9c9",
 //             boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
 //             zIndex: 10,
 //             borderRadius: "5px",
@@ -297,135 +301,13 @@
 //         <DragDropContext onDragEnd={onDragEnd}>
 //           {templates[selectedTemplate]}
 //         </DragDropContext>
+//       </div>
 //       </A4PageWrapper>
 //     </div>
 //   );
 // };
-
-// const A4PageWrapper = ({ children }) => {
-//   const alertA4Size = () => {
-//     const preview = document.querySelector(".preview");
-//     if (preview) {
-//       const previewHeight = preview.offsetHeight;
-//       console.log(previewHeight);
-//       if (previewHeight > 1122) {
-//         alert("A4 size exceeded");
-//       }
-//     } else {
-//       console.error("Element with class 'preview' not found.");
-//     }
-//   };
-
-//   return (
-//     <div className="m-3" onLoad={alertA4Size}>
-//       {children}
-//     </div>
-//   );
-// };
-
-// export default Preview;
-/* eslint-disable react/jsx-no-undef */
-import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaBold,
-  FaItalic,
-  FaPlus,
-  FaMinus,
-  FaAlignLeft,
-  FaAlignCenter,
-  FaAlignRight,
-  FaLink,
-  FaUnderline,
-  FaSpellCheck, // Added grammar check icon
-} from "react-icons/fa";
-
-import { CgWebsite } from "react-icons/cg";
-
-import React, { useContext, useState, useEffect } from "react";
-import { ResumeContext } from "../../pages/builder";
-import dynamic from "next/dynamic";
-// import { HighlightMenu } from "react-highlight-menu";
-import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
-import Template1 from "./Template1";
-import Template2 from "./Template2";
-import Template3 from "./Template3";
-import Template4 from "./Template4";
-import Template5 from "./Template5";
-import Template6 from "./Template6";
-import Template7 from "./Template7";
-import Template8 from "./Template8";
-import Template9 from "./Template9";
-import Template10 from "./Template10";
-import Template11 from "./Template11";
-import Template12 from "./Template12";
-import Template13 from "./Template13";
-import Template14 from "./Template14";
-import Template15 from "./Template15";
-import Template16 from "./Template16";
-import Template17 from "./Template17";
-import Template18 from "./Template18";
-import Template19 from "./Template19";
-import Template20 from "./Template20";
-import Template21 from "./Template21";
-import Template22 from "./Template22";
-import Template23 from "./Template23";
-import Template24 from "./Template24";
-import Template25 from "./Template25";
-import Template26 from "./Template26";
-import Template27 from "./Template27";
-
-// Importing draggable components dynamically
-const DragDropContext = dynamic(
-  () => import("react-beautiful-dnd").then((mod) => mod.DragDropContext),
-  { ssr: false }
-);
-const Droppable = dynamic(
-  () => import("react-beautiful-dnd").then((mod) => mod.Droppable),
-  { ssr: false }
-);
-const Draggable = dynamic(
-  () => import("react-beautiful-dnd").then((mod) => mod.Draggable),
-  { ssr: false }
-);
-
-// Function to check grammar using a hypothetical API
-const checkGrammar = () => {
-  const selectedText = window.getSelection().toString();
-
-  if (selectedText) {
-    // API call to the grammar correction service (example using LanguageTool API)
-    fetch("https://api.languagetool.org/v2/check", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        language: "en-US",
-        text: selectedText,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.matches.length > 0) {
-          alert("Grammar issues found: " + data.matches.length);
-          // Extend this to show grammar correction suggestions to the user
-        } else {
-          alert("No grammar issues found!");
-        }
-      })
-      .catch((error) => console.error("Error:", error));
-  } else {
-    alert("Please select some text to check for grammar.");
-  }
-};
-
-const Preview = ({ selectedTemplate }) => {
-  const { resumeData, setResumeData,selectedFont } = useContext(ResumeContext);
+const Preview = forwardRef(({ selectedTemplate }, ref) => {
+  const { resumeData, setResumeData, selectedFont } = useContext(ResumeContext);
   const [content, setContent] = useState(resumeData);
 
   const icons = [
@@ -547,89 +429,89 @@ const Preview = ({ selectedTemplate }) => {
     }
   };
 
-  useKeyboardShortcut("b", true, toggleBold);
-  useKeyboardShortcut("i", true, toggleItalic);
-  useKeyboardShortcut("u", true, toggleUnderline);
+  // useKeyboardShortcut("b", true, toggleBold);
+  // useKeyboardShortcut("i", true, toggleItalic);
+  // useKeyboardShortcut("u", true, toggleUnderline);
 
   return (
-    <div>
+  
       <A4PageWrapper>
-      <div style={{ fontFamily: selectedFont }}>
-
-      {/* <HighlightMenu
-          styles={{
-            borderColor: "",
-            backgroundColor: "#c5c9c9",
-            boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
-            zIndex: 10,
-            borderRadius: "5px",
-            padding: "3px",
-          }}
-          target="body"
-          menu={() => (
-            <>
-              <MenuButton
-                title="Bold (Ctrl+B)"
-                icon={<FaBold />}
-                onClick={toggleBold}
-              />
-              <MenuButton
-                title="Italic (Ctrl+I)"
-                icon={<FaItalic />}
-                onClick={toggleItalic}
-              />
-              <MenuButton
-                title="Underline (Ctrl+U)"
-                icon={<FaUnderline />}
-                onClick={toggleUnderline}
-              />
-              <MenuButton
-                title="Increase Font Size"
-                icon={<FaPlus />}
-                onClick={() => changeFontSize(4)}
-              />
-              <MenuButton
-                title="Decrease Font Size"
-                icon={<FaMinus />}
-                onClick={() => changeFontSize(2)}
-              />
-              <MenuButton
-                title="Align Left"
-                icon={<FaAlignLeft />}
-                onClick={() => alignText("Left")}
-              />
-              <MenuButton
-                title="Align Center"
-                icon={<FaAlignCenter />}
-                onClick={() => alignText("Center")}
-              />
-              <MenuButton
-                title="Align Right"
-                icon={<FaAlignRight />}
-                onClick={() => alignText("Right")}
-              />
-              <MenuButton
-                title="Add Link"
-                icon={<FaLink />}
-                onClick={toggleLink}
-              />
-            
-              <MenuButton
-                title="Check Grammar"
-                icon={<FaSpellCheck />}
-                onClick={checkGrammar}
-              />
-            </>
-          )}
-        /> */}
-        <DragDropContext onDragEnd={onDragEnd}>
-          {templates[selectedTemplate]}
-        </DragDropContext>
-      </div>
+        <div ref={ref} className="preview" style={{ fontFamily: selectedFont }}>
+          <HighlightMenu
+            styles={{
+              borderColor: "",
+              backgroundColor: "#c5c9c9",
+              boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
+              zIndex: 10,
+              borderRadius: "5px",
+              padding: "3px",
+            }}
+            target="body"
+            menu={() => (
+              <>
+                <MenuButton
+                  title="Bold (Ctrl+B)"
+                  icon={<FaBold />}
+                  onClick={toggleBold}
+                />
+                <MenuButton
+                  title="Italic (Ctrl+I)"
+                  icon={<FaItalic />}
+                  onClick={toggleItalic}
+                />
+                <MenuButton
+                  title="Underline (Ctrl+U)"
+                  icon={<FaUnderline />}
+                  onClick={toggleUnderline}
+                />
+                <MenuButton
+                  title="Increase Font Size"
+                  icon={<FaPlus />}
+                  onClick={() => changeFontSize(4)}
+                />
+                <MenuButton
+                  title="Decrease Font Size"
+                  icon={<FaMinus />}
+                  onClick={() => changeFontSize(2)}
+                />
+                <MenuButton
+                  title="Align Left"
+                  icon={<FaAlignLeft />}
+                  onClick={() => alignText("Left")}
+                />
+                <MenuButton
+                  title="Align Center"
+                  icon={<FaAlignCenter />}
+                  onClick={() => alignText("Center")}
+                />
+                <MenuButton
+                  title="Align Right"
+                  icon={<FaAlignRight />}
+                  onClick={() => alignText("Right")}
+                />
+                <MenuButton
+                  title="Add Link"
+                  icon={<FaLink />}
+                  onClick={toggleLink}
+                />
+                <MenuButton
+                  title="Check Grammar"
+                  icon={<FaSpellCheck />}
+                  onClick={checkGrammar}
+                />
+              </>
+            )}
+          />
+          <DragDropContext onDragEnd={onDragEnd}>
+            {templates[selectedTemplate]}
+          </DragDropContext>
+        </div>
       </A4PageWrapper>
-    </div>
+   
   );
-};
+});
+
+Preview.displayName = "Preview"
 
 const A4PageWrapper = ({ children }) => {
   const alertA4Size = () => {
@@ -646,7 +528,9 @@ const A4PageWrapper = ({ children }) => {
   };
 
   return (
-    <div className="m-3" onLoad={alertA4Size}>
+    <div className="m-3 a4-wrapper mx-auto   overflow-hidden "
+  
+    onLoad={alertA4Size}>
       {children}
     </div>
   );

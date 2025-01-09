@@ -1,5 +1,5 @@
 // import React from "react";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { ResumeContext } from "../../pages/builder";
 import { HighlightMenu } from "react-highlight-menu";
 import ContactInfo from "./ContactInfo";
@@ -21,12 +21,21 @@ import {
 } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import dynamic from "next/dynamic";
+import ContactAndSocialMedia from "./ContactAndSocial";
 // Importing draggable components dynamically
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
 const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false })
 const Template12 = () => {
     const { resumeData, setResumeData, headerColor } = useContext(ResumeContext);
+    
+      const templateRef = useRef(null);
+     
+       const extractHtml = () => {
+           const htmlContent = templateRef.current?.outerHTML;
+           console.log(htmlContent);
+           return htmlContent;
+       };
     const icons = [
         { name: "github", icon: <FaGithub /> },
         { name: "linkedin", icon: <FaLinkedin /> },
@@ -38,7 +47,7 @@ const Template12 = () => {
     ];
 
     return (
-      <div className="w-full max-w-3xl mx-auto bg-white p-6 shadow-lg">
+        <div ref={templateRef} className="w-full max-w-4xl mx-auto bg-white p-6 shadow-lg">
         <div className="flex items-center mb-6">
           <Image
             src={resumeData.profilePicture}
@@ -48,37 +57,27 @@ const Template12 = () => {
             className="rounded-full mr-5"
           />
           <div className="flex-grow">
-            <h1
-              className="text-2xl text-gray-800"
-              style={{ color: headerColor }}
-            >
-              {resumeData.name}
-            </h1>
-            <h2 className="text-xl text-blue-600 font-semibold">
-              {resumeData.position}
-            </h2>
+            <h1 className="text-2xl text-gray-800" style={{ color: headerColor }}>{resumeData.name}</h1>
+            <h2 className="text-xl text-blue-600 font-semibold">{resumeData.position}</h2>
           </div>
-          <div className="text-right">
-            <ContactInfo
-              mainclass=" gap-1 mb-1 contact"
-              linkclass="inline-flex items-center gap-1"
-              teldata={resumeData.contactInformation}
-              emaildata={resumeData.email}
-              addressdata={resumeData.address}
-              telicon={<MdPhone />}
-              emailicon={<MdEmail />}
-              addressicon={<MdLocationOn />}
-            />
-          </div>
+         
         </div>
 
+      {  <ContactAndSocialMedia
+      contactData={{
+        teldata: resumeData.contactInformation,
+        emaildata: resumeData.email,
+        addressdata: resumeData.address,
+      }}
+      socialMediaData={resumeData.socialMedia}
+      icons={icons}
+      layout="row" // or "row"
+      contactClass=""
+      socialMediaClass=""
+    />}
+
         <div className="mb-6">
-          <h3
-            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
-            style={{ color: headerColor }}
-          >
-            Work Experience
-          </h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Work Experience</h3>
           <div className="mb-4">
             {resumeData.workExperience.length > 0 && (
               <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
@@ -95,37 +94,32 @@ const Template12 = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${
-                              snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
-                            }`}
+                              }`}
                           >
                             <div className=" justify-between space-y-1">
-                              <p className="content i-bold">{item.company}</p>
+                              <p className="text-lg font-semibold">{item.company}</p>
                               <DateRange
                                 startYear={item.startYear}
                                 endYear={item.endYear}
                                 id={`work-experience-start-end-date`}
                               />
                             </div>
-                            <div className="flex flex-row justify-between space-y-1">
-                              <p className="content">{item.position}</p>
-                              <p className="content">{item.location}</p>
-                            </div>
-                            <p
-                              className="content hyphens-auto"
-                              dangerouslySetInnerHTML={{
-                                __html: item.description,
-                              }}
-                            />
-
+                            <p className="font-medium">{item.position}</p>
+                            <p className="ctext-sm hover:outline-dashed hover:outline-2 hover:outline-gray-400 "
+                            contentEditable="true"
+                            suppressContentEditableWarning={true}
+                            >
+                              {item.description}
+                            </p>
                             <Droppable
                               droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
                               type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
                             >
                               {(provided) => (
                                 <ul
-                                  className="list-disc ul-padding content"
+                                  className="list-disc ul-padding pl-6"
                                   {...provided.droppableProps}
                                   ref={provided.innerRef}
                                 >
@@ -145,10 +139,9 @@ const Template12 = () => {
                                               {...provided.dragHandleProps}
                                               className={`
                                           hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${
-                                            snapshot.isDragging &&
-                                            "outline-dashed outline-2 outline-gray-400 bg-white"
-                                          }`}
+                                          ${snapshot.isDragging &&
+                                                "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                }`}
                                             >
                                               <div
                                                 dangerouslySetInnerHTML={{
@@ -181,8 +174,7 @@ const Template12 = () => {
                       className="section-title mb-1 border-b-2 border-gray-300 editable"
                       contentEditable
                       suppressContentEditableWarning
-                      style={{ color: headerColor }}
-                    >
+                      style={{ color: headerColor }} >
                       Projects
                     </h2>
                     {resumeData.projects.map((item, index) => (
@@ -196,10 +188,9 @@ const Template12 = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${
-                              snapshot.isDragging &&
+                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                               "outline-dashed outline-2 outline-gray-400 bg-white"
-                            }`}
+                              }`}
                           >
                             <div className="flex flex-row justify-between space-y-1">
                               <p className="content i-bold">{item.name}</p>
@@ -217,12 +208,7 @@ const Template12 = () => {
                             >
                               {item.link}
                             </Link>
-                            <p
-                              className="content"
-                              dangerouslySetInnerHTML={{
-                                __html: item.description,
-                              }}
-                            />
+                            <p className="text-lg font-semibold">{item.description}</p>
                             <Droppable
                               droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
                               type="PROJECTS_KEY_ACHIEVEMENT"
@@ -249,10 +235,9 @@ const Template12 = () => {
                                               {...provided.dragHandleProps}
                                               className={`
                                           hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                          ${
-                                            snapshot.isDragging &&
-                                            "outline-dashed outline-2 outline-gray-400 bg-white"
-                                          }`}
+                                          ${snapshot.isDragging &&
+                                                "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                }`}
                                             >
                                               <div
                                                 dangerouslySetInnerHTML={{
@@ -269,7 +254,9 @@ const Template12 = () => {
                               )}
                             </Droppable>
                           </div>
+
                         )}
+
                       </Draggable>
                     ))}
                     {provided.placeholder}
@@ -282,28 +269,13 @@ const Template12 = () => {
         </div>
 
         <div className="mb-6">
-          <h3
-            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
-            style={{ color: headerColor }}
-          >
-            Snapshot
-          </h3>
-          {/* {resumeData.summary} */}
-          <p
-            dangerouslySetInnerHTML={{
-              __html: resumeData.summary,
-            }}
-          />
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Snapshot</h3>
+          {resumeData.summary}
           {/* Add more snapshot paragraphs as needed */}
         </div>
 
         <div className="mb-6">
-          <h3
-            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
-            style={{ color: headerColor }}
-          >
-            Technical Skills
-          </h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Technical Skills</h3>
           <div className="bg-blue-600 text-white text-center py-2 rounded-md mb-2 text-sm font-semibold">
             <Droppable droppableId="skills" type="SKILLS">
               {(provided) => (
@@ -319,10 +291,9 @@ const Template12 = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${
-                            snapshot.isDragging &&
+                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
                             "outline-dashed outline-2 outline-gray-400 bg-white text-sm text-gray-800"
-                          }`}
+                            }`}
                         >
                           <Skills title={skill.title} skills={skill.skills} />
                         </div>
@@ -338,16 +309,10 @@ const Template12 = () => {
         </div>
 
         <div className="mb-6">
-          <h3
-            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
-            style={{ color: headerColor }}
-          >
-            Certificates
-          </h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Certificates</h3>
           <div className="mb-2">
-            <Certification
-              className="text-lg text-gray-800 font-semibold"
-              title="Certifications "
+            <Certification className="text-lg text-gray-800 font-semibold"
+              
               certifications={resumeData.certifications}
             />
           </div>
@@ -355,19 +320,16 @@ const Template12 = () => {
         </div>
 
         <div>
-          <h3
-            className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4"
-            style={{ color: headerColor }}
-          >
-            Skills
-          </h3>
+          <h3 className="text-xl text-blue-600 border-b-2 border-blue-600 pb-1 mb-4" style={{ color: headerColor }}>Skills</h3>
           <div className="flex flex-wrap">
             <div className="w-1/2 mb-2">
-              <Language title="Languages" languages={resumeData.languages} />
+              <Language languages={resumeData.languages} />
             </div>
 
             {/* Add more skill items as needed */}
           </div>
+          {/* <button onClick={extractHtml}>Log HTML Content</button> */}
+
         </div>
       </div>
     );

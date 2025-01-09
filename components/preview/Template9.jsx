@@ -1,6 +1,7 @@
 // import React from "react";
-import {useContext} from "react";
-import { ResumeContext } from "../../pages/builder";
+import {useContext, useRef} from "react";
+// import { ResumeContext } from "../../pages/builder";
+import { ResumeContext } from "../context/ResumeContext";
 import { HighlightMenu } from "react-highlight-menu";
 import ContactInfo from "./ContactInfo";
 import { CgWebsite } from "react-icons/cg";
@@ -21,12 +22,20 @@ import {
   } from "react-icons/fa";
   import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
   import dynamic from "next/dynamic";
+import ContactAndSocialMedia from "./ContactAndSocial";
   // Importing draggable components dynamically
 const DragDropContext = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.DragDropContext), { ssr: false });
 const Droppable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Droppable), { ssr: false });
 const Draggable = dynamic(() => import("react-beautiful-dnd").then((mod) => mod.Draggable), { ssr: false })
 const Template9 = () => {
     const { resumeData, setResumeData,headerColor } = useContext(ResumeContext);
+    const templateRef = useRef(null);
+
+  const extractHtml = () => {
+      const htmlContent = templateRef.current?.outerHTML;
+      console.log(htmlContent);
+      return htmlContent;
+  };
     const icons = [
         { name: "github", icon: <FaGithub /> },
         { name: "linkedin", icon: <FaLinkedin /> },
@@ -38,346 +47,299 @@ const Template9 = () => {
       ];
     
   return (
-    <div className="bg-gray-100 p-5">
-      <div className="max-w-4xl mx-auto bg-white p-5 shadow-lg">
-        <div className="mb-5">
-          <h1
-            className="text-4xl font-bold text-left"
-            style={{ color: headerColor }}
-          >
-            {resumeData.name}
-          </h1>
-          <p
-            className="text-sm text-gray-600"
-            dangerouslySetInnerHTML={{
-              __html: resumeData.summary,
-            }}
-          />
-          {/* {resumeData.summary}</p> */}
-        </div>
-        <div className="text-right mb-5 text-sm text-gray-600">
-          <p>
-            <ContactInfo
-              mainclass="gap-1 mb-1 contact"
-              linkclass="inline-flex items-center gap-1"
-              teldata={resumeData.contactInformation}
-              emaildata={resumeData.email}
-              addressdata={resumeData.address}
-              telicon={<MdPhone />}
-              emailicon={<MdEmail />}
-              addressicon={<MdLocationOn />}
-            />
-          </p>
-        </div>
-        <div className="flex justify-between">
-          <div className="w-3/5">
-            <section className="mb-5">
-              <h2
-                className="text-lg font-bold border-b border-gray-300 pb-1 mb-3"
-                style={{ color: headerColor }}
-              >
-                Experience
-              </h2>
-              <div className="mb-3">
-                <div className="col-span-2 space-y-2">
-                  {resumeData.workExperience.length > 0 && (
-                    <Droppable
-                      droppableId="work-experience"
-                      type="WORK_EXPERIENCE"
-                    >
-                      {(provided) => (
-                        <div
-                          {...provided.droppableProps}
-                          ref={provided.innerRef}
-                        >
-                          <h2
-                            className="section-title mb-1 border-b-2 border-gray-300 editable"
-                            contentEditable
-                            suppressContentEditableWarning
-                            style={{ color: headerColor }}
+    <div ref={templateRef} className="bg-gray-100">
+    <div className="max-w-4xl mx-auto bg-white p-5 shadow-lg">
+      <div className="mb-2">
+        <h1 className="text-2xl font-bold text-left" style={{ color: headerColor }}>{resumeData.name}</h1>
+        <p className="text-md font-normal text-gray-600 hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+        contentEditable="true"
+        suppressContentEditableWarning={true}>{resumeData.summary}</p>
+      </div>
+      <div className="text-left mb-5">
+      <ContactAndSocialMedia
+      contactData={{
+        teldata: resumeData.contactInformation,
+        emaildata: resumeData.email,
+        addressdata: resumeData.address,
+      }}
+      socialMediaData={resumeData.socialMedia}
+      icons={icons}
+      layout="row" // or "row"
+      contactClass=""
+      socialMediaClass=""
+    />
+      </div>
+      <div className="flex justify-between">
+        <div className="w-3/5 pr-2">
+          <section className="mb-5">
+            <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>Experience</h2>
+            <div className="mb-3">
+              <div className="col-span-2 space-y-2">
+                {resumeData.workExperience.length > 0 && (
+                  <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
+                    {(provided) => (
+                      <div {...provided.droppableProps} ref={provided.innerRef}>
+                        {/* <h2
+                          className="text-lg font-bold mb-1 border-b border-gray-300 editable"
+                          contentEditable
+                          suppressContentEditableWarning
+                          style={{ color: headerColor }} >
+                          Work Experience
+                        </h2> */}
+                        {resumeData.workExperience.map((item, index) => (
+                          <Draggable
+                            key={`${item.company}-${index}`}
+                            draggableId={`WORK_EXPERIENCE-${index}`}
+                            index={index}
                           >
-                            Work Experience
-                          </h2>
-                          {resumeData.workExperience.map((item, index) => (
-                            <Draggable
-                              key={`${item.company}-${index}`}
-                              draggableId={`WORK_EXPERIENCE-${index}`}
-                              index={index}
-                            >
-                              {(provided, snapshot) => (
-                                <div
-                                  ref={provided.innerRef}
-                                  {...provided.draggableProps}
-                                  {...provided.dragHandleProps}
-                                  className={`hover:scale-105 transition-transform duration-300 mb-1 ${
-                                    snapshot.isDragging &&
-                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                  "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
-                                >
-                                  <div className="flex flex-row justify-between space-y-1">
-                                    <p className="content i-bold">
-                                      {item.company}
-                                    </p>
-                                    <DateRange
-                                      startYear={item.startYear}
-                                      endYear={item.endYear}
-                                      id={`work-experience-start-end-date`}
-                                    />
-                                  </div>
-                                  <div className="flex flex-row justify-between space-y-1">
-                                    <p className="content">{item.position}</p>
-                                    <p className="content">{item.location}</p>
-                                  </div>
-                                  <p
-                                    className="content hyphens-auto p-2"
-                                    dangerouslySetInnerHTML={{
-                                      __html: item.description,
-                                    }}
+                              >
+                                <div className="flex flex-row justify-between space-y-1">
+                                  <p className="text-lg font-bold">{item.company}</p>
+                                  <DateRange
+                                    startYear={item.startYear}
+                                    endYear={item.endYear}
+                                    id={`work-experience-start-end-date`}
                                   />
-                                  <Droppable
-                                    droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
-                                    type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
-                                  >
-                                    {(provided) => (
-                                      <ul
-                                        className="list-disc ul-padding content"
-                                        {...provided.droppableProps}
-                                        ref={provided.innerRef}
-                                      >
-                                        {typeof item.keyAchievements ===
-                                          "string" &&
-                                          item.keyAchievements
-                                            .split("\n")
-                                            .map((achievement, subIndex) => (
-                                              <Draggable
-                                                key={`${item.company}-${index}-${subIndex}`}
-                                                draggableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}-${subIndex}`}
-                                                index={subIndex}
-                                              >
-                                                {(provided, snapshot) => (
-                                                  <li
-                                                    ref={provided.innerRef}
-                                                    {...provided.draggableProps}
-                                                    {...provided.dragHandleProps}
-                                                    className={`
+                                </div>
+                                <p className="font-semibold">{item.position}</p>
+                                <p className="text-sm hover:outline-dashed hover:outline-2 hover:outline-gray-400" contentEditable="true"
+                      suppressContentEditableWarning={true}>
+                                  {item.description}
+                                </p>
+                                <Droppable
+                                  droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
+                                  type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
+                                >
+                                  {(provided) => (
+                                    <ul
+                                      className="list-disc pl-4 ul-padding content"
+                                      {...provided.droppableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      {typeof item.keyAchievements === "string" &&
+                                        item.keyAchievements
+                                          .split("\n")
+                                          .map((achievement, subIndex) => (
+                                            <Draggable
+                                              key={`${item.company}-${index}-${subIndex}`}
+                                              draggableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}-${subIndex}`}
+                                              index={subIndex}
+                                            >
+                                              {(provided, snapshot) => (
+                                                <li
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                  className={`
                                       hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                      ${
-                                        snapshot.isDragging &&
-                                        "outline-dashed outline-2 outline-gray-400 bg-white"
-                                      }`}
-                                                  >
-                                                    <div
-                                                      dangerouslySetInnerHTML={{
-                                                        __html: achievement,
-                                                      }}
-                                                      contentEditable
-                                                    />
-                                                  </li>
-                                                )}
-                                              </Draggable>
-                                            ))}
-                                        {provided.placeholder}
-                                      </ul>
-                                    )}
-                                  </Droppable>
-                                </div>
-                              )}
-                            </Draggable>
-                          ))}
-                          {provided.placeholder}
-                        </div>
-                      )}
-                    </Droppable>
-                  )}
-                  {resumeData.projects.length > 0 && (
-                    <Droppable droppableId="projects" type="PROJECTS">
-                      {(provided) => (
-                        <div
-                          {...provided.droppableProps}
-                          ref={provided.innerRef}
-                        >
-                          <h2
-                            className="section-title mb-1 border-b-2 border-gray-300 editable"
-                            contentEditable
-                            suppressContentEditableWarning
-                            style={{ color: headerColor }}
+                                      ${snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                    }`}
+                                                >
+                                                  <div
+                                                    dangerouslySetInnerHTML={{
+                                                      __html: achievement,
+                                                    }}
+                                                    contentEditable
+                                                  />
+                                                </li>
+                                              )}
+                                            </Draggable>
+                                          ))}
+                                      {provided.placeholder}
+                                    </ul>
+                                  )}
+                                </Droppable>
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                )}
+                {resumeData.projects.length > 0 && (
+                  <Droppable droppableId="projects" type="PROJECTS">
+                    {(provided) => (
+                      <div {...provided.droppableProps} ref={provided.innerRef}>
+                        <h2
+                          className="text-lg font-bold mb-1 border-b-2 border-gray-300 editable"
+                          contentEditable
+                          suppressContentEditableWarning
+                          style={{ color: headerColor }}   >
+                          Projects
+                        </h2>
+                        {resumeData.projects.map((item, index) => (
+                          <Draggable
+                            key={`${item.name}-${index}`}
+                            draggableId={`PROJECTS-${index}`}
+                            index={index}
                           >
-                            Projects
-                          </h2>
-                          {resumeData.projects.map((item, index) => (
-                            <Draggable
-                              key={`${item.name}-${index}`}
-                              draggableId={`PROJECTS-${index}`}
-                              index={index}
-                            >
-                              {(provided, snapshot) => (
-                                <div
-                                  ref={provided.innerRef}
-                                  {...provided.draggableProps}
-                                  {...provided.dragHandleProps}
-                                  className={`hover:scale-105 transition-transform duration-300 mb-1 ${
-                                    snapshot.isDragging &&
-                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                            {(provided, snapshot) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                                  "outline-dashed outline-2 outline-gray-400 bg-white"
                                   }`}
-                                >
-                                  <div className="flex flex-row justify-between space-y-1">
-                                    <p className="content i-bold text-md font-semibold">
-                                      {item.name}
-                                    </p>
-                                    <DateRange
-                                      startYear={item.startYear}
-                                      endYear={item.endYear}
-                                      id={`work-experience-start-end-date`}
-                                    />
-                                  </div>
-                                  <Link
-                                    href={item.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="content"
-                                  >
-                                    {item.link}
-                                  </Link>
-                                  <p
-                                    className="content"
-                                    dangerouslySetInnerHTML={{
-                                      __html: item.description,
-                                    }}
+                              >
+                                <div className="flex flex-row justify-between space-y-1">
+                                  <p className="text-md font-semibold">{item.name}</p>
+                                  <DateRange
+                                    startYear={item.startYear}
+                                    endYear={item.endYear}
+                                    id={`work-experience-start-end-date`}
                                   />
-                                  <Droppable
-                                    droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
-                                    type="PROJECTS_KEY_ACHIEVEMENT"
-                                  >
-                                    {(provided) => (
-                                      <ul
-                                        className="list-disc ul-padding content"
-                                        {...provided.droppableProps}
-                                        ref={provided.innerRef}
-                                      >
-                                        {typeof item.keyAchievements ===
-                                          "string" &&
-                                          item.keyAchievements
-                                            .split("\n")
-                                            .map((achievement, subIndex) => (
-                                              <Draggable
-                                                key={`${item.name}-${index}-${subIndex}`}
-                                                draggableId={`PROJECTS_KEY_ACHIEVEMENT-${index}-${subIndex}`}
-                                                index={subIndex}
-                                              >
-                                                {(provided, snapshot) => (
-                                                  <li
-                                                    ref={provided.innerRef}
-                                                    {...provided.draggableProps}
-                                                    {...provided.dragHandleProps}
-                                                    className={`
-                                      hover:outline-dashed hover:outline-2 hover:outline-gray-400
-                                      ${
-                                        snapshot.isDragging &&
-                                        "outline-dashed outline-2 outline-gray-400 bg-white"
-                                      }`}
-                                                  >
-                                                    <div
-                                                      dangerouslySetInnerHTML={{
-                                                        __html: achievement,
-                                                      }}
-                                                      contentEditable
-                                                    />
-                                                  </li>
-                                                )}
-                                              </Draggable>
-                                            ))}
-                                        {provided.placeholder}
-                                      </ul>
-                                    )}
-                                  </Droppable>
                                 </div>
-                              )}
-                            </Draggable>
-                          ))}
-                          {provided.placeholder}
+                                <Link
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="content"
+                                >
+                                  {item.link}
+                                </Link>
+                                <p className="content">{item.description}</p>
+                                <Droppable
+                                  droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
+                                  type="PROJECTS_KEY_ACHIEVEMENT"
+                                >
+                                  {(provided) => (
+                                    <ul
+                                      className="list-disc ul-padding content"
+                                      {...provided.droppableProps}
+                                      ref={provided.innerRef}
+                                    >
+                                      {typeof item.keyAchievements === "string" &&
+                                        item.keyAchievements
+                                          .split("\n")
+                                          .map((achievement, subIndex) => (
+                                            <Draggable
+                                              key={`${item.name}-${index}-${subIndex}`}
+                                              draggableId={`PROJECTS_KEY_ACHIEVEMENT-${index}-${subIndex}`}
+                                              index={subIndex}
+                                            >
+                                              {(provided, snapshot) => (
+                                                <li
+                                                  ref={provided.innerRef}
+                                                  {...provided.draggableProps}
+                                                  {...provided.dragHandleProps}
+                                                  className={`
+                                      hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                      ${snapshot.isDragging &&
+                                                    "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                    }`}
+                                                >
+                                                  <div
+                                                    dangerouslySetInnerHTML={{
+                                                      __html: achievement,
+                                                    }}
+                                                    contentEditable
+                                                  />
+                                                </li>
+                                              )}
+                                            </Draggable>
+                                          ))}
+                                      {provided.placeholder}
+                                    </ul>
+                                  )}
+                                </Droppable>
+                              </div>
+
+                            )}
+
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                )}
+              </div>
+            </div>
+          </section>
+          {/* text-lg font-bold border-b border-gray-300 pb-1 mb-3 */}
+          {/* text-sm text-gray-600 */}
+          <section className="mb-5">
+            {resumeData.education.length > 0 && (
+              <div className="mb-1">
+                <h2 className=" text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>
+                  Education
+                </h2>
+                {resumeData.education.map((item, index) => (
+                  <div key={index} className="mb-1">
+                    <p className="text-md font-semibold text-gray-600">{item.degree}</p>
+                    <p className="text-sm text-gray-600">{item.school}</p>
+                    <DateRange
+                      startYear={item.startYear}
+                      endYear={item.endYear}
+                      id={`education-start-end-date`}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        </div>
+        <div className="w-2/5">
+          <section className="mb-5">
+            <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>Skills</h2>
+            <Droppable droppableId="skills" type="SKILLS">
+              {(provided) => (
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {resumeData.skills.map((skill, index) => (
+                    <Draggable
+                      key={`SKILLS-${index}`}
+                      draggableId={`SKILLS-${index}`}
+                      index={index}
+                    >
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          className={`hover:scale-105 transition-transform duration-300 mb-1 ${snapshot.isDragging &&
+                            "outline-dashed outline-2 outline-gray-400 bg-white"
+                            }`}
+                        >
+                          <Skills title={skill.title} skills={skill.skills} />
                         </div>
                       )}
-                    </Droppable>
-                  )}
-                </div>
-              </div>
-            </section>
-            {/* text-lg font-bold border-b border-gray-300 pb-1 mb-3 */}
-            {/* text-sm text-gray-600 */}
-            <section className="mb-5">
-              {resumeData.education.length > 0 && (
-                <div className="mb-1">
-                  <h2
-                    className=" text-lg font-bold border-b border-gray-300 pb-1 mb-3"
-                    style={{ color: headerColor }}
-                  >
-                    Education
-                  </h2>
-                  {resumeData.education.map((item, index) => (
-                    <div key={index} className="mb-1">
-                      <p className="text-sm text-gray-600">{item.degree}</p>
-                      <p className="text-sm text-gray-600">{item.school}</p>
-                      <DateRange
-                        startYear={item.startYear}
-                        endYear={item.endYear}
-                        id={`education-start-end-date`}
-                      />
-                      <p className="content">{item.location}</p>
-                    </div>
+                    </Draggable>
                   ))}
+                  {provided.placeholder}
                 </div>
               )}
-            </section>
-          </div>
-          <div className="w-2/5">
-            <section className="mb-5">
-              <h2
-                className="text-lg font-bold border-b border-gray-300 pb-1 mb-3"
-                style={{ color: headerColor }}
-              >
-                Skills
-              </h2>
-              <Droppable droppableId="skills" type="SKILLS">
-                {(provided) => (
-                  <div {...provided.droppableProps} ref={provided.innerRef}>
-                    {resumeData.skills.map((skill, index) => (
-                      <Draggable
-                        key={`SKILLS-${index}`}
-                        draggableId={`SKILLS-${index}`}
-                        index={index}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            className={`hover:scale-105 transition-transform duration-300 mb-1 ${
-                              snapshot.isDragging &&
-                              "outline-dashed outline-2 outline-gray-400 bg-white"
-                            }`}
-                          >
-                            <Skills title={skill.title} skills={skill.skills} />
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </section>
+            </Droppable>
+          </section>
 
-            <section>
-              <Language title="Languages" languages={resumeData.languages} />
-              <Certification
-                title="Certifications"
-                certifications={resumeData.certifications}
-              />
-            </section>
-          </div>
+
+
+          <section>
+          <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>Languages</h2>
+
+            <Language languages={resumeData.languages} />
+            <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3" style={{ color: headerColor }}>Certifications</h2>
+
+            <Certification
+              certifications={resumeData.certifications}
+            />
+          </section>
+          <button onClick={extractHtml}>Log HTML Content</button>
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

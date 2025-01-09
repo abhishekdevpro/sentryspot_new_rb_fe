@@ -22,9 +22,9 @@ const Navbar = () => {
       // Check API success
       const checkApiSuccess = async () => {
         try {
-          const response = await fetch('https://api.sentryspot.co.uk/api/user/user-profile', {
+          const response = await fetch('https://api.sentryspot.co.uk/api/jobseeker/user-profile', {
             headers: {
-              'Authorization': `Bearer ${token}`,
+              'Authorization': ` ${token}`,
             },
           });
           if (response.ok) {
@@ -86,7 +86,7 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={toggleDropdown}
-                  className="flex items-center bg-white text-white px-4 py-2 text-md font-semibold border-2 rounded-xl"
+                  className="flex items-center bg-white text-white px-4 py-2 text-md font-semibold border-2 rounded-xl z-50"
                 >
                   <img 
                     src="https://img.freepik.com/premium-vector/businessman-avatar-illustration-cartoon-user-portrait-user-profile-icon_118339-4382.jpg" 
@@ -104,11 +104,11 @@ const Navbar = () => {
                       Home 
                     </Link>
                     <Link 
-                      href="/dashboard/page"
+                      href="/dashboard"
                       className="block px-4 py-2 hover:bg-gray-200"
                       onClick={() => setIsDropdownOpen(false)}
                     >
-                      Profile
+                      Dashboard
                     </Link>
                     <button
                       onClick={() => { handleLogout(); setIsDropdownOpen(false); }}
