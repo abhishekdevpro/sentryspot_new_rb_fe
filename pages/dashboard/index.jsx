@@ -7,11 +7,11 @@
 import { useEffect, useState } from "react"
 import CoverLetterSection from "../../components/dashboard/CoverLetterSection"
 import InterviewSection from "../../components/dashboard/InterviewSection"
-import ProfileSection from "../../components/dashboard/ProfileSection"
 import ResumeStrength from "../../components/dashboard/ResumeStrength"
 import Sidebar from "../../components/dashboard/Sidebar"
 import Navbar from "../Navbar/Navbar"
 import axios from "axios"
+// import ProfileSection from "../../components/dashboard/PRofileSection"
 
 // const DashboardLayout = () => {
 //   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -130,7 +130,7 @@ export default function DashboardPage() {
         <h1 className="text-2xl font-bold mb-6">Your Recommended Next Steps</h1>
         
         <ResumeStrength score={strength.resume_strenght} strength={strength} resumeId={resumeId} />
-        <ProfileSection visits={4} />
+        {/* <ProfileSection visits={4} /> */}
         <InterviewSection />
         <CoverLetterSection />
       </main>

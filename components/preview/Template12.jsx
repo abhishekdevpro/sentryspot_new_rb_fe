@@ -1,6 +1,6 @@
 // import React from "react";
 import { useContext, useRef } from "react";
-import { ResumeContext } from "../../pages/builder";
+import { ResumeContext } from "../context/ResumeContext";
 import { HighlightMenu } from "react-highlight-menu";
 import ContactInfo from "./ContactInfo";
 import { CgWebsite } from "react-icons/cg";

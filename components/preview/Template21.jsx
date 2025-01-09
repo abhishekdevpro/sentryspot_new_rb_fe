@@ -414,7 +414,7 @@
 
 // export default Template21;
 import { useContext, useRef } from "react";
-import { ResumeContext } from "../../pages/builder";
+import { ResumeContext } from "../context/ResumeContext";
 import ContactInfo from "./ContactInfo";
 import DateRange from "../utility/DateRange";
 import Language from "./Language";
