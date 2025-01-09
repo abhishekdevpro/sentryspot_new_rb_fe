@@ -7,7 +7,7 @@
 import { useEffect, useState } from "react"
 import CoverLetterSection from "../../components/dashboard/CoverLetterSection"
 import InterviewSection from "../../components/dashboard/InterviewSection"
-import ProfileSection from "../../components/dashboard/PRofileSection"
+import ProfileSection from "../../components/dashboard/ProfileSection"
 import ResumeStrength from "../../components/dashboard/ResumeStrength"
 import Sidebar from "../../components/dashboard/Sidebar"
 import Navbar from "../Navbar/Navbar"
