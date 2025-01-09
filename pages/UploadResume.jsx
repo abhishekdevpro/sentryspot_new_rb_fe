@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Image from 'next/image'; // Ensure correct import
-import { ResumeContext } from "./builder";
 import GoogleDrive from '../public/assets/google-drive.png';
 import drag from '../public/assets/drag.png';
+import { ResumeContext } from "../components/context/ResumeContext";
 
 const UploadResume = () => {
   const [file, setFile] = useState(null);

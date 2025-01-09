@@ -3,7 +3,8 @@ import axios from "axios";
 import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from 'react-toastify';
-import { ResumeContext } from "../../pages/builder";
+import { ResumeContext } from "../../components/context/ResumeContext";
+
 
 const MyResume = () => {
   const { setResumeData } = useContext(ResumeContext);
