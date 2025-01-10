@@ -467,7 +467,7 @@ export default function WebBuilder() {
 
   const handleFinish = async () => {
     if (!resumeData) return;
-
+  
     const templateData = {
       templateData: {
         name: resumeData.name || "",
@@ -527,37 +527,52 @@ export default function WebBuilder() {
         },
       },
     };
-
+  
+    // Generate HTML content for the PDF
+    const htmlContent = templateRef?.current?.innerHTML;
+    if (!htmlContent) {
+      toast.error("Error: Template content is missing.");
+      return;
+    }
+  
+    const resumeHtml = `
+      <style>
+        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+      </style>
+      ${htmlContent}
+    `;
+  
     await handleAction(async () => {
       try {
         const id = router.query.id || localStorage.getItem("resumeId");
         if (!id) {
           console.error("Resume ID not found.");
+          toast.error("Error: Resume ID is missing.");
           return;
         }
-
+  
         const url = `https://api.sentryspot.co.uk/api/jobseeker/resume-update/${id}`;
-        const response = await axios.put(url, templateData, {
+        const response = await axios.put(url, { ...templateData, resume_html: resumeHtml }, {
           headers: {
             "Content-Type": "application/json",
             Authorization: token,
           },
         });
-
+  
         if (response.data.code === 200 || response.data.status === "success") {
           setIsSaved(true);
           localStorage.setItem("isSaved", "true");
-          toast.success(response.data.message || "Resume saved Successfully");
+          toast.success(response.data.message || "Resume saved successfully.");
         } else {
-          toast.error(response.data.error || "Error while saving the Resume");
+          toast.error(response.data.error || "Error while saving the resume.");
         }
       } catch (error) {
-        toast.error(error?.message || "Error !!");
+        toast.error(error?.response?.data?.message || "An error occurred.");
         console.error("Error updating resume:", error);
       }
     });
   };
-
+  
   
 
  
