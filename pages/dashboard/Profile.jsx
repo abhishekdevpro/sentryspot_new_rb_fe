@@ -281,7 +281,7 @@ const ProfilePage = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const userProfileResponse = await axios.get('https://api.sentryspot.co.uk/api/user/user-profile', {
+        const userProfileResponse = await axios.get('https://api.sentryspot.co.uk/api/jobseeker/user-profile', {
           headers: { Authorization: token },
         });
         
@@ -322,7 +322,7 @@ const ProfilePage = () => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        const response = await axios.get('https://api.sentryspot.co.uk/api/user/resume-list', {
+        const response = await axios.get('https://api.sentryspot.co.uk/api/jobseeker/resume-list', {
           headers: { Authorization: token }
         });
         const resumes = response.data.resumelist;
@@ -351,7 +351,7 @@ const ProfilePage = () => {
     }
 
     try {
-      const response = await axios.post('https://api.sentryspot.co.uk/api/user/file-based-ai', {
+      const response = await axios.post('https://api.sentryspot.co.uk/api/jobseeker/file-based-ai', {
         keyword: 'Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations',
         file_location: resume.file_path || "/etc/dean_ai_resume/users/resume_uploads/majid[15_0]-1723818329.pdf",
       }, {
@@ -412,7 +412,7 @@ const ProfilePage = () => {
       setUploadStatus('Uploading...');
 
       const response = await axios.post(
-        'https://api.sentryspot.co.uk/api/user/resume-upload',
+        'https://api.sentryspot.co.uk/api/jobseeker/resume-upload',
         formData,
         {
           headers: {

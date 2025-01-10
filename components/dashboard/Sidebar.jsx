@@ -1,7 +1,13 @@
 import { Download, Edit } from "lucide-react"
-import Template1 from "../preview/template/template1.png"
-import { useRouter } from "next/router"
+
+import { useRouter  } from "next/router"
+import Link from "next/link";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { ResumeContext } from "../../components/context/ResumeContext";
+import DashboardPreview from "../preview/DashboardPreview";
+
 const Sidebar = ({ score,resumeId }) => {
+  const templateRef = useRef(null);
   const router = useRouter()
   const hnadleEdit =()=>{
     router.push(`/dashboard/aibuilder/${resumeId}`)
@@ -9,20 +15,204 @@ const Sidebar = ({ score,resumeId }) => {
   const handleCreate=()=>{
     router.push(`/dashboard/aibuilder`)
   }
+  const [currentSection, setCurrentSection] = useState(0);
+  
+  const [selectedTemplate, setSelectedTemplate] = useState("template1");
+  const [isFinished, setIsFinished] = useState(false);
+
+  const [token, setToken] = useState(null);
+  
+  
+  
+  const pdfExportComponent = useRef(null);
+ 
+  const { PayerID } = router.query;
+  
+ 
+  const {resumeData ,setResumeData, setHeaderColor,setBgColor,setSelectedFont,selectedFont,backgroundColorss,headerColor} = useContext(ResumeContext)
+ 
+
+  
+  const handleDownload = async () => {
+   
+    const apiUrl = `https://api.sentryspot.co.uk/api/jobseeker/download-resume/${resumeId}`;
+  
+    try {
+      const token = localStorage.getItem("token")
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          Authorization:token ,
+          "Content-Type": "application/json", // Adjust headers if needed
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to download file");
+      }
+  
+      const blob = await response.blob(); // Get the file content as a blob
+      const url = window.URL.createObjectURL(blob); // Create a temporary URL for the file
+  
+      // Create a hidden <a> element for download
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `resume_${resumeId}.pdf`; // Set a default filename
+      document.body.appendChild(link); // Append the link to the body
+      link.click(); // Trigger the download
+      link.remove(); // Remove the link after triggering the download
+    } catch (error) {
+      console.error("Error downloading file:", error);
+      alert("Failed to download the file. Please try again later.");
+    }
+  };
+  
+
+ 
+
+  useEffect(() => {
+    const fetchResumeData = async () => {
+      const { id } = router.query;
+      const token = localStorage.getItem('token');
+
+      if (id && token) {
+        try {
+          const response = await axios.get(`https://api.sentryspot.co.uk/api/user/resume-list/${id}`, {
+            headers: {
+              Authorization: token,
+            },
+          });
+
+          if (response.data.status === 'success') {
+            const { data } = response.data;
+            const parsedData = JSON.parse(data.ai_resume_parse_data);
+            
+            // Update state with fetched data
+            setResumeData(parsedData.templateData);
+            
+            // Set background color and template
+            if (parsedData.templateData.templateDetails) {
+              setBgColor(parsedData.templateData.templateDetails.backgroundColor || '');
+              setHeaderColor(parsedData.templateData.templateDetails.backgroundColor );
+              setSelectedTemplate(parsedData.templateData.templateDetails.templateId || 'template1');
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching resume data:', error);
+          toast.error('Failed to fetch resume data');
+        }
+      }
+    };
+
+    fetchResumeData();
+  }, [router.query]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("token");
+      setToken(storedToken);
+
+      const storedIsFinished = localStorage.getItem("isFinished");
+      const storedTemplate = localStorage.getItem("selectedTemplate");
+      const storedFont = localStorage.getItem("selectedFont");
+      const storedBgColor = localStorage.getItem("backgroundColor");
+      const storedCurrentSection = localStorage.getItem("currentSection");
+      // const storedResumeData = localStorage.getItem("resumeData");
+
+      if (storedIsFinished) setIsFinished(JSON.parse(storedIsFinished));
+      if (storedTemplate && !selectedTemplate) setSelectedTemplate(storedTemplate);
+      if (storedFont) setSelectedFont(storedFont);
+      if (storedBgColor && !backgroundColorss) setBgColor(storedBgColor);
+      if (storedCurrentSection)
+        setCurrentSection(parseInt(storedCurrentSection));
+      // if (storedResumeData && !resumeData) setResumeData(JSON.parse(storedResumeData));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("isFinished", JSON.stringify(isFinished));
+      localStorage.setItem("selectedTemplate", selectedTemplate);
+      localStorage.setItem("selectedFont", selectedFont);
+      localStorage.setItem("headerColor", headerColor);
+      localStorage.setItem("backgroundColor", backgroundColorss);
+      localStorage.setItem("currentSection", currentSection.toString());
+      localStorage.setItem("resumeData", JSON.stringify(resumeData));
+    }
+  }, [
+    isFinished,
+    selectedTemplate,
+    selectedFont,
+    headerColor,
+    backgroundColorss,
+    currentSection,
+    resumeData,
+  ]);
+
+ 
+  
+  useEffect(() => {
+    if (PayerID) {
+      verifyPayment();
+    }
+  }, [PayerID]);
+
+  const verifyPayment = async () => {
+    try {
+      const orderId = localStorage.getItem("orderid");
+      const token = localStorage.getItem("token");
+
+      if (orderId && token && PayerID) {
+        const response = await axios.get(
+          `https://api.sentryspot.co.uk/api/user/paypal/verify-order?orderid=${orderId}`,
+          {
+            headers: {
+              Authorization: token,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.data.status === "success") {
+          setPaymentVerified(true);
+          toast.success("Payment verified successfully!");
+
+          localStorage.removeItem("orderid");
+
+          if (pdfExportComponent.current) {
+            pdfExportComponent.current.save();
+          }
+        } else {
+          toast.error("Payment verification failed. Please try again.");
+          router.push("/payment-failed");
+        }
+      }
+    } catch (error) {
+      console.error("Payment Verification Error:", error);
+      toast.error(
+        error?.response?.data?.message || "Payment verification failed"
+      );
+      router.push("/payment-failed");
+    }
+  };
+
+  
+
+
+
+  
+
     return (
-      <div className="w-full md:w-[400px] p-4 border-r border-gray-200 h-screen ">
+      <div className="w-full md:w-[400px] p-4 border-r border-gray-200 " >
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold">Resume_1</h2>
-          <a href="#" className="text-blue-600 hover:text-blue-700">View All</a>
+          <Link href="/dashboard/resumelist" className="text-blue-600 hover:text-blue-700">View All</Link>
         </div>
   
         {/* Resume Preview */}
-        <div className="border border-gray-200 rounded-lg shadow-sm p-2 mb-4">
-          <img 
-            src={"https://builder.zety.com/thumbnail/documentprod/a1300cca-ab79-49e1-b31d-2dc4b680dae6/283ffb2f-75bc-4987-a957-479914008a20/5caba74d-715b-40de-8b4b-43748c7835af.png"}
-            alt="Resume Preview" 
-            className="w-full h-auto rounded"
-          />
+        <div className="border border-gray-200 rounded-lg shadow-sm p-2 mb-4  relative h-[500px] " >
+       
+          <DashboardPreview ref={templateRef} selectedTemplate={selectedTemplate} />
         </div>
   
         {/* Action Buttons */}
@@ -35,7 +225,7 @@ const Sidebar = ({ score,resumeId }) => {
             Edit
           </button>
           <button 
-            onClick={hnadleEdit}
+            onClick={handleDownload}
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
           >
             <Download />

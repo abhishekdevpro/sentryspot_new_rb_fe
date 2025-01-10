@@ -72,14 +72,20 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="hidden md:flex justify-center items-center space-x-4">
-            <Link href="/dashboard/aibuilder" className="text-white px-3 py-2 rounded-md text-lg font-semibold">AI Resume Builder</Link>
+
+            <Link href="/dashboard" className="text-white px-3 py-2 rounded-md text-lg font-semibold">Dashboard</Link>
+            {/* <Link href="/dashboard/aibuilder" className="text-white px-3 py-2 rounded-md text-lg font-semibold">AI Resume Builder</Link> */}
             <Link href="/dashboard/resumelist" className="text-white px-3 py-2 rounded-md text-lg font-semibold">My Resumes</Link>
-            <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">About Us</Link>
+            <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">Jobs</Link>
+            {/* <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">Cover Letter</Link> */}
+           
+            <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">Abroadium ID</Link>
             {/* <Link href="/adminlogin" className="text-white px-3 py-2 rounded-md text-lg font-semibold">
               <span className="mr-2">🛡️</span>
               <span>Admin</span>
             </Link> */}
-            <a href="#phone" className="text-white px-3 py-2 rounded-md text-lg font-semibold">📞  Contact us  </a>
+             {/* <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">About Us</Link> */}
+            {/* <a href="#phone" className="text-white px-3 py-2 rounded-md text-lg font-semibold">📞  Contact us  </a> */}
           </div>
           <div className="hidden md:flex items-center gap-4">
             {isLoggedIn ? (

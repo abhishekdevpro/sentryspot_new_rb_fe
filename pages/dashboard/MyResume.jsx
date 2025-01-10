@@ -26,11 +26,13 @@ const MyResume = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      axios.get("https://api.sentryspot.co.uk/api/user/resume-list", {
+      axios.get("https://api.sentryspot.co.uk/api/jobseeker/resume-list", {
         headers: { Authorization: token },
       })
+
       .then((response) => {
-        const resumes = response.data.resumelist || [];
+        console.log(response.data, ">>>>>response data")
+        const resumes = response?.data?.data || [];
         if (resumes.length === 0) {
           toast.info("No resumes available.");
         }
@@ -51,7 +53,7 @@ const MyResume = () => {
       setIsLoading(true);
       axios
         .post(
-          "https://api.sentryspot.co.uk/api/user/file-based-ai",
+          "https://api.sentryspot.co.uk/api/jobseeker/file-based-ai",
           {
             keyword:
               "Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations",
@@ -85,13 +87,14 @@ const MyResume = () => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoading(true);
-      axios.post("https://api.sentryspot.co.uk/api/user/file-based-ai", {
+      axios.post("https://api.sentryspot.co.uk/api/jobseeker/file-based-ai", {
         keyword: "Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations",
         file_location: resume.file_path || "/etc/dean_ai_resume/users/resume_uploads/majid[15_0]-1723818329.pdf",
       }, { headers: { Authorization: token } })
       .then((response) => {
         const { content_acuracy_percentage } = response.data.data;
-        setScores(prevScores => ({ ...prevScores, [resume.id]: content_acuracy_percentage }));
+        setScores(prevScores => ({ ...prevScores, [resume.resume_id
+]: content_acuracy_percentage }));
         setModalContent(content_acuracy_percentage);
         setModalResumeName(resume.name);
         setIsScoreModalOpen(true);
@@ -111,12 +114,13 @@ const MyResume = () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        await axios.delete(`https://api.sentryspot.co.uk/api/user/resume-list/${deleteresumeid}`, {
+        await axios.delete(`https://api.sentryspot.co.uk/api/jobseeker/resume-list/${deleteresumeid}`, {
           headers: { Authorization: token },
         });
         toast.success("Your Resume Deleted Successfully");
         setisDeleteModalOpen(false);
-        setResumes(resumes.filter(resume => resume.id !== deleteresumeid));
+        setResumes(resumes.filter(resume => resume.resume_id
+ !== deleteresumeid));
       } catch (error) {
         console.error("Error deleting resume:", error);
         toast.error("Failed to Delete your Resume");
@@ -137,12 +141,14 @@ const MyResume = () => {
 
 
   const handleEditResume = async (resume) => {
-    console.log(resume.id,"id");
+    console.log(resume.resume_id
+,"id");
     const token = localStorage.getItem("token");
   
     try {
       // Fetch the resume details from the API
-      const response = await axios.get(`https://api.sentryspot.co.uk/api/user/resume-list/${resume.id}`, {
+      const response = await axios.get(`https://api.sentryspot.co.uk/api/jobseeker/resume-list/${resume.resume_id
+}`, {
         headers: { Authorization: token },
       });
       
@@ -179,29 +185,28 @@ const MyResume = () => {
           <thead>
             <tr>
               <th className="py-2 px-4">Sr. no.</th>
-              <th className="py-2 px-4">Resume Name</th>
-              <th className="py-2 px-4">AI-Score</th>
-              <th className="py-2 px-4">Improve with AI</th>
+              <th className="py-2 px-4"> My Resume</th>
+              <th className="py-2 px-4">Strength</th>
+              {/* <th className="py-2 px-4">Improve with AI</th> */}
               <th className="py-2 px-4">Created</th>
               <th className="py-2 px-4">Actions</th>
-              <th className="py-2 px-4">JD Match %</th>
+              {/* <th className="py-2 px-4">JD Match %</th> */}
             </tr>
           </thead>
           <tbody>
             {resumes.length > 0 ? resumes.map((resume, index) => (
               <tr key={index} className="border-2">
                 <td className=" ">{index + 1}.</td>
-                <td className="py-2 float-start ">{resume.resue_name || "Resume score"}</td>
+                <td className="py-2 px-4 ">{resume.resume_title || "Resume score"}</td>
                 <td className="py-2 px-4">
-                  <button className="bg-yellow-500 text-black py-1 px-3 rounded" onClick={() => handleGetScore(resume)}>
-                    {scores[resume.id] !== undefined ? scores[resume.id] : resume.ai_resume_score_percentage || "Resume score"}
-                  </button>
+                {resume.resume_strength_details?.resume_strength || "_"}
                 </td>
-                <td className="py-2 px-4 ">
+                {/* <td className="py-2 px-4 ">
                   <button className="bg-yellow-500 text-white py-1 px-3 rounded" onClick={() => handleGetSuggestions(resume)}>
                     AI
                   </button>
-                  {hoveredResumeId === resume.id && (
+                  {hoveredResumeId === resume.resume_id
+ && (
                     <div className="absolute w-96 mt-2 bg-gray-200 border border-gray-300 rounded shadow-lg">
                       <ul className="p-2 text-start">
                         {resume.ai_suggestion ? (
@@ -214,22 +219,23 @@ const MyResume = () => {
                       </ul>
                     </div>
                   )}
-                </td>
+                </td> */}
                 <td className="py-2 px-4">{new Date(resume.created_at).toLocaleDateString()}</td>
                 <td className="py-2 px-4">
-                  <div className="flex space-x-2">
+                  <div className="flex justify-center gap-2">
                     <button className="text-black">
                       <i className="fas fa-upload">📤</i>
                     </button>
                     <button className="text-black" onClick={() => handleEditResume(resume)}>
                       <i className="fas fa-edit">🖍</i>
                     </button>
-                    <button className="text-black" onClick={() => handleopenDeleteModal(resume.id)}>
+                    <button className="text-black" onClick={() => handleopenDeleteModal(resume.resume_id
+)}>
                       <i className="fas fa-trash">🗑️</i>
                     </button>
                   </div>
                 </td>
-                <td className="py-2 px-4">Coming Soon</td>
+                {/* <td className="py-2 px-4">Coming Soon</td> */}
               </tr>
             )) : (
               <tr><td colSpan="7">Please Upload Resume.</td></tr>
