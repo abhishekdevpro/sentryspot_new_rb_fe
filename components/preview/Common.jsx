@@ -118,14 +118,22 @@ const SummaryWrapper = ({ summary, headerColor = "black", editable = true, class
         >
           Summary
         </h2>
-        <p
+        {/* <p
         style={{color:headerColor}}
           className="break-words hover:outline-dashed hover:scale-105 hover:outline-2 hover:outline-gray-400"
           contentEditable={editable}
           suppressContentEditableWarning={true}
         >
           {summary}
-        </p>
+        </p> */}
+        <p
+  style={{ color: headerColor }}
+  className="break-words hover:outline-dashed hover:scale-105 hover:outline-2 hover:outline-gray-400"
+  contentEditable={editable}
+  suppressContentEditableWarning={true}
+  dangerouslySetInnerHTML={{ __html: summary }}
+></p>
+
       </div>
     )
   );

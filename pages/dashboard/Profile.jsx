@@ -276,6 +276,7 @@ const ProfilePage = () => {
     city_id: '',
     uploadPhoto: null
   });
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -284,7 +285,7 @@ const ProfilePage = () => {
         const userProfileResponse = await axios.get('https://api.sentryspot.co.uk/api/jobseeker/user-profile', {
           headers: { Authorization: token },
         });
-        
+        console.log(userProfileResponse.data.data ,">>> data profile")
         if (userProfileResponse.data.status === 'success') {
           const userData = userProfileResponse.data.data;
           setFormData(prevData => ({
@@ -304,6 +305,7 @@ const ProfilePage = () => {
             state_id: userData.state_id || '',
             city_id: userData.city_id || ''
           }));
+      
         }
       } catch (error) {
         console.error('An error occurred while fetching data:', error);
@@ -476,8 +478,8 @@ const ProfilePage = () => {
                 />
                 <div className="text-white">
                   <h2 className="text-xl font-semibold">
-                    {formData.first_name || "Please update your [Name]"}{" "}
-                    {formData.last_name || "!"}
+                    {formData.personal_details?.first_name || "Please update your [Name]"}{" "}
+                    {formData.personal_details?.last_name || "!"}
                   </h2>
                   <p>
                     {formData.professional_title ||
@@ -488,10 +490,10 @@ const ProfilePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:ms-20">
                 <div>
                   <p className="text-white">
-                    📧 {formData.email || "Please update your [Email]"}
+                    📧 {formData.personal_details?.email || "Please update your [Email]"}
                   </p>
                   <p className="text-white">
-                    📱 {formData.phone || "Please update your [Phone]"}
+                    📱 {formData.personal_details?.phone || "Please update your [Phone]"}
                   </p>
                 </div>
               </div>

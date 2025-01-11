@@ -9,11 +9,11 @@ import DashboardPreview from "../preview/DashboardPreview";
 const Sidebar = ({ score,resumeId }) => {
   const templateRef = useRef(null);
   const router = useRouter()
-  const hnadleEdit =()=>{
+  const handleEdit =()=>{
     router.push(`/dashboard/aibuilder/${resumeId}`)
   }
   const handleCreate=()=>{
-    router.push(`/dashboard/aibuilder`)
+    router.push('/')
   }
   const [currentSection, setCurrentSection] = useState(0);
   
@@ -218,7 +218,7 @@ const Sidebar = ({ score,resumeId }) => {
         {/* Action Buttons */}
         <div className="flex gap-4 mb-6">
           <button 
-            onClick={hnadleEdit}
+            onClick={handleEdit}
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
           >
             <Edit />

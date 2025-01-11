@@ -224,12 +224,14 @@ export default function WebBuilder() {
   };
 
   const handleNext = () => {
+    handleFinish()
     if (currentSection === sections.length - 1) {
       localStorage.setItem("tempResumeData", JSON.stringify(resumeData));
       localStorage.setItem("tempHeaderColor", headerColor);
       localStorage.setItem("tempBgColor", backgroundColorss);
       localStorage.setItem("tempFont", selectedFont);
       setIsFinished(true);
+
     } else {
       setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1));
     }
@@ -263,6 +265,7 @@ export default function WebBuilder() {
   };
 
   const handleSectionClick = (index) => {
+    handleFinish()
     setCurrentSection(index);
     setIsMobileMenuOpen(false);
   };
@@ -272,12 +275,14 @@ export default function WebBuilder() {
   };
 
   const nextSection = () => {
+    handleFinish()
     if (currentSection < sections.length - 1) {
       handleSectionClick(currentSection + 1);
     }
   };
 
   const prevSection = () => {
+    handleFinish()
     if (currentSection > 0) {
       handleSectionClick(currentSection - 1);
     }
@@ -299,6 +304,7 @@ export default function WebBuilder() {
   const handleShowModal = () => setShowModal(true);
 
   const downloadAsPDF = async () => {
+    handleFinish()
     if (!templateRef.current) {
       toast.error("Template reference not found");
       return;
