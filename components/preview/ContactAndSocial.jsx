@@ -173,7 +173,7 @@ const ContactAndSocialMedia = ({
   textColor = "text-black", // Default text color
   className=""
 }) => {
-  console.log(socialMediaData,"LLLL");
+  
   const {backgroundColorss} =  useContext(ResumeContext)
   console.log(backgroundColorss,"backgroundColorss");
   {backgroundColorss?textColor:textColor="text-black"}

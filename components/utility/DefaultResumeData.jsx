@@ -75,10 +75,10 @@ const DefaultResumeData = {
       ] 
     }
   ],
+  // languages: ["English", "Hindi"],
   languages: [
     { language: "Hindi", proficiency: "Native" },
     { language: "English", proficiency: "Intermediate" },
-  
   ],
   
   certifications: [

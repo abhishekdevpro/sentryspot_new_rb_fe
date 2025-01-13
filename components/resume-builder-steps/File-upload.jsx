@@ -1,5 +1,4 @@
 
-
 'use client'
 
 import { useRouter } from 'next/router';
@@ -17,6 +16,7 @@ export default function FileUploadStep({ onNext, onBack, onChange, value }) {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [showLoadingAnimation, setShowLoadingAnimation] = useState(false);
   const [resumeId, setResumeId] = useState();
+  const [uploadSuccess, setUploadSuccess] = useState(false);  // State to track upload success
   const router = useRouter();
   const { setResumeData } = useContext(ResumeContext);
   const { id } = router.query;
@@ -37,6 +37,7 @@ export default function FileUploadStep({ onNext, onBack, onChange, value }) {
 
     setIsUploading(true);
     setShowLoadingAnimation(true);
+    setUploadSuccess(false); // Reset upload success state before uploading
 
     try {
       const token = localStorage.getItem("token");
@@ -48,8 +49,8 @@ export default function FileUploadStep({ onNext, onBack, onChange, value }) {
       }
 
       const response = await axios.post(
-        `https://api.sentryspot.co.uk/api/jobseeker/resume-upload/${id}`, 
-        formData, 
+        `https://api.sentryspot.co.uk/api/jobseeker/resume-upload/${id}`,
+        formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -77,10 +78,13 @@ export default function FileUploadStep({ onNext, onBack, onChange, value }) {
       setResumeId(resumeData.id);
       const parsedData = JSON.parse(resumeData.resume_parse_data);
       setResumeData(parsedData.templateData);
-      
+
       localStorage.setItem("resumeData", JSON.stringify(parsedData.templateData));
       localStorage.setItem("resumeId", resumeData.id);
       localStorage.setItem("location", resumeData.file_path);
+
+      // Set uploadSuccess to true once upload is successful
+      setUploadSuccess(true);
 
       toast.success("File uploaded successfully");
       onChange(file);
@@ -130,7 +134,7 @@ export default function FileUploadStep({ onNext, onBack, onChange, value }) {
         <div className="w-20 h-20 mx-auto mb-6 bg-blue-100 rounded-full flex items-center justify-center">
           <Upload className="w-10 h-10 text-blue-600" />
         </div>
-        
+
         {isUploading ? (
           <div className="space-y-4">
             <div className="text-lg font-medium">Uploading your resume...</div>
@@ -179,7 +183,7 @@ export default function FileUploadStep({ onNext, onBack, onChange, value }) {
         </button>
         <button
           onClick={() => router.push(`/dashboard/aibuilder/${resumeId}`)}
-          disabled={!value && !isUploading}
+          disabled={!uploadSuccess || isUploading}  // Button is enabled only after successful upload
           className="px-8 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors
             disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-blue-600"
         >

@@ -183,7 +183,7 @@ const Language = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const skillType = "languages";
   const title = "Languages";
-
+  
   const languageOptions = [
     "English",
     "Spanish",
@@ -241,7 +241,7 @@ const Language = () => {
       </p>
       {resumeData[skillType]?.length > 0 ? (
         resumeData[skillType].map((skill, index) => (
-          <div key={index} className="flex justify-between mb-4">
+          <div key={index} className="flex justify-between gap-2 mb-4">
             <div className="w-1/2">
               <label className="block text-sm font-medium text-white">
                 {index === 0 ? "First Language" : "Language"}
@@ -301,3 +301,5 @@ const Language = () => {
 };
 
 export default Language;
+
+
