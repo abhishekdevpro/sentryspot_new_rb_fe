@@ -58,7 +58,7 @@ const Certification = ({
           }}
           className={`text-xl font-bold mb-2 `}
         >
-          {title}
+          {title+"K"}
         </h2>
         <ul
         style={{color: headerColor}}

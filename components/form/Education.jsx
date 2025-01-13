@@ -95,7 +95,12 @@ import React, { useContext } from "react";
 
 const Education = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
-
+  const handleEducation = (e, index) => {
+    const { name, value } = e.target;
+    const newEducation = [...resumeData.education];
+    newEducation[index][name] = value;
+    setResumeData({ ...resumeData, education: newEducation });
+  };
   const months = [
     "Jan",
     "Feb",

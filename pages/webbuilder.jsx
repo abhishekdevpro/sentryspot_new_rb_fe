@@ -95,7 +95,7 @@ export default function WebBuilder() {
             // Set background color and template
             if (parsedData.templateData.templateDetails) {
               setBgColor(parsedData.templateData.templateDetails.backgroundColor || '');
-              setHeaderColor(parsedData.templateData.templateDetails.backgroundColor );
+              setHeaderColor(parsedData.templateData.templateDetails.backgroundColor || '' );
               setSelectedTemplate(parsedData.templateData.templateDetails.templateId || 'template1');
             }
           }
@@ -117,15 +117,15 @@ export default function WebBuilder() {
       const storedIsFinished = localStorage.getItem("isFinished");
       const storedTemplate = localStorage.getItem("selectedTemplate");
       const storedFont = localStorage.getItem("selectedFont");
-      const storedBgColor = localStorage.getItem("backgroundColor");
+      // const storedBgColor = localStorage.getItem("backgroundColor");
       const storedCurrentSection = localStorage.getItem("currentSection");
       // const storedResumeData = localStorage.getItem("resumeData");
 
       if (storedIsFinished) setIsFinished(JSON.parse(storedIsFinished));
       if (storedTemplate && !selectedTemplate) setSelectedTemplate(storedTemplate);
       if (storedFont) setSelectedFont(storedFont);
-      if (storedBgColor && !backgroundColorss) setBgColor(storedBgColor);
-      if (storedCurrentSection)
+      // if (storedBgColor && !backgroundColorss) setBgColor(storedBgColor);
+      if (storedCurrentSection !== null)
         setCurrentSection(parseInt(storedCurrentSection));
       // if (storedResumeData && !resumeData) setResumeData(JSON.parse(storedResumeData));
     }
@@ -137,18 +137,18 @@ export default function WebBuilder() {
       localStorage.setItem("selectedTemplate", selectedTemplate);
       localStorage.setItem("selectedFont", selectedFont);
       localStorage.setItem("headerColor", headerColor);
-      localStorage.setItem("backgroundColor", backgroundColorss);
-      localStorage.setItem("currentSection", currentSection.toString());
-      localStorage.setItem("resumeData", JSON.stringify(resumeData));
+      // localStorage.setItem("backgroundColor", backgroundColorss);
+      // localStorage.setItem("currentSection", currentSection.toString());
+      // localStorage.setItem("resumeData", JSON.stringify(resumeData));
     }
   }, [
     isFinished,
     selectedTemplate,
     selectedFont,
     headerColor,
-    backgroundColorss,
-    currentSection,
-    resumeData,
+    // backgroundColorss,
+    // currentSection,
+    // resumeData,
   ]);
 
   useEffect(() => {
@@ -233,20 +233,24 @@ export default function WebBuilder() {
       setIsFinished(true);
 
     } else {
-      setCurrentSection((prev) => Math.min(prev + 1, sections.length - 1));
+      setCurrentSection((prev) => {
+        const updatedSection = Math.min(prev + 1, sections.length - 1)
+        localStorage.setItem("currentSection", updatedSection)
+        return updatedSection;
+      });
     }
   };
 
   useEffect(() => {
     if (isFinished) {
       const tempResumeData = localStorage.getItem("tempResumeData");
-      const tempHeaderColor = localStorage.getItem("tempHeaderColor");
-      const tempBgColor = localStorage.getItem("tempBgColor");
+      // const tempHeaderColor = localStorage.getItem("tempHeaderColor");
+      // const tempBgColor = localStorage.getItem("tempBgColor");
       const tempFont = localStorage.getItem("tempFont");
 
       if (tempResumeData) setResumeData(JSON.parse(tempResumeData));
-      if (tempHeaderColor) setHeaderColor(tempHeaderColor);
-      if (tempBgColor) setBgColor(tempBgColor);
+      // if (tempHeaderColor) setHeaderColor(tempHeaderColor);
+      // if (tempBgColor) setBgColor(tempBgColor);
       if (tempFont) setSelectedFont(tempFont);
     }
   }, [isFinished]);
@@ -261,11 +265,16 @@ export default function WebBuilder() {
   }, []);
 
   const handlePrevious = () => {
-    setCurrentSection((prev) => Math.max(prev - 1, 0));
+    setCurrentSection((prev) => {
+      const updatedSection = Math.max(prev - 1, 0);
+      localStorage.setItem("currentSection", updatedSection)
+      return updatedSection
+    });
   };
 
   const handleSectionClick = (index) => {
     handleFinish()
+    localStorage.setItem("currentSection", index)
     setCurrentSection(index);
     setIsMobileMenuOpen(false);
   };
@@ -478,7 +487,7 @@ export default function WebBuilder() {
       templateData: {
         name: resumeData.name || "",
         position: resumeData.position || "",
-        contactInformation: resumeData.contact || "",
+        contactInformation: resumeData.contactInformation || "",
         email: resumeData.email || "",
         address: resumeData.address || "",
         profilePicture: resumeData.profilePicture || "",
@@ -589,7 +598,6 @@ export default function WebBuilder() {
     localStorage.setItem("tempBgColor", backgroundColorss);
     localStorage.setItem("tempFont", selectedFont);
     setIsFinished(false);
-    setCurrentSection(0);
   };
 
   const [formData, setFormData] = useState({
@@ -635,7 +643,7 @@ export default function WebBuilder() {
   return (
     <>
       <Meta
-        title="Resume Intellect - AI Resume Builder"
+        title="Abroadium - AI Resume Builder"
         description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
         keywords="ATS-friendly, Resume optimization..."
       />

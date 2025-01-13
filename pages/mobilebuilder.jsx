@@ -116,14 +116,14 @@ export default function MobileBuilder() {
       const storedIsFinished = localStorage.getItem("isFinished");
       const storedTemplate = localStorage.getItem("selectedTemplate");
       const storedFont = localStorage.getItem("selectedFont");
-      const storedBgColor = localStorage.getItem("backgroundColor");
+      // const storedBgColor = localStorage.getItem("backgroundColor");
       const storedCurrentSection = localStorage.getItem("currentSection");
       // const storedResumeData = localStorage.getItem("resumeData");
 
       if (storedIsFinished) setIsFinished(JSON.parse(storedIsFinished));
       if (storedTemplate && !selectedTemplate) setSelectedTemplate(storedTemplate);
       if (storedFont) setSelectedFont(storedFont);
-      if (storedBgColor && !backgroundColorss) setBgColor(storedBgColor);
+      // if (storedBgColor && !backgroundColorss) setBgColor(storedBgColor);
       if (storedCurrentSection)
         setCurrentSection(parseInt(storedCurrentSection));
       // if (storedResumeData && !resumeData) setResumeData(JSON.parse(storedResumeData));
@@ -136,17 +136,17 @@ export default function MobileBuilder() {
       localStorage.setItem("selectedTemplate", selectedTemplate);
       localStorage.setItem("selectedFont", selectedFont);
       localStorage.setItem("headerColor", headerColor);
-      localStorage.setItem("backgroundColor", backgroundColorss);
-      localStorage.setItem("currentSection", currentSection.toString());
-      localStorage.setItem("resumeData", JSON.stringify(resumeData));
+      // localStorage.setItem("backgroundColor", backgroundColorss);
+      // localStorage.setItem("currentSection", currentSection.toString());
+      // localStorage.setItem("resumeData", JSON.stringify(resumeData));
     }
   }, [
     isFinished,
     selectedTemplate,
     selectedFont,
     headerColor,
-    backgroundColorss,
-    currentSection,
+    // backgroundColorss,
+    // currentSection,
     resumeData,
   ]);
 
