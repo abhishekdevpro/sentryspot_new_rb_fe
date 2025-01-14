@@ -150,6 +150,8 @@ import ResumeStrength from "../../components/dashboard/ResumeStrength"
 import Sidebar from "../../components/dashboard/Sidebar"
 import Navbar from "../Navbar/Navbar"
 import axios from "axios"
+import MyResume from "./MyResume"
+import MyJobs from "./MyJobs"
 
 
 export default function DashboardPage() {
@@ -225,6 +227,8 @@ export default function DashboardPage() {
         <CoverLetterSection />
       </main>
     </div>
+    <MyResume />
+    <MyJobs />
    </>
   )
 }

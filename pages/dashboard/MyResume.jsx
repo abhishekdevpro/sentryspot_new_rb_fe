@@ -1,191 +1,421 @@
+// // import axios from "axios";
+// // import React, { useContext, useState, useEffect } from "react";
+// // import { useRouter } from "next/router";
+// // import { toast } from "react-toastify";
+// // import { ResumeContext } from "../../components/context/ResumeContext";
+// // import { Download, Edit, Trash } from "lucide-react";
 
-// import axios from "axios";
-// import React, { useContext, useState, useEffect } from "react";
-// import { useRouter } from "next/router";
-// import { toast, ToastContainer } from 'react-toastify';
-// import { ResumeContext } from "../../components/context/ResumeContext";
+// // const MyResume = () => {
+// //   const { setResumeData } = useContext(ResumeContext);
+// //   const [resumes, setResumes] = useState([]);
 
+// //   const [deleteresumeid, setDeleteresumeid] = useState(null);
+// //   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
+// //   const [resumeId, setResumeId] = useState(null);
+// //   const [newResumeTitle, setNewResumeTitle] = useState("");
+// //   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+// //   const [currentResume, setCurrentResume] = useState(null);
+// //   const router = useRouter();
+// //   const [isChecked, setIsChecked] = useState(false);
 
-// const MyResume = () => {
-//   const { setResumeData } = useContext(ResumeContext);
-//   const [resumes, setResumes] = useState([]);
-//   const [scores, setScores] = useState({});
-//   const [isScoreModalOpen, setIsScoreModalOpen] = useState(false);
-//   const [isAIModalOpen, setIsAIModalOpen] = useState(false);
-//   const [modalContent, setModalContent] = useState("");
-//   const [modalSuggestions, setModalSuggestions] = useState([]);
-//   const [modalResumeName, setModalResumeName] = useState("");
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [deleteresumeid, setDeleteresumeid] = useState(null);
-//   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
-//   const [hoveredResumeId, setHoveredResumeId] = useState(null);
-//   const [idFromResponse, setIdFromResponse] = useState(null); 
-//   const [locationFromResponse, setLocationFromResponse] = useState(""); 
-//   const [newResumeTitle, setNewResumeTitle] = useState("");
-//   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-//   const [currentResume, setCurrentResume] = useState(null);
-//   const router = useRouter();
-  
-//   useEffect(() => {
-//     const token = localStorage.getItem("token");
-//     if (token) {
-//       axios.get("https://api.sentryspot.co.uk/api/jobseeker/resume-list", {
-//         headers: { Authorization: token },
-//       })
+// //   const handleToggle = () => {
+// //     setIsChecked(!isChecked);
+// //   };
 
-//       .then((response) => {
-       
-//         const resumes = response?.data?.data || [];
-//         if (resumes.length === 0) {
-//           toast.info("No resumes available.");
-//         }
-//         setResumes(resumes);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching resume list:", error);
-//         toast.error("Failed to fetch resumes.");
-//       });
-//     } else {
-//       console.error("Token not found in localStorage");
-//     }
-//   }, []);
-//   // const handleGetSuggestions = (resume) => {
-//   //   const token = localStorage.getItem("token");
-
-//   //   if (token) {
-//   //     setIsLoading(true);
-//   //     axios
-//   //       .post(
-//   //         "https://api.sentryspot.co.uk/api/jobseeker/file-based-ai",
-//   //         {
-//   //           keyword:
-//   //             "Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations",
-//   //             file_location: resume.file_path || "/etc/dean_ai_resume/users/resume_uploads/majid[15_0]-1723818329.pdf",
-//   //         },
-//   //         {
-//   //           headers: {
-//   //             Authorization: token,
-//   //           },
-//   //         }
-//   //       )
-//   //       .then((response) => {
-//   //         const { improvement_suggestions } = response.data.data;
-//   //         setModalSuggestions(improvement_suggestions || []);
-//   //         setModalResumeName(resume.name);
-//   //         setIsAIModalOpen(true);
-//   //         setIsLoading(false);
-//   //       })
-//   //       .catch((error) => {
-//   //         console.error("Error fetching AI suggestions:", error);
-//   //         setIsLoading(false);
-//   //       });
-//   //   } else {
-//   //     console.error("Token not found in localStorage");
-//   //   }
-//   // };
-
-
-
-// //   const handleGetScore = (resume) => {
+// //   useEffect(() => {
 // //     const token = localStorage.getItem("token");
 // //     if (token) {
-// //       setIsLoading(true);
-// //       axios.post("https://api.sentryspot.co.uk/api/jobseeker/file-based-ai", {
-// //         keyword: "Rate this resume content in percentage ? and checklist of scope improvements in manner of content and informations",
-// //         file_location: resume.file_path || "/etc/dean_ai_resume/users/resume_uploads/majid[15_0]-1723818329.pdf",
-// //       }, { headers: { Authorization: token } })
-// //       .then((response) => {
-// //         const { content_acuracy_percentage } = response.data.data;
-// //         setScores(prevScores => ({ ...prevScores, [resume.resume_id
-// // ]: content_acuracy_percentage }));
-// //         setModalContent(content_acuracy_percentage);
-// //         setModalResumeName(resume.name);
-// //         setIsScoreModalOpen(true);
-// //         setIsLoading(false);
-// //       })
-// //       .catch((error) => {
-// //         console.error("Error fetching AI score:", error);
-// //         toast.error("Failed to fetch AI score.");
-// //         setIsLoading(false);
+// //       axios
+// //         .get("https://api.sentryspot.co.uk/api/jobseeker/resume-list", {
+// //           headers: { Authorization: token },
+// //         })
+
+// //         .then((response) => {
+// //           const resumes = response?.data?.data || [];
+// //           if (resumes.length === 0) {
+// //             toast.info("No resumes available.");
+// //           }
+// //           setResumes(resumes);
+// //         })
+// //         .catch((error) => {
+// //           console.error("Error fetching resume list:", error);
+// //           toast.error("Failed to fetch resumes.");
+// //         });
+// //     } else {
+// //       console.error("Token not found in localStorage");
+// //     }
+// //   }, []);
+
+// //   const handleEdit = (resumeId) => {
+// //     setResumeId(resumeId); // Set the resume ID to the state
+// //     router.push(`/dashboard/aibuilder/${resumeId}`); // Pass the resumeId to the URL
+// //   };
+// //   const handleDownload = async (resumeId) => {
+// //     setResumeId(resumeId);
+// //     const apiUrl = `https://api.sentryspot.co.uk/api/jobseeker/download-resume/${resumeId}`;
+
+// //     try {
+// //       const token = localStorage.getItem("token");
+// //       const response = await fetch(apiUrl, {
+// //         method: "GET",
+// //         headers: {
+// //           Authorization: token,
+// //           "Content-Type": "application/json", // Adjust headers if needed
+// //         },
 // //       });
+
+// //       if (!response.ok) {
+// //         throw new Error("Failed to download file");
+// //       }
+
+// //       const blob = await response.blob(); // Get the file content as a blob
+// //       const url = window.URL.createObjectURL(blob); // Create a temporary URL for the file
+
+// //       // Create a hidden <a> element for download
+// //       const link = document.createElement("a");
+// //       link.href = url;
+// //       link.download = `resume_${resumeId}.pdf`; // Set a default filename
+// //       document.body.appendChild(link); // Append the link to the body
+// //       link.click(); // Trigger the download
+// //       link.remove(); // Remove the link after triggering the download
+// //     } catch (error) {
+// //       console.error("Error downloading file:", error);
+// //       alert("Failed to download the file. Please try again later.");
+// //     }
+// //   };
+// //   const handleDeleteResume = async () => {
+// //     const token = localStorage.getItem("token");
+// //     if (token) {
+// //       try {
+// //         await axios.delete(
+// //           `https://api.sentryspot.co.uk/api/jobseeker/resume-list/${deleteresumeid}`,
+// //           {
+// //             headers: { Authorization: token },
+// //           }
+// //         );
+// //         toast.success("Your Resume Deleted Successfully");
+// //         setisDeleteModalOpen(false);
+// //         setResumes(
+// //           resumes.filter((resume) => resume.resume_id !== deleteresumeid)
+// //         );
+// //       } catch (error) {
+// //         console.error("Error deleting resume:", error);
+// //         toast.error("Failed to Delete your Resume");
+// //       }
 // //     } else {
 // //       console.error("Token not found in localStorage");
 // //     }
 // //   };
 
+// //   const handleopenDeleteModal = (resumeId) => {
+// //     setDeleteresumeid(resumeId);
+// //     setisDeleteModalOpen(true);
+// //   };
+
+// //   const handleCloseModal = () => {
+// //     setisDeleteModalOpen(false);
+// //   };
+
+// //   // Function to open the edit modal
+// //   const handleOpenEditModal = (resume) => {
+// //     setCurrentResume(resume);
+// //     setNewResumeTitle(resume.resume_title || "");
+// //     setIsEditModalOpen(true);
+// //   };
+
+// //   // Function to update resume title
+// //   const handleUpdateResumeTitle = () => {
+// //     const token = localStorage.getItem("token");
+// //     if (token && currentResume) {
+// //       axios
+// //         .put(
+// //           `https://api.sentryspot.co.uk/api/jobseeker/resume-details/${currentResume.resume_id}`,
+// //           { resume_title: newResumeTitle },
+// //           { headers: { Authorization: token } }
+// //         )
+// //         .then((response) => {
+// //           toast.success("Resume title updated successfully.");
+// //           setIsEditModalOpen(false);
+// //           setResumes((prevResumes) =>
+// //             prevResumes.map((resume) =>
+// //               resume.resume_id === currentResume.resume_id
+// //                 ? { ...resume, resume_title: newResumeTitle }
+// //                 : resume
+// //             )
+// //           );
+// //         })
+// //         .catch((error) => {
+// //           console.error("Error updating resume title:", error);
+// //           toast.error("Failed to update resume title.");
+// //         });
+// //     } else {
+// //       console.error(
+// //         "Token not found in localStorage or current resume is null."
+// //       );
+// //     }
+// //   };
+
+// //   return (
+// //     <div className="container mx-auto p-4 text-center h-3/4">
+// //       <div className="overflow-x-auto">
+// //         <table className="min-w-full bg-dark text-black rounded-md">
+// //           <thead>
+// //             <tr>
+// //               <th className="py-2 px-4">Sr. no.</th>
+
+// //               <th className="py-2 px-4"> My Resume</th>
+// //               <th className="py-2 px-4">Modification</th>
+// //               <th className="py-2 px-4">Created</th>
+// //               <th className="py-2 px-4">Strength</th>
+// //               <th className="py-2 px-4">Aboradium ID</th>
+
+// //               <th className="py-2 px-4">Actions</th>
+// //             </tr>
+// //           </thead>
+// //           <tbody>
+// //             {resumes.length > 0 ? (
+// //               resumes.map((resume, index) => (
+// //                 <tr key={index} className="border-2">
+// //                   <td className=" ">{index + 1}.</td>
+// //                   <td className="py-2 px-4">
+// //                     <div className="flex justify-center gap-2 items-center">
+// //                       <p className="">{resume.resume_title || "ABC"} </p>
+// //                       <button
+// //                         onClick={() => handleOpenEditModal(resume)}
+// //                         className="text-black g"
+// //                       >
+// //                         🖍
+// //                       </button>
+// //                     </div>
+// //                   </td>
+// //                   <td className="py-2 px-4">
+// //                     {new Date(resume.updated_at).toLocaleDateString()}
+// //                   </td>
+// //                   <td className="py-2 px-4">
+// //                     {new Date(resume.created_at).toLocaleDateString()}
+// //                   </td>
+// //                   <td className="py-2 px-4">
+// //                     {resume.resume_strenght_details?.resume_strenght || "_"}
+// //                   </td>
+// //                   <td >
+// //                   <div className="flex gap-2 py-2 ">
+// //                     <p className="text-sm text-gray-700 text-wrap w-32">Include your Abroadium Id</p>
+// //                     <button
+// //                       role="switch"
+// //                       aria-checked={isChecked}
+// //                       onClick={handleToggle}
+// //                       className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+// //                         isChecked ? "bg-blue-600" : "bg-gray-200"
+// //                       }`}
+// //                     >
+// //                       <span
+// //                         className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
+// //                           isChecked ? "translate-x-6" : "translate-x-1"
+// //                         }`}
+// //                       />
+// //                     </button>
+// //                   </div>
+// //                   </td>
+
+// //                   <td className="py-2 px-4">
+// //                     <div className="flex justify-center gap-2">
+// //                       <button
+// //                         className="text-black"
+// //                         onClick={() => handleEdit(resume.resume_id)}
+// //                       >
+// //                         <Edit />
+// //                       </button>
+// //                       <button
+// //                         className="text-black"
+// //                         onClick={() => handleopenDeleteModal(resume.resume_id)}
+// //                       >
+// //                         {/* <i className="fas fa-trash">🗑️</i> */}
+// //                         <Trash />
+// //                       </button>
+// //                       <button
+// //                         className="text-black"
+// //                         onClick={() => handleDownload(resume.resume_id)}
+// //                       >
+// //                         {/* <i className="fas fa-download">📥</i> */}
+// //                         <Download />
+// //                       </button>
+// //                     </div>
+// //                   </td>
+// //                 </tr>
+// //               ))
+// //             ) : (
+// //               <tr>
+// //                 <td colSpan="7">Please Upload Resume.</td>
+// //               </tr>
+// //             )}
+// //           </tbody>
+// //         </table>
+// //       </div>
+
+// //       {/* Delete Resume Modal */}
+// //       {isDeleteModalOpen && (
+// //         <div className="fixed inset-0 flex items-center justify-center z-50">
+// //           <div className="bg-white p-4 rounded shadow-lg w-80">
+// //             <h2 className="text-lg font-bold">
+// //               Are you sure you want to delete this resume?
+// //             </h2>
+// //             <div className="flex justify-between mt-4">
+// //               <button
+// //                 onClick={handleDeleteResume}
+// //                 className="bg-red-500 text-white px-4 py-2 rounded"
+// //               >
+// //                 Delete
+// //               </button>
+// //               <button
+// //                 onClick={handleCloseModal}
+// //                 className="bg-gray-300 text-black px-4 py-2 rounded"
+// //               >
+// //                 Cancel
+// //               </button>
+// //             </div>
+// //           </div>
+// //         </div>
+// //       )}
+// //       {/* Edit Resume Title Modal */}
+// //       {isEditModalOpen && (
+// //         <div className="fixed inset-0 flex items-center justify-center z-50">
+// //           <div className="bg-white p-4 rounded shadow-lg w-80">
+// //             <h2 className="text-lg font-bold">Edit Resume Title</h2>
+// //             <input
+// //               type="text"
+// //               className="w-full p-2 border border-gray-300 rounded mt-2"
+// //               value={newResumeTitle}
+// //               onChange={(e) => setNewResumeTitle(e.target.value)}
+// //               placeholder={newResumeTitle || "Enter new resume title"}
+// //             />
+// //             <div className="flex justify-end mt-4 gap-2">
+// //               <button
+// //                 onClick={() => setIsEditModalOpen(false)}
+// //                 className="bg-gray-300 text-black px-4 py-2 rounded"
+// //               >
+// //                 Cancel
+// //               </button>
+// //               <button
+// //                 onClick={handleUpdateResumeTitle}
+// //                 className="bg-blue-500 text-white px-4 py-2 rounded"
+// //               >
+// //                 Save
+// //               </button>
+// //             </div>
+// //           </div>
+// //         </div>
+// //       )}
+// //     </div>
+// //   );
+// // };
+
+// // export default MyResume;
+
+// import React, { useContext, useState, useEffect } from "react";
+// import { useRouter } from "next/router";
+// import axios from "axios";
+// import { toast } from "react-toastify";
+// import { ResumeContext } from "../../components/context/ResumeContext";
+// import { Download, Edit, Trash } from "lucide-react";
+
+// const MyResume = () => {
+//   const { setResumeData } = useContext(ResumeContext);
+//   const [resumes, setResumes] = useState([]);
+//   const [deleteresumeid, setDeleteresumeid] = useState(null);
+//   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
+//   const [resumeId, setResumeId] = useState(null);
+//   const [newResumeTitle, setNewResumeTitle] = useState("");
+//   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+//   const [currentResume, setCurrentResume] = useState(null);
+//   const router = useRouter();
+//   const [isChecked, setIsChecked] = useState(false);
+
+//   const handleToggle = () => {
+//     setIsChecked(!isChecked);
+//   };
+
+//   useEffect(() => {
+//     const token = localStorage.getItem("token");
+//     if (token) {
+//       axios
+//         .get("https://api.sentryspot.co.uk/api/jobseeker/resume-list", {
+//           headers: { Authorization: token },
+//         })
+//         .then((response) => {
+//           const resumes = response?.data?.data || [];
+//           if (resumes.length === 0) {
+//             toast.info("No resumes available.");
+//           }
+//           setResumes(resumes);
+//         })
+//         .catch((error) => {
+//           console.error("Error fetching resume list:", error);
+//           toast.error("Failed to fetch resumes.");
+//         });
+//     }
+//   }, []);
+
+//   const handleEdit = (resumeId) => {
+//     setResumeId(resumeId);
+//     router.push(`/dashboard/aibuilder/${resumeId}`);
+//   };
+
+//   const handleDownload = async (resumeId) => {
+//     setResumeId(resumeId);
+//     const apiUrl = `https://api.sentryspot.co.uk/api/jobseeker/download-resume/${resumeId}`;
+
+//     try {
+//       const token = localStorage.getItem("token");
+//       const response = await fetch(apiUrl, {
+//         method: "GET",
+//         headers: {
+//           Authorization: token,
+//           "Content-Type": "application/json",
+//         },
+//       });
+
+//       if (!response.ok) throw new Error("Failed to download file");
+
+//       const blob = await response.blob();
+//       const url = window.URL.createObjectURL(blob);
+//       const link = document.createElement("a");
+//       link.href = url;
+//       link.download = `resume_${resumeId}.pdf`;
+//       document.body.appendChild(link);
+//       link.click();
+//       link.remove();
+//     } catch (error) {
+//       console.error("Error downloading file:", error);
+//       toast.error("Failed to download the file. Please try again later.");
+//     }
+//   };
+
 //   const handleDeleteResume = async () => {
 //     const token = localStorage.getItem("token");
 //     if (token) {
 //       try {
-//         await axios.delete(`https://api.sentryspot.co.uk/api/jobseeker/resume-list/${deleteresumeid}`, {
-//           headers: { Authorization: token },
-//         });
-//         toast.success("Your Resume Deleted Successfully");
+//         await axios.delete(
+//           `https://api.sentryspot.co.uk/api/jobseeker/resume-list/${deleteresumeid}`,
+//           {
+//             headers: { Authorization: token },
+//           }
+//         );
+//         toast.success("Resume deleted successfully");
 //         setisDeleteModalOpen(false);
-//         setResumes(resumes.filter(resume => resume.resume_id
-//  !== deleteresumeid));
+//         setResumes(resumes.filter((resume) => resume.resume_id !== deleteresumeid));
 //       } catch (error) {
 //         console.error("Error deleting resume:", error);
-//         toast.error("Failed to Delete your Resume");
+//         toast.error("Failed to delete resume");
 //       }
-//     } else {
-//       console.error("Token not found in localStorage");
 //     }
 //   };
 
-//   const handleopenDeleteModal = (resumeId) => {
-//     setDeleteresumeid(resumeId);
-//     setisDeleteModalOpen(true);
-//   };
-
-//   const handleCloseModal = () => {
-//     setisDeleteModalOpen(false);
-//   };
-
-
-//   const handleEditResume = async (resume) => {
-//     console.log(resume.resume_id
-// ,"id");
-//     const token = localStorage.getItem("token");
-  
-//     try {
-//       // Fetch the resume details from the API
-//       const response = await axios.get(`https://api.sentryspot.co.uk/api/jobseeker/resume-list/${resume.resume_id
-// }`, {
-//         headers: { Authorization: token },
-//       });
-      
-//       const resumeData = response.data.data;
-//       if (!resumeData || !resumeData.file_path || !resumeData.ai_resume_parse_data) {
-//         console.error("Resume data not found in API response");
-//         return;
-//       }
-  
-//       // Parse the ai_resume_parse_data
-//       const parsedData = JSON.parse(resumeData.ai_resume_parse_data);
-//       console.log(parsedData.templateData,"maia data hu");
-//       // Set the resume data using the context
-//       setResumeData(parsedData.templateData); // Use the appropriate structure from the parsed data
-//       localStorage.setItem('resumeData', JSON.stringify(parsedData.templateData));
-//       localStorage.setItem('resumeId', resumeData.id);
-//       localStorage.setItem('location', resumeData.file_path);
-  
-//       console.log("Resume data retrieved successfully");
-  
-//       // Redirect to the builder page with the resume ID
-//       router.push(`/dashboard/aibuilder/${resumeData.id}`);
-//     } catch (error) {
-//       console.error("Error fetching resume details:", error);
-//     }
-//   };
-//    // Function to open the edit modal
-//    const handleOpenEditModal = (resume) => {
+//   const handleOpenEditModal = (resume) => {
 //     setCurrentResume(resume);
 //     setNewResumeTitle(resume.resume_title || "");
 //     setIsEditModalOpen(true);
 //   };
 
-//   // Function to update resume title
 //   const handleUpdateResumeTitle = () => {
 //     const token = localStorage.getItem("token");
 //     if (token && currentResume) {
@@ -195,7 +425,7 @@
 //           { resume_title: newResumeTitle },
 //           { headers: { Authorization: token } }
 //         )
-//         .then((response) => {
+//         .then(() => {
 //           toast.success("Resume title updated successfully.");
 //           setIsEditModalOpen(false);
 //           setResumes((prevResumes) =>
@@ -210,167 +440,155 @@
 //           console.error("Error updating resume title:", error);
 //           toast.error("Failed to update resume title.");
 //         });
-//     } else {
-//       console.error("Token not found in localStorage or current resume is null.");
 //     }
 //   };
- 
-//   return (
-//     <div className="container mx-auto p-4 text-center h-3/4">
-     
-//       <div className="overflow-x-auto">
-//         <table className="min-w-full bg-dark text-black rounded-md">
-//           <thead>
-//             <tr>
-//               <th className="py-2 px-4">Sr. no.</th>
-               
-//               <th className="py-2 px-4"> My Resume</th>
-//               <th className="py-2 px-4">Strength</th>
-//               {/* <th className="py-2 px-4">Improve with AI</th> */}
-//               <th className="py-2 px-4">Created</th>
-//               <th className="py-2 px-4">Actions</th>
-//               {/* <th className="py-2 px-4">JD Match %</th> */}
-//             </tr>
-//           </thead>
-//           <tbody>
-//             {resumes.length > 0 ? resumes.map((resume, index) => (
-             
-//               <tr key={index} className="border-2">
-//                 <td className=" ">{index + 1}.</td>
-//                 <td className="py-2 px-4">
-//                   <div className="flex justify-center gap-2 items-center">
-//                   <p className="">{resume.resume_title || "ABC"} </p>
-//                   <button onClick={() => handleOpenEditModal(resume)} className="text-black g">🖍</button>
-//                   </div>
-//                   </td>
-                
-//                 <td className="py-2 px-4">
-//                 {resume.resume_strenght_details?.resume_strenght || "_"}
-                
 
-//                 </td>
-//                 {/* <td className="py-2 px-4 ">
-//                   <button className="bg-yellow-500 text-white py-1 px-3 rounded" onClick={() => handleGetSuggestions(resume)}>
-//                     AI
-//                   </button>
-//                   {hoveredResumeId === resume.resume_id
-//  && (
-//                     <div className="absolute w-96 mt-2 bg-gray-200 border border-gray-300 rounded shadow-lg">
-//                       <ul className="p-2 text-start">
-//                         {resume.ai_suggestion ? (
-//                           <ul className="list-disc ml-5">
-//                             {resume.ai_suggestion.split('||').map((suggestion, index) => (
-//                               <li key={index}>{suggestion}</li>
-//                             ))}
-//                           </ul>
-//                         ) : "No suggestions available"}
-//                       </ul>
-//                     </div>
-//                   )}
-//                 </td> */}
-//                 <td className="py-2 px-4">{new Date(resume.created_at).toLocaleDateString()}</td>
-//                 <td className="py-2 px-4">
-//                   <div className="flex justify-center gap-2">
-//                     <button className="text-black">
-//                       <i className="fas fa-upload">📤</i>
-//                     </button>
-//                     <button className="text-black" onClick={() => handleEditResume(resume)}>
-//                       <i className="fas fa-edit">🖍</i>
-//                     </button>
-//                     <button className="text-black" onClick={() => handleopenDeleteModal(resume.resume_id
-// )}>
-//                       <i className="fas fa-trash">🗑️</i>
-//                     </button>
-//                   </div>
-//                 </td>
-//                 {/* <td className="py-2 px-4">Coming Soon</td> */}
+//   return (
+//     <>
+
+//     <div className="container mx-auto p-4 max-w-7xl">
+
+//       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+//         <div className="overflow-x-auto">
+//           <table className="w-full min-w-full divide-y divide-gray-200">
+//             <thead className="bg-gray-50 ">
+//               <tr>
+//                 <th className="px-6 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider">Sr. no.</th>
+//                 <th className="px-6 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider">My Resume</th>
+//                 <th className="px-6 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider">Modification</th>
+//                 <th className="px-6 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider">Created</th>
+//                 <th className="px-6 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider">Strength</th>
+//                 <th className="px-6 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider">Abroadium ID</th>
+//                 <th className="px-6 py-3 text-left text-md font-bold text-gray-500 uppercase tracking-wider">Actions</th>
 //               </tr>
-//             )) : (
-//               <tr><td colSpan="7">Please Upload Resume.</td></tr>
-//             )}
-            
-//           </tbody>
-//         </table>
+//             </thead>
+//             <tbody className="bg-white divide-y divide-gray-200">
+//               {resumes.length > 0 ? (
+//                 resumes.map((resume, index) => (
+//                   <tr key={index} className="hover:bg-gray-50">
+//                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}.</td>
+//                     <td className="px-6 py-4 whitespace-nowrap">
+//                       <div className="flex items-center space-x-2">
+//                         <span className="text-sm text-gray-900">{resume.resume_title || "ABC"}</span>
+//                         <button
+//                           onClick={() => handleOpenEditModal(resume)}
+//                           className="text-blue-600 hover:text-blue-800"
+//                         >
+//                           🖍
+//                         </button>
+//                       </div>
+//                     </td>
+//                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+//                       {new Date(resume.updated_at).toLocaleDateString()}
+//                     </td>
+//                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+//                       {new Date(resume.created_at).toLocaleDateString()}
+//                     </td>
+//                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+//                       {resume.resume_strenght_details?.resume_strenght || "_"}
+//                     </td>
+//                     <td className="px-6 py-4 whitespace-nowrap">
+//                       <div className="flex items-center space-x-2">
+//                         <span className="text-sm text-gray-700 w-36 text-wrap">Include your Abroadium Id</span>
+//                         <button
+//                           role="switch"
+//                           aria-checked={isChecked}
+//                           onClick={handleToggle}
+//                           className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+//                             isChecked ? "bg-blue-600" : "bg-gray-200"
+//                           }`}
+//                         >
+//                           <span
+//                             className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
+//                               isChecked ? "translate-x-6" : "translate-x-1"
+//                             }`}
+//                           />
+//                         </button>
+//                       </div>
+//                     </td>
+//                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+//                       <div className="flex items-center space-x-3">
+//                         <button
+//                           onClick={() => handleEdit(resume.resume_id)}
+//                           className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+//                         >
+//                           <Edit className="w-5 h-5" />
+//                         </button>
+//                         <button
+//                           onClick={() => setisDeleteModalOpen(true)}
+//                           className="text-red-600 hover:text-red-800 transition-colors duration-200"
+//                         >
+//                           <Trash className="w-5 h-5" />
+//                         </button>
+//                         <button
+//                           onClick={() => handleDownload(resume.resume_id)}
+//                           className="text-green-600 hover:text-green-800 transition-colors duration-200"
+//                         >
+//                           <Download className="w-5 h-5" />
+//                         </button>
+//                       </div>
+//                     </td>
+//                   </tr>
+//                 ))
+//               ) : (
+//                 <tr>
+//                   <td colSpan="7" className="px-6 py-4 text-center text-sm text-gray-500">
+//                     Please Upload Resume.
+//                   </td>
+//                 </tr>
+//               )}
+//             </tbody>
+//           </table>
+//         </div>
 //       </div>
 
-//       {/* Loading Animation */}
-//       {isLoading && (
-//         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-//           <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64 align-middle text-white font-semibold text-lg">
-//             Loading...
-//           </div>
-//         </div>
-//       )}
-
-//       {/* Score Modal */}
-//       {isScoreModalOpen && (
-//         <div className="fixed inset-0 flex items-center justify-center z-50">
-//           <div className="bg-white p-4 rounded shadow-lg w-80">
-//             <h2 className="text-lg font-bold">{modalResumeName}</h2>
-//             <p>{modalContent}</p>
-//             <button onClick={() => setIsScoreModalOpen(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-//               Close
-//             </button>
-//           </div>
-//         </div>
-//       )}
-
-//       {/* AI Suggestions Modal */}
-//       {isAIModalOpen && (
-//         <div className="fixed inset-0 flex items-center justify-center z-50">
-//           <div className="bg-white p-4 rounded shadow-lg w-80">
-//             <h2 className="text-lg font-bold">AI Suggestions</h2>
-//             <ul>
-//               {modalSuggestions.map((suggestion, index) => (
-//                 <li key={index}>{suggestion}</li>
-//               ))}
-//             </ul>
-//             <button onClick={() => setIsAIModalOpen(false)} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-//               Close
-//             </button>
-//           </div>
-//         </div>
-//       )}
-
-//       {/* Delete Resume Modal */}
+//       {/* Delete Modal */}
 //       {isDeleteModalOpen && (
-//         <div className="fixed inset-0 flex items-center justify-center z-50">
-//           <div className="bg-white p-4 rounded shadow-lg w-80">
-//             <h2 className="text-lg font-bold">Are you sure you want to delete this resume?</h2>
-//             <div className="flex justify-between mt-4">
-//               <button onClick={handleDeleteResume} className="bg-red-500 text-white px-4 py-2 rounded">
-//                 Delete
-//               </button>
-//               <button onClick={handleCloseModal} className="bg-gray-300 text-black px-4 py-2 rounded">
+//         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+//           <div className="bg-white rounded-lg p-6 max-w-sm mx-4">
+//             <h2 className="text-lg font-semibold text-gray-900 mb-4">
+//               Are you sure you want to delete this resume?
+//             </h2>
+//             <div className="flex justify-end space-x-3">
+//               <button
+//                 onClick={() => setisDeleteModalOpen(false)}
+//                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+//               >
 //                 Cancel
+//               </button>
+//               <button
+//                 onClick={handleDeleteResume}
+//                 className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+//               >
+//                 Delete
 //               </button>
 //             </div>
 //           </div>
 //         </div>
 //       )}
-//       {/* Edit Resume Title Modal */}
+
+//       {/* Edit Modal */}
 //       {isEditModalOpen && (
-//         <div className="fixed inset-0 flex items-center justify-center z-50">
-//           <div className="bg-white p-4 rounded shadow-lg w-80">
-//             <h2 className="text-lg font-bold">Edit Resume Title</h2>
+//         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+//           <div className="bg-white rounded-lg p-6 max-w-sm mx-4">
+//             <h2 className="text-lg font-semibold text-gray-900 mb-4">Edit Resume Title</h2>
 //             <input
 //               type="text"
-//               className="w-full p-2 border border-gray-300 rounded mt-2"
+//               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
 //               value={newResumeTitle}
 //               onChange={(e) => setNewResumeTitle(e.target.value)}
-             
-//               placeholder={newResumeTitle || "Enter new resume title"}
+//               placeholder="Enter new resume title"
 //             />
-//             <div className="flex justify-end mt-4 gap-2">
+//             <div className="flex justify-end space-x-3 mt-4">
 //               <button
 //                 onClick={() => setIsEditModalOpen(false)}
-//                 className="bg-gray-300 text-black px-4 py-2 rounded"
+//                 className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
 //               >
 //                 Cancel
 //               </button>
 //               <button
 //                 onClick={handleUpdateResumeTitle}
-//                 className="bg-blue-500 text-white px-4 py-2 rounded"
+//                 className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
 //               >
 //                 Save
 //               </button>
@@ -379,135 +597,120 @@
 //         </div>
 //       )}
 //     </div>
+//     </>
 //   );
 // };
 
 // export default MyResume;
 
-
-
-import axios from "axios";
 import React, { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { toast } from 'react-toastify';
+import axios from "axios";
+import { toast } from "react-toastify";
 import { ResumeContext } from "../../components/context/ResumeContext";
-
+import { Download, Edit, Trash, Plus } from "lucide-react";
+import Link from "next/link";
 
 const MyResume = () => {
   const { setResumeData } = useContext(ResumeContext);
   const [resumes, setResumes] = useState([]);
- 
-  
-  
-  
   const [deleteresumeid, setDeleteresumeid] = useState(null);
   const [isDeleteModalOpen, setisDeleteModalOpen] = useState(false);
-  const [resumeId , setResumeId] = useState(null)
+  const [resumeId, setResumeId] = useState(null);
   const [newResumeTitle, setNewResumeTitle] = useState("");
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [currentResume, setCurrentResume] = useState(null);
   const router = useRouter();
-  
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      axios.get("https://api.sentryspot.co.uk/api/jobseeker/resume-list", {
-        headers: { Authorization: token },
-      })
-
-      .then((response) => {
-       
-        const resumes = response?.data?.data || [];
-        if (resumes.length === 0) {
-          toast.info("No resumes available.");
-        }
-        setResumes(resumes);
-      })
-      .catch((error) => {
-        console.error("Error fetching resume list:", error);
-        toast.error("Failed to fetch resumes.");
-      });
-    } else {
-      console.error("Token not found in localStorage");
+      axios
+        .get("https://api.sentryspot.co.uk/api/jobseeker/resume-list", {
+          headers: { Authorization: token },
+        })
+        .then((response) => {
+          const resumes = response?.data?.data || [];
+          if (resumes.length === 0) {
+            toast.info("No resumes available.");
+          }
+          setResumes(resumes);
+        })
+        .catch((error) => {
+          console.error("Error fetching resume list:", error);
+          toast.error("Failed to fetch resumes.");
+        });
     }
   }, []);
 
   const handleEdit = (resumeId) => {
-    setResumeId(resumeId);  // Set the resume ID to the state
-    router.push(`/dashboard/aibuilder/${resumeId}`);  // Pass the resumeId to the URL
+    setResumeId(resumeId);
+    router.push(`/dashboard/aibuilder/${resumeId}`);
   };
+
   const handleDownload = async (resumeId) => {
     setResumeId(resumeId);
     const apiUrl = `https://api.sentryspot.co.uk/api/jobseeker/download-resume/${resumeId}`;
-  
+
     try {
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const response = await fetch(apiUrl, {
         method: "GET",
         headers: {
-          Authorization:token ,
-          "Content-Type": "application/json", // Adjust headers if needed
+          Authorization: token,
+          "Content-Type": "application/json",
         },
       });
-  
-      if (!response.ok) {
-        throw new Error("Failed to download file");
-      }
-  
-      const blob = await response.blob(); // Get the file content as a blob
-      const url = window.URL.createObjectURL(blob); // Create a temporary URL for the file
-  
-      // Create a hidden <a> element for download
+
+      if (!response.ok) throw new Error("Failed to download file");
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `resume_${resumeId}.pdf`; // Set a default filename
-      document.body.appendChild(link); // Append the link to the body
-      link.click(); // Trigger the download
-      link.remove(); // Remove the link after triggering the download
+      link.download = `resume_${resumeId}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
     } catch (error) {
       console.error("Error downloading file:", error);
-      alert("Failed to download the file. Please try again later.");
+      toast.error("Failed to download the file. Please try again later.");
     }
   };
+
   const handleDeleteResume = async () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        await axios.delete(`https://api.sentryspot.co.uk/api/jobseeker/resume-list/${deleteresumeid}`, {
-          headers: { Authorization: token },
-        });
-        toast.success("Your Resume Deleted Successfully");
+        await axios.delete(
+          `https://api.sentryspot.co.uk/api/jobseeker/resume-list/${deleteresumeid}`,
+          {
+            headers: { Authorization: token },
+          }
+        );
+        toast.success("Resume deleted successfully");
         setisDeleteModalOpen(false);
-        setResumes(resumes.filter(resume => resume.resume_id
- !== deleteresumeid));
+        setResumes(
+          resumes.filter((resume) => resume.resume_id !== deleteresumeid)
+        );
       } catch (error) {
         console.error("Error deleting resume:", error);
-        toast.error("Failed to Delete your Resume");
+        toast.error("Failed to delete resume");
       }
-    } else {
-      console.error("Token not found in localStorage");
     }
   };
 
-  const handleopenDeleteModal = (resumeId) => {
-    setDeleteresumeid(resumeId);
-    setisDeleteModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setisDeleteModalOpen(false);
-  };
-
-
-  
-   // Function to open the edit modal
-   const handleOpenEditModal = (resume) => {
+  const handleOpenEditModal = (resume) => {
     setCurrentResume(resume);
     setNewResumeTitle(resume.resume_title || "");
     setIsEditModalOpen(true);
   };
 
-  // Function to update resume title
   const handleUpdateResumeTitle = () => {
     const token = localStorage.getItem("token");
     if (token && currentResume) {
@@ -517,7 +720,7 @@ const MyResume = () => {
           { resume_title: newResumeTitle },
           { headers: { Authorization: token } }
         )
-        .then((response) => {
+        .then(() => {
           toast.success("Resume title updated successfully.");
           setIsEditModalOpen(false);
           setResumes((prevResumes) =>
@@ -532,120 +735,204 @@ const MyResume = () => {
           console.error("Error updating resume title:", error);
           toast.error("Failed to update resume title.");
         });
-    } else {
-      console.error("Token not found in localStorage or current resume is null.");
     }
   };
- 
-  return (
-    <div className="container mx-auto p-4 text-center h-3/4">
-     
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-dark text-black rounded-md">
-          <thead>
-            <tr>
-              <th className="py-2 px-4">Sr. no.</th>
-               
-              <th className="py-2 px-4"> My Resume</th>
-              <th className="py-2 px-4">Modification</th>
-              <th className="py-2 px-4">Created</th>
-              <th className="py-2 px-4">Strength</th>
-             
-              <th className="py-2 px-4">Actions</th>
-          
-            </tr>
-          </thead>
-          <tbody>
-            {resumes.length > 0 ? resumes.map((resume, index) => (
-             
-              <tr key={index} className="border-2">
-                <td className=" ">{index + 1}.</td>
-                <td className="py-2 px-4">
-                  <div className="flex justify-center gap-2 items-center">
-                  <p className="">{resume.resume_title || "ABC"} </p>
-                  <button onClick={() => handleOpenEditModal(resume)} className="text-black g">🖍</button>
-                  </div>
-                  </td>
-                  <td className="py-2 px-4">{new Date(resume.updated_at).toLocaleDateString()}</td>
-                  <td className="py-2 px-4">{new Date(resume.created_at).toLocaleDateString()}</td>
-                <td className="py-2 px-4">
-                {resume.resume_strenght_details?.resume_strenght || "_"}
-                
 
-                </td>
-                
-             
-                <td className="py-2 px-4">
-                  <div className="flex justify-center gap-2">
-   
-                    <button className="text-black" onClick={() => handleEdit(resume.resume_id)}>
-                      <i className="fas fa-edit">🖍</i>
-                    </button>
-                    <button className="text-black" onClick={() => handleopenDeleteModal(resume.resume_id
-)}>
-                      <i className="fas fa-trash">🗑️</i>
-                    </button>
-                    <button className="text-black" onClick={() => handleDownload(resume.resume_id
-)}>
-                      <i className="fas fa-download">📥</i>
-                    </button>
-                  </div>
-                </td>
-              
-              </tr>
-            )) : (
-              <tr><td colSpan="7">Please Upload Resume.</td></tr>
-            )}
-            
-          </tbody>
-        </table>
+  return (
+    <div className="container mx-auto p-4 max-w-7xl">
+      {/* New Header Section */}
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-2xl font-bold text-gray-800">My Resumes</h1>
+        <Link href={"/"}>
+          <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium shadow-sm">
+            <Plus className="w-5 h-5 mr-2" />
+            Create New Resume
+          </button>
+        </Link>
       </div>
 
-     
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  Sr. no.
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  My Resume
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  Modification
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  Created
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  Strength
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  Abroadium ID
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {resumes.length > 0 ? (
+                resumes.map((resume, index) => (
+                  <tr key={index} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {index + 1}.
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-sm text-gray-900">
+                          {resume.resume_title || "ABC"}
+                        </span>
+                        <button
+                          onClick={() => handleOpenEditModal(resume)}
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          🖍
+                        </button>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {new Date(resume.updated_at).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      {new Date(resume.created_at).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <div className="flex items-center gap-2">
+                        {resume.resume_strenght_details?.resume_strenght ? (
+                          <span
+                            className={`px-3 py-1 rounded-full text-lg font-semibold ${
+                              resume.resume_strenght_details.resume_strenght >
+                              60
+                                ? "bg-green-100 text-green-800"
+                                : "bg-red-100 text-red-800"
+                            }`}
+                          >
+                            {resume.resume_strenght_details.resume_strenght}
+                          </span>
+                        ) : (
+                          <span className="text-gray-500">_</span>
+                        )}
+                      </div>
+                    </td>
 
-     
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-sm text-gray-700">
+                          Include your Abroadium Id
+                        </span>
+                        <button
+                          role="switch"
+                          aria-checked={isChecked}
+                          onClick={handleToggle}
+                          className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                            isChecked ? "bg-blue-600" : "bg-gray-200"
+                          }`}
+                        >
+                          <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
+                              isChecked ? "translate-x-6" : "translate-x-1"
+                            }`}
+                          />
+                        </button>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <div className="flex items-center space-x-3">
+                        <button
+                          onClick={() => handleEdit(resume.resume_id)}
+                          className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
+                        >
+                          <Edit className="w-5 h-5" />
+                        </button>
+                        <button
+                          onClick={() => setisDeleteModalOpen(true)}
+                          className="text-red-600 hover:text-red-800 transition-colors duration-200"
+                        >
+                          <Trash className="w-5 h-5" />
+                        </button>
+                        <button
+                          onClick={() => handleDownload(resume.resume_id)}
+                          className="text-green-600 hover:text-green-800 transition-colors duration-200"
+                        >
+                          <Download className="w-5 h-5" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan="7"
+                    className="px-6 py-4 text-center text-sm text-gray-500"
+                  >
+                    Please Upload Resume.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-     
-
-      {/* Delete Resume Modal */}
+      {/* Delete Modal */}
       {isDeleteModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded shadow-lg w-80">
-            <h2 className="text-lg font-bold">Are you sure you want to delete this resume?</h2>
-            <div className="flex justify-between mt-4">
-              <button onClick={handleDeleteResume} className="bg-red-500 text-white px-4 py-2 rounded">
-                Delete
-              </button>
-              <button onClick={handleCloseModal} className="bg-gray-300 text-black px-4 py-2 rounded">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-sm mx-4">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Are you sure you want to delete this resume?
+            </h2>
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={() => setisDeleteModalOpen(false)}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              >
                 Cancel
+              </button>
+              <button
+                onClick={handleDeleteResume}
+                className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+              >
+                Delete
               </button>
             </div>
           </div>
         </div>
       )}
-      {/* Edit Resume Title Modal */}
+
+      {/* Edit Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded shadow-lg w-80">
-            <h2 className="text-lg font-bold">Edit Resume Title</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-sm mx-4">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              Edit Resume Title
+            </h2>
             <input
               type="text"
-              className="w-full p-2 border border-gray-300 rounded mt-2"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               value={newResumeTitle}
               onChange={(e) => setNewResumeTitle(e.target.value)}
-             
-              placeholder={newResumeTitle || "Enter new resume title"}
+              placeholder="Enter new resume title"
             />
-            <div className="flex justify-end mt-4 gap-2">
+            <div className="flex justify-end space-x-3 mt-4">
               <button
                 onClick={() => setIsEditModalOpen(false)}
-                className="bg-gray-300 text-black px-4 py-2 rounded"
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
               >
                 Cancel
               </button>
               <button
                 onClick={handleUpdateResumeTitle}
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Save
               </button>
@@ -658,5 +945,3 @@ const MyResume = () => {
 };
 
 export default MyResume;
-
-
