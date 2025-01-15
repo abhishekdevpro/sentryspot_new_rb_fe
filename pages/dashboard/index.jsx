@@ -22,13 +22,14 @@ export default function DashboardPage() {
       setLoading(true);
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://api.sentryspot.co.uk/api/jobseeker/resume-list/0",
+        `https://api.sentryspot.co.uk/api/jobseeker/resume-list/0?resume_default=true`,
         {
           headers: {
-            Authorization: token
-          }
+            Authorization: token,
+          },
         }
       );
+      
 
       if (response.data.code === 200 || response.data.status === "success") {
         setStrength(response.data.data.resume_strenght_details);
