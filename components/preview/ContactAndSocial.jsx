@@ -175,11 +175,9 @@ const ContactAndSocialMedia = ({
 }) => {
   
   const {backgroundColorss} =  useContext(ResumeContext)
-  console.log(backgroundColorss,"backgroundColorss");
   {backgroundColorss?textColor:textColor="text-black"}
 
 
-  console.log(textColor,"textColor");
 
     return (
     <div

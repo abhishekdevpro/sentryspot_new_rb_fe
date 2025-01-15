@@ -527,7 +527,7 @@ const ResumeEnhancementModal = ({
         
         // Update resume data in context and local storage
         setResumeData(enhancedResumeData.templateData);
-        localStorage.setItem('resumeData', JSON.stringify(enhancedResumeData.templateData));
+        // localStorage.setItem('resumeData', JSON.stringify(enhancedResumeData.templateData));
         
         toast.success('Resume enhanced successfully!');
         onClose();
@@ -736,7 +736,7 @@ const LoadUnload = () => {
     const tokenFromUrl = url.split("/?")[1];
 
     if (tokenFromUrl) {
-      localStorage.setItem("token", tokenFromUrl);
+      // localStorage.setItem("token", tokenFromUrl);
       setToken(tokenFromUrl);
     } else if (typeof window !== "undefined") {
       const storedToken = localStorage.getItem("token");
@@ -794,9 +794,9 @@ const LoadUnload = () => {
 
       const parsedData = JSON.parse(resumeData.resume_parse_data);
       setResumeData(parsedData.templateData);
-      localStorage.setItem("resumeData", JSON.stringify(parsedData.templateData));
-      localStorage.setItem("resumeId", resumeData.id);
-      localStorage.setItem("location", resumeData.file_path);
+      // localStorage.setItem("resumeData", JSON.stringify(parsedData.templateData));
+      // localStorage.setItem("resumeId", resumeData.id);
+      // localStorage.setItem("location", resumeData.file_path);
 
       // Store file location for enhancement
       setFileLocation(resumeData.file_path);
@@ -831,9 +831,9 @@ const LoadUnload = () => {
         const parsedData = JSON.parse(ai_resume_parse_data).templateData;
   
         setResumeData(parsedData);
-        localStorage.setItem("resumeData", JSON.stringify(parsedData));
-        localStorage.setItem("resumeId", id);
-        localStorage.setItem("location", file_path);
+        // localStorage.setItem("resumeData", JSON.stringify(parsedData));
+        // localStorage.setItem("resumeId", id);
+        // localStorage.setItem("location", file_path);
   
         router.push(`/dashboard/aibuilder/${id}`);
         setShowLoadingAnimation(false);

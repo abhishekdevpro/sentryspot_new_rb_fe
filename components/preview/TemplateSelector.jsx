@@ -226,7 +226,6 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     // { key: 'template28', imageUrl: template20 },
   ];
 
-  console.log(selectedTemplate,"stttt",templateId);
 
   useEffect(() => {
     const selectedIndex = templates.findIndex(template => template.key == selectedTemplate);

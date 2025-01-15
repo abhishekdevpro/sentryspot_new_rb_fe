@@ -1,3 +1,4 @@
+
 // import React, { useState, useRef, useEffect, useContext } from "react";
 // import Language from "../components/form/Language";
 // import axios from "axios";
@@ -834,8 +835,6 @@
 //   );
 // }
 
-
-
 import React, { useState, useRef, useEffect, useContext } from "react";
 import Language from "../components/form/Language";
 import axios from "axios";
@@ -1254,16 +1253,16 @@ export default function MobileBuilder() {
                                 md:translate-x-0 transition-transform duration-300 ease-in-out 
                                 w-64 bg-gray-100 border-r`}
               >
-                <div className="sticky top-20 p-4 overflow-y-auto h-full">
+                <div className="sticky top-20 p-4 h-full">
                   <div className="mt-12 md:mt-0">
                     <Sidebar />
                   </div>
                 </div>
               </aside>
-               <div className="flex justify-start"
+               <div className="flex justify-start "
                  style={{ backgroundColor: "#323159f5" }}
                >
-              <main className="flex-1 max-w-2xl h-full mx-auto md:p-4">
+              <main className="flex-1 max-w-2xl mx-auto md:p-4">
                 <form>{sections[currentSection].component}</form>
               </main>
                </div>
@@ -1273,6 +1272,27 @@ export default function MobileBuilder() {
           </div>
         ) : (
           <>
+             <div className="flex items-center absolute justify-center flex-wrap top-20 left-0 right-0 bg-white shadow-lg">
+              <ColorPickers
+                selectmultiplecolor={backgroundColorss}
+                onChange={setBgColor}
+              />
+              <select
+                value={selectedFont}
+                onChange={handleFontChange}
+                className="rounded-lg border-2 border-blue-800 px-5 py-2 font-bold bg-white text-blue-800"
+              >
+                <option value="Ubuntu">Ubuntu</option>
+                <option value="Calibri">Calibri</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Roboto">Roboto</option>
+                <option value="Poppins">Poppins</option>
+              </select>
+              <TemplateSelector
+                selectedTemplate={selectedTemplate}
+                setSelectedTemplate={setSelectedTemplate}
+              />
+            </div>
            <div className=" ">
           <Preview ref={templateRef} selectedTemplate={selectedTemplate} />
           </div>
@@ -1290,7 +1310,7 @@ export default function MobileBuilder() {
                 onClick={downloadAsPDF}
                 className=" bg-yellow-500 text-black px-4 py-2 rounded-lg bottom-btns"
               >
-             Pay & Download
+             Download
               </button>
               {showModal && (
                 <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
