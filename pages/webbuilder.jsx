@@ -29,6 +29,7 @@ import Modal from "./adminlogin/Modal";
 import { Menu, X } from 'lucide-react';
 import Image from "next/image";
 import { ResumeContext } from "../components/context/ResumeContext";
+import ResumeLoader from "../components/ResumeLoader/Loader";
 
 const Print = dynamic(() => import("../components/utility/WinPrint"), {
   ssr: false,
@@ -485,7 +486,7 @@ export default function WebBuilder() {
         description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes..."
         keywords="ATS-friendly, Resume optimization..."
       />
-
+      {/* <ResumeLoader /> */}
       <div className="min-h-screen bg-gray-50">
         {!isFinished ? (
           <div className="min-h-screen bg-gray-50 flex flex-col">

@@ -84,7 +84,7 @@
 // export default PersonalInformation;
 import React, { useContext, useState } from "react";
 import { ResumeContext } from "../context/ResumeContext";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, X } from "lucide-react";
 
 const PersonalInformation = () => {
   const {
@@ -170,32 +170,56 @@ const PersonalInformation = () => {
               
               {/* Enhanced Suggestions Tooltip */}
               {activeTooltip === field && hasErrors(field) && (
-                <div className="absolute z-10 mt-2 w-full bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 ease-in-out">
-                  <div className="relative">
-                    {/* Red header bar */}
+                // <div className="absolute z-10 mt-2 w-full bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 ease-in-out">
+                //   <div className="relative">
+                //     {/* Red header bar */}
                     
                     
-                    {/* Suggestions content */}
-                    <div className="p-4">
-                      {getSuggestions(field).map((suggestion, index) => (
-                        <div key={index} className="text-gray-700 text-sm mb-2 flex items-center gap-2">
-                          <AlertCircle className="w-5 h-5 text-red-600" />
-                          <span>{suggestion}</span>
-                        </div>
-                      ))}
+                //     {/* Suggestions content */}
+                //     <div className="p-4">
+                //       {getSuggestions(field).map((suggestion, index) => (
+                //         <div key={index} className="text-gray-700 text-sm mb-2 flex items-center gap-2">
+                //           <AlertCircle className="w-5 h-5 text-red-600" />
+                //           <span>{suggestion}</span>
+                //         </div>
+                //       ))}
+                //     </div>
+                    
+                //     {/* Dismiss button */}
+                //     <div className="border-t border-gray-100 px-2 flex justify-end">
+                //       <button
+                //         onClick={() => setActiveTooltip(null)}
+                //         className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                //       >
+                //         Dismiss
+                //       </button>
+                //     </div>
+                //   </div>
+                // </div>
+                <div className="absolute z-50 left-8 mt-10 w-80 bg-white rounded-lg shadow-xl transform transition-all duration-200 ease-in-out border border-gray-700">
+                <div className="p-4 border-b border-gray-700">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <AlertCircle className="w-5 h-5 text-red-400" />
+                      <span className="font-medium text-black">Contact Suggestions</span>
                     </div>
-                    
-                    {/* Dismiss button */}
-                    <div className="border-t border-gray-100 px-2 flex justify-end">
-                      <button
-                        onClick={() => setActiveTooltip(null)}
-                        className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                      >
-                        Dismiss
-                      </button>
-                    </div>
+                    <button
+                       onClick={() => setActiveTooltip(null)}
+                      className="text-black  transition-colors"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
                   </div>
                 </div>
+                <div className="p-4">
+                  {getSuggestions(field).map((msg, i) => (
+                    <div key={i} className="flex items-start space-x-3 mb-3 last:mb-0">
+                      <div className="flex-shrink-0 w-1.5 h-1.5 rounded-full bg-red-400 mt-2"></div>
+                      <p className="text-black text-sm">{msg}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
               )}
             </div>
           ))}
