@@ -1,31 +1,8 @@
-/* eslint-disable react/jsx-no-undef */
-import {
-    FaGithub,
-    FaLinkedin,
-    FaTwitter,
-    FaFacebook,
-    FaInstagram,
-    FaYoutube,
-    FaBold,
-    FaItalic,
-    FaPlus,
-    FaMinus,
-    FaAlignLeft,
-    FaAlignCenter,
-    FaAlignRight,
-    FaLink,
-    FaUnderline,
-    FaSpellCheck, // Added grammar check icon
-  } from "react-icons/fa";
+import React, { useContext,  forwardRef } from "react";
   
-  import { CgWebsite } from "react-icons/cg";
-  
-  import React, { useContext, useState, useEffect, forwardRef } from "react";
-  // import { ResumeContext } from "../../pages/builder";
   import { ResumeContext } from "../../components/context/ResumeContext";
   import dynamic from "next/dynamic";
-  import { HighlightMenu } from "react-highlight-menu";
-  // import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
+ 
   import Template1 from "./Template1";
   import Template2 from "./Template2";
   import Template3 from "./Template3";
@@ -59,60 +36,15 @@ import {
     () => import("react-beautiful-dnd").then((mod) => mod.DragDropContext),
     { ssr: false }
   );
-  const Droppable = dynamic(
-    () => import("react-beautiful-dnd").then((mod) => mod.Droppable),
-    { ssr: false }
-  );
-  const Draggable = dynamic(
-    () => import("react-beautiful-dnd").then((mod) => mod.Draggable),
-    { ssr: false }
-  );
+
   
-  // Function to check grammar using a hypothetical API
-  const checkGrammar = () => {
-    const selectedText = window.getSelection().toString();
-  
-    if (selectedText) {
-      // API call to the grammar correction service (example using LanguageTool API)
-      fetch("https://api.languagetool.org/v2/check", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          language: "en-US",
-          text: selectedText,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.matches.length > 0) {
-            alert("Grammar issues found: " + data.matches.length);
-            // Extend this to show grammar correction suggestions to the user
-          } else {
-            alert("No grammar issues found!");
-          }
-        })
-        .catch((error) => console.error("Error:", error));
-    } else {
-      alert("Please select some text to check for grammar.");
-    }
-  };
   
   
   const DashboardPreview = forwardRef(({ selectedTemplate }, ref) => {
     const { resumeData, setResumeData, selectedFont } = useContext(ResumeContext);
-    const [content, setContent] = useState(resumeData);
+    console.log(resumeData, ">>>previewdashboard")
   
-    const icons = [
-      { name: "github", icon: <FaGithub /> },
-      { name: "linkedin", icon: <FaLinkedin /> },
-      { name: "twitter", icon: <FaTwitter /> },
-      { name: "facebook", icon: <FaFacebook /> },
-      { name: "instagram", icon: <FaInstagram /> },
-      { name: "youtube", icon: <FaYoutube /> },
-      { name: "website", icon: <CgWebsite /> },
-    ];
+   
   
     const templates = {
       template1: <Template1 />,
@@ -196,106 +128,18 @@ import {
         setResumeData({ ...resumeData, projects: newProjects });
       }
     };
+ 
   
-    const MenuButton = ({ title, icon, onClick }) => (
-      <button
-        onClick={onClick}
-        title={title}
-        className="flex items-center justify-center p-3 hover:bg-gray-200 rounded font-semibold text-lg"
-      >
-        {icon}
-      </button>
-    );
+   
   
-    const formatText = (command, value = null) => {
-      document.execCommand(command, false, value);
-    };
+ 
   
-    const toggleBold = () => formatText("bold");
-    const toggleItalic = () => formatText("italic");
-    const toggleUnderline = () => formatText("underline");
-    const changeFontSize = (size) => formatText("fontSize", size);
-    const alignText = (alignment) => formatText(`justify${alignment}`);
-    const toggleLink = () => {
-      const url = prompt("Enter the URL:");
-      if (url) {
-        formatText("createLink", url);
-      }
-    };
-  
-    // useKeyboardShortcut("b", true, toggleBold);
-    // useKeyboardShortcut("i", true, toggleItalic);
-    // useKeyboardShortcut("u", true, toggleUnderline);
-  
+   
     return (
     
         <A4PageWrapper>
           <div ref={ref} className="preview-dashboard" style={{ fontFamily: selectedFont }}>
-            <HighlightMenu
-              styles={{
-                borderColor: "",
-                backgroundColor: "#c5c9c9",
-                boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
-                zIndex: 10,
-                borderRadius: "5px",
-                padding: "3px",
-              }}
-              target="body"
-              menu={() => (
-                <>
-                  <MenuButton
-                    title="Bold (Ctrl+B)"
-                    icon={<FaBold />}
-                    onClick={toggleBold}
-                  />
-                  <MenuButton
-                    title="Italic (Ctrl+I)"
-                    icon={<FaItalic />}
-                    onClick={toggleItalic}
-                  />
-                  <MenuButton
-                    title="Underline (Ctrl+U)"
-                    icon={<FaUnderline />}
-                    onClick={toggleUnderline}
-                  />
-                  <MenuButton
-                    title="Increase Font Size"
-                    icon={<FaPlus />}
-                    onClick={() => changeFontSize(4)}
-                  />
-                  <MenuButton
-                    title="Decrease Font Size"
-                    icon={<FaMinus />}
-                    onClick={() => changeFontSize(2)}
-                  />
-                  <MenuButton
-                    title="Align Left"
-                    icon={<FaAlignLeft />}
-                    onClick={() => alignText("Left")}
-                  />
-                  <MenuButton
-                    title="Align Center"
-                    icon={<FaAlignCenter />}
-                    onClick={() => alignText("Center")}
-                  />
-                  <MenuButton
-                    title="Align Right"
-                    icon={<FaAlignRight />}
-                    onClick={() => alignText("Right")}
-                  />
-                  <MenuButton
-                    title="Add Link"
-                    icon={<FaLink />}
-                    onClick={toggleLink}
-                  />
-                  <MenuButton
-                    title="Check Grammar"
-                    icon={<FaSpellCheck />}
-                    onClick={checkGrammar}
-                  />
-                </>
-              )}
-            />
+           
             <DragDropContext onDragEnd={onDragEnd}>
               {templates[selectedTemplate]}
             </DragDropContext>
@@ -305,7 +149,7 @@ import {
     );
   });
   
-  DashboardPreview.displayName = "Preview"
+  DashboardPreview.displayName = "DashboardPreview"
   
   const A4PageWrapper = ({ children }) => {
     const alertA4Size = () => {

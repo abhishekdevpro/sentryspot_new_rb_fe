@@ -1,5 +1,4 @@
 
-  
 import { Download, Edit } from "lucide-react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -7,94 +6,66 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import { ResumeContext } from "../../components/context/ResumeContext";
 import DashboardPreview from "../preview/DashboardPreview";
 import axios from "axios";
+
 const Sidebar = ({ score, resumeId }) => {
   const templateRef = useRef(null);
   const router = useRouter();
 
+  const { resumeData, setResumeData, setHeaderColor, setBgColor } = useContext(ResumeContext);
+  const [selectedTemplate, setSelectedTemplate] = useState("template1");
+  const [loading, setLoading] = useState(false); // To track API call status
+  const [resumeTitle, setResumeTitle] = useState("");
   const handleEdit = () => {
     router.push(`/dashboard/aibuilder/${resumeId}`);
   };
 
   const handleCreate = () => {
-    router.push('/');
+    router.push("/");
   };
 
-  const [selectedTemplate, setSelectedTemplate] = useState("template1");
-  const [isFinished, setIsFinished] = useState(false);
-  const [resumeData, setResumeData] = useState(null);  // To store the fetched resume data
-  const [token, setToken] = useState(null);
-
-  const {  setResumeData:setResumeContext,setHeaderColor, setBgColor, setSelectedFont, selectedFont, backgroundColorss, headerColor } = useContext(ResumeContext);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedIsFinished = localStorage.getItem("isFinished");
-      const storedTemplate = localStorage.getItem("selectedTemplate");
-      const storedFont = localStorage.getItem("selectedFont");
-  
-      // Only set from localStorage if not already set by API
-      if (!resumeData?.templateData) {
-        if (storedIsFinished) setIsFinished(JSON.parse(storedIsFinished));
-        if (storedTemplate && !selectedTemplate) setSelectedTemplate(storedTemplate);
-        if (storedFont) setSelectedFont(storedFont);
-      }
-    }
-  }, [resumeData]);
-  
-  
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("isFinished", JSON.stringify(isFinished));
-      localStorage.setItem("selectedTemplate", selectedTemplate);
-      localStorage.setItem("selectedFont", selectedFont);
-      localStorage.setItem("headerColor", headerColor);
-      // localStorage.setItem("backgroundColor", backgroundColorss);
-      // localStorage.setItem("currentSection", currentSection.toString());
-    }
-  }, [isFinished, selectedTemplate, selectedFont, headerColor]);
-
-  // Fetch resume data based on resumeId
+  // Fetch resume data based on the provided `resumeId`
   const fetchResumeData = async () => {
-      
-  
-    try {
-      const token = localStorage.getItem('token');
-      const apiUrl = "https://api.sentryspot.co.uk/api/jobseeker/resume-list/0";
-      const response = await axios.get(apiUrl, {
-        headers: {
-          Authorization: token,
-        },
-      });
+    if (!resumeId) return;
 
-      if (response.data.code === 'success' || response.data.status === "success") {
-      
-        const { data } = response.data;
-        const parsedData = data.ai_resume_parse_data;
-      
-        // Update state with fetched data
-        setResumeData(parsedData);
+    setLoading(true);
+    const token = localStorage.getItem("token");
 
-        // Optionally set template details (background color, template ID, etc.)
-        if (parsedData.templateData.templateDetails) {
-          setBgColor(parsedData.templateData.templateDetails.backgroundColor || '');
-          setHeaderColor(parsedData.templateData.templateDetails.backgroundColor || '');
-          setSelectedTemplate(parsedData.templateData.templateDetails.templateId || 'template1');
+    if (token) {
+      try {
+        const response = await axios.get(
+          `https://api.sentryspot.co.uk/api/jobseeker/resume-list/${resumeId}`, // Fetch for specific resumeId
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+
+        if (response.data.status === "success") {
+          const { data } = response.data;
+          const parsedData = data.ai_resume_parse_data;
+
+          // Update state with fetched data
+          setResumeData(parsedData.templateData);
+          setResumeTitle(data.resume_title || "Untitled Resume");
+          if (parsedData?.templateData?.templateDetails) {
+            const { backgroundColor, templateId } = parsedData.templateData.templateDetails;
+            setBgColor(backgroundColor || "");
+            setHeaderColor(backgroundColor || "");
+            setSelectedTemplate(templateId || "template1");
+          }
         }
+      } catch (error) {
+        console.error("Error fetching resume data:", error);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-
-      console.error("Error fetching resume data:", error);
     }
   };
+
   useEffect(() => {
-    if (resumeId) {
-      fetchResumeData();
-    }
-  }, [resumeId]); // Add resumeId as a dependency
-  
-  
-  
+    fetchResumeData();
+  }, [resumeId]); // Trigger API call whenever `resumeId` changes
 
   const handleDownload = async () => {
     const apiUrl = `https://api.sentryspot.co.uk/api/jobseeker/download-resume/${resumeId}`;
@@ -131,13 +102,23 @@ const Sidebar = ({ score, resumeId }) => {
   return (
     <div className="w-full md:w-[400px] p-4 border-r border-gray-200">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-semibold">Resume_1</h2>
-        <Link href="/dashboard/resumelist" className="text-blue-600 hover:text-blue-700">View All</Link>
+        <h2 className="text-lg font-semibold">{resumeTitle}</h2>
+        <Link href="/dashboard/resumelist" className="text-blue-600 hover:text-blue-700">
+          View All
+        </Link>
       </div>
 
       {/* Resume Preview */}
       <div className="border border-gray-200 rounded-lg shadow-sm p-2 mb-4 relative h-[500px]">
-        <DashboardPreview ref={templateRef} selectedTemplate={selectedTemplate}  resumeData={resumeData}/>
+        {loading ? (
+          <div className="flex items-center justify-center h-full">Loading...</div>
+        ) : (
+          <DashboardPreview
+            ref={templateRef}
+            selectedTemplate={selectedTemplate}
+            // resumeData={resumeData}
+          />
+        )}
       </div>
 
       {/* Action Buttons */}
