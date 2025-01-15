@@ -135,7 +135,7 @@ const SocialMedia = () => {
       <h2 className="input-title text-white">
         Please mention the platform and their link
       </h2>
-      {resumeData.socialMedia.map((socialMedia, index) => (
+      {(resumeData.socialMedia || []).map((socialMedia, index) => (
         <div key={index} className="flex-wrap-gap-2 flex items-center gap-3">
           {/* Dropdown for selecting social media platform */}
           <select
@@ -150,7 +150,7 @@ const SocialMedia = () => {
               </option>
             ))}
           </select>
-
+  
           {/* Input for the username or link */}
           <input
             type="text"
@@ -169,6 +169,7 @@ const SocialMedia = () => {
       />
     </div>
   );
+  
 };
 
 export default SocialMedia;
