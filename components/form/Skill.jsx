@@ -377,6 +377,7 @@ import axios from "axios";
 import FormButton from "./FormButton";
 import { ResumeContext } from "../context/ResumeContext";
 import { AlertCircle } from "lucide-react";
+import { useRouter } from "next/router";
 
 const Skill = ({ title }) => {
   const { resumeData, setResumeData, resumeStrength } = useContext(ResumeContext);
@@ -386,6 +387,9 @@ const Skill = ({ title }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [activeTooltip, setActiveTooltip] = useState(null);
+
+  const router = useRouter();
+  const { improve} = router.query;
 
   // Helper function to check if a field has errors
   const hasErrors = (skillIndex) => {
@@ -560,12 +564,12 @@ const Skill = ({ title }) => {
             placeholder={title}
             name={title}
             className={`w-full other-input border ${
-              hasErrors(index) ? 'border-red-500' : 'border-black'
+             improve && hasErrors(index) ? 'border-red-500' : 'border-black'
             }`}
             value={skill}
             onChange={(e) => handleSkill(e, index, title)}
           />
-          {hasErrors(index) && (
+          {improve && hasErrors(index) && (
             <button
               type="button"
               className="absolute right-8 top-1/2 -translate-y-1/2 text-red-500 hover:text-red-600 transition-colors"

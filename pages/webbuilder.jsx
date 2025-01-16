@@ -164,15 +164,7 @@ export default function WebBuilder() {
     }
   };
 
-  const pdfExportOptions = {
-    paperSize: "A4",
-    fileName: "resume.pdf",
-    author: resumeData.firstName + " " + resumeData.lastName,
-    creator: "ATSResume Builder",
-    date: new Date(),
-    scale: 0.8,
-    forcePageBreak: ".page-break",
-  };
+
 
   const [showModal, setShowModal] = useState(false);
 

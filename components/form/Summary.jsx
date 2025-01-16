@@ -339,6 +339,7 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { ResumeContext } from "../context/ResumeContext";
 import { AlertCircle, X } from "lucide-react";
+import { useRouter } from "next/router";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -350,6 +351,8 @@ const Summary = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedSummaryIndex, setSelectedSummaryIndex] = useState(null);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const router = useRouter();
+  const { improve} = router.query;
 
   const hasErrors = () => {
     return resumeStrength?.personal_summery_strenght?.suggestions !== null ||
@@ -433,7 +436,7 @@ const Summary = () => {
         <div className="flex justify-between mb-2 items-center">
           <div className="flex items-center gap-2">
             <h2 className="input-title text-white text-3xl">Summary</h2>
-            {hasErrors() && (
+            {improve && hasErrors() && (
               <button
                 type="button"
                 className="text-red-500 hover:text-red-600 transition-colors"
@@ -488,29 +491,7 @@ const Summary = () => {
         
         {/* Suggestions Tooltip */}
         {showSuggestions && hasErrors() && (
-          // <div className="relative">
-          //   <div className="absolute z-10 w-full max-w-xl bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 ease-in-out">
-             
-              
-          //     <div className="p-4">
-          //       {getSuggestions().map((suggestion, index) => (
-          //         <div key={index} className="text-gray-700 text-md flex items-center gap-2">
-          //            <AlertCircle className="w-5 h-5 text-red-600" />
-          //           <span> {suggestion} </span>
-          //         </div>
-          //       ))}
-          //     </div>
-              
-          //     <div className="border-t border-gray-100 p-3 flex justify-end">
-          //       <button
-          //         onClick={() => setShowSuggestions(false)}
-          //         className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-          //       >
-          //         Dismiss
-          //       </button>
-          //     </div>
-          //   </div>
-          // </div>
+     
           <div className="absolute z-50 left-8 mt-10 w-80 bg-white rounded-lg shadow-xl transform transition-all duration-200 ease-in-out border border-gray-700">
           <div className="p-4 border-b border-gray-700">
             <div className="flex items-center justify-between">
