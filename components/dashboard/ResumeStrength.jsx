@@ -136,12 +136,25 @@ const ResumeStrength = ({score, strength, resumeId}) => {
     ];
   };
 
+  // const handleImproveResume = () => {
+  //   setShowLoader(true);
+  //   setTimeout(() => {
+  //     router.push(`/dashboard/aibuilder/${resumeId}`);
+  //   }, 5000);
+  // };
   const handleImproveResume = () => {
     setShowLoader(true);
     setTimeout(() => {
-      router.push(`/dashboard/aibuilder/${resumeId}`);
+      router.push({
+        pathname: `/dashboard/aibuilder/${resumeId}`,
+        query: {
+          improve: 'true', // Example query parameter
+         
+        },
+      });
     }, 5000);
   };
+  
 
   const sectionsList = getSectionsList(strength);
 

@@ -85,6 +85,7 @@
 import React, { useContext, useState } from "react";
 import { ResumeContext } from "../context/ResumeContext";
 import { AlertCircle, X } from "lucide-react";
+import { useRouter } from "next/router";
 
 const PersonalInformation = () => {
   const {
@@ -94,6 +95,8 @@ const PersonalInformation = () => {
     handleChange,
     resumeStrength,
   } = useContext(ResumeContext);
+  const router = useRouter();
+  const { improve} = router.query;
 
   const [activeTooltip, setActiveTooltip] = useState(null);
 
@@ -149,14 +152,14 @@ const PersonalInformation = () => {
                   placeholder={placeholder}
                   name={field}
                   className={`w-full p-2 border rounded-md outline-none transition-colors
-                    ${hasErrors(field) 
+                    ${improve && hasErrors(field) 
                       ? 'border-red-500 focus:border-red-600' 
                       : 'border-gray-300 focus:border-blue-500'
                     }`}
                   value={resumeData[field] || ''}
                   onChange={handleChange}
                 />
-                {hasErrors(field) && (
+                {improve && hasErrors(field) && (
                   <button
                     type="button"
                     className="absolute right-2 text-red-500 hover:text-red-600 transition-colors"
@@ -170,32 +173,6 @@ const PersonalInformation = () => {
               
               {/* Enhanced Suggestions Tooltip */}
               {activeTooltip === field && hasErrors(field) && (
-                // <div className="absolute z-10 mt-2 w-full bg-white rounded-lg shadow-lg border border-gray-200 transition-all duration-200 ease-in-out">
-                //   <div className="relative">
-                //     {/* Red header bar */}
-                    
-                    
-                //     {/* Suggestions content */}
-                //     <div className="p-4">
-                //       {getSuggestions(field).map((suggestion, index) => (
-                //         <div key={index} className="text-gray-700 text-sm mb-2 flex items-center gap-2">
-                //           <AlertCircle className="w-5 h-5 text-red-600" />
-                //           <span>{suggestion}</span>
-                //         </div>
-                //       ))}
-                //     </div>
-                    
-                //     {/* Dismiss button */}
-                //     <div className="border-t border-gray-100 px-2 flex justify-end">
-                //       <button
-                //         onClick={() => setActiveTooltip(null)}
-                //         className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                //       >
-                //         Dismiss
-                //       </button>
-                //     </div>
-                //   </div>
-                // </div>
                 <div className="absolute z-50 left-8 mt-10 w-80 bg-white rounded-lg shadow-xl transform transition-all duration-200 ease-in-out border border-gray-700">
                 <div className="p-4 border-b border-gray-700">
                   <div className="flex items-center justify-between">

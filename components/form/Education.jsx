@@ -263,10 +263,13 @@ import { ResumeContext } from "../context/ResumeContext";
 import FormButton from "./FormButton";
 import React, { useContext, useState } from "react";
 import { AlertCircle, X } from "lucide-react";
+import { useRouter } from "next/router";
 
 const Education = () => {
   const { resumeData, setResumeData, resumeStrength } = useContext(ResumeContext);
   const [activeTooltip, setActiveTooltip] = useState(null);
+  const router = useRouter();
+  const { improve} = router.query;
 
   const handleEducation = (e, index) => {
     const { name, value } = e.target;
@@ -358,7 +361,7 @@ const Education = () => {
               value={education.school}
               onChange={(e) => handleEducation(e, index)}
             />
-            {hasErrors(index, 'school') && (
+            {improve && hasErrors(index, 'school') && (
               <button
                 type="button"
                 className="absolute right-2 top-1/2 -translate-y-1/2 text-red-500 hover:text-red-600 transition-colors"
@@ -421,15 +424,14 @@ const Education = () => {
               type="text"
               placeholder="Degree"
               name="degree"
-              className={`w-full other-input border ${
-                hasErrors(index, 'degree') 
+              className={`w-full other-input border ${ improve && hasErrors(index, 'degree') 
                   ? 'border-red-500' 
                   : 'border-black'
               }`}
               value={education.degree}
               onChange={(e) => handleEducation(e, index)}
             />
-            {hasErrors(index, 'degree') && (
+            {improve && hasErrors(index, 'degree') && (
               <button
                 type="button"
                 className="absolute right-2 top-1/2 -translate-y-1/2 text-red-500 hover:text-red-600 transition-colors"
@@ -492,7 +494,7 @@ const Education = () => {
             <div className="flex-wrap-gap-2">
               <select
                 className={`border other-input flex-1 ${
-                  hasErrors(index, 'startYear') 
+                  improve && hasErrors(index, 'startYear') 
                     ? 'border-red-500' 
                     : 'border-black'
                 }`}
@@ -508,7 +510,7 @@ const Education = () => {
               </select>
               <select
                 className={`other-input border flex-1 ${
-                  hasErrors(index, 'startYear') 
+                  improve && hasErrors(index, 'startYear') 
                     ? 'border-red-500' 
                     : 'border-black'
                 }`}
@@ -528,7 +530,7 @@ const Education = () => {
             <div className="flex-wrap-gap-2">
               <select
                 className={`other-input border flex-1 ${
-                  hasErrors(index, 'endYear') 
+                  improve && hasErrors(index, 'endYear') 
                     ? 'border-red-500' 
                     : 'border-black'
                 }`}
@@ -544,7 +546,7 @@ const Education = () => {
               </select>
               <select
                 className={`other-input border flex-1 ${
-                  hasErrors(index, 'endYear') 
+                  improve && hasErrors(index, 'endYear') 
                     ? 'border-red-500' 
                     : 'border-black'
                 }`}
@@ -568,14 +570,14 @@ const Education = () => {
               placeholder="Location"
               name="location"
               className={`w-full other-input border ${
-                hasErrors(index, 'location') 
+                improve && hasErrors(index, 'location') 
                   ? 'border-red-500' 
                   : 'border-black'
               }`}
               value={education.location}
               onChange={(e) => handleEducation(e, index)}
             />
-            {hasErrors(index, 'location') && (
+            {improve && hasErrors(index, 'location') && (
               <button
                 type="button"
                 className="absolute right-2 top-1/2 translate-y-1 text-red-500 hover:text-red-600 transition-colors"
