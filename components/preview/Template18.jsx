@@ -6,7 +6,6 @@ import { CgWebsite } from "react-icons/cg";
 import DateRange from "../utility/DateRange";
 import Language from "./Language";
 import Skills from "./Skills";
-import Image from "next/image";
 import Certification from "./Certification";
 import Link from "next/link";
 import {
@@ -29,6 +28,11 @@ import {
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import dynamic from "next/dynamic";
 import ContactAndSocialMedia from "./ContactAndSocial";
+import { SummaryWrapper, TextWrapper, ImageWrapper } from "./Common";
+import { SkillsWrapper } from "./SkillWrapper";
+import WorkExperience from "./WorkExperience";
+import ProjectsSection from "./ProjectSection";
+import EducationSection from "./Education";
 
 const DragDropContext = dynamic(
   () => import("react-beautiful-dnd").then((mod) => mod.DragDropContext),
@@ -44,7 +48,17 @@ const Draggable = dynamic(
 );
 
 const Template18 = () => {
-  const { resumeData, setResumeData, headerColor } = useContext(ResumeContext);
+  const templateRef = useRef(null);
+
+  const extractHtml = () => {
+    const htmlContent = templateRef.current?.outerHTML;
+    console.log(htmlContent);
+    return htmlContent;
+  };
+
+  const { resumeData, setResumeData, headerColor, backgroundColorss } =
+    useContext(ResumeContext);
+
   const icons = [
     { name: "github", icon: <FaGithub /> },
     { name: "linkedin", icon: <FaLinkedin /> },
@@ -54,403 +68,122 @@ const Template18 = () => {
     { name: "youtube", icon: <FaYoutube /> },
     { name: "website", icon: <CgWebsite /> },
   ];
-   const templateRef = useRef(null);
-  
-    const extractHtml = () => {
-      const htmlContent = templateRef.current?.outerHTML;
-      console.log(htmlContent);
-      return htmlContent;
-    };
 
   return (
-    <div ref={templateRef} className="max-w-4xl mx-auto p-5 bg-white shadow-md">
-      <div className="flex gap-1 items-start border-b-2 mb-10 border-gray-800">
-        <div className="w-1/3 p-5">
-          <Image
-            src={resumeData.profilePicture}
-            alt="profile"
-            width={100}
-            height={100}
-            className="object-cover w-full h-full"
-          />
+    <div
+      ref={templateRef}
+      className="max-w-4xl mx-auto bg-white border border-gray-200"
+    >
+      
+          <div className="header text-start mb-6 px-6 py-4"  style={{ borderBottom: `2px solid ${backgroundColorss}` }}>
+        <div className="flex justify-start items-center gap-4">
+          {resumeData?.profilePicture && (
+            <ImageWrapper
+              src={resumeData.profilePicture}
+              alt="Profile Picture"
+            />
+          )}
+           <TextWrapper
+          name={resumeData.name}
+          position={resumeData.position}
+          headerColor={backgroundColorss}
+          orientation="column" // Use "column" for stacked layout
+        />
         </div>
-        <div className="w-2/3 p-5">
-          <div className="mb-8">
-            <h1
-              className="text-4xl font-bold mb-4"
-              style={{ color: headerColor }}
-            >
-              {resumeData.name}
-            </h1>
-            <h2
-              className="text-2xl font-semibold mb-3"
-              style={{ color: headerColor }}
-            >
-              {resumeData.position}
-            </h2>
+       
+        {/* <h1 className="text-2xl mb-1.5" style={{ color: headerColor }}>{resumeData.name}</h1> */}
+        <ContactAndSocialMedia
+          contactData={{
+            teldata: resumeData.contactInformation,
+            emaildata: resumeData.email,
+            addressdata: resumeData.address,
+          }}
+          socialMediaData={resumeData.socialMedia}
+          icons={icons}
+          layout="row" // or "row"
+          contactClass=""
+          socialMediaClass=""
+          className="justify-start gap-4 mt-4"
+        />
+      </div>
+         
+      <div className="container mx-auto flex bg-white shadow-lg">
+        {/* Left Column */}
+        <div
+          className="right-column w-4/12 bg-gray-100 p-8"
+          style={{ backgroundColor: backgroundColorss }}
+        >
+          <div className="flex flex-col gap-4">
+           
+             <div className="education mb-8">
+            <EducationSection
+              itemClassNames={{
+                school: "",
+                degree: "",
+                location: "",
+              }}
+              layout="column"
+              educationData={resumeData?.education}
+              headerColor={backgroundColorss ? "white" : "black"}
+            />
           </div>
-          <div className="text-left">
-            <div className="mb-8">
-            <ContactAndSocialMedia
-      contactData={{
-        teldata: resumeData.contactInformation,
-        emaildata: resumeData.email,
-        addressdata: resumeData.address,
-      }}
-      socialMediaData={resumeData.socialMedia}
-      icons={icons}
-      layout="row" // or "row"
-      contactClass=""
-      socialMediaClass=""
-    />
+          <Language
+              title="Languages"
+              languages={resumeData.languages}
+              headerColor={backgroundColorss ? "white" : "black"}
+            />
+            <SkillsWrapper
+              skills={resumeData.skills}
+              headerColor={backgroundColorss ? "white" : "black"}
+              droppableId="skills-section-1"
+              className="mt-4"
+              layout="column"
+            />
+            
+            <Certification
+              title="Certifications"
+              certifications={resumeData.certifications}
+              hasBullet={true}
+              headerColor={backgroundColorss ? "white" : "black"}
+            />
+          </div>
+
+         
+        </div>
+        
+
+        {/* Right Column */}
+        <div className="left-column w-8/12 p-8 border-r border-gray-300">
+          {/* Header Section with TextWrapper and conditional ImageWrapper */}
+          
+
+          {/* Rest of the left column content */}
+          <div className="flex flex-col gap-4">
+            <div className="col-span-2 space-y-2">
+              <SummaryWrapper
+                summary={resumeData.summary}
+                headerColor={"black"}
+                editable={true}
+                className="mt-4"
+              />
+              <WorkExperience
+                itemClassNames={{
+                  title: "text-lg font-bold mb-1 editable",
+                  company: "",
+                  position: "",
+                  location: "",
+                }}
+                resumeData={resumeData}
+                headerColor={backgroundColorss}
+              />
+              <ProjectsSection
+                resumeData={resumeData}
+                headerColor={backgroundColorss}
+              />
             </div>
           </div>
         </div>
       </div>
-      <div className="flex gap-1 items-start">
-        <div className="w-1/3 p-5">
-          <div className="mb-8">
-            <h2
-              className="text-xl font-bold mb-5"
-              style={{ color: headerColor }}
-            >
-              EDUCATION
-            </h2>
-            <div className="mb-4">
-              <ul className="list-none p-0">
-                {resumeData.education.length > 0 && (
-                  <div className="mb-5">
-                    {resumeData.education.map((item, index) => (
-                      <div key={index} className="mb-5">
-                        <p className="text-xl font-bold">{item.degree}</p>
-                        <p>{item.school}</p>
-                        <DateRange
-                          startYear={item.startYear}
-                          endYear={item.endYear}
-                          id={`education-start-end-date`}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </ul>
-            </div>
-          </div>
-          <div className="mb-8">
-            <h2 className="text-xl font-bold" style={{ color: headerColor }}>
-              LANGUAGE
-            </h2>
-            <div className="mb-4 font-bold">
-              <Language languages={resumeData.languages} />
-            </div>
-          </div>
-          <div className="mb-8">
-            <h2
-              className="text-xl font-bold mb-4"
-              style={{ color: headerColor }}
-            >
-              SKILLS
-            </h2>
-            <Droppable droppableId="skills" type="SKILLS">
-              {(provided) => (
-                <div {...provided.droppableProps} ref={provided.innerRef}>
-                  {resumeData.skills.map((skill, index) => (
-                    <Draggable
-                      key={`SKILLS-${index}`}
-                      draggableId={`SKILLS-${index}`}
-                      index={index}
-                    >
-                      {(provided, snapshot) => (
-                        <div
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          className={`mb-5 hover:scale-105 transition-transform duration-300 ${
-                            snapshot.isDragging ? "inline" : ""
-                          }`}
-                        >
-                          <Skills title={skill.title} skills={skill.skills} />
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          </div>
-        </div>
-
-        <div className="w-2/3 p-5 border-l-2 border-gray-800">
-          <div className="mb-8">
-            <h2
-              className="text-xl font-bold mb-4"
-              style={{ color: headerColor }}
-            >
-              ABOUT ME
-            </h2>
-            <div className="border-b-2 border-gray-800 mb-5"></div>
-            <p
-              className="hover:outline-dashed hover:outline-2 hover:outline-gray-400"
-              contentEditable="true"
-              suppressContentEditableWarning={true}
-            >
-              {resumeData.summary}
-            </p>
-          </div>
-          <div className="mb-8">
-            <h2
-              className="text-xl font-bold mb-4"
-              style={{ color: headerColor }}
-            >
-              EXPERIENCE
-            </h2>
-            <div>
-              {resumeData.workExperience.length > 0 && (
-                <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
-                  {(provided) => (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
-                      {resumeData.workExperience.map((item, index) => (
-                        <Draggable
-                          key={`${item.company}-${index}`}
-                          draggableId={`WORK_EXPERIENCE-${index}`}
-                          index={index}
-                        >
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className={`mb-5 hover:scale-105 transition-transform duration-300 ${
-                                snapshot.isDragging
-                                  ? "outline-dashed outline-2 outline-gray-400 bg-white"
-                                  : ""
-                              }`}
-                            >
-                              <div className="flex justify-between space-y-1">
-                                <p className="text-2xl font-bold">
-                                  {item.company}
-                                </p>
-                                <DateRange
-                                  startYear={item.startYear}
-                                  endYear={item.endYear}
-                                  id={`work-experience-start-end-date`}
-                                />
-                              </div>
-                              <p>{item.position}</p>
-                              <p
-                                className="hover:outline-dashed hover:outline-2 hover:outline-gray-400"
-                                contentEditable="true"
-                                suppressContentEditableWarning={true}
-                              >
-                                {item.description}
-                              </p>
-                              <Droppable
-                                droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
-                                type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
-                              >
-                                {(provided) => (
-                                  <ul
-                                    className="list-disc pl-5"
-                                    {...provided.droppableProps}
-                                    ref={provided.innerRef}
-                                  >
-                                    {typeof item.keyAchievements === "string" &&
-                                      item.keyAchievements
-                                        .split("\n")
-                                        .map((achievement, subIndex) => (
-                                          <Draggable
-                                            key={`${item.company}-${index}-${subIndex}`}
-                                            draggableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}-${subIndex}`}
-                                            index={subIndex}
-                                          >
-                                            {(provided, snapshot) => (
-                                              <li
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                className={`hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400 ${
-                                                  snapshot.isDragging
-                                                    ? "outline-dashed outline-2 outline-gray-400 bg-white"
-                                                    : ""
-                                                }`}
-                                              >
-                                                <div
-                                                  dangerouslySetInnerHTML={{
-                                                    __html: achievement,
-                                                  }}
-                                                  contentEditable
-                                                />
-                                              </li>
-                                            )}
-                                          </Draggable>
-                                        ))}
-                                    {provided.placeholder}
-                                  </ul>
-                                )}
-                              </Droppable>
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              )}
-
-              {/* Projects Section */}
-              {resumeData.projects.length > 0 && (
-                <Droppable droppableId="projects" type="PROJECTS">
-                  {(provided) => (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
-                      <h2
-                        className="text-xl font-bold mb-4 border-b-2 border-gray-300"
-                        contentEditable
-                        suppressContentEditableWarning
-                        style={{ color: headerColor }}
-                      >
-                        Projects
-                      </h2>
-                      {resumeData.projects.map((item, index) => (
-                        <Draggable
-                          key={`${item.name}-${index}`}
-                          draggableId={`PROJECTS-${index}`}
-                          index={index}
-                        >
-                          {(provided, snapshot) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className={`hover:scale-105 transition-transform duration-300 mb-4 ${
-                                snapshot.isDragging
-                                  ? "outline-dashed outline-2 outline-gray-400 bg-white"
-                                  : ""
-                              }`}
-                            >
-                              <div className="flex justify-between space-y-1">
-                                <p className="font-bold">{item.name}</p>
-                                <DateRange
-                                  startYear={item.startYear}
-                                  endYear={item.endYear}
-                                  id={`project-start-end-date`}
-                                />
-                              </div>
-                              <Link
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
-                              >
-                                {item.link}
-                              </Link>
-                              <p>{item.description}</p>
-                              <Droppable
-                                droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
-                                type="PROJECTS_KEY_ACHIEVEMENT"
-                              >
-                                {(provided) => (
-                                  <ul
-                                    className="list-disc pl-5"
-                                    {...provided.droppableProps}
-                                    ref={provided.innerRef}
-                                  >
-                                    {typeof item.keyAchievements === "string" &&
-                                      item.keyAchievements
-                                        .split("\n")
-                                        .map((achievement, subIndex) => (
-                                          <Draggable
-                                            key={`${item.name}-${index}-${subIndex}`}
-                                            draggableId={`PROJECTS_KEY_ACHIEVEMENT-${index}-${subIndex}`}
-                                            index={subIndex}
-                                          >
-                                            {(provided, snapshot) => (
-                                              <li
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                className={`hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400 ${
-                                                  snapshot.isDragging
-                                                    ? "outline-dashed outline-2 outline-gray-400 bg-white"
-                                                    : ""
-                                                }`}
-                                              >
-                                                <div
-                                                  dangerouslySetInnerHTML={{
-                                                    __html: achievement,
-                                                  }}
-                                                  contentEditable
-                                                />
-                                              </li>
-                                            )}
-                                          </Draggable>
-                                        ))}
-                                    {provided.placeholder}
-                                  </ul>
-                                )}
-                              </Droppable>
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              )}
-            </div>
-            {/* <button 
-              onClick={extractHtml}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors duration-300"
-            >
-              Log HTML Content
-            </button> */}
-            {/* References Section */}
-            {/* <div className="text-left">
-              <h2 className="text-2xl font-bold uppercase text-black mb-5">
-                Reference
-              </h2>
-              <div className="border-b-2 border-gray-800 mb-5"></div>
-              <div className="flex justify-between">
-                <div className="mb-5">
-                  <p className="text-xl font-semibold mb-2 uppercase">
-                    Estelle Darcy
-                  </p>
-                  <p className="font-light mb-2">Wardlere Inc. / CTO</p>
-                  <p className="font-light mb-2">Phone: 123-456-7890</p>
-                  <p className="font-light mb-2">Email: abc@gmail.com</p>
-                </div>
-                <div className="mb-5">
-                  <p className="text-xl font-semibold mb-2 uppercase">
-                    Harper Richard
-                  </p>
-                  <p className="font-light mb-2">Wardlere Inc. / CEO</p>
-                  <p className="font-light mb-2">Phone: 123-456-7890</p>
-                  <p className="font-light mb-2">Email: abc@gmail.com</p>
-                </div>
-              </div>
-            </div> */}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const A4PageWrapper = ({ children }) => {
-  const alertA4Size = () => {
-    const preview = document.querySelector(".preview");
-    const previewHeight = preview.offsetHeight;
-    console.log(previewHeight);
-    if (previewHeight > 1122) {
-      alert("A4 size exceeded");
-    }
-  };
-
-  return (
-    <div className="w-[8.5in] border p-3" onLoad={alertA4Size}>
-      {children}
     </div>
   );
 };
