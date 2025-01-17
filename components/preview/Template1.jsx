@@ -338,7 +338,7 @@ const Template1 = () => {
   return (
     <div
       ref={templateRef}
-      className="max-w-4xl mx-auto bg-white border border-gray-200"
+      className=""
     >
       <div
       style={{ borderBottom: `2px solid ${backgroundColorss}` }}
