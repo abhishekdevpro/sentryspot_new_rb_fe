@@ -134,7 +134,7 @@ const Template3 = () => {
         className="mt-4"
         layout="row"
       />
-      {console.log(backgroundColorss,"fhgjh")}
+      {/* {console.log(backgroundColorss,"fhgjh")} */}
       <Language title="Languages" languages={resumeData.languages}
              headerColor= {"black"}
             />
