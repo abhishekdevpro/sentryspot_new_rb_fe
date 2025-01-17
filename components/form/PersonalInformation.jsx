@@ -120,7 +120,7 @@ const PersonalInformation = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-3 w-full items-center mt-10 px-10">
+    <div className="flex flex-col gap-3 w-full items-center md:mt-10 p-4 md:px-10">
       <h2 className="text-2xl md:text-3xl font-semibold text-white">
         Detail Information
       </h2>

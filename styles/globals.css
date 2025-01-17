@@ -197,6 +197,19 @@ body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 /* } */
+
+.a4-wrapper {
+  width: 210mm; /* A4 width */
+  /* min-height: 297mm; */
+  margin: auto;
+  /* padding: 20px; */
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.preview {
+  overflow: auto;
+}
 @media (max-width: 768px) {
   .preview {
     width: 100%;
@@ -207,12 +220,12 @@ body {
     height: auto;
   }
   .a4-wrapper {
-    transform: scale(0.5); /* Shrink for smaller devices */
+    transform: scale(0.6); /* Shrink for smaller devices */
     transform-origin: top center;
     width: 100%; /* A4 width */
 
     max-width: 100%;
-    height: 100%;
+    height: 83%;
   }
 }
 
@@ -221,13 +234,9 @@ body {
     width: 199%;
   }
   .a4-wrapper {
-    transform: scale(0.6); /* Shrink for smaller devices */
-
-    width: 100%; /* A4 width */
-
     position: absolute;
     left: 0px;
-    top: 200px;
+    top: 250px;
   }
 }
 
