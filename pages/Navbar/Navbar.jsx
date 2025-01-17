@@ -5,6 +5,7 @@ import logo from "../Navbar/logo.jpg";
 import Image from "next/image";
 import { Bell, User } from "lucide-react";
 import axios from "axios";
+import AbroadiumId from "./AbroadiumId";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +13,10 @@ const Navbar = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isApiSuccess, setIsApiSuccess] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleOpenPopup = () => setIsPopupOpen(true);
+  const handleClosePopup = () => setIsPopupOpen(false);
   const [user, setUser] = useState();
 
   const router = useRouter();
@@ -123,12 +128,28 @@ const Navbar = () => {
             </Link>
             {/* <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">Cover Letter</Link> */}
 
-            <Link
-              href="https://abroadium-arbuild-fe.vercel.app/dashboard"
+            <Link href=""
+              // href="https://abroadium-arbuild-fe.vercel.app/dashboard"
+              onClick={handleOpenPopup}
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
             >
               Abroadium ID
             </Link>
+            <AbroadiumId isOpen={isPopupOpen} onClose={handleClosePopup} />
+            <Link href="https://abroadium-arbuild-fe.vercel.app/skilltest"
+            
+             
+              className="text-white px-3 py-2 rounded-md text-lg font-semibold"
+            >
+             Skill Test
+            </Link>
+            <Link href="https://abroadium-arbuild-fe.vercel.app/skill-test-history"
+            
+             
+            className="text-white px-3 py-2 rounded-md text-lg font-semibold"
+          >
+           Skill Test History
+          </Link>
             {/* <Link href="/adminlogin" className="text-white px-3 py-2 rounded-md text-lg font-semibold">
               <span className="mr-2">🛡️</span>
               <span>Admin</span>
