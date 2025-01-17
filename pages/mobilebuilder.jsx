@@ -976,43 +976,107 @@ export default function MobileBuilder() {
     setSelectedFont(e.target.value);
   };
 
+  // const downloadAsPDF = async () => {
+  //   const amount = 49;
+
+  //   try {
+  //     const payload = {
+  //       amount,
+  //       ResumeId: resumeId,
+  //       Token: token || ''
+  //     };
+
+  //     const response = await axios.post(
+  //       'https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment',
+  //       payload,
+  //       {
+  //         headers: {
+  //            Authorization: token,
+  //           'Content-Type': 'application/json' }
+  //       }
+  //     );
+
+  //     const data = response.data;
+  //     console.log(data, "data");
+  //     if (data && data.data) {
+  //       const orderId = data.order_id;
+  //       localStorage.setItem("orderid", orderId);
+
+  //       if (data.data) {
+  //         window.location.href = data.data;
+  //       } else {
+  //         console.error("Payment URL not found");
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error('Payment Error:', error);
+  //   }
+  // };
   const downloadAsPDF = async () => {
-    const amount = 49;
-
+    handleFinish()
+    if (!templateRef.current) {
+      toast.error("Template reference not found");
+      return;
+    }
+  
     try {
-      const payload = {
-        amount,
-        ResumeId: resumeId,
-        Token: token || ''
-      };
-
+      const htmlContent = templateRef.current.innerHTML;
+  
+      const fullContent = `
+        <style>
+          @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+        </style>
+        ${htmlContent}
+      `;
+  
       const response = await axios.post(
-        'https://api.sentryspot.co.uk/api/jobseeker/paypal/create-payment',
-        payload,
+        'https://api.sentryspot.co.uk/api/jobseeker/generate-pdf1',
+        { html: fullContent },
         {
           headers: {
-             Authorization: token,
-            'Content-Type': 'application/json' }
+            'Content-Type': 'application/json',
+            Authorization: token,
+          },
         }
       );
-
-      const data = response.data;
-      console.log(data, "data");
-      if (data && data.data) {
-        const orderId = data.order_id;
-        localStorage.setItem("orderid", orderId);
-
-        if (data.data) {
-          window.location.href = data.data;
-        } else {
-          console.error("Payment URL not found");
-        }
-      }
+  
+      downloadPDF()
     } catch (error) {
-      console.error('Payment Error:', error);
+      console.error('PDF generation error:', error);
+      toast.error(
+        error.response?.data?.message || 'Failed to generate and open PDF'
+      );
     }
   };
- 
+  const downloadPDF = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.sentryspot.co.uk/api/jobseeker/download-file/11/${resumeId}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+          responseType: "blob",
+        }
+      );
+  
+      const url = window.URL.createObjectURL(new Blob([response.data], { type: "application/pdf" }));
+      const link = document.createElement("a");
+      link.href = url;
+  
+      link.setAttribute("download", `resume.pdf`);
+      document.body.appendChild(link);
+      link.click();
+  
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+  
+      toast.success("PDF downloaded successfully!");
+    } catch (error) {
+      console.error("PDF Download Error:", error);
+      toast.error("Failed to download the PDF. Please try again.");
+    }
+  };
   useEffect(() => {
     if (PayerID) {
       verifyPayment();
@@ -1312,129 +1376,7 @@ export default function MobileBuilder() {
               >
              Download
               </button>
-              {showModal && (
-                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                  <div className="w-full max-w-[90%] sm:max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden max-h-screen overflow-y-auto">
-                    <div className="flex justify-between items-center p-4 border-b">
-                      <Image src={logo} alt="logo" className="h-8 w-auto" />
-                      <button
-                        className="text-gray-600 hover:text-gray-800"
-                        onClick={handleCloseModal}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth="2"
-                          stroke="currentColor"
-                          className="w-6 h-6"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-
-                    <div className="flex flex-col md:flex-row">
-                      <div className="w-full md:w-1/2 p-4 flex justify-center">
-                        <div className=" sm:w-80 sm:h-80">
-                          <Image
-                            src={resumeImg}
-                            alt="resumeimg"
-                            className="w-full h-full object-cover rounded-lg"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="w-full md:w-1/2 p-4">
-                        <div className="text-center mb-6">
-                          <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
-                            $49
-                          </h2>
-                          <p className="text-sm text-gray-500">Total Amount</p>
-                        </div>
-
-                        <form>
-                          <div className="mb-4">
-                            <label className="block text-gray-800 mb-2">
-                              👨🏻‍💼 Name
-                            </label>
-                            <input
-                              type="text"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-                              value={`${formData.first_name} ${formData.last_name}`.trim()}
-                              name="full name"
-                              required
-                              disabled
-                            />
-                          </div>
-
-                          <div className="mb-4">
-                            <label className="block text-gray-800 mb-2">
-                              📧 Email
-                            </label>
-                            <input
-                              type="email"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-                              value={formData.email}
-                              name="email"
-                              required
-                              disabled
-                            />
-                          </div>
-
-                          <div className="mb-4">
-                            <label className="block text-gray-800 mb-2">
-                              ☎️ Phone
-                            </label>
-                            <input
-                              type="number"
-                              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-600"
-                              name="phone"
-                              value={formData.phone}
-                              required
-                              disabled
-                            />
-                          </div>
-
-                          <div className="flex justify-center mt-6">
-                            <button
-                              onClick={downloadAsPDF}
-                              type="submit"
-                              className="w-full bg-yellow-400 text-blue-800 font-bold  rounded-[50px] hover:bg-yellow-500 transition duration-200 flex items-center justify-center"
-                            >
-                              <Image
-                                src={paypal}
-                                alt="paypal"
-                                className="h-10 w-auto m-auto "
-                              />
-                            </button>
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <button className="w-full bg-black text-white font-bold  rounded-[50px] transition duration-200  ">
-                              <Image
-                                src={applepay}
-                                alt="apple pay"
-                                className=" w-auto m-auto h-10"
-                              />
-                            </button>
-                          </div>
-                          <div className="flex justify-center mt-6">
-                            <Image
-                              src={poweredbypaypal}
-                              alt="poweredbypaypal"
-                              className="h-8 w-auto"
-                            />
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+             
               <button
                 onClick={handleBackToEditor}
                 className="bg-blue-950 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors bottom-btns"

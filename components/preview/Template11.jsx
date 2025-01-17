@@ -120,12 +120,7 @@ const Template11 = () => {
               textColor="text-white"
             />
              <div>
-          <SummaryWrapper
-                summary={resumeData.summary}
-                headerColor={"white"}
-                editable={true}
-                className="mt-4"
-              />
+          
           </div>
             <SkillsWrapper
               skills={resumeData.skills}
@@ -155,7 +150,12 @@ const Template11 = () => {
           <div className="flex flex-col gap-4">
             <div className="col-span-2 space-y-2">
              
-              
+            <SummaryWrapper
+                summary={resumeData.summary}
+                headerColor={"black"}
+                editable={true}
+                className="mt-4"
+              /> 
               <WorkExperience
                 itemClassNames={{
                   title: "text-lg font-bold mb-1 editable",

@@ -528,7 +528,7 @@ const A4PageWrapper = ({ children }) => {
   };
 
   return (
-    <div className="m-3 a4-wrapper mx-auto   overflow-hidden "
+    <div className="a4-wrapper "
   
     onLoad={alertA4Size}>
       {children}
