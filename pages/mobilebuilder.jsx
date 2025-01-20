@@ -1381,7 +1381,7 @@ export default function MobileBuilder() {
                 onClick={handleBackToEditor}
                 className="bg-blue-950 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors bottom-btns"
               >
-             Back
+           Edit Resume
               </button>
             </div>
           </>

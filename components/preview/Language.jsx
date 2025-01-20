@@ -27,7 +27,7 @@ const Language = ({ title, languages, headerColor }) => {
         className="list-disc ml-6">
           {languages.map((lang, index) => (
             <li key={index}>
-              {lang.language || "English"} ({lang.proficiency || "Native"})
+              {lang.language || "English"} ({lang.proficiency || "Native Speaker"})
             </li>
           ))}
           
