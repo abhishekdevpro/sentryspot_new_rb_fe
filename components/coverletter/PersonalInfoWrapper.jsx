@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { ResumeContext } from "../context/ResumeContext";
+import { CoverLetterContext } from "../context/CoverLetterContext";
 
 const PersonalInfoWrapper = ({ personalDetails, editable = false, headerColor = "black", className = "" }) => {
-  const { backgroundColorss } = useContext(ResumeContext);
+  const { backgroundColorss } = useContext(CoverLetterContext);
 
   return (
     <div className={`mb-4 ${className}`}>
