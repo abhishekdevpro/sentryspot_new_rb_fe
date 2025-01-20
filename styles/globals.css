@@ -128,11 +128,11 @@
     margin: 10mm;
   } */
 
-  /* .preview {
+/* .preview {
     overflow-y: visible !important;
   } */
 
-  /* .preview::after {
+/* .preview::after {
     content: "Created using https://Resume.vercel.app/";
     position: fixed;
     bottom: 0;
@@ -202,20 +202,19 @@ body {
 /*  */
 
 .preview {
-  width: 794px;  /* Adjust for A4 */
+  width: 794px; /* Adjust for A4 */
   height: 1123px;
   overflow: auto;
   transform: scale(1);
   overflow-y: hidden;
 }
 .a4-wrapper {
-  width: 794px;  /* Adjust for A4 */
+  width: 794px; /* Adjust for A4 */
   height: 1123px;
   margin: auto;
   transform: scale(1); /* Slightly scale down */
   /* transform-origin: top left; */
 }
-
 
 @media (max-width: 768px) {
   .preview {
@@ -263,5 +262,6 @@ body {
   max-height: 200vh;
 }
 
-
-
+.ql-container {
+  height: 162px !important;
+}

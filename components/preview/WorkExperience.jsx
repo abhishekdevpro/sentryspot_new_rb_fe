@@ -2,6 +2,7 @@
 import React from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import DateRange from "../utility/DateRange"; 
+import DateRangeExperience from "../utility/DateRangeExperience";
 
 const WorkExperience = ({ resumeData, headerColor,className = "",
   style = {},
@@ -45,24 +46,33 @@ const WorkExperience = ({ resumeData, headerColor,className = "",
                 >
                   <div className="flex flex-row justify-between space-y-1">
                     <p  className={`${itemClassNames.company || ""}`}>{item.company}</p>
-                    <DateRange
+                    <DateRangeExperience
                       startYear={item.startYear}
                       endYear={item.endYear}
                       id={`work-experience-start-end-date`}
                     />
+                  
                   </div>
                 
                   <div className="flex flex-row justify-between space-y-1">
                                     <p  className={``}>{item.position}</p>
                                     <p className={``}>{item.location}</p>
                                   </div>
-                  <p
+                  {/* <p
                     className=" hover:outline-dashed hover:outline-2 hover:outline-gray-400"
                     contentEditable="true"
                     suppressContentEditableWarning={true}
                   >
                     {item.description}
-                  </p>
+                  
+                  </p> */}
+                  <p
+  className="hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+  contentEditable="true"
+  suppressContentEditableWarning={true}
+  dangerouslySetInnerHTML={{ __html: item.description }}
+></p>
+
 
                   <Droppable
                     droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}

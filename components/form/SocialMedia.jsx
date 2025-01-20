@@ -69,7 +69,7 @@
 import { ResumeContext } from "../context/ResumeContext";
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-
+import { MdAddCircle, MdRemoveCircle } from "react-icons/md";
 // Social Media Platforms and Icons
 const SOCIAL_MEDIA_OPTIONS = [
   { name: "GitHub", baseUrl: "https://github.com/" },
@@ -135,9 +135,9 @@ const SocialMedia = () => {
       <h2 className="input-title text-white">
         Please mention the platform and their link
       </h2>
-      {(resumeData.socialMedia || []).map((socialMedia, index) => (
-        <div key={index} className="flex-wrap-gap-2 flex items-center gap-3">
-          {/* Dropdown for selecting social media platform */}
+     
+      {resumeData.socialMedia.map((socialMedia, index) => (
+        <div key={index} className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
           <select
             className="other-input border-black bg-gray-200 font-semibold text-center w-1/3"
             value={socialMedia.socialMedia || ""}
@@ -150,7 +150,7 @@ const SocialMedia = () => {
               </option>
             ))}
           </select>
-  
+
           {/* Input for the username or link */}
           <input
             type="text"
@@ -160,6 +160,11 @@ const SocialMedia = () => {
             value={socialMedia.link.replace("https://", "")}
             onChange={(e) => handleSocialMedia(e, index)}
           />
+          <button type="button" onClick={() => removeSocialMedia(index)}
+            aria-label="Remove"
+            className="p-2 text-white bg-red-700 rounded-lg text-xl mb-2">
+            <MdRemoveCircle /> 
+          </button>
         </div>
       ))}
       <FormButton
@@ -167,9 +172,21 @@ const SocialMedia = () => {
         add={addSocialMedia}
         remove={removeSocialMedia}
       />
+       <div className=" mb-2">
+        {/* <button type="button" 
+          aria-label="Add"
+          className="p-2 text-white bg-black rounded-lg text-sm"   onClick={addSocialMedia}> 
+        
+         <span> ✙ Add section</span>
+        </button> */}
+       
+      </div>
     </div>
   );
   
 };
 
 export default SocialMedia;
+
+
+

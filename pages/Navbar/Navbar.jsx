@@ -121,6 +121,12 @@ const Navbar = () => {
               My Resumes
             </Link>
             <Link
+              href="/dashboard/coverletter"
+              className="text-white px-3 py-2 rounded-md text-lg font-semibold"
+            >
+              CoverLetter
+            </Link>
+            <Link
               href="https://abroadium-arbuild-fe.vercel.app/job-list"
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
             >

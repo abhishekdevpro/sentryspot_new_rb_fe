@@ -201,13 +201,12 @@ const Language = () => {
   ];
 
   const proficiencyOptions = [
-    "Native",
-    "Beginner (A1)",
-    "Elementary (A2)",
-    "Intermediate (B1)",
-    "Upper Intermediate (B2)",
-    "Advanced (C1)",
-    "Proficient (C2)",
+    "Native Speaker",
+    "Fluent",
+    "Good ",
+    "Basic Knowledge",
+    "Just Starting",
+   
   ];
 
   const handleSkills = (e, index, field) => {
@@ -274,7 +273,7 @@ const Language = () => {
                   Select Proficiency
                 </option>
                 {index === 0 ? (
-                  <option value="Native">Native</option>
+                  <option value="Native Speaker">Native Speaker</option>
                 ) : (
                   proficiencyOptions.map((level, i) => (
                     <option key={i} value={level}>

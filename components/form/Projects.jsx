@@ -81,8 +81,8 @@ const Projects = () => {
               onChange={(e) => handleProjects(e, index)}
             />
             <ReactQuill
-              placeholder="Description"
-              className="w-full other-input border-black border h-100 max-w-[23rem]"
+              placeholder="Describe your project in 2-3 sentences. Include details like the project's purpose, your role, and the technologies/tools used. "
+              className="w-full other-input border-black border h-100 max-w-[33rem]"
               value={project.description}
               onChange={(value) =>
                 handleProjects(
@@ -97,7 +97,7 @@ const Projects = () => {
             />
             <textarea
               type="text"
-              placeholder="Key Achievements"
+              placeholder="Key Achievement or KRA (Key Result Area)"
               name="keyAchievements"
               className="w-full other-input border-black border h-40"
               value={project.keyAchievements}
