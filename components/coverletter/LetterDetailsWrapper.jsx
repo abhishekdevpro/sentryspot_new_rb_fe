@@ -1,68 +1,88 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const LetterDetailsWrapper = ({ letterDetails, editable = false, headerColor = "black", className = "" }) => {
+const LetterDetailsWrapper = ({
+  letterDetails,
+  editable = false,
+  headerColor = "black",
+  className = "",
+}) => {
   return (
     <div className={`p-4 md:p-8 bg-gray-100 rounded-lg shadow-md ${className}`}>
-      <h2
-        className="text-2xl font-bold mb-6"
-        style={{ color: headerColor }}
-      >
-        Letter Details
-      </h2>
       <div className="space-y-4">
         {/* Date */}
         {letterDetails.date && (
           <p
-            className={`text-gray-800 ${editable ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400" : ""}`}
+            className={`text-gray-800 ${
+              editable
+                ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                : ""
+            }`}
             contentEditable={editable}
             suppressContentEditableWarning={true}
           >
-            <strong>Date:</strong> {letterDetails.date}
+            {letterDetails.date}
           </p>
         )}
+        {/* Job Title and Reference in One Line */}
+        <div className="flex space-x-4">
+          {/* Job Title */}
+          {letterDetails.jobTitle && (
+            <p
+              className={`text-gray-800 ${
+                editable
+                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                  : ""
+              }`}
+              contentEditable={editable}
+              suppressContentEditableWarning={true}
+            >
+              <strong>RE:</strong> {letterDetails.jobTitle}
+            </p>
+          )}
 
-        {/* Job Title */}
-        {letterDetails.jobTitle && (
-          <p
-            className={`text-gray-800 ${editable ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400" : ""}`}
-            contentEditable={editable}
-            suppressContentEditableWarning={true}
-          >
-            <strong>Job Title:</strong> {letterDetails.jobTitle}
-          </p>
-        )}
-
-        {/* Reference */}
-        {letterDetails.reference && (
-          <p
-            className={`text-gray-800 ${editable ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400" : ""}`}
-            contentEditable={editable}
-            suppressContentEditableWarning={true}
-          >
-            <strong>Reference:</strong> {letterDetails.reference}
-          </p>
-        )}
-
-        {/* Company Name */}
-        {letterDetails.companyName && (
-          <p
-            className={`text-gray-800 ${editable ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400" : ""}`}
-            contentEditable={editable}
-            suppressContentEditableWarning={true}
-          >
-            <strong>Company Name:</strong> {letterDetails.companyName}
-          </p>
-        )}
+          {/* Reference */}
+          {letterDetails.reference && (
+            <p
+              className={`text-gray-800 ${
+                editable
+                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                  : ""
+              }`}
+              contentEditable={editable}
+              suppressContentEditableWarning={true}
+            >
+              {letterDetails.reference}
+            </p>
+          )}
+          {/* Company Name */}
+          {letterDetails.companyName && (
+            <p
+              className={`text-gray-800 ${
+                editable
+                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                  : ""
+              }`}
+              contentEditable={editable}
+              suppressContentEditableWarning={true}
+            >
+              {letterDetails.companyName}
+            </p>
+          )}
+        </div>
 
         {/* Salutation */}
         {letterDetails.salutation && (
           <p
-            className={`text-gray-800 ${editable ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400" : ""}`}
+            className={`text-gray-800 ${
+              editable
+                ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                : ""
+            }`}
             contentEditable={editable}
             suppressContentEditableWarning={true}
           >
-            <strong>Salutation:</strong> {letterDetails.salutation}
+            <strong>Dear</strong> {letterDetails.salutation}
           </p>
         )}
       </div>
