@@ -70,15 +70,34 @@ import {
 import dynamic from "next/dynamic";
 
 import CoverLetter1 from "./CoverLetter1";
+import CoverLetter3 from "./CoverLetter3";
 
-const CoverLetterPreview = () => {
+// const CoverLetterPreview = () => {
+//   return (
+//     <>
+//       <CoverLetterProvider>
+//         <CoverLetter1 />
+//         <CoverLetter3/>
+//       </CoverLetterProvider>
+//     </>
+//   );
+// };
+function CoverLetterPreview({ selectedTemplate }) {
+  // const { coverLetterData, selectedFont } = useCoverLetter()
+
+  const templates = {
+    template1: <CoverLetter1 />,
+    template2: <CoverLetter3 />,
+  }
+
   return (
-    <>
-      <CoverLetterProvider>
-        <CoverLetter1 />
-      </CoverLetterProvider>
-    </>
-  );
-};
+    <div
+      className="border p-8 min-h-[1122px] w-[794px] mx-auto bg-white shadow-lg"
+      // style={{ fontFamily: selectedFont }}
+    >
+      {templates[selectedTemplate]}
+    </div>
+  )
+}
 
 export default CoverLetterPreview;

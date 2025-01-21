@@ -13,14 +13,17 @@ import "react-toastify/dist/ReactToastify.css"; // Toastify styles
 
 import { ToastContainer } from "react-toastify"; // Import Toastify container
 import { ResumeProvider } from "../components/context/ResumeContext";
+import { CoverLetterProvider } from "../components/context/CoverLetterContext";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       {/* Render your component */}
       <ResumeProvider>
+        <CoverLetterProvider>
         <Component {...pageProps} />
         <ToastContainer position="top-right" autoClose={3000} pauseOnHover />
+        </CoverLetterProvider>
       </ResumeProvider>
     </>
   );

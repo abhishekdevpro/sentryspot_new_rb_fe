@@ -1,3 +1,4 @@
+ 'use client'
 import React, { useContext, useRef } from "react";
 import { CoverLetterContext } from "../context/CoverLetterContext";
 
