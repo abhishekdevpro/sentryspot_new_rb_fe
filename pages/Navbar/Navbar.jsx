@@ -121,7 +121,7 @@ const Navbar = () => {
               My Resumes
             </Link>
             <Link
-              href="/dashboard/coverletter"
+              href="/coverletter-builder"
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
             >
               CoverLetter
