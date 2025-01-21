@@ -71,6 +71,8 @@ import dynamic from "next/dynamic";
 
 import CoverLetter1 from "./CoverLetter1";
 import CoverLetter3 from "./CoverLetter3";
+import CoverLetter2 from "./CoverLetter2";
+import CoverLetter4 from "./CoverLetter4";
 
 // const CoverLetterPreview = () => {
 //   return (
@@ -87,7 +89,9 @@ function CoverLetterPreview({ selectedTemplate }) {
 
   const templates = {
     template1: <CoverLetter1 />,
-    template2: <CoverLetter3 />,
+    template2: <CoverLetter2 />,
+    template3: <CoverLetter3 />,
+    template4: <CoverLetter4 />,
   }
 
   return (
