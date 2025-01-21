@@ -6,23 +6,22 @@
 // export default function App({ Component, pageProps }) {
 //   return <Component {...pageProps} />
 // }
-import '/styles/globals.css'; // Global CSS
-import 'slick-carousel/slick/slick.css'; // Slick carousel styles
-import 'slick-carousel/slick/slick-theme.css';
-import 'react-toastify/dist/ReactToastify.css'; // Toastify styles
+import "/styles/globals.css"; // Global CSS
+import "slick-carousel/slick/slick.css"; // Slick carousel styles
+import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.css"; // Toastify styles
 
-import { ToastContainer } from 'react-toastify'; // Import Toastify container
-import { ResumeProvider } from '../components/context/ResumeContext';
+import { ToastContainer } from "react-toastify"; // Import Toastify container
+import { ResumeProvider } from "../components/context/ResumeContext";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
       {/* Render your component */}
       <ResumeProvider>
-            <Component {...pageProps} />
-      <ToastContainer position="top-right" autoClose={3000} pauseOnHover />  
+        <Component {...pageProps} />
+        <ToastContainer position="top-right" autoClose={3000} pauseOnHover />
       </ResumeProvider>
-    
     </>
   );
 }

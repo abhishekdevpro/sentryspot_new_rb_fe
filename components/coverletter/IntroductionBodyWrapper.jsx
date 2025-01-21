@@ -4,30 +4,24 @@ import PropTypes from "prop-types";
 const IntroductionBodyWrapper = ({
   introduction,
   body,
+  closing,
+  gratitude,
+  signature,
   editable = false,
   headerColor = "black",
   className = "",
 }) => {
   return (
     <div className={`p-4 md:p-8 bg-gray-100 rounded-lg shadow-md ${className}`}>
-      <h2
-        className="text-2xl font-bold mb-6"
-        style={{ color: headerColor }}
-      >
-        Introduction & Body
-      </h2>
-
       {/* Introduction Section */}
       {introduction && (
         <div className="mb-6">
-          <h3
-            className="text-xl font-semibold mb-4"
-            style={{ color: headerColor }}
-          >
-            Introduction
-          </h3>
           <p
-            className={`text-gray-800 ${editable ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400" : ""}`}
+            className={`text-gray-800 ${
+              editable
+                ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                : ""
+            }`}
             contentEditable={editable}
             suppressContentEditableWarning={true}
           >
@@ -37,23 +31,20 @@ const IntroductionBodyWrapper = ({
       )}
 
       {/* Body Section */}
-      <h3
-        className="text-xl font-semibold mb-4"
-        style={{ color: headerColor }}
-      >
-        Body Paragraphs
-      </h3>
+
       <div className="space-y-4">
         {body.map((paragraph, index) => (
           <div key={index} className="mb-4">
             <h4
               className="text-lg font-medium"
               style={{ color: headerColor }}
-            >
-              Paragraph {index + 1}
-            </h4>
+            ></h4>
             <p
-              className={`text-gray-800 ${editable ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400" : ""}`}
+              className={`text-gray-800 ${
+                editable
+                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                  : ""
+              }`}
               contentEditable={editable}
               suppressContentEditableWarning={true}
             >
@@ -61,20 +52,72 @@ const IntroductionBodyWrapper = ({
             </p>
           </div>
         ))}
+        {closing && (
+          <div className="mb-6">
+            <p
+              className={`text-gray-800 ${
+                editable
+                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                  : ""
+              }`}
+              contentEditable={editable}
+              suppressContentEditableWarning={true}
+            >
+              {closing}
+            </p>
+          </div>
+        )}
+
+        {/* Gratitude Section */}
+        {gratitude && (
+          <div className="mb-6">
+            <p
+              className={`text-gray-800 ${
+                editable
+                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                  : ""
+              }`}
+              contentEditable={editable}
+              suppressContentEditableWarning={true}
+            >
+              {gratitude}
+            </p>
+          </div>
+        )}
+
+        {/* Signature Section */}
+        {signature && (
+          <div>
+            <p
+              className={`text-gray-800 ${
+                editable
+                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                  : ""
+              }`}
+              contentEditable={editable}
+              suppressContentEditableWarning={true}
+            >
+              {signature}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
-IntroductionAndBodyWrapper.propTypes = {
+IntroductionBodyWrapper.propTypes = {
   introduction: PropTypes.string.isRequired,
   body: PropTypes.arrayOf(PropTypes.string).isRequired,
+  closing: PropTypes.string.isRequired,
+  gratitude: PropTypes.string.isRequired,
+  signature: PropTypes.string.isRequired,
   editable: PropTypes.bool,
   headerColor: PropTypes.string,
   className: PropTypes.string,
 };
 
-IntroductionAndBodyWrapper.defaultProps = {
+IntroductionBodyWrapper.defaultProps = {
   editable: false,
   headerColor: "black",
   className: "",
