@@ -14,30 +14,22 @@ const PersonalInfoWrapper = ({
     <div className={`mb-4 ${className}`}>
       <div className="space-y-2">
         {personalDetails.name && (
-          <p
-            style={{ color: headerColor }}
-            className={`break-words ${
-              editable
-                ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
-                : ""
-            }`}
-            contentEditable={editable}
-            suppressContentEditableWarning={true}
-          >
-            <h2
-              style={{
-                color: `${
-                  headerColor === "black" ? backgroundColorss : headerColor
-                }`,
-                borderBottom: `2px solid ${
-                  headerColor === "black" ? backgroundColorss : headerColor
-                }`,
-              }}
-              className="text-lg font-bold mb-2"
-            >
-              {personalDetails.name}
-            </h2>
-          </p>
+          <div>
+          
+          <h2
+          style={{
+            color: `${
+              headerColor === "black" ? backgroundColorss : headerColor
+            }`,
+            borderBottom: `2px solid ${
+              headerColor === "black" ? backgroundColorss : headerColor
+            }`,
+          }}
+          className="text-lg font-bold mb-2"
+        >
+          {personalDetails.name}
+        </h2>
+          </div>
         )}
         {personalDetails.email && (
           <p

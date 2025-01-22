@@ -29,14 +29,14 @@ const CoverLetter1 = () => {
 
         <PersonalInfoWrapper
           personalDetails={coverLetterData?.personalDetails || {}}
-          editable={true}
+          // editable={true}
           headerColor={backgroundColorss ? "white" : "black"}
         />
 
         {/* Letter Details Section */}
         <LetterDetailsWrapper
           letterDetails={coverLetterData?.letterDetails || {}}
-          editable={true}
+          // editable={true}
           headerColor={backgroundColorss ? "white" : "black"}
         />
 

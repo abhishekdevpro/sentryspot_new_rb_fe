@@ -101,40 +101,6 @@ export default function UploadStep({ onNext, onBack, onChange, value }) {
             toast.error('Resume ID or token not found');
             return;
           }
-  // const handleStartFromScratch = async () => {
-  //   setShowLoadingAnimation(true);
-  //   try {
-  //     const token = localStorage.getItem('token');
-  //     const response = await axios.post(
-  //       'https://api.sentryspot.co.uk/api/jobseeker/resume-create',
-  //       {},
-  //       { headers: { Authorization: token } }
-  //     );
-
-  //     if (response.data && response.data.data) {
-  //       const { id, file_path, ai_resume_parse_data } = response.data.data;
-
-  //       const parsedData = JSON.parse(ai_resume_parse_data).templateData;
-
-  //       setResumeData(DefaultResumeData);
-  //       localStorage.setItem('resumeData', JSON.stringify(parsedData));
-  //       localStorage.setItem('resumeId', id);
-  //       localStorage.setItem('location', file_path);
-
-  //       router.push(`/dashboard/aibuilder/${id}`);
-  //       setShowLoadingAnimation(false);
-  //       // setEditingReady(true);
-  //       // setShowOverlay(false);
-  //       toast.success('Started from scratch successfully!');
-  //     } else {
-  //       throw new Error('Invalid response data format');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error creating resume from scratch:', error);
-  //     toast.error('Failed to start from scratch');
-  //     setShowLoadingAnimation(false);
-  //   }
-  // };
 
 const handleStartFromScratch =()=>{
   // localStorage.setItem("currentSection", 0);

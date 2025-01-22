@@ -14,7 +14,7 @@ function CoverLetterBuilder() {
   const [selectedTemplate, setSelectedTemplate] = useState("template1");
 
   return (
-    <CoverLetterProvider>
+    // <CoverLetterProvider>
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow flex">
@@ -34,7 +34,7 @@ function CoverLetterBuilder() {
           </div>
         </main>
       </div>
-    </CoverLetterProvider>
+    // </CoverLetterProvider>
   );
 }
 
