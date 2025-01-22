@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { CoverLetterContext } from "../context/CoverLetterContext";
+import { CoverLetterContext } from "../../context/CoverLetterContext";
 
 const PersonalInfoWrapper = ({
   personalDetails,
@@ -15,20 +15,19 @@ const PersonalInfoWrapper = ({
       <div className="space-y-2">
         {personalDetails.name && (
           <div>
-          
-          <h2
-          style={{
-            color: `${
-              headerColor === "black" ? backgroundColorss : headerColor
-            }`,
-            borderBottom: `2px solid ${
-              headerColor === "black" ? backgroundColorss : headerColor
-            }`,
-          }}
-          className="text-lg font-bold mb-2"
-        >
-          {personalDetails.name}
-        </h2>
+            <h2
+              style={{
+                color: `${
+                  headerColor === "black" ? backgroundColorss : headerColor
+                }`,
+                borderBottom: `2px solid ${
+                  headerColor === "black" ? backgroundColorss : headerColor
+                }`,
+              }}
+              className="text-lg font-bold mb-2"
+            >
+              {personalDetails.name}
+            </h2>
           </div>
         )}
         {personalDetails.email && (

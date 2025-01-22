@@ -1,6 +1,6 @@
- 'use client'
+"use client";
 import React, { useContext, useRef } from "react";
-import { CoverLetterContext } from "../context/CoverLetterContext";
+import { CoverLetterContext } from "../../context/CoverLetterContext";
 import PersonalInfoWrapper from "./PersonalInfoWrapper";
 import LetterDetailsWrapper from "./LetterDetailsWrapper";
 import IntroductionBodyWrapper from "./IntroductionBodyWrapper";
@@ -22,7 +22,7 @@ const CoverLetter3 = () => {
     >
       <div className="flex">
         {/* Sidebar */}
-        <div 
+        <div
           className="w-36 min-h-full"
           style={{ backgroundColor: backgroundColorss || "#1a1a1a" }}
         />
@@ -35,9 +35,15 @@ const CoverLetter3 = () => {
               {coverLetterData?.personalDetails?.name || "Your Name"}
             </h1>
             <div className="space-y-1 text-gray-600">
-              <p>{coverLetterData?.personalDetails?.email || "email@example.com"}</p>
-              <p>{coverLetterData?.personalDetails?.phone || "+1 234 567 890"}</p>
-              <p>{coverLetterData?.personalDetails?.address || "Your Address"}</p>
+              <p>
+                {coverLetterData?.personalDetails?.email || "email@example.com"}
+              </p>
+              <p>
+                {coverLetterData?.personalDetails?.phone || "+1 234 567 890"}
+              </p>
+              <p>
+                {coverLetterData?.personalDetails?.address || "Your Address"}
+              </p>
             </div>
           </div>
 
@@ -50,22 +56,32 @@ const CoverLetter3 = () => {
 
           {/* Recipient Details */}
           <div className="mb-8">
-            <p>{coverLetterData?.letterDetails?.recipientName || "Recipient Name"}</p>
-            <p>{coverLetterData?.letterDetails?.companyName || "Company Name"}</p>
-            <p>{coverLetterData?.letterDetails?.companyAddress || "Company Address"}</p>
+            <p>
+              {coverLetterData?.letterDetails?.recipientName ||
+                "Recipient Name"}
+            </p>
+            <p>
+              {coverLetterData?.letterDetails?.companyName || "Company Name"}
+            </p>
+            <p>
+              {coverLetterData?.letterDetails?.companyAddress ||
+                "Company Address"}
+            </p>
           </div>
 
           {/* Greeting */}
           <div className="mb-6">
             <p className="text-gray-800">
-              {coverLetterData?.letterDetails?.greeting || "Dear Hiring Manager,"}
+              {coverLetterData?.letterDetails?.greeting ||
+                "Dear Hiring Manager,"}
             </p>
           </div>
 
           {/* Body Content */}
           <div className="space-y-4 mb-8">
             <div className="text-gray-800">
-              {coverLetterData?.introduction || "Introduction paragraph goes here..."}
+              {coverLetterData?.introduction ||
+                "Introduction paragraph goes here..."}
             </div>
             <div className="text-gray-800">
               {coverLetterData?.body || "Body paragraphs go here..."}
@@ -75,7 +91,8 @@ const CoverLetter3 = () => {
           {/* Closing */}
           <div className="space-y-4">
             <p className="text-gray-800">
-              {coverLetterData?.gratitude || "Thank you for your consideration."}
+              {coverLetterData?.gratitude ||
+                "Thank you for your consideration."}
             </p>
             <p className="text-gray-800">
               {coverLetterData?.closing || "Sincerely,"}

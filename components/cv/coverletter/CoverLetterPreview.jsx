@@ -63,35 +63,40 @@
 
 import React, { useContext, forwardRef } from "react";
 
-import {
-  CoverLetterContext,
-  CoverLetterProvider,
-} from "../../components/context/CoverLetterContext";
-import dynamic from "next/dynamic";
+// import {
+//   CoverLetterContext,
+//   CoverLetterProvider,
+// } from "../../components/context/CoverLetterContext";
+// import dynamic from "next/dynamic";
 
 import CoverLetter1 from "./CoverLetter1";
 import CoverLetter3 from "./CoverLetter3";
 import CoverLetter2 from "./CoverLetter2";
 import CoverLetter4 from "./CoverLetter4";
-
+import { CoverLetterContext } from "../../context/CoverLetterContext";
 
 function CoverLetterPreview({ selectedTemplate }) {
-  // const { coverLetterData, selectedFont } = useCoverLetter()
+  const { coverLetterData, selectedFont } = useContext(CoverLetterContext);
 
   const templates = {
     template1: <CoverLetter1 />,
     template2: <CoverLetter2 />,
     template3: <CoverLetter3 />,
     template4: <CoverLetter4 />,
-  }
+    template5: <CoverLetter1 />,
+    template6: <CoverLetter2 />,
+  };
 
   return (
+    // <div className="a4-wrapper-dashboard    ">
     <div
-      className="border p-8 min-h-[1122px] w-[794px] mx-auto bg-white shadow-lg"
+      className="border p-8 min-h-[1122px] w-full mx-auto bg-white shadow-lg "
+      style={{ fontFamily: selectedFont }}
     >
       {templates[selectedTemplate]}
     </div>
-  )
+    // </div>
+  );
 }
 
 export default CoverLetterPreview;

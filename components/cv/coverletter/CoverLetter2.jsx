@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useRef } from "react";
-import { CoverLetterContext } from "../context/CoverLetterContext";
+import { CoverLetterContext } from "../../context/CoverLetterContext";
 
 import PersonalInfoWrapper from "./PersonalInfoWrapper";
 import LetterDetailsWrapper from "./LetterDetailsWrapper";

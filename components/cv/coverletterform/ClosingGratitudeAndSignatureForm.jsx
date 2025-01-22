@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { CoverLetterContext } from "../context/CoverLetterContext";
+import { CoverLetterContext } from "../../context/CoverLetterContext";
 
 const ClosingGratitudeAndSignatureForm = () => {
-  const { coverLetterData, setCoverLetterData } = useContext(CoverLetterContext);
+  const { coverLetterData, setCoverLetterData } =
+    useContext(CoverLetterContext);
 
   const handleChange = (field, value) => {
     setCoverLetterData((prevData) => ({
@@ -12,12 +13,14 @@ const ClosingGratitudeAndSignatureForm = () => {
   };
 
   return (
-    <div className="p-4 md:p-8 bg-gray-100 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Closing & Gratitude</h2>
+    <div className="p-4 md:p-8  rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-6 text-white">
+        Closing & Gratitude
+      </h2>
 
       {/* Closing Section */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-medium mb-2">Closing</label>
+        <label className="block text-white font-medium mb-2">Closing</label>
         <textarea
           value={coverLetterData.closing}
           onChange={(e) => handleChange("closing", e.target.value)}
@@ -29,7 +32,7 @@ const ClosingGratitudeAndSignatureForm = () => {
 
       {/* Gratitude Section */}
       <div className="mb-6">
-        <label className="block text-gray-600 font-medium mb-2">Gratitude</label>
+        <label className="block text-white font-medium mb-2">Gratitude</label>
         <textarea
           value={coverLetterData.gratitude}
           onChange={(e) => handleChange("gratitude", e.target.value)}
@@ -41,7 +44,7 @@ const ClosingGratitudeAndSignatureForm = () => {
 
       {/* Signature Section */}
       <div>
-        <label className="block text-gray-600 font-medium mb-2">Signature</label>
+        <label className="block text-white font-medium mb-2">Signature</label>
         <input
           type="text"
           value={coverLetterData.signature}
@@ -50,13 +53,6 @@ const ClosingGratitudeAndSignatureForm = () => {
           placeholder="Enter your signature (e.g., Sincerely, John Doe)"
         />
       </div>
-
-      <button
-        onClick={() => console.log("Closing & Gratitude Updated:", coverLetterData)}
-        className="mt-4 px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
-      >
-        Save Changes
-      </button>
     </div>
   );
 };
