@@ -121,7 +121,7 @@ const Navbar = () => {
               My Resumes
             </Link>
             <Link
-              href="/coverletter-builder"
+              href="/dashboard/cvletterlist"
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
             >
               CoverLetter
@@ -134,7 +134,8 @@ const Navbar = () => {
             </Link>
             {/* <Link href="" className="text-white px-3 py-2 rounded-md text-lg font-semibold">Cover Letter</Link> */}
 
-            <Link href=""
+            <Link
+              href=""
               // href="https://abroadium-arbuild-fe.vercel.app/dashboard"
               onClick={handleOpenPopup}
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
@@ -142,20 +143,18 @@ const Navbar = () => {
               Abroadium ID
             </Link>
             <AbroadiumId isOpen={isPopupOpen} onClose={handleClosePopup} />
-            <Link href="https://abroadium-arbuild-fe.vercel.app/skilltest"
-            
-             
+            <Link
+              href="https://abroadium-arbuild-fe.vercel.app/skilltest"
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
             >
-             Skill Test
+              Skill Test
             </Link>
-            <Link href="https://abroadium-arbuild-fe.vercel.app/skill-test-history"
-            
-             
-            className="text-white px-3 py-2 rounded-md text-lg font-semibold"
-          >
-           Skill Test History
-          </Link>
+            <Link
+              href="https://abroadium-arbuild-fe.vercel.app/skill-test-history"
+              className="text-white px-3 py-2 rounded-md text-lg font-semibold"
+            >
+              Skill Test History
+            </Link>
             {/* <Link href="/adminlogin" className="text-white px-3 py-2 rounded-md text-lg font-semibold">
               <span className="mr-2">🛡️</span>
               <span>Admin</span>

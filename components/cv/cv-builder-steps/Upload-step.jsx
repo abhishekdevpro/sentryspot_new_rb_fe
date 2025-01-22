@@ -1,23 +1,26 @@
-'use client';
+"use client";
 
-import { FaUpload, FaFileAlt } from 'react-icons/fa';
-import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
-import { toast } from 'react-toastify';
+import { FaUpload, FaFileAlt } from "react-icons/fa";
+import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 // import DefaultResumeData from '../utility/DefaultResumeData';
 // import { ResumeContext } from '../context/ResumeContext';
-import { CoverLetterContext } from '../context/CoverLetterContext';
-import DefaultCoverLetterData from '../utility/DefaultCoverLetterData';
+import { CoverLetterContext } from "../../context/CoverLetterContext";
+import DefaultCoverLetterData from "../../utility/DefaultCoverLetterData";
 
 export default function UploadStep({ onNext, onBack, onChange, value }) {
   const router = useRouter();
   const [showLoadingAnimation, setShowLoadingAnimation] = useState(false);
   const { setCoverLetterData } = useContext(CoverLetterContext);
-  const resumeId = router.query.id || localStorage.getItem('resumeId');
-
+  const coverletterId = router.query.id || localStorage.getItem("id");
+  if (!coverletterId) {
+    toast.error("CoverLetter ID or token not found");
+    return;
+  }
   const handleStartFromScratch = () => {
     setCoverLetterData(DefaultCoverLetterData);
-    router.push(`/coverletter-builder`);
+    router.push(`/dashboard/cvaibuilder/${coverletterId}`);
   };
 
   return (
@@ -34,7 +37,7 @@ export default function UploadStep({ onNext, onBack, onChange, value }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <button
           onClick={() => {
-            onChange('upload');
+            onChange("upload");
             onNext();
           }}
           className="p-6 border-2 rounded-lg text-center hover:border-blue-400"
@@ -44,7 +47,8 @@ export default function UploadStep({ onNext, onBack, onChange, value }) {
           </div>
           <h3 className="font-bold mb-2">Yes, upload from my resume</h3>
           <p className="text-gray-600 text-sm">
-            We will give you expert guidance to fill out your info and enhance your resume
+            We will give you expert guidance to fill out your info and enhance
+            your resume
           </p>
         </button>
 

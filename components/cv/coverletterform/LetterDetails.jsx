@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { CoverLetterContext } from "../context/CoverLetterContext";
+import { CoverLetterContext } from "../../context/CoverLetterContext";
 
 const LetterDetails = () => {
-  const { coverLetterData, setCoverLetterData } = useContext(CoverLetterContext);
+  const { coverLetterData, setCoverLetterData } =
+    useContext(CoverLetterContext);
 
   const handleChange = (field, value) => {
     setCoverLetterData((prevData) => ({
@@ -15,12 +16,12 @@ const LetterDetails = () => {
   };
 
   return (
-    <div className="p-4 md:p-8 bg-gray-100 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800">Letter Details</h2>
+    <div className="p-4 md:p-8  rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-6 text-white">Letter Details</h2>
       <div className="space-y-4">
         {/* Date */}
         <div>
-          <label className="block text-gray-600 font-medium mb-2">Date</label>
+          <label className="block text-white font-medium mb-2">Date</label>
           <input
             type="date"
             value={coverLetterData.letterDetails.date}
@@ -32,7 +33,7 @@ const LetterDetails = () => {
 
         {/* Job Title */}
         <div>
-          <label className="block text-gray-600 font-medium mb-2">Job Title</label>
+          <label className="block text-white font-medium mb-2">Job Title</label>
           <input
             type="text"
             value={coverLetterData.letterDetails.jobTitle}
@@ -44,7 +45,7 @@ const LetterDetails = () => {
 
         {/* Reference */}
         <div>
-          <label className="block text-gray-600 font-medium mb-2">Reference</label>
+          <label className="block text-white font-medium mb-2">Reference</label>
           <input
             type="text"
             value={coverLetterData.letterDetails.reference}
@@ -56,7 +57,9 @@ const LetterDetails = () => {
 
         {/* Company Name */}
         <div>
-          <label className="block text-gray-600 font-medium mb-2">Company Name</label>
+          <label className="block text-white font-medium mb-2">
+            Company Name
+          </label>
           <input
             type="text"
             value={coverLetterData.letterDetails.companyName}
@@ -68,7 +71,9 @@ const LetterDetails = () => {
 
         {/* Salutation */}
         <div>
-          <label className="block text-gray-600 font-medium mb-2">Salutation</label>
+          <label className="block text-white font-medium mb-2">
+            Salutation
+          </label>
           <input
             type="text"
             value={coverLetterData.letterDetails.salutation}
@@ -78,12 +83,6 @@ const LetterDetails = () => {
           />
         </div>
       </div>
-      <button
-        onClick={() => console.log("Letter Details Updated:", coverLetterData.letterDetails)}
-        className="mt-4 px-4 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700"
-      >
-        Save Changes
-      </button>
     </div>
   );
 };
