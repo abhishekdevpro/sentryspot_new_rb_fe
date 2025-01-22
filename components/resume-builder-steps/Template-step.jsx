@@ -382,6 +382,7 @@ const TemplateStep = ({ onNext, onBack, onChange, value }) => {
           </button>
           <button
             onClick={handleSaveTemplate}
+            // onClick={onNext}
             style={{ backgroundColor: selectedHexCode }}
             className="px-8 py-3 text-white rounded-xl font-medium
               hover:opacity-90 transition-colors shadow-lg hover:shadow-xl"

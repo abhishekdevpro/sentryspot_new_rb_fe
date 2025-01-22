@@ -74,16 +74,7 @@ import CoverLetter3 from "./CoverLetter3";
 import CoverLetter2 from "./CoverLetter2";
 import CoverLetter4 from "./CoverLetter4";
 
-// const CoverLetterPreview = () => {
-//   return (
-//     <>
-//       <CoverLetterProvider>
-//         <CoverLetter1 />
-//         <CoverLetter3/>
-//       </CoverLetterProvider>
-//     </>
-//   );
-// };
+
 function CoverLetterPreview({ selectedTemplate }) {
   // const { coverLetterData, selectedFont } = useCoverLetter()
 
@@ -97,7 +88,6 @@ function CoverLetterPreview({ selectedTemplate }) {
   return (
     <div
       className="border p-8 min-h-[1122px] w-[794px] mx-auto bg-white shadow-lg"
-      // style={{ fontFamily: selectedFont }}
     >
       {templates[selectedTemplate]}
     </div>
