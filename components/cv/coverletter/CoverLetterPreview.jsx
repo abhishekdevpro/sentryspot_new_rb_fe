@@ -81,7 +81,7 @@ const CoverLetterPreview = forwardRef(({ selectedTemplate }, ref) => {
     template4: <CoverLetter4 />,
     template5: <CoverLetter5 />,
   };
-
+  console.log(selectedTemplate,"template");
   return (
     // <div className="a4-wrapper-dashboard    ">
     <div

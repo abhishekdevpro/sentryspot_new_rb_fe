@@ -62,8 +62,7 @@ function CoverLetterBuilder() {
                 parsedData.coverletterInfo.templateDetails.backgroundColor || ""
               );
               setSelectedTemplate(
-                parsedData.coverletterInfo.templateDetails.templateId ||
-                  "template1"
+                parsedData.coverletterInfo.templateDetails.templateId || 'template1'
               );
             }
           }
@@ -83,7 +82,7 @@ function CoverLetterBuilder() {
   }, []);
 
   const formatCoverLetterData = (data) => {
-    console.log(data, ">>>data");
+    // console.log(data, ">>>data");
     return {
       closing: data.closing || "",
       body: data.body || "",
@@ -108,6 +107,11 @@ function CoverLetterBuilder() {
         address: data.personalDetails?.address || "",
         email: data.personalDetails?.email || "",
         contact: data.personalDetails?.contact || "",
+      },
+      templateDetails: {
+        templateId: selectedTemplate,
+        backgroundColor: backgroundColorss || "",
+        font: selectedFont || "Ubuntu",
       },
     };
   };
