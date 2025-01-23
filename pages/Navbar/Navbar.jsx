@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import logo from "../Navbar/logo.jpg";
 import Image from "next/image";
-import { Bell, User } from "lucide-react";
+import { Bell, LayoutDashboard, LogOut, User } from "lucide-react";
 import axios from "axios";
 import AbroadiumId from "./AbroadiumId";
+import { BsDash } from "react-icons/bs";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -85,7 +86,8 @@ const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
-    router.push("/");
+    // router.push("");
+    window.open("https://abroadium-arbuild-fe.vercel.app/login")
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -143,18 +145,18 @@ const Navbar = () => {
               Abroadium ID
             </Link>
             <AbroadiumId isOpen={isPopupOpen} onClose={handleClosePopup} />
-            <Link
+            {/* <Link
               href="https://abroadium-arbuild-fe.vercel.app/skilltest"
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
             >
               Skill Test
-            </Link>
-            <Link
+            </Link> */}
+            {/* <Link
               href="https://abroadium-arbuild-fe.vercel.app/skill-test-history"
               className="text-white px-3 py-2 rounded-md text-lg font-semibold"
             >
               Skill Test History
-            </Link>
+            </Link> */}
             {/* <Link href="/adminlogin" className="text-white px-3 py-2 rounded-md text-lg font-semibold">
               <span className="mr-2">🛡️</span>
               <span>Admin</span>
@@ -182,21 +184,29 @@ const Navbar = () => {
 
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md text-black">
-                    <Link
+                    {/* <Link
                       href="/"
                       className="block px-4 py-2 hover:bg-gray-200"
                       onClick={() => setIsDropdownOpen(false)}
                     >
                       Home
-                    </Link>
-                    <Link
+                    </Link> */}
+                    {/* <Link
                       href="/dashboard"
                       className="block px-4 py-2 hover:bg-gray-200"
                       onClick={() => setIsDropdownOpen(false)}
-                    >
+                    > 
                       Dashboard
-                    </Link>
-                    <button
+                    </Link> */}
+                     <Link 
+        href="/dashboard" 
+        className="flex items-center px-4 py-3 hover:bg-gray-100 transition-colors duration-200 group"
+        onClick={() => setIsDropdownOpen(false)}
+      >
+        <LayoutDashboard className="mr-3 w-5 h-5 text-gray-500 group-hover:text-blue-600" />
+        <span className="text-gray-800 group-hover:text-blue-600">Dashboard</span>
+      </Link>
+                    {/* <button
                       onClick={() => {
                         handleLogout();
                         setIsDropdownOpen(false);
@@ -204,7 +214,17 @@ const Navbar = () => {
                       className="block w-full text-left px-4 py-2 hover:bg-gray-200"
                     >
                       Logout
-                    </button>
+                    </button> */}
+                    <button
+        onClick={() => {
+          handleLogout();
+          setIsDropdownOpen(false);
+        }}
+        className="flex items-center w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors duration-200 group"
+      >
+        <LogOut className="mr-3 w-5 h-5 text-gray-500 group-hover:text-red-600" />
+        <span className="text-gray-800 group-hover:text-red-600">Logout</span>
+      </button>
                   </div>
                 )}
               </div>

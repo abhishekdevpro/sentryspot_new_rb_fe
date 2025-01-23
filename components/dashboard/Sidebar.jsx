@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -12,7 +11,8 @@ const Sidebar = ({ score, resumeId }) => {
   const templateRef = useRef(null);
   const router = useRouter();
 
-  const { resumeData, setResumeData, setHeaderColor, setBgColor } = useContext(ResumeContext);
+  const { resumeData, setResumeData, setHeaderColor, setBgColor } =
+    useContext(ResumeContext);
   const [selectedTemplate, setSelectedTemplate] = useState("template1");
   const [loading, setLoading] = useState(false);
   const [showLoader, setShowLoader] = useState(false); // Loader state
@@ -54,7 +54,8 @@ const Sidebar = ({ score, resumeId }) => {
           setResumeData(parsedData.templateData);
           setResumeTitle(data.resume_title || "Untitled Resume");
           if (parsedData?.templateData?.templateDetails) {
-            const { backgroundColor, templateId } = parsedData.templateData.templateDetails;
+            const { backgroundColor, templateId } =
+              parsedData.templateData.templateDetails;
             setBgColor(backgroundColor || "");
             setHeaderColor(backgroundColor || "");
             setSelectedTemplate(templateId || "template1");
@@ -107,18 +108,23 @@ const Sidebar = ({ score, resumeId }) => {
   return (
     <div className="w-full md:w-[400px] p-4 border-r border-gray-200">
       {showLoader && <FullScreenLoader />} {/* Show the loader */}
-      {!showLoader && ( /* Hide other content when loader is visible */
+      {!showLoader /* Hide other content when loader is visible */ && (
         <>
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold">{resumeTitle}</h2>
-            <Link href="/dashboard/resumelist" className="text-blue-600 hover:text-blue-700">
+            <Link
+              href="/dashboard/resumelist"
+              className="text-blue-600 hover:text-blue-700"
+            >
               View All
             </Link>
           </div>
 
           <div className="border border-gray-200 rounded-lg shadow-sm p-2 mb-4 relative h-[500px]">
             {loading ? (
-              <div className="flex items-center justify-center h-full">Loading...</div>
+              <div className="flex items-center justify-center h-full">
+                Loading...
+              </div>
             ) : (
               <DashboardPreview
                 ref={templateRef}
@@ -130,26 +136,34 @@ const Sidebar = ({ score, resumeId }) => {
           <div className="flex gap-4 mb-6">
             <button
               onClick={handleEdit}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
+              disabled={!resumeId} // Disable button if resumeId is null
+              className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 ${
+                !resumeId ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
               <Edit />
               Edit
             </button>
             <button
-              onClick={handleDownload}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50"
-            >
-              <Download />
-              Download
-            </button>
+  onClick={handleDownload}
+  disabled={!resumeId}
+  className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 ${!resumeId ? 'opacity-50 cursor-not-allowed' : ''}`}
+>
+  <Download />
+  Download
+</button>
           </div>
 
           <div className="mb-6">
             <div className="flex justify-between items-center mb-2">
               <span className="text-sm font-medium">Resume Strength:</span>
               <div className="flex items-center gap-2">
-                <span className="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-sm">{score}</span>
-                <button className="text-blue-600 hover:text-blue-700 text-sm">Improve</button>
+                <span className="bg-teal-100 text-teal-800 px-2 py-1 rounded-full text-sm">
+                  {score}
+                </span>
+                <button className="text-blue-600 hover:text-blue-700 text-sm">
+                  Improve
+                </button>
               </div>
             </div>
           </div>
