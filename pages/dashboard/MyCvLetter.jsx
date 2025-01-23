@@ -40,7 +40,35 @@ const MyCvLetter = () => {
     setcoverletterId(coverletterId);
     router.push(`/dashboard/cvaibuilder/${coverletterId}`);
   };
+  const handleDownload = async (coverletterId) => {
+    setcoverletterId(coverletterId);
+    const apiUrl = `https://api.sentryspot.co.uk/api/jobseeker/download-coverletter/${coverletterId}`;
 
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) throw new Error("Failed to download file");
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `resume_${coverletterId}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (error) {
+      console.error("Error downloading file:", error);
+      toast.error("Failed to download the file. Please try again later.");
+    }
+  };
   const handleDeleteCvLetter = async () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -75,7 +103,7 @@ const MyCvLetter = () => {
     if (token && currentCoverLetter) {
       axios
         .put(
-          `https://api.sentryspot.co.uk/api/jobseeker/coverletter/${currentCoverLetter.id}`,
+          `https://api.sentryspot.co.uk/api/jobseeker/coverletter-details/${currentCoverLetter.id}`,
           { cover_letter_title: newCoverLetterTitle },
           { headers: { Authorization: token } }
         )
@@ -118,7 +146,7 @@ const MyCvLetter = () => {
       </div>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto max-h-96 overflow-y-scroll">
           <table className="w-full min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -183,7 +211,7 @@ const MyCvLetter = () => {
                           <Trash className="w-5 h-5" />
                         </button>
                         <button
-                          // onClick={() => handleDownload(coverletter.coverletter_id)}
+                          onClick={() => handleDownload(coverletter.id)}
                           className="text-green-600 hover:text-green-800 transition-colors duration-200"
                         >
                           <Download className="w-5 h-5" />

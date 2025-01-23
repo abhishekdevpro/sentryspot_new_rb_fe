@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import axios from "axios";
 import Navbar from "./Navbar/Navbar";
 import { CoverLetterContext } from "../components/context/CoverLetterContext";
@@ -19,6 +19,7 @@ function CoverLetterBuilder() {
     setHeaderColor,
   } = useContext(CoverLetterContext);
   const router = useRouter();
+  const templateRef = useRef(null);
   const [token, setToken] = useState(null);
   const [coverletterId, setCoverLetterId] = useState(null);
   const [selectedTemplate, setSelectedTemplate] = useState("template1");
@@ -117,17 +118,29 @@ function CoverLetterBuilder() {
       coverletterInfo: formatCoverLetterData(coverLetterData),
     };
     console.log(coverLetterData, ">>>coverlettersdata");
+    const htmlContent = templateRef?.current?.innerHTML;
+    if (!htmlContent) {
+      toast.error("Error: Template content is missing.");
+      return;
+    }
 
+    const coverletterHtml = `
+      <style>
+        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+      </style>
+      ${htmlContent}
+    `;
     try {
       const coverletterId = router.query.id || localStorage.getItem("id");
       if (!coverletterId) {
-        toast.error("Resume ID not found");
+        toast.error("Cover Letter ID not found");
         return;
       }
 
       const response = await axios.put(
         `https://api.sentryspot.co.uk/api/jobseeker/coverletter/${coverletterId}`,
-        coverletterInfo,
+
+        { ...coverletterInfo, cover_letter_html: coverletterHtml },
         {
           headers: {
             "Content-Type": "application/json",
@@ -146,6 +159,74 @@ function CoverLetterBuilder() {
     } catch (error) {
       toast.error(error?.message || "Error updating resume!");
       console.error("Error updating resume:", error);
+    }
+  };
+  const downloadAsPDF = async () => {
+    handleFinish();
+    if (!templateRef.current) {
+      toast.error("Template reference not found");
+      return;
+    }
+
+    try {
+      const htmlContent = templateRef.current.innerHTML;
+
+      const fullContent = `
+        <style>
+          @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+        </style>
+        ${htmlContent}
+      `;
+
+      // const response = await axios.post(
+      //   "https://api.sentryspot.co.uk/api/jobseeker/generate-pdf1",
+      //   { html: fullContent },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: token,
+      //     },
+      //   }
+      // );
+
+      downloadPDF();
+    } catch (error) {
+      console.error("PDF generation error:", error);
+      toast.error(
+        error.response?.data?.message || "Failed to generate and open PDF"
+      );
+    }
+  };
+  const downloadPDF = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.sentryspot.co.uk/api/jobseeker/download-coverletter/${coverletterId}`,
+
+        {
+          headers: {
+            Authorization: token,
+          },
+          responseType: "blob",
+        }
+      );
+
+      const url = window.URL.createObjectURL(
+        new Blob([response.data], { type: "application/pdf" })
+      );
+      const link = document.createElement("a");
+      link.href = url;
+
+      link.setAttribute("download", `resume.pdf`);
+      document.body.appendChild(link);
+      link.click();
+
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      toast.success("PDF downloaded successfully!");
+    } catch (error) {
+      console.error("PDF Download Error:", error);
+      toast.error("Failed to download the PDF. Please try again.");
     }
   };
 
@@ -195,7 +276,10 @@ function CoverLetterBuilder() {
               >
                 Save Cover Letter
               </button>
-              <button className="bg-yellow-500 text-black px-6 py-2 rounded-lg">
+              <button
+                onClick={downloadAsPDF}
+                className="bg-yellow-500 text-black px-6 py-2 rounded-lg"
+              >
                 Pay & Download
               </button>
             </div>
@@ -217,7 +301,10 @@ function CoverLetterBuilder() {
           {/* Preview Section */}
           <aside className="w-[60%] min-h-screen border-l bg-gray-50">
             <div className="sticky top-20 p-4">
-              <CoverLetterPreview selectedTemplate={selectedTemplate} />
+              <CoverLetterPreview
+                selectedTemplate={selectedTemplate}
+                ref={templateRef}
+              />
             </div>
           </aside>
         </div>

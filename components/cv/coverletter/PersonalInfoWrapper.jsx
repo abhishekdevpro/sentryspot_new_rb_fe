@@ -24,7 +24,7 @@ const PersonalInfoWrapper = ({
                   headerColor === "black" ? backgroundColorss : headerColor
                 }`,
               }}
-              className="text-lg font-bold mb-2"
+              className="text-4xl font-bold mb-2 "
             >
               {personalDetails.name}
             </h2>

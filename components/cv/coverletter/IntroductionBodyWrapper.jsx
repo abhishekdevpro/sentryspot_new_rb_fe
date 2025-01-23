@@ -12,7 +12,7 @@ const IntroductionBodyWrapper = ({
   className = "",
 }) => {
   return (
-    <div className={`p-4 md:p-8 bg-gray-100 rounded-lg shadow-md ${className}`}>
+    <div className={`p-4  ${className}`}>
       {/* Introduction Section */}
       {introduction && (
         <div className="mb-6">

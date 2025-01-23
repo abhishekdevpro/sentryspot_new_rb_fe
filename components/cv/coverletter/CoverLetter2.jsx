@@ -13,11 +13,18 @@ const CoverLetter3 = () => {
     <div className="max-w-4xl mx-auto bg-white border border-gray-200 ">
       <div className="container mx-auto flex bg-white shadow-lg">
         {/* Left Column */}
-        <div className="left-column w-8/12 p-8 border-r border-gray-300">
+        <div
+          className="right-column w-3/12 bg-gray-100 p-8"
+          style={{ backgroundColor: backgroundColorss }}
+        ></div>
+
+        {/* Right Column */}
+        <div className="left-column w-9/12 p-4 border-r border-gray-300">
           <PersonalInfoWrapper
             personalDetails={coverLetterData?.personalDetails || {}}
             editable={true}
-            headerColor={backgroundColorss ? "white" : "black"}
+            className="p-4 "
+            // headerColor={backgroundColorss ? "white" : "black"}
           />
 
           {/* Job 1 */}
@@ -40,12 +47,6 @@ const CoverLetter3 = () => {
             </div>
           </div>
         </div>
-
-        {/* Right Column */}
-        <div
-          className="right-column w-4/12 bg-gray-100 p-8"
-          style={{ backgroundColor: backgroundColorss }}
-        ></div>
       </div>
     </div>
   );

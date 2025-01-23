@@ -18,12 +18,13 @@ const DefaultCoverLetterData = {
     "Throughout my academic journey, I have developed a strong foundation in [Relevant Skills Or Field Of Study]. My coursework and projects have allowed me to build [Specific Skills Or Experiences], which I believe align well with the requirements of your organization.",
     "In addition to my academic pursuits, I have actively participated in [Mention Any Clubs, Organizations, Or Volunteer Work], where I honed my abilities in [Relevant Skill Or Experience], as well as my capacity for collaboration and effective communication.",
     "I am particularly drawn to [Company's Name] because of [Something About The Company Or Its Values That Appeals To You]. I admire your commitment to [Mention Any Specifics About The Company's Mission, Projects, Or Values] and am excited about the possibility of contributing to and growing with your team.",
-  ],
-  closing:
     "I am a quick learner with a passion for [Mention Any Relevant Interests], and I am confident that my proactive approach and strong work ethic would make me a valuable asset to your organization. I am eager to bring my skills in [Mention Relevant Skills] and my willingness to learn and adapt to the dynamic environment at [Company's Name].",
-  gratitude:
     "Thank you for considering my application. I look forward to the opportunity to discuss how my background and skills would be an excellent fit for your team. Please feel free to contact me at your convenience to schedule an interview.",
-  signature: "Sincerely,\nSaurav Jangir",
+  ],
+  closing: "Thankyou for your time and consideration ",
+  gratitude: "Sincerely,",
+
+  signature: "Saurav Jangir",
 };
 
 export default DefaultCoverLetterData;
