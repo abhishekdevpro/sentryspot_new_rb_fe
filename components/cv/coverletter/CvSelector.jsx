@@ -25,6 +25,7 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     if (selectedIndex !== -1) {
       setCurrentIndex(selectedIndex);
     }
+    setTemplateId(selectedTemplate);
   }, [selectedTemplate]);
 
   const openModal = () => setIsOpen(true);

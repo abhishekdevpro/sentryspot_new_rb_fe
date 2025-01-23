@@ -8,6 +8,7 @@ import cvletter1 from "../coverletter/cvimgs/cvletter1.png";
 import cvletter2 from "../coverletter/cvimgs/cvletter2.png";
 import cvletter3 from "../coverletter/cvimgs/cvletter3.png";
 import cvletter4 from "../coverletter/cvimgs/cvletter4.png";
+import cvletter5 from "../coverletter/cvimgs/cvletter5.png";
 import { CoverLetterContext } from "../../context/CoverLetterContext";
 const CVSelector = ({ onNext, onBack, onChange, value }) => {
   const [selectedHexCode, setSelectedHexCode] = useState("#2563EB");
@@ -108,14 +109,8 @@ const CVSelector = ({ onNext, onBack, onChange, value }) => {
     },
     {
       key: "template5",
-      imageUrl: cvletter1,
+      imageUrl: cvletter5,
       name: "Technical CV",
-      hasPhoto: true,
-    },
-    {
-      key: "template6",
-      imageUrl: cvletter2,
-      name: "Graduate CV",
       hasPhoto: true,
     },
   ];
