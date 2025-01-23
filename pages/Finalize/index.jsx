@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import Navbarcoverletter from "../../components/coverletter/Navbarcoverletter";
+import Navbarcoverletter from "../../components/cv/coverletter/Navbarcoverletter";
 
 const Finalize = () => {
-
-
   return (
     <>
-    <Navbarcoverletter/>
-    
+      <Navbarcoverletter />
     </>
   );
 };

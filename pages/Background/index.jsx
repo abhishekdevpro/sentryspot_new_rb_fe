@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import Navbarcoverletter from "../../components/coverletter/Navbarcoverletter";
+import Navbarcoverletter from "../../components/cv/coverletter/Navbarcoverletter";
 import Link from "next/link";
 
 const Background = () => {
@@ -54,7 +54,6 @@ const Background = () => {
       {/* Selected Skills */}
       {selectedSkills.length > 0 && (
         <div className="my-8">
-        
           <div className="flex justify-center space-x-4">
             {selectedSkills.map((skill) => (
               <div
@@ -83,7 +82,7 @@ const Background = () => {
                   : ""
               }`}
             >
-              {skill}{" "} +
+              {skill} +
             </div>
           ))}
       </div>
@@ -97,7 +96,9 @@ const Background = () => {
 
         <button
           className={`rounded-full p-2 px-10 text-lg font-bold text-black ${
-            selectedSkills.length === 3 ? "bg-yellow-500 cursor-pointer" : "bg-gray-300"
+            selectedSkills.length === 3
+              ? "bg-yellow-500 cursor-pointer"
+              : "bg-gray-300"
           }`}
           disabled={selectedSkills.length !== 3}
           onClick={handleContinue}
