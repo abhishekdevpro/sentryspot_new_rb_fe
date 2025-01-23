@@ -54,7 +54,7 @@ function CoverLetterBuilder() {
 
             setCoverLetterData(parsedData.coverletterInfo);
 
-            if (parsedData.templateDetails) {
+            if (parsedData?.coverletterInfo?.templateDetails) {
               setBgColor(
                 parsedData.coverletterInfo.templateDetails.backgroundColor || ""
               );
