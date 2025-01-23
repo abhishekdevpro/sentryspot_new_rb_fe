@@ -35,17 +35,15 @@ const CoverLetter5 = () => {
         >
           <p
             style={{
-              color: `${
-                headerColor === "black" ? backgroundColorss : headerColor
-              }`,
+              color: backgroundColorss ? "white" : "black",
             }}
           >
             <strong>Email:</strong> {coverLetterData.personalDetails.email}
           </p>
-          <p style={{ color: headerColor }}>
+          <p style={{ color:backgroundColorss ? "white" : "black"} }>
             <strong>Address:</strong> {coverLetterData.personalDetails.address}
           </p>
-          <p style={{ color: headerColor }}>
+          <p style={{ color: backgroundColorss ? "white" : "black" }}>
             <strong>Contact:</strong> {coverLetterData.personalDetails.contact}
           </p>
         </div>
