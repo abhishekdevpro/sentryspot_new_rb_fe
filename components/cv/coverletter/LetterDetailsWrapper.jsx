@@ -8,7 +8,7 @@ const LetterDetailsWrapper = ({
   className = "",
 }) => {
   return (
-    <div className={`p-4 md:p-8 bg-gray-100 rounded-lg shadow-md ${className}`}>
+    <div className={`p-4   ${className}`}>
       <div className="space-y-4">
         {/* Date */}
         {letterDetails.date && (
@@ -55,22 +55,21 @@ const LetterDetailsWrapper = ({
               {letterDetails.reference}
             </p>
           )}
-          {/* Company Name */}
-          {letterDetails.companyName && (
-            <p
-              className={`text-gray-800 ${
-                editable
-                  ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
-                  : ""
-              }`}
-              contentEditable={editable}
-              suppressContentEditableWarning={true}
-            >
-              {letterDetails.companyName}
-            </p>
-          )}
         </div>
-
+        {/* Company Name */}
+        {letterDetails.companyName && (
+          <p
+            className={`text-gray-800 ${
+              editable
+                ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
+                : ""
+            }`}
+            contentEditable={editable}
+            suppressContentEditableWarning={true}
+          >
+            <strong>Company Name:</strong> {letterDetails.companyName}
+          </p>
+        )}
         {/* Salutation */}
         {letterDetails.salutation && (
           <p

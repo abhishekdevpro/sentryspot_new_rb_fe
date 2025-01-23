@@ -5,7 +5,7 @@ import cvletter1 from "./cvimgs/cvletter1.png";
 import cvletter2 from "./cvimgs/cvletter2.png";
 import cvletter3 from "./cvimgs/cvletter3.png";
 import cvletter4 from "./cvimgs/cvletter4.png";
-
+import cvletter5 from "./cvimgs/cvletter5.png";
 const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,8 +15,7 @@ const TemplateSelector = ({ selectedTemplate, setSelectedTemplate }) => {
     { key: "template2", imageUrl: cvletter2 },
     { key: "template3", imageUrl: cvletter3 },
     { key: "template4", imageUrl: cvletter4 },
-    { key: "template5", imageUrl: cvletter1 },
-    { key: "template6", imageUrl: cvletter2 },
+    { key: "template5", imageUrl: cvletter5 },
   ];
 
   useEffect(() => {

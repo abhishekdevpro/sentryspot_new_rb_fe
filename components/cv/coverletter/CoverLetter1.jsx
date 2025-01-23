@@ -22,8 +22,8 @@ const CoverLetter1 = () => {
       className="max-w-4xl mx-auto bg-white border border-gray-200 shadow-lg"
     >
       <div
-        className="container mx-auto flex flex-col p-8 gap-8"
-        style={{ backgroundColor: backgroundColorss || "white" }}
+        className="container mx-auto flex flex-col p-4 gap-8 bg-gray-100"
+        style={{ backgroundColor: backgroundColorss }}
       >
         {/* Personal Information Section */}
 
@@ -32,25 +32,24 @@ const CoverLetter1 = () => {
           // editable={true}
           headerColor={backgroundColorss ? "white" : "black"}
         />
-
-        {/* Letter Details Section */}
-        <LetterDetailsWrapper
-          letterDetails={coverLetterData?.letterDetails || {}}
-          // editable={true}
-          headerColor={backgroundColorss ? "white" : "black"}
-        />
-
-        {/* Introduction and Body Section */}
-        <IntroductionBodyWrapper
-          introduction={coverLetterData.introduction}
-          body={coverLetterData.body}
-          closing={coverLetterData.closing}
-          gratitude={coverLetterData.gratitude}
-          signature={coverLetterData.signature}
-          editable={true}
-          headerColor={backgroundColorss ? "white" : "black"}
-        />
       </div>
+      {/* Letter Details Section */}
+      <LetterDetailsWrapper
+        letterDetails={coverLetterData?.letterDetails || {}}
+        // editable={true}
+        headerColor={backgroundColorss ? "white" : "black"}
+      />
+
+      {/* Introduction and Body Section */}
+      <IntroductionBodyWrapper
+        introduction={coverLetterData.introduction}
+        body={coverLetterData.body}
+        closing={coverLetterData.closing}
+        gratitude={coverLetterData.gratitude}
+        signature={coverLetterData.signature}
+        editable={true}
+        headerColor={backgroundColorss ? "white" : "black"}
+      />
     </div>
   );
 };

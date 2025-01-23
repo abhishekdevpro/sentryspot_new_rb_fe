@@ -45,7 +45,7 @@ const MyResume = () => {
 
   const handleEdit = (resumeId) => {
     setResumeId(resumeId);
-    router.push(`/dashboard/cvaibuilder/${resumeId}`);
+    router.push(`/dashboard/aibuilder/${resumeId}`);
   };
 
   const handleDownload = async (resumeId) => {

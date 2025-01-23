@@ -63,19 +63,15 @@
 
 import React, { useContext, forwardRef } from "react";
 
-// import {
-//   CoverLetterContext,
-//   CoverLetterProvider,
-// } from "../../components/context/CoverLetterContext";
-// import dynamic from "next/dynamic";
-
 import CoverLetter1 from "./CoverLetter1";
 import CoverLetter3 from "./CoverLetter3";
 import CoverLetter2 from "./CoverLetter2";
 import CoverLetter4 from "./CoverLetter4";
 import { CoverLetterContext } from "../../context/CoverLetterContext";
+import CoverLetter5 from "./CoverLetter5";
 
-function CoverLetterPreview({ selectedTemplate }) {
+// function CoverLetterPreview({ selectedTemplate }) {
+const CoverLetterPreview = forwardRef(({ selectedTemplate }, ref) => {
   const { coverLetterData, selectedFont } = useContext(CoverLetterContext);
 
   const templates = {
@@ -83,13 +79,13 @@ function CoverLetterPreview({ selectedTemplate }) {
     template2: <CoverLetter2 />,
     template3: <CoverLetter3 />,
     template4: <CoverLetter4 />,
-    template5: <CoverLetter1 />,
-    template6: <CoverLetter2 />,
+    template5: <CoverLetter5 />,
   };
 
   return (
     // <div className="a4-wrapper-dashboard    ">
     <div
+      ref={ref}
       className="border p-8 min-h-[1122px] w-full mx-auto bg-white shadow-lg "
       style={{ fontFamily: selectedFont }}
     >
@@ -97,6 +93,6 @@ function CoverLetterPreview({ selectedTemplate }) {
     </div>
     // </div>
   );
-}
-
+});
+CoverLetterPreview.displayName = "CoverLetterPreview";
 export default CoverLetterPreview;

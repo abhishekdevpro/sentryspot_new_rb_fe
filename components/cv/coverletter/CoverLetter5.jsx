@@ -6,26 +6,52 @@ import PersonalInfoWrapper from "./PersonalInfoWrapper";
 import LetterDetailsWrapper from "./LetterDetailsWrapper";
 import IntroductionBodyWrapper from "./IntroductionBodyWrapper";
 
-const CoverLetter4 = () => {
-  const { coverLetterData, backgroundColorss } = useContext(CoverLetterContext);
+const CoverLetter5 = () => {
+  const { coverLetterData, backgroundColorss, headerColor } =
+    useContext(CoverLetterContext);
 
   return (
     <div className="max-w-4xl mx-auto bg-white border border-gray-200 ">
-      <div className="container mx-auto flex bg-white shadow-lg">
+      <div
+        className="mx-auto flex justify-center items-center p-4"
+        style={{
+          borderBottom: `2px solid ${backgroundColorss}`,
+        }}
+      >
+        <h2
+          style={{
+            color: `${backgroundColorss}`,
+          }}
+          className="text-4xl font-bold mb-2 "
+        >
+          {coverLetterData?.personalDetails.name}
+        </h2>
+      </div>
+      <div className="container mx-auto flex bg-white shadow-lg mt-2">
         {/* Left Column */}
         <div
           className="right-column w-4/12 bg-gray-100 p-4"
           style={{ backgroundColor: backgroundColorss }}
         >
-          <PersonalInfoWrapper
-            personalDetails={coverLetterData?.personalDetails || {}}
-            editable={true}
-            headerColor={backgroundColorss ? "white" : "black"}
-          />
+          <p
+            style={{
+              color: `${
+                headerColor === "black" ? backgroundColorss : headerColor
+              }`,
+            }}
+          >
+            <strong>Email:</strong> {coverLetterData.personalDetails.email}
+          </p>
+          <p style={{ color: headerColor }}>
+            <strong>Address:</strong> {coverLetterData.personalDetails.address}
+          </p>
+          <p style={{ color: headerColor }}>
+            <strong>Contact:</strong> {coverLetterData.personalDetails.contact}
+          </p>
         </div>
 
         {/* Right Column */}
-        <div className="left-column w-8/12 p-4 border-r border-gray-300">
+        <div className="left-column w-8/12 p-2 border-r border-gray-300">
           {/* Job 1 */}
           <div className="flex flex-col gap-4">
             <div className="col-span-2 space-y-2">
@@ -51,4 +77,4 @@ const CoverLetter4 = () => {
   );
 };
 
-export default CoverLetter4;
+export default CoverLetter5;
