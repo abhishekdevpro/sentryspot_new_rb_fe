@@ -8,7 +8,6 @@
 // import FileUploadStep from '../../../components/resume-builder-steps/File-upload'
 // import { ResumeProvider } from '../../../components/context/ResumeContext'
 
-
 // export default function Home() {
 //   const [currentStep, setCurrentStep] = useState(1)
 //   const [formData, setFormData] = useState({
@@ -39,16 +38,16 @@
 //     <main className="min-h-screen bg-gray-50 py-8 px-4">
 //       <div className="max-w-4xl mx-auto">
 //         {/* <ProgressBar currentStep={currentStep} totalSteps={totalSteps} /> */}
-        
+
 //         <div className="mt-8 bg-white rounded-lg shadow-lg p-6">
 //           {currentStep === 1 && (
-//             <ExperienceStep 
+//             <ExperienceStep
 //               onNext={handleNext}
 //               onChange={(experience) => updateFormData({ experience })}
 //               value={formData.experience}
 //             />
 //           )}
-          
+
 //           {currentStep === 2 && (
 //             <TemplateStep
 //               onNext={handleNext}
@@ -61,7 +60,7 @@
 //               }}
 //             />
 //           )}
-          
+
 //           {currentStep === 3 && (
 //             <UploadStep
 //               onNext={handleNext}
@@ -70,7 +69,7 @@
 //               value={formData.uploadType}
 //             />
 //           )}
-          
+
 //           {currentStep === 4 && formData.uploadType === 'upload' && (
 //             <FileUploadStep
 //               onNext={handleNext}
@@ -86,67 +85,69 @@
 //   )
 // }
 
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import axios from 'axios'
+import { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Home() {
-  const router = useRouter()
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleCreateResume = async () => {
-    setLoading(true)
-    setError('')
+    setLoading(true);
+    setError("");
 
     try {
       // Replace this with your actual token
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        'https://api.sentryspot.co.uk/api/jobseeker/resume-create',
+        "https://api.sentryspot.co.uk/api/jobseeker/resume-create",
         {},
         {
           headers: {
             Authorization: ` ${token}`,
           },
         }
-      )
+      );
 
       // Assuming the response contains the ID
       console.log(response);
-      const { id } = response.data.data
+      const { id } = response.data.data;
 
       // Navigate to the dynamic route
-      router.push(`/dashboard/resume-builder/${id}`)
+      router.push(`/dashboard/resume-builder/${id}`);
     } catch (err) {
-      console.error('Error creating resume:', err)
-      setError('Failed to create resume. Please try again.')
+      console.error("Error creating resume:", err);
+      setError("Failed to create resume. Please try again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <main className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="bg-white rounded-lg shadow-lg p-8 text-center">
         <h1 className="text-2xl font-bold mb-4">Welcome to Resume Builder</h1>
-        <p className="mb-6 text-gray-600">Click the button below to create your resume.</p>
+        <p className="mb-6 text-gray-600">
+          Click the button below to create your resume.
+        </p>
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
 
         <button
           onClick={handleCreateResume}
           className={`px-6 py-3 text-white font-semibold rounded-lg ${
-            loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
+            loading ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
           }`}
           disabled={loading}
         >
-          {loading ? 'Creating...' : 'Create Your Resume'}
+          {loading ? "Creating..." : "Create Your Resume"}
         </button>
       </div>
     </main>
-  )
+  );
 }
