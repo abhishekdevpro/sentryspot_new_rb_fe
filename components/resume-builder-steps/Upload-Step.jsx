@@ -11,7 +11,7 @@
 //             Just review, edit, and update it with new information
 //           </p>
 //         </div>
-  
+
 //         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 //           <button
 //             onClick={() => {
@@ -40,7 +40,7 @@
 //               We will give you expert guidance to fill out your info and enhance your resume
 //             </p>
 //           </button>
-  
+
 //           <button
 //             onClick={() => {
 //               onChange('scratch')
@@ -69,7 +69,7 @@
 //             </p>
 //           </button>
 //         </div>
-  
+
 //         <div className="flex justify-between mt-8">
 //           <button
 //             onClick={onBack}
@@ -82,31 +82,31 @@
 //     )
 //   }
 
-'use client';
+"use client";
 
-import { FaUpload, FaFileAlt } from 'react-icons/fa';
-import axios from 'axios';
-import { useRouter } from 'next/router';
-import { useContext, useState } from 'react';
-import { toast } from 'react-toastify';
-import DefaultResumeData from '../utility/DefaultResumeData';
-import { ResumeContext } from '../context/ResumeContext';
+import { FaUpload, FaFileAlt } from "react-icons/fa";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import { toast } from "react-toastify";
+import DefaultResumeData from "../utility/DefaultResumeData";
+import { ResumeContext } from "../context/ResumeContext";
 
 export default function UploadStep({ onNext, onBack, onChange, value }) {
   const router = useRouter();
   const [showLoadingAnimation, setShowLoadingAnimation] = useState(false);
-  const {setResumeData} =  useContext(ResumeContext)
-   const resumeId = router.query.id || localStorage.getItem('resumeId');
-          if (!resumeId) {
-            toast.error('Resume ID or token not found');
-            return;
-          }
+  const { setResumeData } = useContext(ResumeContext);
+  const resumeId = router.query.id || localStorage.getItem("resumeId");
+  if (!resumeId) {
+    toast.error("Resume ID or token not found");
+    return;
+  }
 
-const handleStartFromScratch =()=>{
-  // localStorage.setItem("currentSection", 0);
-  setResumeData(DefaultResumeData);
-  router.push(`/dashboard/aibuilder/${resumeId}`)
-}
+  const handleStartFromScratch = () => {
+    // localStorage.setItem("currentSection", 0);
+    setResumeData(DefaultResumeData);
+    router.push(`/dashboard/aibuilder/${resumeId}`);
+  };
 
   return (
     <div className="space-y-6">
@@ -122,7 +122,7 @@ const handleStartFromScratch =()=>{
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <button
           onClick={() => {
-            onChange('upload');
+            onChange("upload");
             onNext();
           }}
           className="p-6 border-2 rounded-lg text-center hover:border-blue-400"
@@ -132,7 +132,8 @@ const handleStartFromScratch =()=>{
           </div>
           <h3 className="font-bold mb-2">Yes, upload from my resume</h3>
           <p className="text-gray-600 text-sm">
-            We will give you expert guidance to fill out your info and enhance your resume
+            We will give you expert guidance to fill out your info and enhance
+            your resume
           </p>
         </button>
 
@@ -161,6 +162,3 @@ const handleStartFromScratch =()=>{
     </div>
   );
 }
-
-  
-  

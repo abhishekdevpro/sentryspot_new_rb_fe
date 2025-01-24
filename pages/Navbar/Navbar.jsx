@@ -87,7 +87,7 @@ const Navbar = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     // router.push("");
-    window.open("https://abroadium-arbuild-fe.vercel.app/login")
+    window.open("https://abroadium-arbuild-fe.vercel.app/login");
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -173,7 +173,7 @@ const Navbar = () => {
 
                 <button
                   onClick={toggleDropdown}
-                  className="flex items-center bg-blue-500 text-white px-4 py-2 text-md font-semibold border-2 border-blue-500 rounded-xl hover:bg-blue-600 transition duration-300 z-50"
+                  className="flex items-center bg-orange-500 text-white px-4 py-2 text-md font-semibold border-2 border-orange-500 rounded-xl hover:bg-orange-600 transition duration-300 z-50"
                 >
                   {/* Add the User component */}
                   <User />
@@ -198,14 +198,16 @@ const Navbar = () => {
                     > 
                       Dashboard
                     </Link> */}
-                     <Link 
-        href="/dashboard" 
-        className="flex items-center px-4 py-3 hover:bg-gray-100 transition-colors duration-200 group"
-        onClick={() => setIsDropdownOpen(false)}
-      >
-        <LayoutDashboard className="mr-3 w-5 h-5 text-gray-500 group-hover:text-blue-600" />
-        <span className="text-gray-800 group-hover:text-blue-600">Dashboard</span>
-      </Link>
+                    <Link
+                      href="/dashboard"
+                      className="flex items-center px-4 py-3 hover:bg-gray-100 transition-colors duration-200 group"
+                      onClick={() => setIsDropdownOpen(false)}
+                    >
+                      <LayoutDashboard className="mr-3 w-5 h-5 text-gray-500 group-hover:text-orange-500" />
+                      <span className="text-gray-800 group-hover:text-orange-500">
+                        Dashboard
+                      </span>
+                    </Link>
                     {/* <button
                       onClick={() => {
                         handleLogout();
@@ -216,15 +218,17 @@ const Navbar = () => {
                       Logout
                     </button> */}
                     <button
-        onClick={() => {
-          handleLogout();
-          setIsDropdownOpen(false);
-        }}
-        className="flex items-center w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors duration-200 group"
-      >
-        <LogOut className="mr-3 w-5 h-5 text-gray-500 group-hover:text-red-600" />
-        <span className="text-gray-800 group-hover:text-red-600">Logout</span>
-      </button>
+                      onClick={() => {
+                        handleLogout();
+                        setIsDropdownOpen(false);
+                      }}
+                      className="flex items-center w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors duration-200 group"
+                    >
+                      <LogOut className="mr-3 w-5 h-5 text-gray-500 group-hover:text-red-600" />
+                      <span className="text-gray-800 group-hover:text-red-600">
+                        Logout
+                      </span>
+                    </button>
                   </div>
                 )}
               </div>

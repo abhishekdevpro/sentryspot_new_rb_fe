@@ -188,10 +188,12 @@ const MyCvLetter = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {coverletter.updated_at}
+                      {/* {coverletter.updated_at} */}
+                      {new Date(coverletter.updated_at).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {coverletter.created_at}
+                      {/* {coverletter.created_at} */}
+                      {new Date(coverletter.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex items-center space-x-3">
