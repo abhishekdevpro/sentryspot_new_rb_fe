@@ -37,7 +37,7 @@ const LetterDetailsWrapper = ({
               contentEditable={editable}
               suppressContentEditableWarning={true}
             >
-              <strong>RE:</strong> {letterDetails.jobTitle}
+              <strong>Job Title:</strong> {letterDetails.jobTitle}
             </p>
           )}
 

@@ -159,7 +159,7 @@ const LetterDetails = () => {
 
         {/* Reference */}
         <div>
-          <label className="block text-white font-medium mb-2">Reference</label>
+          <label className="block text-white font-medium mb-2">Reference (Optional) </label>
           <input
             type="text"
             value={coverLetterData.letterDetails.reference}
