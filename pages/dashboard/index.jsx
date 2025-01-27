@@ -161,7 +161,7 @@ export default function DashboardPage() {
   };
   const handleCreateResume = () => {
     setTimeout(() => {
-      router.push("/");
+      router.push("/dashboard/resume-builder");
     }, 2000);
   };
   const handleMyDashboard = () => {

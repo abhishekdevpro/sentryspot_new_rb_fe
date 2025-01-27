@@ -90,6 +90,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Navbar from "../../Navbar/Navbar";
 
 export default function Home() {
   const router = useRouter();
@@ -129,7 +130,9 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center">
+   <>
+    <Navbar/>
+        <main className="min-h-screen bg-gray-50 flex items-center justify-center">
       <div className="bg-white rounded-lg shadow-lg p-8 text-center">
         <h1 className="text-2xl font-bold mb-4">Welcome to Resume Builder</h1>
         <p className="mb-6 text-gray-600">
@@ -149,5 +152,6 @@ export default function Home() {
         </button>
       </div>
     </main>
+   </>
   );
 }

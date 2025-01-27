@@ -89,7 +89,7 @@ const IntroductionBodyWrapper = ({
         {signature && (
           <div>
             <p
-              className={`text-gray-800 ${
+              className={`text-gray-800 font-bold ${
                 editable
                   ? "hover:outline-dashed hover:outline-2 hover:outline-gray-400"
                   : ""

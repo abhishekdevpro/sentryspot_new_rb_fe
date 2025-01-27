@@ -84,15 +84,39 @@ const CoverLetterPreview = forwardRef(({ selectedTemplate }, ref) => {
   console.log(selectedTemplate,"template");
   return (
     // <div className="a4-wrapper-dashboard    ">
+    <A4PageWrapper>
     <div
       ref={ref}
-      className="border p-8 min-h-[1122px] w-full mx-auto bg-white shadow-lg "
+      className="preview "
       style={{ fontFamily: selectedFont }}
     >
       {templates[selectedTemplate]}
     </div>
+     </A4PageWrapper>
     // </div>
   );
 });
 CoverLetterPreview.displayName = "CoverLetterPreview";
+const A4PageWrapper = ({ children }) => {
+  const alertA4Size = () => {
+    const preview = document.querySelector(".preview");
+    if (preview) {
+      const previewHeight = preview.offsetHeight;
+      console.log(previewHeight);
+      if (previewHeight > 1122) {
+        alert("A4 size exceeded");
+      }
+    } else {
+      console.error("Element with class 'preview' not found.");
+    }
+  };
+
+  return (
+    <div className="a4-wrapper"
+  
+    onLoad={alertA4Size}>
+      {children}
+    </div>
+  );
+};
 export default CoverLetterPreview;

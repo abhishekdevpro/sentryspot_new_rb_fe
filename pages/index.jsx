@@ -5,7 +5,7 @@ import Home_first from "./Home/Home_first";
 import FAQ from "./Home/FAQ/FAQ_Component.jsx";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
-import DashboardPage from "./dashboard/aibuilder";
+import DashboardPage from "./dashboard";
 import Home from "./dashboard/resume-builder/index.jsx";
 
 const ResumeBuilder = () => {
@@ -35,8 +35,9 @@ const ResumeBuilder = () => {
   // }
   return (
     <>
-    <Navbar/>
-      <Home/>
+    {/* <Navbar/>
+      <Home/> */}
+      <DashboardPage />
       {/* 
     <Home_first/>
     <FAQ/> */}

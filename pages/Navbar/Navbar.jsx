@@ -87,7 +87,7 @@ const Navbar = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     // router.push("");
-    window.open("https://abroadium-arbuild-fe.vercel.app/login");
+    window.open("https://airesume.abroadium.com/login");
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
