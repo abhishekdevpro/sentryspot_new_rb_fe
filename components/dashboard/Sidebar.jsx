@@ -26,7 +26,7 @@ const Sidebar = ({ score, resumeId }) => {
     setShowLoader(true); // Show the loader
     setTimeout(() => {
       setShowLoader(false); // Hide the loader after 5 seconds
-      router.push("/"); // Navigate to the desired route
+      router.push("/dashboard/resume-builder"); // Navigate to the desired route
     }, 5000);
   };
 

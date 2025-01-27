@@ -14,7 +14,7 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 const WorkExperience = () => {
   const { resumeData, setResumeData, resumeStrength } = useContext(ResumeContext);
   const [activeTooltip, setActiveTooltip] = useState(null);
-  const [isLoading, setIsLoading] = useState({ location: false });
+  const [isLoading, setIsLoading] = useState(false );
   const [error, setError] = useState("");
   const [summaries, setSummaries] = useState([]);
   const [selectedSummaries, setSelectedSummaries] = useState([]);
