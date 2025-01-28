@@ -10,7 +10,7 @@ const WorkExperience = ({ resumeData, headerColor,className = "",
   if (!resumeData?.workExperience || resumeData.workExperience.length === 0) {
     return null;
   }
-
+// console.log(resumeData?.workExperience,"weee");
   return (
     <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
       {(provided) => (
@@ -74,7 +74,7 @@ const WorkExperience = ({ resumeData, headerColor,className = "",
 ></p>
 
 
-                  <Droppable
+                  {/* <Droppable
                     droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
                     type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
                   >
@@ -84,9 +84,10 @@ const WorkExperience = ({ resumeData, headerColor,className = "",
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                       >
-                        {typeof item.keyAchievements === "string" &&
-                          item.keyAchievements
-                            .split("\n")
+                       
+                        {item.KeyAchievements?
+    
+                          item.KeyAchievements
                             .map((achievement, subIndex) => (
                               <Draggable
                                 key={`${item.company}-${index}-${subIndex}`}
@@ -112,11 +113,57 @@ const WorkExperience = ({ resumeData, headerColor,className = "",
                                   </li>
                                 )}
                               </Draggable>
-                            ))}
+                            )):""
+                          }
                         {provided.placeholder}
                       </ul>
                     )}
-                  </Droppable>
+                  </Droppable> */}
+                  {item.KeyAchievements && item.KeyAchievements.length > 1 && (
+  <Droppable
+    droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
+    type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
+  >
+    {(provided) => (
+      <ul
+        className="list-disc pl-6"
+        {...provided.droppableProps}
+        ref={provided.innerRef}
+      >
+        {/* {console.log(item.KeyAchievements,"index",index)} */}
+        {item.KeyAchievements.map((achievement, subIndex) => (
+          
+          <Draggable
+            key={`${item.company}-${index}-${subIndex}`}
+            draggableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}-${subIndex}`}
+            index={subIndex}
+          >
+            {(provided, snapshot) => (
+              <li
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                className={`hover:scale-105 transition-transform duration-300 hover:outline-dashed hover:outline-2 hover:outline-gray-400 ${
+                  snapshot.isDragging &&
+                  "outline-dashed outline-2 outline-gray-400 bg-white"
+                }`}
+              >
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: achievement,
+                  }}
+                  contentEditable
+                />
+              </li>
+            )}
+          </Draggable>
+        ))}
+        {provided.placeholder}
+      </ul>
+    )}
+  </Droppable>
+)}
+
                 </div>
               )}
             </Draggable>

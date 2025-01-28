@@ -3,6 +3,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import DateRange from "../utility/DateRange";
 import Link from "next/link"; 
+import DateRangeExperience from "../utility/DateRangeExperience";
 const DragDropContext = dynamic(
   () => import("react-beautiful-dnd").then((mod) => mod.DragDropContext),
   { ssr: false }
@@ -19,6 +20,8 @@ const ProjectsSection = ({ resumeData, headerColor }) => {
   if (!resumeData?.projects || resumeData.projects.length === 0) {
     return null;
   }
+
+  // console.log(resumeData?.projects ,"llllll");
 
   return (
     <Droppable droppableId="projects" type="PROJECTS">
@@ -52,7 +55,7 @@ const ProjectsSection = ({ resumeData, headerColor }) => {
                 >
                   <div className="flex flex-row justify-between space-y-1">
                     <p className="content i-bold">{item.name}</p>
-                    <DateRange
+                    <DateRangeExperience
                       startYear={item.startYear}
                       endYear={item.endYear}
                       id={`projects-start-end-date`}
@@ -78,9 +81,8 @@ const ProjectsSection = ({ resumeData, headerColor }) => {
                         {...provided.droppableProps}
                         ref={provided.innerRef}
                       >
-                        {typeof item.keyAchievements === "string" &&
+                        {item.keyAchievements  &&
                           item.keyAchievements
-                            .split("\n")
                             .map((achievement, subIndex) => (
                               <Draggable
                                 key={`${item.name}-${index}-${subIndex}`}
