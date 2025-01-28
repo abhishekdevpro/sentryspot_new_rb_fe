@@ -584,6 +584,11 @@ const WorkExperience = () => {
               onChange={(e) => handleWorkExperience(e, index)}
               rows={4}
             />
+            <FormButton
+        size={resumeData.workExperience.length}
+        add={addWorkExperience}
+        remove={removeWorkExperience}
+      />
             {improve && hasErrors(index, 'keyAchievements') && (
               <button
                 type="button"
@@ -623,11 +628,7 @@ const WorkExperience = () => {
         </div>
       ))}
 
-      <FormButton
-        size={resumeData.workExperience.length}
-        add={addWorkExperience}
-        remove={removeWorkExperience}
-      />
+      
 
       {/* Smart Assist Popup */}
       {showPopup && (

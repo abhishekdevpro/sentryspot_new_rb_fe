@@ -203,14 +203,14 @@ body {
 
 .preview {
   width: 794px; /* Adjust for A4 */
-  height: 1123px;
+  /* height: 1123px; */
   overflow: auto;
   transform: scale(1);
   overflow-y: hidden;
 }
 .a4-wrapper {
   width: 794px; /* Adjust for A4 */
-  height: 1123px;
+  /* height: 1123px; */
   margin: auto;
   transform: scale(1); /* Slightly scale down */
   /* transform-origin: top left; */

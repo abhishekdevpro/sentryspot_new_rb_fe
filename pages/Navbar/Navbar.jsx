@@ -83,11 +83,33 @@ const Navbar = () => {
 
   const handleMouseLeave = () => setIsHovering(false);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    // router.push("");
-    window.open("https://airesume.abroadium.com/login");
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   setIsLoggedIn(false);
+  //   // router.push("");
+  //   window.open("https://airesume.abroadium.com/login");
+  // };
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      // Make the API call to log out
+      await axios.post(
+        "https://api.sentryspot.co.uk/api/jobseeker/logout",
+        { token },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      localStorage.removeItem("token");
+      router.push("https://airesume.abroadium.com/login");
+    } catch (error) {
+      console.error("Error during logout:", error.response?.data || error.message);
+    }
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);

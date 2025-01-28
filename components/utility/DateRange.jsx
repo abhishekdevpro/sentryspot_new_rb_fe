@@ -11,7 +11,7 @@ const DateRange = ({ startYear, endYear, id,layout, }) => {
     const end = new Date(endYear);
     return (
         <p  style={{ color:  layout == "row"  ? "black" : "white" }}>
-            {start.toLocaleString('default', { month: 'short' })}{start.getFullYear()} - {end != "Invalid Date" ? end.toLocaleString('default', { month: 'short' })  +  end.getFullYear() : 'Present'}
+            {start.toLocaleString('default', { month: 'short' })}{" "}{start.getFullYear()} - {end != "Invalid Date" ? end.toLocaleString('default', { month: 'short' })  +" "+ end.getFullYear() : 'Present'}
         </p>
     );
 };

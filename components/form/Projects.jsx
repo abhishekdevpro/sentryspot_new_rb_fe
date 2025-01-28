@@ -80,7 +80,7 @@ const Projects = () => {
               value={project.link}
               onChange={(e) => handleProjects(e, index)}
             />
-            <ReactQuill
+            {/* <ReactQuill
               placeholder="Describe your project in 2-3 sentences. Include details like the project's purpose, your role, and the technologies/tools used. "
               className="w-full other-input border-black border h-100 max-w-[33rem]"
               value={project.description}
@@ -94,7 +94,19 @@ const Projects = () => {
               modules={{
                 toolbar: [["bold", "italic", "underline"], ["clean"]],
               }}
-            />
+            /> */}
+            <textarea
+  placeholder="Describe your project in 2-3 sentences. Include details like the project's purpose, your role, and the technologies/tools used."
+  className="w-full other-input border-black border h-100 max-w-[33rem] p-2"
+  value={project.description}
+  onChange={(e) =>
+    handleProjects(
+      { target: { name: "description", value: e.target.value } },
+      index
+    )
+  }
+/>
+
             <textarea
               type="text"
               placeholder="Key Achievement or KRA (Key Result Area)"
