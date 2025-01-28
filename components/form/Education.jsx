@@ -430,7 +430,7 @@ const Education = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        const locations = data.data.countries.map((item) => item.name);
+        const locations = data.data.location_names.map((item) => item);
         setLocationSuggestions(locations);
         setShowLocationDropdown(true);
       }
